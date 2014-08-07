@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Interface Zaboy_Dic_Interface | _zaboy.org</title>
+
+	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
+	<script type="text/javascript" src="elementlist.js?1775676465"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+				<li><a href="package-Services.html">Services</a>
+						</li>
+				<li><a href="package-Test.html">Test</a>
+						</li>
+				<li><a href="package-Zaboy.html">Zaboy</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
+				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
+				<li><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li class="active"><a href="class-Zaboy_Dic_Interface.html">Zaboy_Dic_Interface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Dic.html" title="Summary of Dic"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface Zaboy_Dic_Interface</h1>
+
+
+	<div class="description">
+	
+<p>Interface Zaboy_Dic_Interface</p>
+
+<p><b>Zaboy_Dic</b></p>
+
+<p>Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is
+loading as resurce plugin of Bootstrap. Add in <i>config.ini</i> for load<br />
+</p>
+
+<pre>
+resources.dic[] =
+</pre>
+
+<p>You can get <i>Dic</i>:<br />
+</p>
+
+<pre>
+<span class="php-var">$bootstrap</span>-&gt;bootstrap(<span
+class="php-quote">'dic'</span>);
+<span class="php-var">$dic</span> = <span
+class="php-var">$bootstrap</span>-&gt;getResource(<span
+class="php-quote">'dic'</span>);
+</pre>
+
+<p><br />
+It can load and contane any object which implements Zaboy_Dic_Service_Interface. That object we call <i>Service</i>. Specific of
+<i>Service</i> is parametrs of it's __consruct.<br />
+The <b>$options</b> ( if it exist as parametr for __construct ) have to first
+parametr. More about <i>__consruct()</i> - see Zaboy_Services_Abstract::__consruct().<br />
+More about <i>$options</i> - see <code><a href="class-Zaboy_Abstract.html#_setOptions">Zaboy_Abstract::setOptions()</a></code>.<br />
+You can note options for <i>Service</i> in config.ini<br />
+</p>
+
+<pre>
+resources.dic.service.NameOfService.options.param1 = value1
+resources.dic.service.NameOfService.options.param2 = value2
+</pre>
+
+<p>or just in SeviceObjectClass - see $_defaultOptions in <code><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></code>.<br />
+</p>
+
+<p><b>All other parametrs must be Services!</b>. That parametr we call
+<i>Service Param.</i><br />
+<i>Service Param</i> in declaration of __construct must has type.<br />
+</p>
+
+<pre>
+  <span class="php-keyword1">public</span> <span
+class="php-keyword1">function</span> __construct(<span
+class="php-var">$options</span>, Test_Service_First <span
+class="php-var">$testFirst</span>, Test_Service_Next <span
+class="php-var">$testNext</span>)
+{ ...}
+</pre>
+
+<p><br />
+You can override type for <i>Service</i> in config.ini<br />
+For example:<br />
+</p>
+
+<pre>
+resources.dic.service.NameOfService.<span
+class="php-keyword1">class</span> = New_Class_For_NameOfService
+</pre>
+
+<p><b>About optional parametrs</b><br />
+Optional parametrs are transmitted to _consruct if they already was loaded or if
+they is discribed in config.ini</p>
+
+<p><b>Aliases</b><br />
+You can take 2 or more instaces of <i>Service</i>. Use aliases.</p>
+
+<pre>
+  <span class="php-keyword1">public</span> <span
+class="php-keyword1">function</span> __construct(Service_One_Type <span
+class="php-var">$firstExemplar</span>, Service_One_Type <span
+class="php-var">$secondExemplar</span>)
+{ ...}
+</pre>
+
+<p><br />
+You can load <i>Service</i> () see <code><a href="class-Zaboy_Dic.html#_get">Zaboy_Dic::get()</a></code>:</p>
+
+<pre>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'NameOrAlias'</span>); <span
+class="php-comment">//if class isn't noted in cofig.ini - exception</span>
+<span
+class="php-comment">//or</span>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'NameOrAlias'</span>, <span
+class="php-quote">'Service_Class'</span>); <span
+class="php-comment">//if class is noted in cofig.ini, parameter  'Service_Class' ignore.</span>
+</pre>
+
+<p><i>Service</i> which was loaded is containing in <i>Dic</i> and can't is load
+again.<br />
+</p>
+
+<p><b>Autoload</b><br />
+Class will be load if resources.dic.service.WithAutoload.autoload = true, where
+'WithAutoload' is services name<br />
+</p>
+
+	</div>
+
+
+
+
+
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-Zaboy_Dic.html">Zaboy_Dic</a>
+	</div>
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-Dic.html">Dic</a><br />
+
+				<b>Category:</b>
+				Dic<br />
+				<b>Copyright:</b>
+				Zaboychenko Andrey<br />
+				<b>License:</b>
+				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
+				<b>See:</b>
+				<code><code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code></code><br />
+				<b>Uses:</b>
+				Zend Framework from Zend Technologies USA Inc.<br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_Interface.html#11-117" title="Go to source code">library/Zaboy/Dic/Interface.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="has" id="_has">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_has">#</a>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#81-85" title="Go to source code">has</a>( <span>string <var>$serviceName</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceName</var></dt>
+					<dd><code>string</code></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getClass" id="_getClass">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getClass">#</a>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#88-99" title="Go to source code">getClass</a>( <span>string <var>$serviceName</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Return class by service name</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return class by service name</p>
+
+<p>return class of loaded service if it is already loaded or if it isn't loaded,
+but if it is described ( for example in config.ini) - return class from
+description else return null</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceName</var></dt>
+					<dd><code>string</code></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>Class of service or null<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="get" id="_get">
+
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_get">#</a>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#101-116" title="Go to source code">get</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClass</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Class in config is more imoprtant then class in __constract</p>
+
+<pre>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'NameOrAlias'</span>); <span
+class="php-comment">//if class isn't noted in cofig.ini - exception</span>
+<span
+class="php-comment">//or</span>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'NameOrAlias'</span>, <span
+class="php-quote">'Service_Class'</span>); <span
+class="php-comment">//if class is noted in cofig.ini, parameter  'Service_Class' ignore.</span>
+</pre>
+
+<p><i>Service</i> which was loaded is containing in <i>Dic</i> and can't is load
+again.<br />
+</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceName</var></dt>
+					<dd><code>string</code></dd>
+					<dt><var>$serviceClass</var></dt>
+					<dd><code>string</code></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<a
+href="http://stackoverflow.com/questions/1935771/how-to-use-call-user-func-array-with-an-object-with-a-construct-method-in-php">http://stackoverflow.com/questions/1935771/how-to-use-call-user-func-array-with-an-object-with-a-construct-method-in-php</a><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		_zaboy.org API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

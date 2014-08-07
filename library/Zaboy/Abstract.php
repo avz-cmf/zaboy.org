@@ -29,7 +29,6 @@ abstract class Zaboy_Abstract
     
     /**
     * 
-    * @see $_options
     * param array
     * @return void
     */  

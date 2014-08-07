@@ -13,7 +13,7 @@
  * 
  *  <b>Zaboy_Dic</b>
  * 
- * Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is loading as resurce plugin of Bootstrap. Add in config.ini for load<br>
+ * Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is loading as resurce plugin of Bootstrap. Add in <i>config.ini</i> for load<br>
  * <code> 
  * resources.dic[] = 
  * </code>
@@ -25,13 +25,15 @@
  * <br>
  * It can load and contane any object which implements {@see Zaboy_Dic_Service_Interface}.
  * That object we call <i>Service</i>. Specific of <i>Service</i> is parametrs of it's __consruct. <br>
- * The <b>$options</b> ( if it exist as parametr for __construct ) must be first parametr. 
- * More about <b>$options</b> - see {@see Zaboy_Abstract::setOptions()}.<br>
+ * The <b>$options</b> ( if it exist as parametr for __construct ) have to first parametr. 
+ * More about <i>__consruct()</i> - see {@see Zaboy_Services_Abstract::__consruct()}.<br>
+ * More about <i>$options</i> - see {@see Zaboy_Abstract::setOptions()}.<br>
  * You can note options for <i>Service</i>  in config.ini <br>
  * <code> 
  * resources.dic.service.NameOfService.options.param1 = value1
  * resources.dic.service.NameOfService.options.param2 = value2
  * </code>
+ * or just in SeviceObjectClass - see $_defaultOptions in {@see Zaboy_Services_Abstract}.<br>
  * 
  * <b>All other parametrs must be Services!</b>. That parametr we call <i>Service Param.</i> <br>
  * <i>Service Param</i> in declaration of __construct must has type.<br>
@@ -65,8 +67,12 @@
  * <i>Service</i> which was loaded is containing in  <i>Dic</i> and can't is load again. <br>
  * 
  * <b>Autoload</b><br>
- * Class will be load if resources.dic.service.WithAutoload.autoload = true, where 'WithAutoload' is services name
- *  - in config          resources.dic.service.WithAutoload.autoload = true
+ * Class will be load if resources.dic.service.WithAutoload.autoload = true, where 'WithAutoload' is services name <br>
+ * 
+ * <br><b>What is NameOfService?</b><br>
+ * It is string - param for (@see Zaboy_Dic::get()} and (@see Zaboy_Dic::has()}<br>
+ * See more about it : (@see Zaboy_Dic_Interface)
+ * 
  * 
  * @category   Dic
  * @package    Dic
@@ -85,11 +91,11 @@ interface Zaboy_Dic_Interface
     
     
    /**
-      * Return class by service name
-       * 
-       * return class of loaded service if it is already loaded or
-       * if it isn't loaded, but if it is described ( for example in config.ini) -
-       * return class from description
+    * Return class by service name
+    * 
+    * return class of loaded service if it is already loaded or
+    * if it isn't loaded, but if it is described ( for example in config.ini) -
+    * return class from description
     * else return null
     * 
     * @param string

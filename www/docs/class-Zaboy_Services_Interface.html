@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Interface Zaboy_Services_Interface | _zaboy.org</title>
+
+	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
+	<script type="text/javascript" src="elementlist.js?1775676465"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+				<li class="active"><a href="package-Services.html">Services</a>
+						</li>
+				<li><a href="package-Test.html">Test</a>
+						</li>
+				<li><a href="package-Zaboy.html">Zaboy</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Zaboy_Services_Example_Options.html">Zaboy_Services_Example_Options</a></li>
+				<li><a href="class-Zaboy_Services_Example_Simple.html">Zaboy_Services_Example_Simple</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li class="active"><a href="class-Zaboy_Services_Interface.html">Zaboy_Services_Interface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-Services.html" title="Summary of Services"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface Zaboy_Services_Interface</h1>
+
+
+	<div class="description">
+	
+<p><b>Interface Zaboy_Services_Interface</b> - it is Interface for Service
+Objects classes</p>
+There are 4 different entities: Service, Service Name, Service Object, Class of
+Service Object<br />
+<br />
+<b>Service</b><br />
+Service is resurse (Service Objec) which was loaded and registered in <code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code> via <code><a href="class-Zaboy_Dic.html#_get">Zaboy_Dic::get()</a></code> with Service Name<br />
+Service = Service Name + Service Object<br />
+More about
+<ul>
+	<li>Service</li>
+
+	<li>Service Object</li>
+
+	<li>Service Name</li>
+
+	<li>Zaboy_Dic</li>
+</ul>
+see there: <code><a href="class-Zaboy_Dic_Interface.html">Zaboy_Dic_Interface</a></code><br />
+
+<p><b>Service Object class</b><br />
+Class of Service Object may be is inherited from <code><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></code>
+or not There are requirements for (@see
+Zaboy_Services_Abstract::__construct()}:<br />
+</p>
+<b>Object_Class::__construct()</b><br />
+Constructor's params must be:
+<ul>
+	<li>(array $options, Servece_Class $servece1, Another_Servece_Class $servece2,
+	...) or</li>
+
+	<li>(Servece_Class $servece1, Another_Servece_Class $servece2, ...)) or</li>
+
+	<li>(array $options). See <code><a href="class-Zaboy_Services_Example_Options.html">Zaboy_Services_Example_Options</a></code>. Or just</li>
+
+	<li>public function __construct(). See <code><a href="class-Zaboy_Services_Example_Simple.html">Zaboy_Services_Example_Simple</a></code></li>
+</ul>
+ <i>$options</i> have to first or absent<br />
+You have to call
+<pre>
+        parent::__construct(<span class="php-var">$options</span>);
+<span
+class="php-comment">// or</span>
+        parent::__construct();
+</pre>
+
+<p>in your constructor if parent::__construct() exist.<br />
+</p>
+
+<p><b>Object_Class::_defaultOptions</b><br />
+If Service Object may be is inherited from <code><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></code> it
+contains <code><a href="class-Zaboy_Services_Abstract.html#$_defaultOptions">Zaboy_Services_Abstract::<var>$_defaultOptions</var></a></code><br />
+If $options haven't submitted via __construct - _defaultOptions will be used.<br
+/>
+See <code><a href="class-Zaboy_Services_Example_SimpleTest.html#_testSetDefaultOptionsInConstruct">Zaboy_Services_Example_SimpleTest::testSetDefaultOptionsInConstruct()</a></code><br />
+If $options is not empty - _defaultOptions will not be used fully ( any part)<br
+/>
+See <code><a href="class-Zaboy_Services_Example_OptionsTest.html#_testSetDefaultOptionsInConstruct">Zaboy_Services_Example_OptionsTest::testSetDefaultOptionsInConstruct()</a></code><br />
+</p>
+
+<p>Also, you can describe object in config.ini. See about it (@see
+Zaboy_Dic_Interface}<br />
+</p>
+
+<p><br />
+<b>What is NameOfService?</b><br />
+It is string - param for (@see Zaboy_Dic::get()} and (@see Zaboy_Dic::has()}<br
+/>
+See more about it : (@see Zaboy_Dic_Interface)</p>
+
+<p><br />
+<b>What is Zaboy_Services_Interface:_defaultOptions?</b><br />
+If $options haven't submitted via __construct - it is used<br />
+</p>
+
+	</div>
+
+
+
+
+
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a>, 
+			<a href="class-Zaboy_Services_Example_Options.html">Zaboy_Services_Example_Options</a>, 
+			<a href="class-Zaboy_Services_Example_Simple.html">Zaboy_Services_Example_Simple</a>
+	</div>
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-Services.html">Services</a><br />
+
+				<b>Category:</b>
+				Services<br />
+				<b>Copyright:</b>
+				Zaboychenko Andrey<br />
+				<b>License:</b>
+				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
+				<b>Uses:</b>
+				Zend Framework from Zend Technologies USA Inc.<br />
+		<b>Located at</b> <a href="source-class-Zaboy_Services_Interface.html#11-68" title="Go to source code">library/Zaboy/Services/Interface.php</a><br />
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		_zaboy.org API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
