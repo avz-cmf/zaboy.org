@@ -35,6 +35,17 @@ class Zaboy_Dic_ServiceReflector extends Zaboy_Abstract
      * Zaboy_Dic_ServicesConfigs  service name for extract information about _construct()'s parameters
      */
     private $_servicesConfigs;    
+    
+    /*
+     * Zaboy_Dic_ServicesStore  service for extract information about SErvices, which are already loaded
+     */
+    private $_servicesStore ;       
+     
+    /*
+     * Zaboy_Dic for recursive calls
+     */
+    private $_dic ;    
+    
     /*
      * array array( int => value)
      */
@@ -45,96 +56,60 @@ class Zaboy_Dic_ServiceReflector extends Zaboy_Abstract
      * param string class name for extract information about _construct()'s parameters
      * @return void
      */  
-    public function __construct( $serviceName, $serviceClass, Zaboy_Dic_ServicesConfigs $servicesConfigs ) 
+    public function __construct( $serviceName, $serviceClass, Zaboy_Dic_ServicesConfigs $servicesConfigs, Zaboy_Dic_ServicesStore $servicesStore, Zaboy_Dic $_dic ) 
     {
         $this->_serviceName = $serviceName;        
         $this->_serviceClass = $serviceClass;
         $this->_servicesConfigs = $servicesConfigs;
+        $this->_servicesStore = $servicesStore;
+        $this->_dic = $_dic;
         
-        $reflectionObject = new ReflectionClass($serviceClass);
         //Get params for $className::__construct
         $reflectionConstruct = $reflectionObject->getMethod('__construct');
         $reflectionParams = $reflectionConstruct->getParameters();
         //extract option (if exist) from array $reflectionParams
         $reflectionParams = $this->_resolveOptions($reflectionParams);
-        foreach ($reflectionParams as $constructParam) {
-            /** @var $constructParam \ReflectionParameter  */
-            $this->_resolveServiceClass($constructParam);
-            
-            
-            $constructParamInfo = $this->_getParamInfoFromReflection($callParam); 
-            //$constructParamInfo - array 'paramPosition','paramName', 'paramClass', 'isOptional'            
-$isCallParamService = is_a( $callParamInfo['paramClass'], 'Avz_Dic_Service_Interface' , true ); //is it Service?
-$isCallParamServiceInConfig = key_exists( $callParamInfo['paramName'] , $this->_servicesConfig ); 
-$isCallParamOptional = $callParamInfo['isOptional'];
-if ( $isCallParamService && ( !$isCallParamOptional || $isCallParamServiceInConfig) ) {//is it service not optional or present in config?
-    $value = $this->get($callParamInfo['paramName'], $callParamInfo['paramClass']);
-    return $value;
-} 
-
-//add search info about param in: $_egisterdParams (from config.ini), Resurses, ZendRegistry
-if ($callParamInfo['isOptional']) { return null;}
-
-require_once 'Avz/Exception.php';
-throw new Avz_Exception('Param ' . $callParamInfo['paramName'] . ' in ' .  $serviceName . ':: _consruct() is not resolved'); 
-
-        }
-        //all prams are ready in $callParamsArray
-         return $callParamsArray;
-    }       
-
-    /**
-     * @return array
-     */
-    public function getConstructParams()
-    { 
-        return $this->_constructParams;
-    }    
-    
-    /**
-     * Make decision about class for Service
-     * 
-     * information about class from config is more important
-     * 
-     * @param string $serviceName
-     * @param string $serviceClassFromParam
-     * @return string
-     */
-    public function _resolveServiceClass($constructParam) 
-    {
-        $constructParamName = $constructParam->getName();
-        $serviceClassFromConfig = $this->_servicesConfigs->getServiceClass($constructParamName);
-         if (isset ($serviceClassFromConfig)) {
-            //information about class from config is more important
-            $serviceClass =  $serviceClassFromConfig;
-         }else{
-            if ($constructParam->getClass()!== null) {
-                $serviceClass = $constructParam->getClass()->getName();
+        foreach ($reflectionParams as $reflectionParam) {
+            /** @var $reflectionParam \ReflectionParameter  */
+            if ($reflectionParams->getClass()!== null) {
+                $constructParamClass = $reflectionParams->getClass()->getName();
             }else{
-                require_once 'Zaboy/Dic/Exception.php';
-                throw new Zaboy_Dic_Exception("Service Class isn't defined for ($constructParamName)"); 
+                $constructParamClass = null;
             }
-        }
-        $this->_constructParams[$constructParamName] = $serviceClass;
+            $constructParamName = $reflectionParam->getName();
+            $serviceObject = $this->_dic->get($constructParamName, $constructParamClass);
+            $this->_constructParams[] = $serviceObject;
+        }    
     }
-    
+     
     /**
-     * @param string $serviceName
+     * @param string 
+     * @param string /ReflectionObject
      * @param array $callParamInfo 
      */
-    protected function _resolveServiceOptions($reflectionParams) 
+    public function getConstructParamsValues($serviceName, $reflectionObject)
     {
+        //Get params for $className::__construct
+        $reflectionConstruct = $reflectionObject->getMethod('__construct');
+        $reflectionParams = $reflectionConstruct->getParameters();
+        //extract option (if exist) from array $reflectionParams
         if (isset($reflectionParams[0])) {
             $mayBeOptionsParam = $reflectionParams[0];
             /** @var $mayBeOptionsParam \ReflectionParameter  */
             $mayBeOptionsParamName = $mayBeOptionsParam->getName();
             if ($mayBeOptionsParamName === 'options') {
-                $optionsFromConfig = $this->_servicesConfigs->getServiceOptions($this->_serviceName);
-                $this->_constructParams[] = $ptionsFromConfig;
+                $optionsFromConfig = $this->_servicesConfigs->getServiceOptions($serviceName);
+                $constructParams = $optionsFromConfig;
                 array_shift($reflectionParams);               
             }           
         }
-        return $reflectionParams;
-     }        
-
+        foreach ($reflectionParams as $reflectionParam) {
+            /** @var $reflectionParam \ReflectionParameter  */
+            $constructParamClass = $reflectionParams->getClass()->getName();
+            $constructParamName = $reflectionParam->getName();
+            $serviceObject = $this->_dic->get($constructParamName, $constructParamClass);
+            $constructParams[] = $serviceObject;
+        }
+        return $constructParams;
+    }        
 }
