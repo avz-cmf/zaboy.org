@@ -7,7 +7,7 @@
 	<title>Interface Zaboy_Dic_Interface | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1775676465"></script>
+	<script type="text/javascript" src="elementlist.js?4061764589"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -42,6 +42,7 @@
 			<ul>
 				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
 				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
+				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
 				<li><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></li>
 			</ul>
 
@@ -197,6 +198,12 @@ Class will be load if resources.dic.service.WithAutoload.autoload = true, where
 'WithAutoload' is services name<br />
 </p>
 
+<p><br />
+<b>What is NameOfService?</b><br />
+It is string - param for (@see Zaboy_Dic::get()} and (@see Zaboy_Dic::has()}<br
+/>
+See more about it : (@see Zaboy_Dic_Interface)</p>
+
 	</div>
 
 
@@ -226,14 +233,48 @@ Class will be load if resources.dic.service.WithAutoload.autoload = true, where
 				<b>See:</b>
 				<code><code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code></code><br />
 				<b>Uses:</b>
-				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_Interface.html#11-117" title="Go to source code">library/Zaboy/Dic/Interface.php</a><br />
+				Zend Framework from Zend Technologies USA Inc. @<br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_Interface.html#11-220" title="Go to source code">library/Zaboy/Dic/Interface.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#133-139" title="Go to source code">__construct</a>( <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						$_options param array <b>options</b> - options from config.ini.<br />
+It is all after <i>resources.dic.</i><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="has" id="_has">
 
 		<td class="attributes"><code>
@@ -245,7 +286,7 @@ Class will be load if resources.dic.service.WithAutoload.autoload = true, where
 
 		<td class="name"><div>
 		<a class="anchor" href="#_has">#</a>
-		<code><a href="source-class-Zaboy_Dic_Interface.html#81-85" title="Go to source code">has</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#141-145" title="Go to source code">has</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -283,7 +324,7 @@ Class will be load if resources.dic.service.WithAutoload.autoload = true, where
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getClass">#</a>
-		<code><a href="source-class-Zaboy_Dic_Interface.html#88-99" title="Go to source code">getClass</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#148-159" title="Go to source code">getClass</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -329,7 +370,7 @@ description else return null</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get">#</a>
-		<code><a href="source-class-Zaboy_Dic_Interface.html#101-116" title="Go to source code">get</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClass</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#161-176" title="Go to source code">get</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClass</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -381,15 +422,326 @@ href="http://stackoverflow.com/questions/1935771/how-to-use-call-user-func-array
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="setServicesConfig" id="_setServicesConfig">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setServicesConfig">#</a>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#178-213" title="Go to source code">setServicesConfig</a>( <span>array <var>$servicesConfig</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set services config</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set services config</p>
+
+<p>You can do it only once. Usialy $servicesConfig is part of DIC config in
+application.ini<br />
+with key which is defined in <code><a href="class-Zaboy_Dic_Interface.html#CONFIG_KEY_SERVICE">Zaboy_Dic_Interface::<b>CONFIG_KEY_SERVICE</b></a></code><br />
+Part of application.ini:<br />
+</p>
+
+<pre>
+dic.service.serviceName.class = ServiceClass
+dic.service.serviceName.options.key11 = val11
+dic.service.serviceName.options.key12 = val12
+dic.service.serviceName.autoload = true
+dic.service.nextServiceName.class = NextServiceClass
+...
+</pre>
+
+<p>It is in $servicesConfig</p>
+
+<pre>
+<span class="php-keyword1">array</span>(
+    <span
+class="php-quote">'serviceName'</span> = <span
+class="php-keyword1">array</span>(
+        <span
+class="php-quote">'class'</span> = <span
+class="php-quote">'ServiceClass'</span>
+        <span
+class="php-quote">'options'</span> = <span
+class="php-keyword1">array</span>(
+            <span
+class="php-quote">'key1'</span> = val1
+            <span
+class="php-quote">'key2'</span> = val2
+        (
+        <span
+class="php-quote">'autoload'</span> = <span
+class="php-keyword1">true</span>
+    )
+)
+<span
+class="php-keyword1">array</span>(
+    <span
+class="php-quote">'nextServiceName'</span> = <span
+class="php-keyword1">array</span>(
+        <span
+class="php-quote">'class'</span> = <span
+class="php-quote">'NextServiceClass'</span>
+         ...
+</pre>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$servicesConfig</var></dt>
+					<dd><code>array</code></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getServicesConfig" id="_getServicesConfig">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getServicesConfig">#</a>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#215-219" title="Go to source code">getServicesConfig</a>( <span>string <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceName</var></dt>
+					<dd><code>string</code><br>Name of service</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>config for service with name = $serviceName or for all services if $serviceName
+=== null<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Magic methods summary</caption>
+	<tr data-order="has" id="m_has">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_has">#</a>
+		<code><a href="source-class-Zaboy_Dic_Interface.html#76" title="Go to source code">has</a>( <span>mixed <var>$serviceName</var> = </span> )</code>
+
+		<div class="description short">
+			
+<p>;</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>;</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceName</var></dt>
+					<dd><code>mixed</code><br>$serviceName</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	</table>
 
 
 
 
 
+	<table class="summary" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="CONFIG_KEY_SERVICE" id="CONFIG_KEY_SERVICE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Dic_Interface.html#87-100" title="Go to source code"><b>CONFIG_KEY_SERVICE</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'service'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_SERVICE" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>comfig.ini :</p>
+
+<pre>
+dic.service.serviceName1.class = ServiceClass1
+dic.service.serviceName1.options.key11 = val11
+dic.service.serviceName1.options.key12 = val12
+dic.service.serviceName1.autoload = true       //optional, by default is FALSE
+;
+dic.service.serviceName2.class = ServiceClass2
+dic.service.serviceName2.options.key21 = val21
+dic.service.serviceName2.options.key22 = val22
+</pre>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>comfig.ini :</p>
+
+<pre>
+dic.service.serviceName1.class = ServiceClass1
+dic.service.serviceName1.options.key11 = val11
+dic.service.serviceName1.options.key12 = val12
+dic.service.serviceName1.autoload = true       //optional, by default is FALSE
+;
+dic.service.serviceName2.class = ServiceClass2
+dic.service.serviceName2.options.key21 = val21
+dic.service.serviceName2.options.key22 = val22
+</pre>
 
 
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_KEY_CLASS" id="CONFIG_KEY_CLASS">
 
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Dic_Interface.html#102-110" title="Go to source code"><b>CONFIG_KEY_CLASS</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'class'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_CLASS" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>comfig.ini :</p>
+
+<pre>
+dic.service.serviceName1.class = ServiceClass1
+</pre>
+
+
+					<h4>See</h4>
+					<div class="list">
+							<code><code><a href="class-Zaboy_Dic_Interface.html#CONFIG_KEY_SERVICE">Zaboy_Dic_Interface::<b>CONFIG_KEY_SERVICE</b></a></code></code><br />
+					</div>
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_KEY_OPTIONS" id="CONFIG_KEY_OPTIONS">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Dic_Interface.html#112-121" title="Go to source code"><b>CONFIG_KEY_OPTIONS</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'options'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_OPTIONS" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>comfig.ini :</p>
+
+<pre>
+dic.service.serviceName1.options.key11 = val11
+dic.service.serviceName1.options.key12 = val12
+</pre>
+
+
+					<h4>See</h4>
+					<div class="list">
+							<code><code><a href="class-Zaboy_Dic_Interface.html#CONFIG_KEY_SERVICE">Zaboy_Dic_Interface::<b>CONFIG_KEY_SERVICE</b></a></code></code><br />
+					</div>
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_KEY_AUTOLOAD" id="CONFIG_KEY_AUTOLOAD">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Dic_Interface.html#123-131" title="Go to source code"><b>CONFIG_KEY_AUTOLOAD</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'autoload'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_AUTOLOAD" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>comfig.ini :</p>
+
+<pre>
+dic.service.serviceName1.autoload = true  //optional, by default is FALSE
+</pre>
+
+
+					<h4>See</h4>
+					<div class="list">
+							<code><code><a href="class-Zaboy_Dic_Interface.html#CONFIG_KEY_SERVICE">Zaboy_Dic_Interface::<b>CONFIG_KEY_SERVICE</b></a></code></code><br />
+					</div>
+			</div>
+		</div></td>
+	</tr>
+	</table>
 
 
 

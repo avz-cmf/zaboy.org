@@ -54,7 +54,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-interface Zaboy_Services_Interface
-{    
+interface Zaboy_Services_Interface extends Zaboy_Interface
+{
 
 }

@@ -73,16 +73,71 @@
  * It is string - param for (@see Zaboy_Dic::get()} and (@see Zaboy_Dic::has()}<br>
  * See more about it : (@see Zaboy_Dic_Interface)
  * 
- * 
+ * @method  has($serviceName);
  * @category   Dic
  * @package    Dic
  * @see Zaboy_Dic
  * @copyright  Zaboychenko Andrey
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
+ * @
  */
 interface Zaboy_Dic_Interface
 {    
+   /**
+     * comfig.ini :
+     * <pre>   
+     *dic.service.serviceName1.class = ServiceClass1
+     *dic.service.serviceName1.options.key11 = val11
+     *dic.service.serviceName1.options.key12 = val12        
+     *dic.service.serviceName1.autoload = true       //optional, by default is FALSE
+     *;
+     *dic.service.serviceName2.class = ServiceClass2
+     *dic.service.serviceName2.options.key21 = val21
+     *dic.service.serviceName2.options.key22 = val22 
+     * </pre>   
+     */
+    const CONFIG_KEY_SERVICE = 'service';   //  comfig.ini :  dic.service... =  ...  
+     
+    /**
+     * 
+     * comfig.ini :
+     * <pre>   
+     * dic.service.serviceName1.class = ServiceClass1
+     * </pre>   
+     * @see CONFIG_KEY_SERVICE
+     */
+     const CONFIG_KEY_CLASS = 'class';
+     
+    /**
+     * 
+     * comfig.ini :
+     * <pre>   
+     *dic.service.serviceName1.options.key11 = val11
+     *dic.service.serviceName1.options.key12 = val12    
+     * </pre>   
+     * @see CONFIG_KEY_SERVICE
+     */     
+     const CONFIG_KEY_OPTIONS = 'options';
+     
+    /**
+     * 
+     * comfig.ini :
+     * <pre>   
+     *dic.service.serviceName1.autoload = true  //optional, by default is FALSE
+     * </pre>   
+     * @see CONFIG_KEY_SERVICE
+     */
+     const CONFIG_KEY_AUTOLOAD = 'autoload';
+
+    /**
+     * 
+     * @see $_options
+     * param array <b>options</b> - options from config.ini. <br>It is all after  <i>resources.dic.</i>
+     * @return void
+     */  
+    public function __construct(array $options=array());      
+     
     /**
       * @param string
       * @return bool
@@ -118,5 +173,48 @@ interface Zaboy_Dic_Interface
     * @param string
     * @return object
     */    
-    public function get($serviceName,$serviceClass = null) ;          
+    public function get($serviceName,$serviceClass = null) ;
+    
+      /**
+      * For usees in {@seeZaboy_Abstract::setOptions()} or load DIC without resurce plugin
+      * 
+      * You can do it only once. Usialy $servicesConfig is part of DIC config in application.ini<br>
+      * with key which is defined in {@see CONFIG_KEY_SERVICE}<br>
+      * Part of application.ini:<br>
+      *<pre>
+      * dic.service.serviceName.class = ServiceClass
+      * dic.service.serviceName.options.key11 = val11
+      * dic.service.serviceName.options.key12 = val12
+      * dic.service.serviceName.autoload = true
+      * dic.service.nextServiceName.class = NextServiceClass 
+      * ...
+      *</pre>
+      * It is in $servicesConfig
+      *<code>
+      * array(
+      *     'serviceName' = array(
+      *         'class' = 'ServiceClass'
+      *         'options' = array(
+      *             'key1' = val1
+      *             'key2' = val2
+      *         (
+      *         'autoload' = true
+      *     )
+      * )
+      * array(
+      *     'nextServiceName' = array(
+      *         'class' = 'NextServiceClass'
+      *          ...
+      *</code>
+      * 
+      * @param array
+      * @return void
+      */    
+     public function setServicesConfig($servicesConfig);
+     
+      /**
+      * @param string Name of service
+      * @return array config for service with name = $serviceName or for all services if $serviceName === null
+      */    
+     public function getServicesConfig($serviceName = null);     
 }

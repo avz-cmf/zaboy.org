@@ -5,7 +5,7 @@
 	<meta name="generator" content="ApiGen 2.8.0" />
 	<meta name="robots" content="noindex" />
 
-	<title>File library/Zaboy/Exception.php | _zaboy.org</title>
+	<title>File library/Zaboy/Dic/Exception.php | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
 	<script type="text/javascript" src="elementlist.js?4061764589"></script>
@@ -22,7 +22,7 @@
 		<div id="groups">
 			<h3>Packages</h3>
 			<ul>
-				<li><a href="package-Dic.html">Dic</a>
+				<li class="active"><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
@@ -30,7 +30,7 @@
 						</li>
 				<li><a href="package-Test.html">Test</a>
 						</li>
-				<li class="active"><a href="package-Zaboy.html">Zaboy</a>
+				<li><a href="package-Zaboy.html">Zaboy</a>
 						</li>
 			</ul>
 		</div>
@@ -41,10 +41,16 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Zaboy_Abstract.html">Zaboy_Abstract</a></li>
-				<li class="active"><a href="class-Zaboy_Exception.html">Zaboy_Exception</a></li>
+				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
+				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
+				<li class="active"><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
+				<li><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></li>
 			</ul>
 
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Zaboy_Dic_Interface.html">Zaboy_Dic_Interface</a></li>
+			</ul>
 
 
 
@@ -70,10 +76,10 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="package-Zaboy.html" title="Summary of Zaboy"><span>Package</span></a>
+				<a href="package-Dic.html" title="Summary of Dic"><span>Package</span></a>
 			</li>
 			<li>
-				<a href="class-Zaboy_Exception.html" title="Summary of Zaboy_Exception"><span>Class</span></a>
+				<a href="class-Zaboy_Dic_Exception.html" title="Summary of Zaboy_Dic_Exception"><span>Class</span></a>
 			</li>
 		</ul>
 		<ul>
@@ -89,29 +95,29 @@
 </span><span id="2" class="l"><a class="l" href="#2"> 2: </a><span class="php-comment">/**
 </span></span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-comment"> * Zaboy_Exception
 </span></span><span id="4" class="l"><a class="l" href="#4"> 4: </a><span class="php-comment"> * 
-</span></span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment"> * @category   Zaboy
-</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * @package    Zaboy
+</span></span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment"> * @category   Dic
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * @package    Dic
 </span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> * @copyright  Zaboychenko Andrey
 </span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 </span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> */</span>
 </span><span id="10" class="l"><a class="l" href="#10">10: </a>
 </span><span id="11" class="l"><a class="l" href="#11">11: </a>
 </span><span id="12" class="l"><a class="l" href="#12">12: </a><span class="php-comment">/**
-</span></span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-comment"> * @see Zend_Exception
+</span></span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-comment"> * @see Zaboy_Exception
 </span></span><span id="14" class="l"><a class="l" href="#14">14: </a><span class="php-comment"> */</span>
-</span><span id="15" class="l"><a class="l" href="#15">15: </a><span class="php-keyword1">require_once</span> <span class="php-quote">'Zend/Exception.php'</span>;
+</span><span id="15" class="l"><a class="l" href="#15">15: </a><span class="php-keyword1">require_once</span> <span class="php-quote">'Zaboy/Exception.php'</span>;
 </span><span id="16" class="l"><a class="l" href="#16">16: </a>
 </span><span id="17" class="l"><a class="l" href="#17">17: </a>
 </span><span id="18" class="l"><a class="l" href="#18">18: </a><span class="php-comment">/**
-</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment"> * Класс исключений
+</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment"> * Exception class
 </span></span><span id="20" class="l"><a class="l" href="#20">20: </a><span class="php-comment"> * 
-</span></span><span id="21" class="l"><a class="l" href="#21">21: </a><span class="php-comment"> * @category   Zaboy
-</span></span><span id="22" class="l"><a class="l" href="#22">22: </a><span class="php-comment"> * @package    Zaboy
+</span></span><span id="21" class="l"><a class="l" href="#21">21: </a><span class="php-comment"> * @category   Dic
+</span></span><span id="22" class="l"><a class="l" href="#22">22: </a><span class="php-comment"> * @package    Dic
 </span></span><span id="23" class="l"><a class="l" href="#23">23: </a><span class="php-comment"> * @copyright  Zaboychenko Andrey
 </span></span><span id="24" class="l"><a class="l" href="#24">24: </a><span class="php-comment"> * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 </span></span><span id="25" class="l"><a class="l" href="#25">25: </a><span class="php-comment"> * @uses Zend Framework from Zend Technologies USA Inc.
 </span></span><span id="26" class="l"><a class="l" href="#26">26: </a><span class="php-comment"> */</span>
-</span><span id="27" class="l"><a class="l" href="#27">27: </a><span class="php-keyword1">class</span> <a id="Zaboy_Exception" href="#Zaboy_Exception">Zaboy_Exception</a> <span class="php-keyword1">extends</span> Zend_Exception
+</span><span id="27" class="l"><a class="l" href="#27">27: </a><span class="php-keyword1">class</span> <a id="Zaboy_Dic_Exception" href="#Zaboy_Dic_Exception">Zaboy_Dic_Exception</a> <span class="php-keyword1">extends</span> Zaboy_Exception
 </span><span id="28" class="l"><a class="l" href="#28">28: </a>{
 </span><span id="29" class="l"><a class="l" href="#29">29: </a>}
 </span><span id="30" class="l"><a class="l" href="#30">30: </a></span></code></pre>

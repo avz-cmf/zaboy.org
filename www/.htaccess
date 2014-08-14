@@ -1,7 +1,17 @@
-
 RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/favicon.ico$ [OR]
 RewriteCond %{REQUEST_FILENAME} -s [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
+RewriteRule ^api/([0-9].[0-9])/jsonrpc$ /api/$1/jsonrpc.php [NC,L]
+RewriteRule ^docs/* /docs [NC,L]
 RewriteRule ^.*$ index.php [NC,L]
+
+# Выключить обработку модулем mod_charset
+<IfModule mod_charset.c>
+  CharsetDisable On
+</IfModule>
+# Выставить кодировку по умолчанию стандартными средствами apache
+AddDefaultCharset utf-8
+php_value default_charset utf-8

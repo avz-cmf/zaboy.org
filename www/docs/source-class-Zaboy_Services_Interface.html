@@ -8,7 +8,7 @@
 	<title>File library/Zaboy/Services/Interface.php | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1775676465"></script>
+	<script type="text/javascript" src="elementlist.js?4061764589"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -130,33 +130,25 @@
 </span></span><span id="39" class="l"><a class="l" href="#39">39: </a><span class="php-comment"> * in your constructor if parent::__construct() exist.&lt;br&gt;
 </span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment"> * 
 </span></span><span id="41" class="l"><a class="l" href="#41">41: </a><span class="php-comment"> * &lt;b&gt;Object_Class::_defaultOptions&lt;/b&gt;&lt;br&gt;
-</span></span><span id="42" class="l"><a class="l" href="#42">42: </a><span class="php-comment"> * If Service Object may be is inherited from {@see Zaboy_Services_Abstract} it contains
+</span></span><span id="42" class="l"><a class="l" href="#42">42: </a><span class="php-comment"> * If Service Object is inherited from {@see Zaboy_Services_Abstract} it contains
 </span></span><span id="43" class="l"><a class="l" href="#43">43: </a><span class="php-comment"> * {@see Zaboy_Services_Abstract::_defaultOptions}&lt;br&gt;
 </span></span><span id="44" class="l"><a class="l" href="#44">44: </a><span class="php-comment"> * If $options haven't submitted via __construct - _defaultOptions will be used.&lt;br&gt;
 </span></span><span id="45" class="l"><a class="l" href="#45">45: </a><span class="php-comment"> * See {@see Zaboy_Services_Example_SimpleTest::testSetDefaultOptionsInConstruct()}&lt;br&gt;
 </span></span><span id="46" class="l"><a class="l" href="#46">46: </a><span class="php-comment"> * If $options is not empty - _defaultOptions will not be used fully ( any part)&lt;br&gt;
 </span></span><span id="47" class="l"><a class="l" href="#47">47: </a><span class="php-comment"> * See {@see Zaboy_Services_Example_OptionsTest::testSetDefaultOptionsInConstruct()}&lt;br&gt;
 </span></span><span id="48" class="l"><a class="l" href="#48">48: </a><span class="php-comment"> * 
-</span></span><span id="49" class="l"><a class="l" href="#49">49: </a><span class="php-comment"> * 
-</span></span><span id="50" class="l"><a class="l" href="#50">50: </a><span class="php-comment"> * Also, you can describe object in config.ini. See about it (@see Zaboy_Dic_Interface} &lt;br&gt;
-</span></span><span id="51" class="l"><a class="l" href="#51">51: </a><span class="php-comment"> * 
-</span></span><span id="52" class="l"><a class="l" href="#52">52: </a><span class="php-comment"> * &lt;br&gt;&lt;b&gt;What is NameOfService?&lt;/b&gt;&lt;br&gt;
-</span></span><span id="53" class="l"><a class="l" href="#53">53: </a><span class="php-comment"> * It is string - param for (@see Zaboy_Dic::get()} and (@see Zaboy_Dic::has()}&lt;br&gt;
-</span></span><span id="54" class="l"><a class="l" href="#54">54: </a><span class="php-comment"> * See more about it : (@see Zaboy_Dic_Interface)
-</span></span><span id="55" class="l"><a class="l" href="#55">55: </a><span class="php-comment"> * 
-</span></span><span id="56" class="l"><a class="l" href="#56">56: </a><span class="php-comment"> * &lt;br&gt;&lt;b&gt;What is {@see Zaboy_Services_Interface:_defaultOptions}?&lt;/b&gt;&lt;br&gt;
-</span></span><span id="57" class="l"><a class="l" href="#57">57: </a><span class="php-comment"> * If $options haven't submitted via __construct - it is used&lt;br&gt;
-</span></span><span id="58" class="l"><a class="l" href="#58">58: </a><span class="php-comment"> * 
-</span></span><span id="59" class="l"><a class="l" href="#59">59: </a><span class="php-comment"> * @category   Services
-</span></span><span id="60" class="l"><a class="l" href="#60">60: </a><span class="php-comment"> * @package    Services
-</span></span><span id="61" class="l"><a class="l" href="#61">61: </a><span class="php-comment"> * @copyright  Zaboychenko Andrey
-</span></span><span id="62" class="l"><a class="l" href="#62">62: </a><span class="php-comment"> * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-</span></span><span id="63" class="l"><a class="l" href="#63">63: </a><span class="php-comment"> * @uses Zend Framework from Zend Technologies USA Inc.
-</span></span><span id="64" class="l"><a class="l" href="#64">64: </a><span class="php-comment"> */</span>
-</span><span id="65" class="l"><a class="l" href="#65">65: </a><span class="php-keyword1">interface</span> <a id="Zaboy_Services_Interface" href="#Zaboy_Services_Interface">Zaboy_Services_Interface</a>
-</span><span id="66" class="l"><a class="l" href="#66">66: </a>{    
-</span><span id="67" class="l"><a class="l" href="#67">67: </a>
-</span><span id="68" class="l"><a class="l" href="#68">68: </a></span>}</code></pre>
+</span></span><span id="49" class="l"><a class="l" href="#49">49: </a><span class="php-comment"> * Also, you can describe object and $options for this object in config.ini. See about it (@see Zaboy_Dic_Interface} &lt;br&gt;
+</span></span><span id="50" class="l"><a class="l" href="#50">50: </a><span class="php-comment"> * 
+</span></span><span id="51" class="l"><a class="l" href="#51">51: </a><span class="php-comment"> * @category   Services
+</span></span><span id="52" class="l"><a class="l" href="#52">52: </a><span class="php-comment"> * @package    Services
+</span></span><span id="53" class="l"><a class="l" href="#53">53: </a><span class="php-comment"> * @copyright  Zaboychenko Andrey
+</span></span><span id="54" class="l"><a class="l" href="#54">54: </a><span class="php-comment"> * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+</span></span><span id="55" class="l"><a class="l" href="#55">55: </a><span class="php-comment"> * @uses Zend Framework from Zend Technologies USA Inc.
+</span></span><span id="56" class="l"><a class="l" href="#56">56: </a><span class="php-comment"> */</span>
+</span><span id="57" class="l"><a class="l" href="#57">57: </a><span class="php-keyword1">interface</span> <a id="Zaboy_Services_Interface" href="#Zaboy_Services_Interface">Zaboy_Services_Interface</a>
+</span><span id="58" class="l"><a class="l" href="#58">58: </a>{    
+</span><span id="59" class="l"><a class="l" href="#59">59: </a>
+</span><span id="60" class="l"><a class="l" href="#60">60: </a></span>}</code></pre>
 
 	<div id="footer">
 		_zaboy.org API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

@@ -42,7 +42,7 @@ abstract class Zaboy_Abstract
     }
    
      /**
-      * Set {@see $_options}
+      * Call setters for elements $options if exist and rest copy to {@see Zaboy_Abstract::_attribs}
       * 
       * May be two cases for property $options['oneProperty'] = value
       * If method setOneProperty is exist - it will be call, else $this->_attribs['oneProperty'] = value
