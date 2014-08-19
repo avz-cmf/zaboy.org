@@ -12,6 +12,36 @@
   
 /**
  * Zaboy_Dic_ServicesConfigs
+ * <b>Services Config/<b><br>
+ * Usialy Services Config is part of DIC config in application.ini with key 
+ * which is defined in {@see Zaboy_Dic::CONFIG_KEY_SERVICE}<br> 
+ * DIC have got config form resurce plugin { @see Zaboy_Application_Resource_Dic}<br>
+ * Part of application.ini:<br>
+ *<pre>
+ * dic.service.serviceName.class = ServiceClass
+ * dic.service.serviceName.options.key11 = val11
+ * dic.service.serviceName.options.key12 = val12
+ * dic.service.serviceName.autoload = true
+ * dic.service.nextServiceName.class = NextServiceClass 
+ * ...
+ *</pre>
+ * It is in $servicesConfig (see{@see setConfigsServices()}
+ *<code>
+ * array(
+ *     'serviceName' = array(
+ *         'class' = 'ServiceClass'
+ *         'options' = array(
+ *             'key1' = val1
+ *             'key2' = val2
+ *         (
+ *         'autoload' = true
+ *     )
+ * )
+ * array(
+ *     'nextServiceName' = array(
+ *         'class' = 'NextServiceClass'
+ *          ...
+ *</code>
  * 
  * @category   Dic
  * @package    Dic
@@ -50,14 +80,29 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
     private $_servicesConfigs = array();
     
     /**
-      * @param array
-      * @return void
-      */    
+     * For usees in {@see Zaboy_Dic::__construct()} for load Services Config, 
+     * You have to call that function only once.
+     * 
+     * @param array  array('serviceName' = array('class' = 'ServiceClass', 'options' ...
+     * @return void
+     */    
     public function setConfigsServices($servicesConfigs)
     {
-        $this->_servicesConfigs = $servicesConfigs;
+        if (isset($servicesConfigs)) {
+            $this->_servicesConfigs = $servicesConfigs;           
+        }
     }
  
+    
+    /**
+      * return array ( 0=>ServaceName, 1=> NextServiceName ...)
+      * 
+      * @return array ( 0=>ServaceName, 1=> NextServiceName ...)
+      */    
+    public function getServicesNames()
+    {
+            return array_keys (  $this->_servicesConfigs );
+    }
     
     /**
       * @param string
@@ -91,8 +136,8 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
       */    
     public function _getServiceAutoload($serviceName)
     {
-        if (isset($this->_servicesConfigs[$serviceName][Zaboy_Dic::CONFIG_KEY_AUTOLOAD])) {
-            return $this->_servicesConfigs[$serviceName][Zaboy_Dic::CONFIG_KEY_AUTOLOAD];
+        if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_AUTOLOAD])) {
+            return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_AUTOLOAD];
         }else{
             return false;
         }
@@ -105,7 +150,7 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
      */
     public function autoloadServices() {
         foreach ($this->_servicesConfigs as $serviceName => $serviceConfig ) {
-            if ( $this->_getServiceAutoload($serviceName)) {
+            if ( (bool) $this->_getServiceAutoload($serviceName)) {
                 $this->_dic->get($serviceName);
             }
         }
