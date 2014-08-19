@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Dic_Interface
+ * Zaboy_Dic_Abstract
  * 
  * @category   Dic
  * @package    Dic
@@ -8,18 +8,26 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
+require_once 'Zaboy/Abstract.php';
+
 /**
- * Interface Zaboy_Dic_Interface
+ * Zaboy_Dic_Abstract
  * 
  *  <b>Zaboy_Dic</b>
  * 
- * Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is loading as resurce plugin of Bootstrap. Add in <i>config.ini</i> for load<br>
+ * Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is 
+ * loading as resurce plugin of Bootstrap { @see Zaboy_Application_Resource_Dic}. 
+ * 
+ * Add in <i>application.ini</i> for load<br>
  * <code> 
  * resources.dic[] = 
  * </code>
+ * You can change class of DIC for load:
+ * <code> 
+ * resources.dic.class = My_Dic_Class 
+ * </code>
  * You can get <i>Dic</i>: <br>
  * <code> 
- *   $bootstrap->bootstrap('dic');
  *   $dic = $bootstrap->getResource('dic');
  * </code>
  * <br>
@@ -73,7 +81,6 @@
  * It is string - param for (@see Zaboy_Dic::get()} and (@see Zaboy_Dic::has()}<br>
  * See more about it : (@see Zaboy_Dic_Interface)
  * 
- * @method  has($serviceName);
  * @category   Dic
  * @package    Dic
  * @see Zaboy_Dic
@@ -82,7 +89,7 @@
  * @uses Zend Framework from Zend Technologies USA Inc.
  * @
  */
-interface Zaboy_Dic_Interface
+class Zaboy_Dic_Abstract extends Zaboy_Abstract
 {    
    /**
      * comfig.ini :
@@ -96,7 +103,7 @@ interface Zaboy_Dic_Interface
      *dic.service.serviceName2.options.key21 = val21
      *dic.service.serviceName2.options.key22 = val22 
      * </pre>   
-     */
+     * /
     const CONFIG_KEY_SERVICE = 'service';   //  comfig.ini :  dic.service... =  ...  
      
     /**
@@ -106,7 +113,7 @@ interface Zaboy_Dic_Interface
      * dic.service.serviceName1.class = ServiceClass1
      * </pre>   
      * @see CONFIG_KEY_SERVICE
-     */
+     * /
      const CONFIG_KEY_CLASS = 'class';
      
     /**
@@ -117,7 +124,7 @@ interface Zaboy_Dic_Interface
      *dic.service.serviceName1.options.key12 = val12    
      * </pre>   
      * @see CONFIG_KEY_SERVICE
-     */     
+     * /     
      const CONFIG_KEY_OPTIONS = 'options';
      
     /**
@@ -127,7 +134,7 @@ interface Zaboy_Dic_Interface
      *dic.service.serviceName1.autoload = true  //optional, by default is FALSE
      * </pre>   
      * @see CONFIG_KEY_SERVICE
-     */
+     * /
      const CONFIG_KEY_AUTOLOAD = 'autoload';
 
     /**
@@ -135,13 +142,13 @@ interface Zaboy_Dic_Interface
      * @see $_options
      * param array <b>options</b> - options from config.ini. <br>It is all after  <i>resources.dic.</i>
      * @return void
-     */  
+     * /  
     public function __construct(array $options=array());      
      
     /**
       * @param string
       * @return bool
-      */    
+      * /    
     public function has($serviceName);
     
     
@@ -155,11 +162,13 @@ interface Zaboy_Dic_Interface
     * 
     * @param string
     * @return string Class of service or null
-    */    
+    * /    
     public function getClass($serviceName);
-            
+     */
+    
     /**
-    * 
+    * Title
+     * 
     * Class in config is more imoprtant then class in __constract
     * <code>
     *    $dic->get('NameOrAlias'); //if class isn't noted in cofig.ini - exception
@@ -173,7 +182,7 @@ interface Zaboy_Dic_Interface
     * @param string
     * @return object
     */    
-    public function get($serviceName,$serviceClass = null) ;
+    public function get($serviceName,$serviceClass = null){}
     
       /**
       * For usees in {@seeZaboy_Abstract::setOptions()} or load DIC without resurce plugin
@@ -209,12 +218,14 @@ interface Zaboy_Dic_Interface
       * 
       * @param array
       * @return void
-      */    
+      * /    
      public function setServicesConfig($servicesConfig);
      
       /**
       * @param string Name of service
       * @return array config for service with name = $serviceName or for all services if $serviceName === null
-      */    
-     public function getServicesConfig($serviceName = null);     
+      * /    
+     public function getServicesConfig($serviceName = null);
+
+*/     
 }

@@ -13,6 +13,43 @@ class TestController extends Zend_Controller_Action
         // action body
     }
 
+    public function arrayAction()
+    {
+        // action body
+    }
+
+    public function objectAction()
+    {
+        // action body
+        $q=1;
+        
+    }
+
+    public function equlsAction()
+    {
+        // action body
+    }
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

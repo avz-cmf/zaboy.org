@@ -2,26 +2,30 @@
 /**
  * Zaboy_Dic
  * 
- * @category   Widgets
- * @package    Widgets
+ * @category   Dic
+ * @package    Dic
  * @copyright  Zaboychenko Andrey
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
   require_once 'Zaboy/Dic/Abstract.php';
-  require_once 'Zaboy/Dic/Interface.php';
+  require_once 'Zaboy/Dic/ServicesConfigs.php';
+  require_once 'Zaboy/Dic/LoopChecker.php';
+  require_once 'Zaboy/Dic/ServicesStore.php';
   
 /**
  * Zaboy_Dic
  * 
+ * {@inheritdoc}
+ * 
  * @see Zaboy_Dic_Interface
- * @category   Widgets
- * @package    Widgets
+ * @category   Dic
+ * @package    Dic
  * @copyright  Zaboychenko Andrey
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Dic extends Zaboy_Dic_Abstract implements Zaboy_Dic_Interface
+class Zaboy_Dic extends Zaboy_Dic_Abstract
 {
      /**
      * comfig.ini :  
@@ -56,13 +60,6 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract implements Zaboy_Dic_Interface
      * Zaboy_Dic_ServicesStore
      */
     private $_servicesStore;   
- 
-    /*
-     * Object resolve information about parametrs of construct Servces
-     * 
-     * Zaboy_Dic_ServiceReflector
-     */
-    private $_serviceReflector;
     
     /**
     * 
@@ -78,17 +75,54 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract implements Zaboy_Dic_Interface
         $this->removeAttrib(self::CONFIG_KEY_SERVICE);
         
         $this->_loopChecker = new Zaboy_Dic_LoopChecker();
+        
         $this->_servicesStore = new Zaboy_Dic_ServicesStore();
-        $this->_serviceReflector = new Zaboy_Dic_ServiceReflector();       
 
         $this->_servicesConfigs->autoloadServices();
-    }    
+    }  
+
+     /**
+       * It have to call after __construct
+       * 
+       * If Service specifed in application.ini as "auotoloaded" - it will started
+       */
+      public function init() 
+    {
+       $this->_servicesConfigs->autoloadServices();
+        /*
+        $servicesNames = $this->_servicesConfigs->getServicesNames();
+         
+        foreach ($servicesNames as $serviceName) {
+            if ( $this->_servicesConfigs->_getServiceAutoload($serviceName)) {
+                $this->_dic->get($serviceName);
+            }
+        }
+         */  
+    }   
+ 
+     /**
+       * Return Service Name for Service Object
+       * 
+       * @param object $serviceObjectFromParams usually $this
+       * @return string Service Name
+       */
+      public function getServiceName($serviceObjectFromParams) 
+    {
+        $servicesArray = $this->_servicesStore->getServices();
+        foreach ($servicesArray as $serviceName => $serviceObjectFromStore) {
+            if ($serviceObjectFromParams === $serviceObjectFromStore) {
+                return $serviceName;
+            }
+            return null;
+        }
+     }   
     
     /**
      * Class in config is more important then class in __constract
      * 
      * About Avz_Dic see {@see Avz_Dic_Interface}<br>
-     * also see {@see Avz_Dic_Interface::get()}
+     * also see {@see Avz_Dic_Interface::get()}<br><br>
+     * {@inheritdoc}
      * 
      * @see http://stackoverflow.com/questions/1935771/how-to-use-call-user-func-array-with-an-object-with-a-construct-method-in-php
      * @param string Service Name
@@ -100,7 +134,7 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract implements Zaboy_Dic_Interface
         if ($this->_servicesStore->hasService($serviceName)) {
             return $this->_servicesStore->getService($serviceName);
         }
-        if (isset($this->_servicesConfigs->getServiceClass($serviceName))) {
+        if (null !== $this->_servicesConfigs->getServiceClass($serviceName)) {
             $serviceClass = $this->_servicesConfigs->getServiceClass($serviceName);
             $serviceObject = $this->_loadServiceObject($serviceName, $serviceClass);
             return $serviceObject;
@@ -127,7 +161,7 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract implements Zaboy_Dic_Interface
        //protection from loop of calls
        $this->_loopChecker->loadingStart($serviceName);
        $reflectionObject = new ReflectionClass($serviceClass);
-       $callParamsArray = $this->_serviceReflector->getConstructParamsValues($serviceName, $reflectionObject);
+       $callParamsArray = $this->_getConstructParamsValues($serviceName, $reflectionObject);
        $serviceObject = $reflectionObject->newInstanceArgs($callParamsArray); // it' like new class($callParamsArray[1], $callParamsArray[2]...)
        $this->_loopChecker->loadingFinished($serviceName);
        $this->_servicesStore->addService($serviceName, $serviceObject);
@@ -136,14 +170,15 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract implements Zaboy_Dic_Interface
 
      /**
      * @param string 
-     * @param string /ReflectionObject
-     * @param array $callParamInfo 
+     * @param /ReflectionObject
+     * @return array  {@see ReflectionClass::newInstanceArgs()}
      */
-    public function getConstructParamsValues($serviceName, $reflectionObject)
+    protected function _getConstructParamsValues($serviceName, $reflectionObject)
     {
         //Get params for $className::__construct
         $reflectionConstruct = $reflectionObject->getMethod('__construct');
         $reflectionParams = $reflectionConstruct->getParameters();
+        $constructParams = array();
         //extract option (if exist) from array $reflectionParams
         if (isset($reflectionParams[0])) {
             $mayBeOptionsParam = $reflectionParams[0];
@@ -151,7 +186,7 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract implements Zaboy_Dic_Interface
             $mayBeOptionsParamName = $mayBeOptionsParam->getName();
             if ($mayBeOptionsParamName === 'options') {
                 $optionsFromConfig = $this->_servicesConfigs->getServiceOptions($serviceName);
-                $constructParams = $optionsFromConfig;
+                $constructParams[] = $optionsFromConfig;
                 array_shift($reflectionParams);               
             }           
         }
@@ -168,5 +203,5 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract implements Zaboy_Dic_Interface
         }
         return $constructParams;
     } 
-    
+
 }

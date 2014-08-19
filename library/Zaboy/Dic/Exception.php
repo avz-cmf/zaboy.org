@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Exception
+ * Zaboy_Dic_Exception
  * 
  * @category   Dic
  * @package    Dic
@@ -16,7 +16,7 @@ require_once 'Zaboy/Exception.php';
 
 
 /**
- * Exception class
+ * Zaboy_Dic_Exception
  * 
  * @category   Dic
  * @package    Dic

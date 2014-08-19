@@ -1,0 +1,51 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Test</b> and script/action name <b>equls</b></p>
+</div>
+<?php
+//http://php.net/manual/ru/function.error-reporting.php
+function bool2str($bool)
+{
+    if ($bool === false) {
+        return 'FALSE';
+    } else {
+        return 'TRUE';
+    }
+}
+
+function compareObjectsByVal($o1, $o2)
+{
+    echo '<br><br>' . 'compareObjectsByVal';
+    echo '<br>o1 == o2 : ' . bool2str($o1 == $o2) . "<br>\n";
+    //echo 'o1 != o2 : ' . bool2str($o1 != $o2) . "<br><br>\n";
+    echo 'o1 === o2 : ' . bool2str($o1 === $o2) . "<br>\n";
+    //echo 'o1 !== o2 : ' . bool2str($o1 !== $o2) . "<br>\n";
+
+}
+
+class Flag
+{
+    public $flag;
+
+    function Flag($flag = true) {
+        $this->flag = $flag;
+    }
+}
+
+class OtherFlag
+{
+    public $flag;
+
+    function OtherFlag($flag = true) {
+        $this->flag = $flag;
+    }
+}
+
+$obj1class1 = new Flag();
+$obj2class1 = new Flag();
+$obj1class1Copy = $obj1class1;
+$obj1class2 = new OtherFlag();
+$obj1class2->OtherFlag(true);
+
+echo "<br>\nДве ссылки на один и тот же экземпляр\n";
+compareObjectsByVal($obj1class1, $obj1class1Copy);

@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Services
+ * Zaboy_Service
  * 
  * @category   Services
  * @package    Services
@@ -11,7 +11,7 @@
   require_once 'Zaboy/Abstract.php';
   
 /**
- * Zaboy_Services
+ * Zaboy_Service
  * 
  * @category   Services
  * @package    Services
@@ -19,7 +19,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Services extends Zaboy_Abstract
+class Zaboy_Service extends Zaboy_Abstract
 {
     /**
      * Key for {@see Zaboy_Abstract::_attribs}
@@ -47,41 +47,48 @@ class Zaboy_Services extends Zaboy_Abstract
     public function __construct() 
     {
         $argsArray = func_get_args();
-        if ( !isEmpty($argsArray) ){
-            $mayBeOptions = $argsArray[0];
-            // if first param is array - we consider what that is options
-            if (is_array($mayBeOptions)) {
+         if (empty($argsArray[0])){
+            $options = $this->_defaultOptions;     
+         }else{
+             // if first param is array - we consider what that is options
+            if (is_array($argsArray[0])) {
                 $options = array_shift($argsArray);
-            }else{
-                $options = $this->_defaultOptions; 
-            }
-            // Services which was gotten via __construct()  will be contained 
-            // in $options as array with Key "injectedServices"
-            foreach ($argsArray as $serviceObject) {
-                $serviceName = $this->_getDic()->getServiceName($serviceObject);
-                $options[seff::OPTIONS_KEY_INJECTED_SERVICES][$serviceName] = $serviceObject;
-            }    
-        }else{
-            $options = $this->_defaultOptions; 
-        }    
+            }            
+         }    
+         $options[self::OPTIONS_KEY_INJECTED_SERVICES] = array();
+        // Services which was gotten via __construct()  will be contained 
+        // in $options as array with Key "injectedServices"
+        foreach ($argsArray as $serviceObject) {
+            $serviceName = $this->_getDic()->getServiceName($serviceObject);
+            $options[self::OPTIONS_KEY_INJECTED_SERVICES][$serviceName] = $serviceObject;
+        }
+        // See Zaboy_Abstract::setOptions(array $options) and  See Zaboy_Abstract::setAttrib($key, $value)
         parent::__construct($options);
     }
     
-     /**
+    /**
       * 
-      * @param string name of service
-      * @return Zaboy_Service|aray|null
+      * @return aray (name1, name2 ..) or array() if ampty
       */
-     protected function getInjectedServices($serviceName = null) 
+     public function getInjectedServicesNames() 
      {
-        $injectedServicesArray = $this->getAttrib(seff::OPTIONS_KEY_INJECTED_SERVICES);
-        if (!isset($serviceName) && isset($injectedServicesArray)) {
-            return  $injectedServicesArray;
-        }         
-        if (isset($serviceName) && isset($injectedServicesArray[$serviceName])) {        
+        $injectedServices = $this->getAttrib(self::OPTIONS_KEY_INJECTED_SERVICES);
+        return array_keys ($injectedServices); 
+     }
+    
+    /**
+      * @param string name of service
+      * @return Zaboy_Service
+      */
+     public function getInjectedService($serviceName) 
+     {
+        $injectedServicesArray = $this->getAttrib(self::OPTIONS_KEY_INJECTED_SERVICES);
+        if (isset($injectedServicesArray[$serviceName])) {
             return $injectedServicesArray[$serviceName];
+        }else{
+            return null;    
         }
-        return null;
+
      }
      
     /**

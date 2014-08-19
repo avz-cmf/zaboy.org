@@ -1,25 +1,2 @@
 <?php
-class Outer
-{
-    public function summer($a, $b) {
-        $inner = new Inner($this);
-        if ($a===$b) {return 4 * $a;}
-        return $inner->umnog2($a)  + $inner->umnog2($b);
-    }    
-}
-
-class Inner
-{
-    public $outer;
-    
-    public function __construct($outer) {
-        $this->outer = $outer;
-    }
-
-    public function umnog2($z) {
-        return $this->outer->summer($z, $z)/2;
-    }    
-}
-
-$summer = new Outer;
-echo $summer->summer(2,3);
+echo ("<div id=\"view-content\"> <p> View script for controller <b>Test</b> and script/action name <b>index</b> </p> </div>");
