@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Example_Service_WithOptionsOnly
+ * Zaboy_Example_Service_DefaultOptions
  * 
  * @category   Example
  * @package    Example
@@ -8,10 +8,10 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-  require_once 'Zaboy/Abstract.php';
+  require_once 'Zaboy/Service.php';
 
 /**
- * Zaboy_Example_Service_WithOptionsOnly.
+ * Zaboy_Example_Service_DefaultOptions.
  * 
  * @category   Example
  * @package    Example
@@ -19,9 +19,18 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Example_Service_WithOptionsOnly extends Zaboy_Abstract
+class Zaboy_Example_Service_DefaultOptions extends Zaboy_Service
 {
-   
+    /**
+    * @var array default Options
+    *
+    * If $options haven't submitted via __construct - it is used
+    */
+    protected $_defaultOptions = array(
+    'param' => 'test param value from $_defaultOptions',
+    'attribKey' => 'test atrib value from $_defaultOptions'
+    );   
+    
     /**
     *
     * @see Zaboy_Services::setOptions()

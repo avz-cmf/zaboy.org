@@ -90,6 +90,8 @@ INI;
     protected function loadDic($additionalConfig) {   
         $filename = $this->_pathApplicationIni($additionalConfig);
         $this->_application = new Zend_Application( APPLICATION_ENV , $filename);
+        global $application;
+        $application = $this->_application;
         $this->_application->bootstrap();
         $this->_bootstrap = $this->_application->getBootstrap();
         var_dump('$this->bootstrap->getResource');
@@ -145,20 +147,72 @@ INI;
         $additionalConfig = 
 <<<'INI1'
 ;INI TEST START
-resources.dic.service.serviceWithOptionsOnly.options.praramKey = paramValue
+;There is method setParam() - it will be call   
+resources.dic.service.serviceWithOptionsOnly.options.param = paramValue
+;There isn't method setAttribKey - it will save in attribs array
+resources.dic.service.serviceWithOptionsOnly.options.attribKey = attribValue
+;
 pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
 ;INI TEST END
 INI1;
         $this->loadDic($additionalConfig);
         $service = $this->object->get('serviceWithOptionsOnly' , 'Zaboy_Example_Service_WithOptionsOnly');
         /* @var $service Zaboy_Example_Service_WithoutParams */
-                $this->assertEquals(
-                'paramValue',
-                $service->getAttrib('praramKey')
+        $this->assertEquals(
+            'paramValue',
+            $service->param
         );
+        $this->assertEquals(
+            'attribValue',
+            $service->getAttrib('attribKey')
+        );                
     } 
-
+   
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetServiceWithDefaultOptions_WithOptionsInDefaultOptions() {
+        $additionalConfig = 
+<<<'INI1'
+;INI TEST START
+resources.dic[] = 
+pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
+;INI TEST END
+INI1;
+        $this->loadDic($additionalConfig);
+        $service = $this->object->get('serviceWithDefaultOptions' , 'Zaboy_Example_Service_DefaultOptions');
+        /* @var $service Zaboy_Example_Service_WithoutParams */
+        $this->assertEquals(
+            'test param value from $_defaultOptions',
+            $service->param
+        );
+        $this->assertEquals(
+            'test atrib value from $_defaultOptions',
+            $service->getAttrib('attribKey')
+        );                
+    } 
+   
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetServiceWithDefaultOptions_OptionsInConfigOverrideDefaultOptions() {
+        $additionalConfig = 
+<<<'INI1'
+;INI TEST START
+;There is method setParam() - it will be call
+resources.dic.service.serviceOptionsInConfig.options.param = paramValueFromGonfig
+pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
+;INI TEST END
+INI1;
+        $this->loadDic($additionalConfig);
+        $service = $this->object->get('serviceOptionsInConfig' , 'Zaboy_Example_Service_DefaultOptions');
+        /* @var $service Zaboy_Example_Service_WithoutParams */
+        $this->assertEquals(
+            'paramValueFromGonfig',
+            $service->param
+        );
+        $this->assertNull(
+             $service->getAttrib('attribKey')               
+        );                
+    } 
 }
-
-//$dicTest = new Zaboy_DicTest;    
-//$dicTest->testGetServiceWithOptionsOnly_WithOptionsInConfig();   
