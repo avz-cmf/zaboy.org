@@ -30,8 +30,18 @@ class TestController extends Zend_Controller_Action
         // action body
     }
 
+    public function optionalparamsAction()
+    {
+        global $application;
+        $bootstrap = $application->getBootstrap();
+        $dic = $bootstrap->getResource('Dic');
+        $dic->get('serviceWithOptionalParams' , 'Zaboy_Example_Service_OptionalParams');
+    }
+
 
 }
+
+
 
 
 

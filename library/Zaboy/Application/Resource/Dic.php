@@ -58,7 +58,6 @@
      {
          $dicClass = $this->_dicClass;       
          $options = $this->getOptions();
-var_dump('===>>>' . $options);
          $dic= new $dicClass($options);
          /** @var $dic Zaboy_Dic  */
          if (is_callable(array($dic, 'init'))) {

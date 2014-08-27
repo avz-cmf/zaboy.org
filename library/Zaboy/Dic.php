@@ -113,8 +113,8 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
             if ($serviceObjectFromParams === $serviceObjectFromStore) {
                 return $serviceName;
             }
-            return null;
         }
+        return null;       
      }   
     
     /**

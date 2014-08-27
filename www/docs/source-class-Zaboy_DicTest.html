@@ -8,7 +8,7 @@
 	<title>File tests/library/Zaboy/DicTest.php | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?2912589538"></script>
+	<script type="text/javascript" src="elementlist.js?1201522576"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -303,8 +303,48 @@
 </span><span id="215" class="l"><a class="l" href="#215">215: </a>             <span class="php-var">$service</span>-&gt;getAttrib(<span class="php-quote">'attribKey'</span>)               
 </span><span id="216" class="l"><a class="l" href="#216">216: </a>        );                
 </span><span id="217" class="l"><a class="l" href="#217">217: </a>    } 
-</span><span id="218" class="l"><a class="l" href="#218">218: </a>}
-</span><span id="219" class="l"><a class="l" href="#219">219: </a></span></code></pre>
+</span><span id="218" class="l"><a class="l" href="#218">218: </a>   
+</span><span id="219" class="l"><a class="l" href="#219">219: </a>    <span class="php-comment">/**
+</span></span><span id="220" class="l"><a class="l" href="#220">220: </a><span class="php-comment">     * @covers Zaboy_Dic::get
+</span></span><span id="221" class="l"><a class="l" href="#221">221: </a><span class="php-comment">     */</span>
+</span><span id="222" class="l"><a class="l" href="#222">222: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_testGetServiceWitNotSpecifiedParam_NotDescribedAndNotLoadedBefore" href="#_testGetServiceWitNotSpecifiedParam_NotDescribedAndNotLoadedBefore">testGetServiceWitNotSpecifiedParam_NotDescribedAndNotLoadedBefore</a>() {
+</span><span id="223" class="l"><a class="l" href="#223">223: </a>        <span class="php-var">$additionalConfig</span> = 
+</span><span id="224" class="l"><a class="l" href="#224">224: </a><span class="php-quote">&lt;&lt;&lt;'INI1'
+</span></span><span id="225" class="l"><a class="l" href="#225">225: </a><span class="php-quote">;INI TEST START
+</span></span><span id="226" class="l"><a class="l" href="#226">226: </a><span class="php-quote">resources.dic[] = 
+</span></span><span id="227" class="l"><a class="l" href="#227">227: </a><span class="php-quote">pluginPaths.Zaboy_Application_Resource = &quot;Zaboy/Application/Resource&quot;
+</span></span><span id="228" class="l"><a class="l" href="#228">228: </a><span class="php-quote">;INI TEST END
+</span></span><span id="229" class="l"><a class="l" href="#229">229: </a><span class="php-quote">INI1;
+</span></span><span id="230" class="l"><a class="l" href="#230">230: </a>        <span class="php-var">$this</span>-&gt;loadDic(<span class="php-var">$additionalConfig</span>);
+</span><span id="231" class="l"><a class="l" href="#231">231: </a>        <span class="php-var">$this</span>-&gt;setExpectedException(<span class="php-quote">'Zaboy_Dic_Exception'</span>);    
+</span><span id="232" class="l"><a class="l" href="#232">232: </a>        <span class="php-var">$service</span> = <span class="php-var">$this</span>-&gt;object-&gt;get(<span class="php-quote">'serviceWithNotSpecifiedParam'</span> , <span class="php-quote">'Zaboy_Example_Service_NotSpecifiedParam'</span>);
+</span><span id="233" class="l"><a class="l" href="#233">233: </a>        <span class="php-comment">/* @var $service Zaboy_Example_Service_NotSpecifiedParam */</span>
+</span><span id="234" class="l"><a class="l" href="#234">234: </a>    }  
+</span><span id="235" class="l"><a class="l" href="#235">235: </a>    
+</span><span id="236" class="l"><a class="l" href="#236">236: </a>    <span class="php-comment">/**
+</span></span><span id="237" class="l"><a class="l" href="#237">237: </a><span class="php-comment">     * @covers Zaboy_Dic::get
+</span></span><span id="238" class="l"><a class="l" href="#238">238: </a><span class="php-comment">     */</span>
+</span><span id="239" class="l"><a class="l" href="#239">239: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_testGetServiceWitOptionalParams_NotDescribedAndNotLoadedBefore" href="#_testGetServiceWitOptionalParams_NotDescribedAndNotLoadedBefore">testGetServiceWitOptionalParams_NotDescribedAndNotLoadedBefore</a>() {
+</span><span id="240" class="l"><a class="l" href="#240">240: </a>        <span class="php-var">$additionalConfig</span> = 
+</span><span id="241" class="l"><a class="l" href="#241">241: </a><span class="php-quote">&lt;&lt;&lt;'INI1'
+</span></span><span id="242" class="l"><a class="l" href="#242">242: </a><span class="php-quote">;INI TEST START
+</span></span><span id="243" class="l"><a class="l" href="#243">243: </a><span class="php-quote">resources.dic[] = 
+</span></span><span id="244" class="l"><a class="l" href="#244">244: </a><span class="php-quote">pluginPaths.Zaboy_Application_Resource = &quot;Zaboy/Application/Resource&quot;
+</span></span><span id="245" class="l"><a class="l" href="#245">245: </a><span class="php-quote">;INI TEST END
+</span></span><span id="246" class="l"><a class="l" href="#246">246: </a><span class="php-quote">INI1;
+</span></span><span id="247" class="l"><a class="l" href="#247">247: </a>        <span class="php-var">$this</span>-&gt;loadDic(<span class="php-var">$additionalConfig</span>);
+</span><span id="248" class="l"><a class="l" href="#248">248: </a>        <span class="php-var">$service</span> = <span class="php-var">$this</span>-&gt;object-&gt;get(<span class="php-quote">'serviceWithOptionalParams'</span> , <span class="php-quote">'Zaboy_Example_Service_OptionalParams'</span>);
+</span><span id="249" class="l"><a class="l" href="#249">249: </a>        <span class="php-comment">/* @var $service Zaboy_Example_Service_OptionalParams */</span>
+</span><span id="250" class="l"><a class="l" href="#250">250: </a>        <span class="php-var">$this</span>-&gt;assertEquals(
+</span><span id="251" class="l"><a class="l" href="#251">251: </a>            <span class="php-quote">'paramValueFromGonfig'</span>,
+</span><span id="252" class="l"><a class="l" href="#252">252: </a>            <span class="php-var">$service</span>-&gt;
+</span><span id="253" class="l"><a class="l" href="#253">253: </a>        );
+</span><span id="254" class="l"><a class="l" href="#254">254: </a>        <span class="php-var">$this</span>-&gt;assertNull(
+</span><span id="255" class="l"><a class="l" href="#255">255: </a>             <span class="php-var">$service</span>-&gt;getAttrib(<span class="php-quote">'attribKey'</span>)               
+</span><span id="256" class="l"><a class="l" href="#256">256: </a>        );  
+</span><span id="257" class="l"><a class="l" href="#257">257: </a>    }    
+</span><span id="258" class="l"><a class="l" href="#258">258: </a>}
+</span><span id="259" class="l"><a class="l" href="#259">259: </a></span></code></pre>
 
 	<div id="footer">
 		_zaboy.org API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
