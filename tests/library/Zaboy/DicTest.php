@@ -215,4 +215,21 @@ INI1;
              $service->getAttrib('attribKey')               
         );                
     } 
+   
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetServiceWitNotSpecifiedParam_NotDescribedAndNotLoadedBefore() {
+        $additionalConfig = 
+<<<'INI1'
+;INI TEST START
+resources.dic[] = 
+pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
+;INI TEST END
+INI1;
+        $this->loadDic($additionalConfig);
+        $this->setExpectedException('Zaboy_Dic_Exception');    
+        $service = $this->object->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Service_NotSpecifiedParam');
+        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+    }     
 }

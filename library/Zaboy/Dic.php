@@ -139,16 +139,15 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
             $serviceObject = $this->_loadServiceObject($serviceName, $serviceClass);
             return $serviceObject;
         }
-        if (isset($serviceClassFromParam)) {
-            if ($serviceClassFromParam === self::IT_IS_OPTIONAL) {
-                 return null;
-            }else{
-                $serviceObject = $this->_loadServiceObject($serviceName, $serviceClassFromParam);
-                return $serviceObject;
-            }
-        }
-        require_once 'Zaboy/Dic/Exception.php';
-        throw new Zaboy_Dic_Exception("Cann't resolve Service Class for ($serviceName)");
+        if (!isset($serviceClassFromParam)) {
+            require_once 'Zaboy/Dic/Exception.php';
+            throw new Zaboy_Dic_Exception("Cann't resolve Service Class for ($serviceName)");            
+        }    
+        if ($serviceClassFromParam === self::IT_IS_OPTIONAL) {
+            return null;
+        }    
+        $serviceObject = $this->_loadServiceObject($serviceName, $serviceClassFromParam);
+        return $serviceObject;
     }
 
      /**
@@ -192,10 +191,15 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
         }
         foreach ($reflectionParams as $reflectionParam) {
             /** @var $reflectionParam \ReflectionParameter  */
-            if ($reflectionParams->isOptional()) {
+            if ($reflectionParam->isOptional()) {
                 $constructParamClass = self::IT_IS_OPTIONAL;
             }else{
-                $constructParamClass = $reflectionParams->getClass()->getName();               
+                $constructParamClassObject = $reflectionParam->getClass();
+                if (isset($constructParamClassObject)) {
+                    $constructParamClass = $constructParamClassObject->getName();
+                }else{
+                    $constructParamClass = null;
+                }
             }
             $constructParamName = $reflectionParam->getName();
             $serviceObject = $this->get($constructParamName, $constructParamClass);

@@ -7,7 +7,7 @@
 	<title>Interface Zaboy_Services_Interface | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?212322379"></script>
+	<script type="text/javascript" src="elementlist.js?2912589538"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -22,6 +22,8 @@
 			<h3>Packages</h3>
 			<ul>
 				<li><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-Example.html">Example</a>
 						</li>
 				<li class="active"><a href="package-Services.html">Services</a>
 						</li>
@@ -38,9 +40,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Zaboy_Services.html">Zaboy_Services</a></li>
-				<li><a href="class-Zaboy_Services_Example_Options.html">Zaboy_Services_Example_Options</a></li>
-				<li><a href="class-Zaboy_Services_Example_Simple.html">Zaboy_Services_Example_Simple</a></li>
+				<li><a href="class-Zaboy_Service.html">Zaboy_Service</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -113,7 +113,7 @@ More about
 see there: Zaboy_Dic_Interface<br />
 
 <p><b>Service Object class</b><br />
-Class of Service Object may be is inherited from <code><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></code>
+Class of Service Object may be is inherited from Zaboy_Services_Abstract
 or not There are requirements for (@see
 Zaboy_Services_Abstract::__construct()}:<br />
 </p>
@@ -125,9 +125,9 @@ Constructor's params must be:
 
 	<li>(Servece_Class $servece1, Another_Servece_Class $servece2, ...)) or</li>
 
-	<li>(array $options). See <code><a href="class-Zaboy_Services_Example_Options.html">Zaboy_Services_Example_Options</a></code>. Or just</li>
+	<li>(array $options). See Zaboy_Services_Example_Options. Or just</li>
 
-	<li>public function __construct(). See <code><a href="class-Zaboy_Services_Example_Simple.html">Zaboy_Services_Example_Simple</a></code></li>
+	<li>public function __construct(). See Zaboy_Services_Example_Simple</li>
 </ul>
  <i>$options</i> have to first or absent<br />
 You have to call
@@ -142,11 +142,11 @@ class="php-comment">// or</span>
 </p>
 
 <p><b>Object_Class::_defaultOptions</b><br />
-If Service Object is inherited from <code><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></code> it contains
-<code><a href="class-Zaboy_Services_Abstract.html#$_defaultOptions">Zaboy_Services_Abstract::<var>$_defaultOptions</var></a></code><br />
+If Service Object is inherited from Zaboy_Services_Abstract it contains
+Zaboy_Services_Abstract::_defaultOptions<br />
 If $options haven't submitted via __construct - _defaultOptions will be used.<br
 />
-See <code><a href="class-Zaboy_Services_Example_SimpleTest.html#_testSetDefaultOptionsInConstruct">Zaboy_Services_Example_SimpleTest::testSetDefaultOptionsInConstruct()</a></code><br />
+See Zaboy_Services_Example_SimpleTest::testSetDefaultOptionsInConstruct()<br />
 If $options is not empty - _defaultOptions will not be used fully ( any part)<br
 />
 See <code><a href="class-Zaboy_Services_Example_OptionsTest.html#_testSetDefaultOptionsInConstruct">Zaboy_Services_Example_OptionsTest::testSetDefaultOptionsInConstruct()</a></code><br />
@@ -171,12 +171,6 @@ about it (@see Zaboy_Dic_Interface}<br />
 
 
 
-	<div>
-		<h4>Direct known implementers</h4>
-			<a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a>, 
-			<a href="class-Zaboy_Services_Example_Options.html">Zaboy_Services_Example_Options</a>, 
-			<a href="class-Zaboy_Services_Example_Simple.html">Zaboy_Services_Example_Simple</a>
-	</div>
 
 
 
