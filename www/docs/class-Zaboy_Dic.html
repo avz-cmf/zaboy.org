@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?212322379"></script>
+	<script type="text/javascript" src="elementlist.js?1201522576"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -22,6 +22,8 @@
 			<h3>Packages</h3>
 			<ul>
 				<li class="active"><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-Example.html">Example</a>
 						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
@@ -45,7 +47,6 @@
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></li>
-				<li><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></li>
 			</ul>
 
 
@@ -98,19 +99,27 @@
 <p><b>Zaboy_Dic</b></p>
 
 <p>Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is
-loading as resurce plugin of Bootstrap. Add in <i>config.ini</i> for load<br />
+loading as resurce plugin of Bootstrap { @see
+Zaboy_Application_Resource_Dic}.</p>
+
+<p>Add in <i>application.ini</i> for load<br />
 </p>
 
 <pre>
 resources.dic[] =
 </pre>
 
+<p>You can change class of DIC for load:</p>
+
+<pre>
+resources.dic.<span
+class="php-keyword1">class</span> = My_Dic_Class
+</pre>
+
 <p>You can get <i>Dic</i>:<br />
 </p>
 
 <pre>
-<span class="php-var">$bootstrap</span>-&gt;bootstrap(<span
-class="php-quote">'dic'</span>);
 <span class="php-var">$dic</span> = <span
 class="php-var">$bootstrap</span>-&gt;getResource(<span
 class="php-quote">'dic'</span>);
@@ -130,7 +139,7 @@ resources.dic.service.NameOfService.options.param1 = value1
 resources.dic.service.NameOfService.options.param2 = value2
 </pre>
 
-<p>or just in SeviceObjectClass - see $_defaultOptions in <code><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></code>.<br />
+<p>or just in SeviceObjectClass - see $_defaultOptions in Zaboy_Services_Abstract.<br />
 </p>
 
 <p><b>All other parametrs must be Services!</b>. That parametr we call
@@ -249,7 +258,7 @@ See more about it : (@see Zaboy_Dic_Interface)</p>
 				Zaboy_Dic_Interface<br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic.html#14-184" title="Go to source code">library/Zaboy/Dic.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic.html#16-211" title="Go to source code">library/Zaboy/Dic.php</a><br />
 	</div>
 
 
@@ -267,7 +276,7 @@ See more about it : (@see Zaboy_Dic_Interface)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#62-80" title="Go to source code">__construct</a>( <span>array <var>$options</var> = <span class="php-keyword1">array</span>() </span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#64-82" title="Go to source code">__construct</a>( <span>array <var>$options</var> = <span class="php-keyword1">array</span>() </span> )</code>
 
 		<div class="description short">
 			
@@ -303,7 +312,7 @@ It is all after <i>resources.dic.</i><br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_init">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#83-96" title="Go to source code">init</a>( )</code>
+		<code><a href="source-class-Zaboy_Dic.html#84-101" title="Go to source code">init</a>( )</code>
 
 		<div class="description short">
 			
@@ -327,6 +336,48 @@ It is all after <i>resources.dic.</i><br />
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getServiceName" id="_getServiceName">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getServiceName">#</a>
+		<code><a href="source-class-Zaboy_Dic.html#103-118" title="Go to source code">getServiceName</a>( <span>object <var>$serviceObjectFromParams</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Return Service Name for Service Object</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return Service Name for Service Object</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceObjectFromParams</var></dt>
+					<dd><code>object</code><br>$serviceObjectFromParams usually $this</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>Service Name<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="get" id="_get">
 
 		<td class="attributes"><code>
@@ -338,7 +389,7 @@ It is all after <i>resources.dic.</i><br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#98-130" title="Go to source code">get</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClassFromParam</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#120-151" title="Go to source code">get</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClassFromParam</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -410,7 +461,7 @@ href="http://stackoverflow.com/questions/1935771/how-to-use-call-user-func-array
 
 		<td class="name"><div>
 		<a class="anchor" href="#__loadServiceObject">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#132-147" title="Go to source code">_loadServiceObject</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClass</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#153-168" title="Go to source code">_loadServiceObject</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClass</var></span> )</code>
 
 		<div class="description short">
 			
@@ -450,7 +501,7 @@ href="http://stackoverflow.com/questions/1935771/how-to-use-call-user-func-array
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getConstructParamsValues">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#149-182" title="Go to source code">_getConstructParamsValues</a>( <span>string <var>$serviceName</var></span>, <span>/ReflectionObject <var>$reflectionObject</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#170-209" title="Go to source code">_getConstructParamsValues</a>( <span>string <var>$serviceName</var></span>, <span>/ReflectionObject <var>$reflectionObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -508,7 +559,7 @@ href="http://stackoverflow.com/questions/1935771/how-to-use-call-user-func-array
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic.html#28-33" title="Go to source code"><b>CONFIG_KEY_SERVICE</b></a>
+				<a href="source-class-Zaboy_Dic.html#30-35" title="Go to source code"><b>CONFIG_KEY_SERVICE</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'service'</span></code></td>
 		<td class="description"><div>
@@ -534,7 +585,7 @@ dic.service.serviceName.options.key = val</p>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic.html#35-40" title="Go to source code"><b>IT_IS_OPTIONAL</b></a>
+				<a href="source-class-Zaboy_Dic.html#37-42" title="Go to source code"><b>IT_IS_OPTIONAL</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'this parameter is optional'</span></code></td>
 		<td class="description"><div>

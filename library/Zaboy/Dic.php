@@ -80,25 +80,6 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
 
         $this->_servicesConfigs->autoloadServices();
     }  
-
-     /**
-       * It have to call after __construct
-       * 
-       * If Service specifed in application.ini as "auotoloaded" - it will started
-       */
-      public function init() 
-    {
-       $this->_servicesConfigs->autoloadServices();
-        /*
-        $servicesNames = $this->_servicesConfigs->getServicesNames();
-         
-        foreach ($servicesNames as $serviceName) {
-            if ( $this->_servicesConfigs->_getServiceAutoload($serviceName)) {
-                $this->_dic->get($serviceName);
-            }
-        }
-         */  
-    }   
  
      /**
        * Return Service Name for Service Object
@@ -113,8 +94,8 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
             if ($serviceObjectFromParams === $serviceObjectFromStore) {
                 return $serviceName;
             }
-            return null;
         }
+        return null;       
      }   
     
     /**
@@ -139,16 +120,15 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
             $serviceObject = $this->_loadServiceObject($serviceName, $serviceClass);
             return $serviceObject;
         }
-        if (isset($serviceClassFromParam)) {
-            if ($serviceClassFromParam === self::IT_IS_OPTIONAL) {
-                 return null;
-            }else{
-                $serviceObject = $this->_loadServiceObject($serviceName, $serviceClassFromParam);
-                return $serviceObject;
-            }
-        }
-        require_once 'Zaboy/Dic/Exception.php';
-        throw new Zaboy_Dic_Exception("Cann't resolve Service Class for ($serviceName)");
+        if (!isset($serviceClassFromParam)) {
+            require_once 'Zaboy/Dic/Exception.php';
+            throw new Zaboy_Dic_Exception("Cann't resolve Service Class for ($serviceName)");            
+        }    
+        if ($serviceClassFromParam === self::IT_IS_OPTIONAL) {
+            return null;
+        }    
+        $serviceObject = $this->_loadServiceObject($serviceName, $serviceClassFromParam);
+        return $serviceObject;
     }
 
      /**
@@ -192,10 +172,15 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
         }
         foreach ($reflectionParams as $reflectionParam) {
             /** @var $reflectionParam \ReflectionParameter  */
-            if ($reflectionParams->isOptional()) {
+            if ($reflectionParam->isOptional()) {
                 $constructParamClass = self::IT_IS_OPTIONAL;
             }else{
-                $constructParamClass = $reflectionParams->getClass()->getName();               
+                $constructParamClassObject = $reflectionParam->getClass();
+                if (isset($constructParamClassObject)) {
+                    $constructParamClass = $constructParamClassObject->getName();
+                }else{
+                    $constructParamClass = null;
+                }
             }
             $constructParamName = $reflectionParam->getName();
             $serviceObject = $this->get($constructParamName, $constructParamClass);

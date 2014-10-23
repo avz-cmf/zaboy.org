@@ -47,19 +47,29 @@ class Zaboy_Service extends Zaboy_Abstract
     public function __construct() 
     {
         $argsArray = func_get_args();
-         if (empty($argsArray[0])){
-            $options = $this->_defaultOptions;     
-         }else{
-             // if first param is array - we consider what that is options
-            if (is_array($argsArray[0])) {
-                $options = array_shift($argsArray);
-            }            
-         }    
-         $options[self::OPTIONS_KEY_INJECTED_SERVICES] = array();
-        // Services which was gotten via __construct()  will be contained 
-        // in $options as array with Key "injectedServices"
+        if (count($argsArray)===0) {
+            parent::__construct($this->_defaultOptions);
+            return;
+        }    
+        $paramNumber = 0;
+        if (is_array($argsArray[0])) {
+            if ($argsArray[0] === array()) {
+                $options = $this->_defaultOptions;
+            }else{
+                $options = $argsArray[0];
+            }
+            array_shift($argsArray);
+            $paramNumber = $paramNumber + 1; 
+        }    
+        $options[self::OPTIONS_KEY_INJECTED_SERVICES] = array();
+       // Services which was gotten via __construct()  will be contained 
+       // in $options as array with Key "injectedServices"
         foreach ($argsArray as $serviceObject) {
+            $paramNumber = $paramNumber + 1; 
             $serviceName = $this->_getDic()->getServiceName($serviceObject);
+            if (!isset($serviceName)) {
+                $serviceName = 'Parameter_' . $paramNumber;
+            }
             $options[self::OPTIONS_KEY_INJECTED_SERVICES][$serviceName] = $serviceObject;
         }
         // See Zaboy_Abstract::setOptions(array $options) and  See Zaboy_Abstract::setAttrib($key, $value)
@@ -73,7 +83,12 @@ class Zaboy_Service extends Zaboy_Abstract
      public function getInjectedServicesNames() 
      {
         $injectedServices = $this->getAttrib(self::OPTIONS_KEY_INJECTED_SERVICES);
-        return array_keys ($injectedServices); 
+        if (isset($injectedServices)) {
+            return array_keys ($injectedServices);             
+        }else{
+            return array();
+        }
+
      }
     
     /**

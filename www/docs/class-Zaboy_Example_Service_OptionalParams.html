@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Zaboy_Dic_LoopChecker | _zaboy.org</title>
+	<title>Class Zaboy_Example_Service_OptionalParams | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
 	<script type="text/javascript" src="elementlist.js?1201522576"></script>
@@ -21,9 +21,9 @@
 		<div id="groups">
 			<h3>Packages</h3>
 			<ul>
-				<li class="active"><a href="package-Dic.html">Dic</a>
+				<li><a href="package-Dic.html">Dic</a>
 						</li>
-				<li><a href="package-Example.html">Example</a>
+				<li class="active"><a href="package-Example.html">Example</a>
 						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
@@ -40,13 +40,11 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></li>
-				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
-				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
-				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
-				<li class="active"><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
-				<li><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></li>
-				<li><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></li>
+				<li><a href="class-Zaboy_Example_Service_DefaultOptions.html">Zaboy_Example_Service_DefaultOptions</a></li>
+				<li><a href="class-Zaboy_Example_Service_NotSpecifiedParam.html">Zaboy_Example_Service_NotSpecifiedParam</a></li>
+				<li class="active"><a href="class-Zaboy_Example_Service_OptionalParams.html">Zaboy_Example_Service_OptionalParams</a></li>
+				<li><a href="class-Zaboy_Example_Service_WithOptionsOnly.html">Zaboy_Example_Service_WithOptionsOnly</a></li>
+				<li><a href="class-Zaboy_Example_Service_WithoutParams.html">Zaboy_Example_Service_WithoutParams</a></li>
 			</ul>
 
 
@@ -74,7 +72,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="package-Dic.html" title="Summary of Dic"><span>Package</span></a>
+				<a href="package-Example.html" title="Summary of Example"><span>Package</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -89,12 +87,16 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Zaboy_Dic_LoopChecker</h1>
+	<h1>Class Zaboy_Example_Service_OptionalParams</h1>
 
 
 	<div class="description">
 	
-<p>Zaboy_Dic_LoopChecker</p>
+<p>Zaboy_Example_Service_OptionalParams</p>
+
+<p>You have to describe param in application.ini or service with same name have
+to be loaded before, but if Service Paramm is optional it will be load if his
+class was described in application.ini</p>
 
 	</div>
 
@@ -107,7 +109,14 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Zaboy_Dic_LoopChecker</span></b>			
+			<a href="class-Zaboy_Service.html"><span>Zaboy_Service</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:60px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>Zaboy_Example_Service_OptionalParams</span></b>			
 			
 			
 		</dd>
@@ -124,24 +133,24 @@
 		
 		
 		
-		<b>Package:</b> <a href="package-Dic.html">Dic</a><br />
+		<b>Package:</b> <a href="package-Example.html">Example</a><br />
 
 				<b>Category:</b>
-				Dic<br />
+				Example<br />
 				<b>Copyright:</b>
 				Zaboychenko Andrey<br />
 				<b>License:</b>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_LoopChecker.html#13-50" title="Go to source code">library/Zaboy/Dic/LoopChecker.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Example_Service_OptionalParams.html#13-38" title="Go to source code">library/Zaboy/Example/Service/OptionalParams.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="loadingStart" id="_loadingStart">
+	<tr data-order="__construct" id="___construct">
 
 		<td class="attributes"><code>
 			 public 
@@ -151,60 +160,34 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_loadingStart">#</a>
-		<code><a href="source-class-Zaboy_Dic_LoopChecker.html#29-40" title="Go to source code">loadingStart</a>( <span>string <var>$serviceName</var></span> )</code>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Zaboy_Example_Service_OptionalParams.html#28-36" title="Go to source code">__construct</a>( <span>array <var>$optionalParam</var> = <span class="php-keyword1">null</span></span>, <span><code><a href="class-Zaboy_Service.html">Zaboy_Service</a></code> <var>$specifiedOptionalParam</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
+<p>Service constructor</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Service constructor</p>
+
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$serviceName</var></dt>
-					<dd><code>string</code></dd>
+					<dt><var>$optionalParam</var></dt>
+					<dd><code>array</code></dd>
+					<dt><var>$specifiedOptionalParam</var></dt>
+					<dd></dd>
 				</dl></div>
 
 
 
 
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="loadingFinished" id="_loadingFinished">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_loadingFinished">#</a>
-		<code><a href="source-class-Zaboy_Dic_LoopChecker.html#42-49" title="Go to source code">loadingFinished</a>( <span>string <var>$serviceName</var></span> )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$serviceName</var></dt>
-					<dd><code>string</code></dd>
-				</dl></div>
-
-
-
-
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Zaboy_Service.html#___construct">Zaboy_Service::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -212,10 +195,20 @@
 	</table>
 
 	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Zaboy_Service.html#methods">Zaboy_Service</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Zaboy_Service.html#__getBootstrap">_getBootstrap()</a>, 
+			<a href="class-Zaboy_Service.html#__getDic">_getDic()</a>, 
+			<a href="class-Zaboy_Service.html#_getInjectedService">getInjectedService()</a>, 
+			<a href="class-Zaboy_Service.html#_getInjectedServicesNames">getInjectedServicesNames()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-Zaboy_Abstract.html#___construct">__construct()</a>, 
 			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
@@ -234,10 +227,26 @@
 
 
 
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-Zaboy_Service.html#constants">Zaboy_Service</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Zaboy_Service.html#OPTIONS_KEY_INJECTED_SERVICES"><b>OPTIONS_KEY_INJECTED_SERVICES</b></a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
 
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-Zaboy_Service.html#properties">Zaboy_Service</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Zaboy_Service.html#$_defaultOptions"><var>$_defaultOptions</var></a>
+		</code></td>
+	</tr>
+	</table>
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-Zaboy_Abstract.html#properties">Zaboy_Abstract</a></caption>
 	<tr>

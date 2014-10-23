@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_ServicesConfigs | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?212322379"></script>
+	<script type="text/javascript" src="elementlist.js?1201522576"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -22,6 +22,8 @@
 			<h3>Packages</h3>
 			<ul>
 				<li class="active"><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-Example.html">Example</a>
 						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
@@ -45,7 +47,6 @@
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
 				<li class="active"><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></li>
-				<li><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></li>
 			</ul>
 
 
@@ -93,11 +94,13 @@
 
 	<div class="description">
 	
-<p>Zaboy_Dic_ServicesConfigs</p>
-
-<p>with key which is defined in CONFIG_KEY_SERVICE<br />
+<p>Zaboy_Dic_ServicesConfigs <b>Services Config/<b><br />
+Usialy Services Config is part of DIC config in application.ini with key which
+is defined in <code><a href="class-Zaboy_Dic.html#CONFIG_KEY_SERVICE">Zaboy_Dic::<b>CONFIG_KEY_SERVICE</b></a></code><br />
+DIC have got config form resurce plugin { @see
+Zaboy_Application_Resource_Dic}<br />
 Part of application.ini:<br />
-</p>
+</b></b></p>
 
 <pre>
 dic.service.serviceName.class = ServiceClass
@@ -108,7 +111,7 @@ dic.service.nextServiceName.class = NextServiceClass
 ...
 </pre>
 
-<p>It is in $servicesConfig</p>
+<p>It is in $servicesConfig (see<code><a href="class-Zaboy_Dic_ServicesConfigs.html#_setConfigsServices">Zaboy_Dic_ServicesConfigs::setConfigsServices()</a></code></p>
 
 <pre>
 <span class="php-keyword1">array</span>(
@@ -180,7 +183,7 @@ class="php-quote">'NextServiceClass'</span>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesConfigs.html#13-159" title="Go to source code">library/Zaboy/Dic/ServicesConfigs.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesConfigs.html#13-158" title="Go to source code">library/Zaboy/Dic/ServicesConfigs.php</a><br />
 	</div>
 
 
@@ -233,33 +236,26 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setConfigsServices">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#82-95" title="Go to source code">setConfigsServices</a>( <span>array <var>$servicesConfigs</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#82-94" title="Go to source code">setConfigsServices</a>( <span>array <var>$servicesConfigs</var></span> )</code>
 
 		<div class="description short">
 			
-<p>For usees in <code><a href="class-Zaboy_Dic.html#___construct">Zaboy_Dic::__construct()</a></code> for load Services Config, which
-DIC have got form resurce plugin { @see Zaboy_Application_Resource_Dic}<br />
-<br />
-* with key which is defined in CONFIG_KEY_SERVICE<br />
-You have to call that function only once.</p>
+<p>For usees in <code><a href="class-Zaboy_Dic.html#___construct">Zaboy_Dic::__construct()</a></code> for load Services Config, You
+have to call that function only once.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>For usees in <code><a href="class-Zaboy_Dic.html#___construct">Zaboy_Dic::__construct()</a></code> for load Services Config, which
-DIC have got form resurce plugin { @see Zaboy_Application_Resource_Dic}<br />
-* with key which is defined in CONFIG_KEY_SERVICE<br />
-You have to call that function only once.</p>
+<p>For usees in <code><a href="class-Zaboy_Dic.html#___construct">Zaboy_Dic::__construct()</a></code> for load Services Config, You
+have to call that function only once.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$servicesConfigs</var></dt>
-					<dd><code>array</code><br>You have to do it only once. Usialy Services Config is part of DIC config in
-application.ini with key which is defined in <code><a href="class-Zaboy_Dic.html#CONFIG_KEY_SERVICE">Zaboy_Dic::<b>CONFIG_KEY_SERVICE</b></a></code><br />
-</dd>
+					<dd><code>array</code><br>array('serviceName' = array('class' = 'ServiceClass', 'options' ...</dd>
 				</dl></div>
 
 
@@ -280,7 +276,7 @@ application.ini with key which is defined in <code><a href="class-Zaboy_Dic.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServicesNames">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#98-106" title="Go to source code">getServicesNames</a>( )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#97-105" title="Go to source code">getServicesNames</a>( )</code>
 
 		<div class="description short">
 			
@@ -317,7 +313,7 @@ application.ini with key which is defined in <code><a href="class-Zaboy_Dic.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceClass">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#108-119" title="Go to source code">getServiceClass</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#107-118" title="Go to source code">getServiceClass</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -355,7 +351,7 @@ application.ini with key which is defined in <code><a href="class-Zaboy_Dic.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceOptions">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#121-132" title="Go to source code">getServiceOptions</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#120-131" title="Go to source code">getServiceOptions</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -393,7 +389,7 @@ application.ini with key which is defined in <code><a href="class-Zaboy_Dic.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getServiceAutoload">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#134-145" title="Go to source code">_getServiceAutoload</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#133-144" title="Go to source code">_getServiceAutoload</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -431,7 +427,7 @@ application.ini with key which is defined in <code><a href="class-Zaboy_Dic.html
 
 		<td class="name"><div>
 		<a class="anchor" href="#_autoloadServices">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#147-158" title="Go to source code">autoloadServices</a>( )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#146-157" title="Go to source code">autoloadServices</a>( )</code>
 
 		<div class="description short">
 			

@@ -8,7 +8,7 @@
 	<title>File library/Zaboy/Service.php | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?212322379"></script>
+	<script type="text/javascript" src="elementlist.js?1201522576"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -23,6 +23,8 @@
 			<h3>Packages</h3>
 			<ul>
 				<li><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-Example.html">Example</a>
 						</li>
 				<li class="active"><a href="package-Services.html">Services</a>
 						</li>
@@ -39,9 +41,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-Zaboy_Services.html">Zaboy_Services</a></li>
-				<li><a href="class-Zaboy_Services_Example_Options.html">Zaboy_Services_Example_Options</a></li>
-				<li><a href="class-Zaboy_Services_Example_Simple.html">Zaboy_Services_Example_Simple</a></li>
+				<li class="active"><a href="class-Zaboy_Service.html">Zaboy_Service</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -76,7 +76,7 @@
 				<a href="package-Services.html" title="Summary of Services"><span>Package</span></a>
 			</li>
 			<li>
-				<a href="class-Zaboy_Services.html" title="Summary of Zaboy_Services"><span>Class</span></a>
+				<a href="class-Zaboy_Service.html" title="Summary of Zaboy_Service"><span>Class</span></a>
 			</li>
 		</ul>
 		<ul>
@@ -90,7 +90,7 @@
 
 <pre><code><span id="1" class="l"><a class="l" href="#1">  1: </a><span class="xlang">&lt;?php</span>
 </span><span id="2" class="l"><a class="l" href="#2">  2: </a><span class="php-comment">/**
-</span></span><span id="3" class="l"><a class="l" href="#3">  3: </a><span class="php-comment"> * Zaboy_Services
+</span></span><span id="3" class="l"><a class="l" href="#3">  3: </a><span class="php-comment"> * Zaboy_Service
 </span></span><span id="4" class="l"><a class="l" href="#4">  4: </a><span class="php-comment"> * 
 </span></span><span id="5" class="l"><a class="l" href="#5">  5: </a><span class="php-comment"> * @category   Services
 </span></span><span id="6" class="l"><a class="l" href="#6">  6: </a><span class="php-comment"> * @package    Services
@@ -101,7 +101,7 @@
 </span><span id="11" class="l"><a class="l" href="#11"> 11: </a>  <span class="php-keyword1">require_once</span> <span class="php-quote">'Zaboy/Abstract.php'</span>;
 </span><span id="12" class="l"><a class="l" href="#12"> 12: </a>  
 </span><span id="13" class="l"><a class="l" href="#13"> 13: </a><span class="php-comment">/**
-</span></span><span id="14" class="l"><a class="l" href="#14"> 14: </a><span class="php-comment"> * Zaboy_Services
+</span></span><span id="14" class="l"><a class="l" href="#14"> 14: </a><span class="php-comment"> * Zaboy_Service
 </span></span><span id="15" class="l"><a class="l" href="#15"> 15: </a><span class="php-comment"> * 
 </span></span><span id="16" class="l"><a class="l" href="#16"> 16: </a><span class="php-comment"> * @category   Services
 </span></span><span id="17" class="l"><a class="l" href="#17"> 17: </a><span class="php-comment"> * @package    Services
@@ -109,7 +109,7 @@
 </span></span><span id="19" class="l"><a class="l" href="#19"> 19: </a><span class="php-comment"> * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 </span></span><span id="20" class="l"><a class="l" href="#20"> 20: </a><span class="php-comment"> * @uses Zend Framework from Zend Technologies USA Inc.
 </span></span><span id="21" class="l"><a class="l" href="#21"> 21: </a><span class="php-comment"> */</span>
-</span><span id="22" class="l"><a class="l" href="#22"> 22: </a><span class="php-keyword1">class</span> <a id="Zaboy_Services" href="#Zaboy_Services">Zaboy_Services</a> <span class="php-keyword1">extends</span> Zaboy_Abstract
+</span><span id="22" class="l"><a class="l" href="#22"> 22: </a><span class="php-keyword1">class</span> <a id="Zaboy_Service" href="#Zaboy_Service">Zaboy_Service</a> <span class="php-keyword1">extends</span> Zaboy_Abstract
 </span><span id="23" class="l"><a class="l" href="#23"> 23: </a>{
 </span><span id="24" class="l"><a class="l" href="#24"> 24: </a>    <span class="php-comment">/**
 </span></span><span id="25" class="l"><a class="l" href="#25"> 25: </a><span class="php-comment">     * Key for {@see Zaboy_Abstract::_attribs}
@@ -137,7 +137,7 @@
 </span><span id="47" class="l"><a class="l" href="#47"> 47: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>() 
 </span><span id="48" class="l"><a class="l" href="#48"> 48: </a>    {
 </span><span id="49" class="l"><a class="l" href="#49"> 49: </a>        <span class="php-var">$argsArray</span> = <span class="php-keyword2">func_get_args</span>();
-</span><span id="50" class="l"><a class="l" href="#50"> 50: </a>         <span class="php-keyword1">if</span> ( isEmpty(<span class="php-var">$argsArray</span>[<span class="php-num">0</span>])){
+</span><span id="50" class="l"><a class="l" href="#50"> 50: </a>         <span class="php-keyword1">if</span> (<span class="php-keyword1">empty</span>(<span class="php-var">$argsArray</span>[<span class="php-num">0</span>])){
 </span><span id="51" class="l"><a class="l" href="#51"> 51: </a>            <span class="php-var">$options</span> = <span class="php-var">$this</span>-&gt;_defaultOptions;     
 </span><span id="52" class="l"><a class="l" href="#52"> 52: </a>         }<span class="php-keyword1">else</span>{
 </span><span id="53" class="l"><a class="l" href="#53"> 53: </a>             <span class="php-comment">// if first param is array - we consider what that is options</span>
@@ -145,12 +145,12 @@
 </span><span id="55" class="l"><a class="l" href="#55"> 55: </a>                <span class="php-var">$options</span> = <span class="php-keyword2">array_shift</span>(<span class="php-var">$argsArray</span>);
 </span><span id="56" class="l"><a class="l" href="#56"> 56: </a>            }            
 </span><span id="57" class="l"><a class="l" href="#57"> 57: </a>         }    
-</span><span id="58" class="l"><a class="l" href="#58"> 58: </a>         <span class="php-var">$options</span>[seff::OPTIONS_KEY_INJECTED_SERVICES] = <span class="php-keyword1">array</span>();
+</span><span id="58" class="l"><a class="l" href="#58"> 58: </a>         <span class="php-var">$options</span>[self::OPTIONS_KEY_INJECTED_SERVICES] = <span class="php-keyword1">array</span>();
 </span><span id="59" class="l"><a class="l" href="#59"> 59: </a>        <span class="php-comment">// Services which was gotten via __construct()  will be contained </span>
 </span><span id="60" class="l"><a class="l" href="#60"> 60: </a>        <span class="php-comment">// in $options as array with Key &quot;injectedServices&quot;</span>
 </span><span id="61" class="l"><a class="l" href="#61"> 61: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$argsArray</span> <span class="php-keyword1">as</span> <span class="php-var">$serviceObject</span>) {
 </span><span id="62" class="l"><a class="l" href="#62"> 62: </a>            <span class="php-var">$serviceName</span> = <span class="php-var">$this</span>-&gt;_getDic()-&gt;getServiceName(<span class="php-var">$serviceObject</span>);
-</span><span id="63" class="l"><a class="l" href="#63"> 63: </a>            <span class="php-var">$options</span>[seff::OPTIONS_KEY_INJECTED_SERVICES][<span class="php-var">$serviceName</span>] = <span class="php-var">$serviceObject</span>;
+</span><span id="63" class="l"><a class="l" href="#63"> 63: </a>            <span class="php-var">$options</span>[self::OPTIONS_KEY_INJECTED_SERVICES][<span class="php-var">$serviceName</span>] = <span class="php-var">$serviceObject</span>;
 </span><span id="64" class="l"><a class="l" href="#64"> 64: </a>        }
 </span><span id="65" class="l"><a class="l" href="#65"> 65: </a>        <span class="php-comment">// See Zaboy_Abstract::setOptions(array $options) and  See Zaboy_Abstract::setAttrib($key, $value)</span>
 </span><span id="66" class="l"><a class="l" href="#66"> 66: </a>        parent::__construct(<span class="php-var">$options</span>);
@@ -160,9 +160,9 @@
 </span></span><span id="70" class="l"><a class="l" href="#70"> 70: </a><span class="php-comment">      * 
 </span></span><span id="71" class="l"><a class="l" href="#71"> 71: </a><span class="php-comment">      * @return aray (name1, name2 ..) or array() if ampty
 </span></span><span id="72" class="l"><a class="l" href="#72"> 72: </a><span class="php-comment">      */</span>
-</span><span id="73" class="l"><a class="l" href="#73"> 73: </a>     <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_getInjectedServicesNames" href="#_getInjectedServicesNames">getInjectedServicesNames</a>() 
+</span><span id="73" class="l"><a class="l" href="#73"> 73: </a>     <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getInjectedServicesNames" href="#_getInjectedServicesNames">getInjectedServicesNames</a>() 
 </span><span id="74" class="l"><a class="l" href="#74"> 74: </a>     {
-</span><span id="75" class="l"><a class="l" href="#75"> 75: </a>        <span class="php-var">$injectedServices</span> = <span class="php-var">$this</span>-&gt;getAttrib(seff::OPTIONS_KEY_INJECTED_SERVICES);
+</span><span id="75" class="l"><a class="l" href="#75"> 75: </a>        <span class="php-var">$injectedServices</span> = <span class="php-var">$this</span>-&gt;getAttrib(self::OPTIONS_KEY_INJECTED_SERVICES);
 </span><span id="76" class="l"><a class="l" href="#76"> 76: </a>        <span class="php-keyword1">return</span> <span class="php-keyword2">array_keys</span> (<span class="php-var">$injectedServices</span>); 
 </span><span id="77" class="l"><a class="l" href="#77"> 77: </a>     }
 </span><span id="78" class="l"><a class="l" href="#78"> 78: </a>    
@@ -170,9 +170,9 @@
 </span></span><span id="80" class="l"><a class="l" href="#80"> 80: </a><span class="php-comment">      * @param string name of service
 </span></span><span id="81" class="l"><a class="l" href="#81"> 81: </a><span class="php-comment">      * @return Zaboy_Service
 </span></span><span id="82" class="l"><a class="l" href="#82"> 82: </a><span class="php-comment">      */</span>
-</span><span id="83" class="l"><a class="l" href="#83"> 83: </a>     <span class="php-keyword1">protected</span> <span class="php-keyword1">function</span> <a id="_getInjectedService" href="#_getInjectedService">getInjectedService</a>(<span class="php-var">$serviceName</span>) 
+</span><span id="83" class="l"><a class="l" href="#83"> 83: </a>     <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getInjectedService" href="#_getInjectedService">getInjectedService</a>(<span class="php-var">$serviceName</span>) 
 </span><span id="84" class="l"><a class="l" href="#84"> 84: </a>     {
-</span><span id="85" class="l"><a class="l" href="#85"> 85: </a>        <span class="php-var">$injectedServicesArray</span> = <span class="php-var">$this</span>-&gt;getAttrib(seff::OPTIONS_KEY_INJECTED_SERVICES);
+</span><span id="85" class="l"><a class="l" href="#85"> 85: </a>        <span class="php-var">$injectedServicesArray</span> = <span class="php-var">$this</span>-&gt;getAttrib(self::OPTIONS_KEY_INJECTED_SERVICES);
 </span><span id="86" class="l"><a class="l" href="#86"> 86: </a>        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$injectedServicesArray</span>[<span class="php-var">$serviceName</span>])) {
 </span><span id="87" class="l"><a class="l" href="#87"> 87: </a>            <span class="php-keyword1">return</span> <span class="php-var">$injectedServicesArray</span>[<span class="php-var">$serviceName</span>];
 </span><span id="88" class="l"><a class="l" href="#88"> 88: </a>        }<span class="php-keyword1">else</span>{

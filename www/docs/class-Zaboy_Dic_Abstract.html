@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_Abstract | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?212322379"></script>
+	<script type="text/javascript" src="elementlist.js?1201522576"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -22,6 +22,8 @@
 			<h3>Packages</h3>
 			<ul>
 				<li class="active"><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-Example.html">Example</a>
 						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
@@ -45,7 +47,6 @@
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></li>
-				<li><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></li>
 			</ul>
 
 
@@ -98,19 +99,27 @@
 <p><b>Zaboy_Dic</b></p>
 
 <p>Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is
-loading as resurce plugin of Bootstrap. Add in <i>config.ini</i> for load<br />
+loading as resurce plugin of Bootstrap { @see
+Zaboy_Application_Resource_Dic}.</p>
+
+<p>Add in <i>application.ini</i> for load<br />
 </p>
 
 <pre>
 resources.dic[] =
 </pre>
 
+<p>You can change class of DIC for load:</p>
+
+<pre>
+resources.dic.<span
+class="php-keyword1">class</span> = My_Dic_Class
+</pre>
+
 <p>You can get <i>Dic</i>:<br />
 </p>
 
 <pre>
-<span class="php-var">$bootstrap</span>-&gt;bootstrap(<span
-class="php-quote">'dic'</span>);
 <span class="php-var">$dic</span> = <span
 class="php-var">$bootstrap</span>-&gt;getResource(<span
 class="php-quote">'dic'</span>);
@@ -130,7 +139,7 @@ resources.dic.service.NameOfService.options.param1 = value1
 resources.dic.service.NameOfService.options.param2 = value2
 </pre>
 
-<p>or just in SeviceObjectClass - see $_defaultOptions in <code><a href="class-Zaboy_Services_Abstract.html">Zaboy_Services_Abstract</a></code>.<br />
+<p>or just in SeviceObjectClass - see $_defaultOptions in Zaboy_Services_Abstract.<br />
 </p>
 
 <p><b>All other parametrs must be Services!</b>. That parametr we call
@@ -246,7 +255,7 @@ See more about it : (@see Zaboy_Dic_Interface)</p>
 				<code><code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code></code><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc. @<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_Abstract.html#11-223" title="Go to source code">library/Zaboy/Dic/Abstract.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_Abstract.html#13-231" title="Go to source code">library/Zaboy/Dic/Abstract.php</a><br />
 	</div>
 
 
@@ -264,7 +273,7 @@ See more about it : (@see Zaboy_Dic_Interface)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get">#</a>
-		<code><a href="source-class-Zaboy_Dic_Abstract.html#161-177" title="Go to source code">get</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClass</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Abstract.html#169-185" title="Go to source code">get</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClass</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			

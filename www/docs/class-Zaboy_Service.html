@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Zaboy_Services | _zaboy.org</title>
+	<title>Class Zaboy_Service | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?212322379"></script>
+	<script type="text/javascript" src="elementlist.js?1201522576"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -22,6 +22,8 @@
 			<h3>Packages</h3>
 			<ul>
 				<li><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-Example.html">Example</a>
 						</li>
 				<li class="active"><a href="package-Services.html">Services</a>
 						</li>
@@ -38,9 +40,7 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-Zaboy_Services.html">Zaboy_Services</a></li>
-				<li><a href="class-Zaboy_Services_Example_Options.html">Zaboy_Services_Example_Options</a></li>
-				<li><a href="class-Zaboy_Services_Example_Simple.html">Zaboy_Services_Example_Simple</a></li>
+				<li class="active"><a href="class-Zaboy_Service.html">Zaboy_Service</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -87,12 +87,12 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Zaboy_Services</h1>
+	<h1>Class Zaboy_Service</h1>
 
 
 	<div class="description">
 	
-<p>Zaboy_Services</p>
+<p>Zaboy_Service</p>
 
 	</div>
 
@@ -105,13 +105,19 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Zaboy_Services</span></b>			
+<b><span>Zaboy_Service</span></b>			
 			
 			
 		</dd>
 	</dl>
 
 
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-Zaboy_Example_Service_DefaultOptions.html">Zaboy_Example_Service_DefaultOptions</a>, 
+			<a href="class-Zaboy_Example_Service_NotSpecifiedParam.html">Zaboy_Example_Service_NotSpecifiedParam</a>, 
+			<a href="class-Zaboy_Example_Service_OptionalParams.html">Zaboy_Example_Service_OptionalParams</a>
+	</div>
 
 
 
@@ -132,7 +138,7 @@
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Services.html#13-114" title="Go to source code">library/Zaboy/Service.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Service.html#13-114" title="Go to source code">library/Zaboy/Service.php</a><br />
 	</div>
 
 
@@ -150,7 +156,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Services.html#38-67" title="Go to source code">__construct</a>( )</code>
+		<code><a href="source-class-Zaboy_Service.html#38-67" title="Go to source code">__construct</a>( )</code>
 
 		<div class="description short">
 			
@@ -181,7 +187,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 	<tr data-order="getInjectedServicesNames" id="_getInjectedServicesNames">
 
 		<td class="attributes"><code>
-			 protected 
+			 public 
 			aray
 			
 			</code>
@@ -189,7 +195,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getInjectedServicesNames">#</a>
-		<code><a href="source-class-Zaboy_Services.html#69-77" title="Go to source code">getInjectedServicesNames</a>( )</code>
+		<code><a href="source-class-Zaboy_Service.html#69-77" title="Go to source code">getInjectedServicesNames</a>( )</code>
 
 		<div class="description short">
 			
@@ -214,15 +220,15 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 	<tr data-order="getInjectedService" id="_getInjectedService">
 
 		<td class="attributes"><code>
-			 protected 
-			Zaboy_Service
+			 public 
+			<code><a href="class-Zaboy_Service.html">Zaboy_Service</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getInjectedService">#</a>
-		<code><a href="source-class-Zaboy_Services.html#79-92" title="Go to source code">getInjectedService</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Service.html#79-92" title="Go to source code">getInjectedService</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -240,7 +246,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>Zaboy_Service</code><br />
+					<code><code><a href="class-Zaboy_Service.html">Zaboy_Service</a></code></code><br />
 				</div>
 
 
@@ -260,7 +266,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getBootstrap">#</a>
-		<code><a href="source-class-Zaboy_Services.html#94-103" title="Go to source code">_getBootstrap</a>( )</code>
+		<code><a href="source-class-Zaboy_Service.html#94-103" title="Go to source code">_getBootstrap</a>( )</code>
 
 		<div class="description short">
 			
@@ -293,7 +299,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getDic">#</a>
-		<code><a href="source-class-Zaboy_Services.html#105-113" title="Go to source code">_getDic</a>( )</code>
+		<code><a href="source-class-Zaboy_Service.html#105-113" title="Go to source code">_getDic</a>( )</code>
 
 		<div class="description short">
 			
@@ -344,7 +350,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Services.html#24-29" title="Go to source code"><b>OPTIONS_KEY_INJECTED_SERVICES</b></a>
+				<a href="source-class-Zaboy_Service.html#24-29" title="Go to source code"><b>OPTIONS_KEY_INJECTED_SERVICES</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'injectedServices'</span></code></td>
 		<td class="description"><div>
@@ -382,7 +388,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_Services.html#31-36" title="Go to source code"><var>$_defaultOptions</var></a>
+				<a href="source-class-Zaboy_Service.html#31-36" title="Go to source code"><var>$_defaultOptions</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>

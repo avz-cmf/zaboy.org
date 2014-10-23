@@ -69,7 +69,7 @@ INI;
     */
     protected function _pathApplicationIni($additionalConfig) {
         //read application.ini
-        $applicationIni = file_get_contents( APPLICATION_PATH . '/configs/application.ini' );
+        $applicationIni = file_get_contents( APPLICATION_PATH . '/../tests/application/configs/application.ini' );
         //make changed application.ini
         $productionPosition = strpos($applicationIni, '[production]');
         //We will insert additional config after '[production]'
@@ -94,7 +94,6 @@ INI;
         $application = $this->_application;
         $this->_application->bootstrap();
         $this->_bootstrap = $this->_application->getBootstrap();
-        var_dump('$this->bootstrap->getResource');
         $this->object = $this->_bootstrap->getResource('dic');
     }
     
@@ -207,7 +206,7 @@ INI1;
         $this->loadDic($additionalConfig);
         $service = $this->object->get('serviceOptionsInConfig' , 'Zaboy_Example_Service_DefaultOptions');
         /* @var $service Zaboy_Example_Service_WithoutParams */
-        $this->assertEquals(
+       $this->assertEquals(
             'paramValueFromGonfig',
             $service->param
         );
@@ -215,4 +214,50 @@ INI1;
              $service->getAttrib('attribKey')               
         );                
     } 
+   
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetServiceWitNotSpecifiedParam_NotDescribedAndNotLoadedBefore() {
+        $additionalConfig = 
+<<<'INI1'
+;INI TEST START
+resources.dic[] = 
+pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
+;INI TEST END
+INI1;
+        $this->loadDic($additionalConfig);
+        $this->setExpectedException('Zaboy_Dic_Exception');    
+        $service = $this->object->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Service_NotSpecifiedParam');
+        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+    }  
+    
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetServiceWitOptionalParams_NotDescribedAndNotLoadedBefore() {
+        $additionalConfig = 
+<<<'INI1'
+;INI TEST START
+resources.dic[] = 
+pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
+;INI TEST END
+INI1;
+        $this->loadDic($additionalConfig);
+        $service = $this->object->get('serviceWithOptionalParams' , 'Zaboy_Example_Service_OptionalParams');
+        /* @var $service Zaboy_Example_Service_OptionalParams */
+        $servicesNamesArray = $service->getInjectedServicesNames();
+        var_dump($servicesNamesArray);
+        $this->assertEquals(
+            2,
+            count(array_keys($servicesNamesArray))
+        );
+        
+        $this->assertNull(
+            $service->getInjectedService($servicesNamesArray[0])
+        );
+        $this->assertNull(
+            $service->getInjectedService($servicesNamesArray[1])             
+        );  
+    }    
 }
