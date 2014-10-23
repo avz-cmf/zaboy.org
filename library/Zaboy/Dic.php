@@ -80,25 +80,6 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
 
         $this->_servicesConfigs->autoloadServices();
     }  
-
-     /**
-       * It have to call after __construct
-       * 
-       * If Service specifed in application.ini as "auotoloaded" - it will started
-       */
-      public function init() 
-    {
-       $this->_servicesConfigs->autoloadServices();
-        /*
-        $servicesNames = $this->_servicesConfigs->getServicesNames();
-         
-        foreach ($servicesNames as $serviceName) {
-            if ( $this->_servicesConfigs->_getServiceAutoload($serviceName)) {
-                $this->_dic->get($serviceName);
-            }
-        }
-         */  
-    }   
  
      /**
        * Return Service Name for Service Object
