@@ -60,7 +60,8 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
     * param array <b>options</b> - options from application.ini. <br>It is all after  <i>resources.dic.</i>
     * @return void
     */  
-    public function __construct( 
+    public function __construct
+    ( 
         array $options, 
         Zaboy_Dic_ServicesConfigs $servicesConfigs,
         Zaboy_Dic_ServicesStore $servicesStore,
