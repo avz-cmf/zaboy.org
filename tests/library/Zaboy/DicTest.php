@@ -116,7 +116,7 @@ INI;
      * @covers Zaboy_Dic::get
     */
     public function testGetServiceWithoutParams() {
-        $this->object = new $this->objectClass();  
+        $this->loadDic($this->_additionalConfig);
         $service = $this->object->get('serviceWithoutParams' , 'Zaboy_Example_Service_WithoutParams');
         /* @var $service Zaboy_Example_Service_WithoutParams */
                 $this->assertEquals(

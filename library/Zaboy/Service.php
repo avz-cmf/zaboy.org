@@ -104,18 +104,7 @@ class Zaboy_Service extends Zaboy_Abstract
             return null;    
         }
 
-     }
-     
-    /**
-     * @return Zend_Application_Bootstrap_Bootstrap
-     */
-    protected function _getBootstrap()
-    {
-        global $application;
-        /* @var $application Zend_Application */
-        $bootstrap = $application->getBootstrap();
-        return $bootstrap;
-    }     
+     } 
 
       /**
       * @return Zaboy_Dic

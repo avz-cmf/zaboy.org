@@ -27,13 +27,6 @@
  */
 class Zaboy_Dic extends Zaboy_Dic_Abstract
 {
-     /**
-     * comfig.ini :  
-     * dic.service.serviceName.class = Same_Class
-     * dic.service.serviceName.options.key = val 
-     */
-     const CONFIG_KEY_SERVICE = 'service';
-     
     /**
      * If dependent  Service ( which is specifed in __construct parameters) is optional
      * it will be loaded only if it was described  in config.
@@ -67,17 +60,17 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
     * param array <b>options</b> - options from application.ini. <br>It is all after  <i>resources.dic.</i>
     * @return void
     */  
-    public function __construct( array $options=array() ) 
-    {
-        parent::__construct($options);      
-        $this->_servicesConfigs = new Zaboy_Dic_ServicesConfigs($this);
-        $this->_servicesConfigs->setConfigsServices($this->getAttrib(self::CONFIG_KEY_SERVICE));
-        $this->removeAttrib(self::CONFIG_KEY_SERVICE);
+    public function __construct( 
+        array $options, 
+        Zaboy_Dic_ServicesConfigs $servicesConfigs,
+        Zaboy_Dic_ServicesStore $servicesStore,
+        Zaboy_Dic_LoopChecker $loopChecker        
+    ){
+        parent::__construct($options);     
+        $this->_servicesConfigs = $servicesConfigs;
+        $this->_servicesStore = $servicesStore;        
+        $this->_loopChecker = $loopChecker;
         
-        $this->_loopChecker = new Zaboy_Dic_LoopChecker();
-        
-        $this->_servicesStore = new Zaboy_Dic_ServicesStore();
-
         $this->_servicesConfigs->autoloadServices();
     }  
  
@@ -131,18 +124,18 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
         return $serviceObject;
     }
 
-     /**
-      * @param string $serviceName
-      * @param string $serviceClass
-      * @return object
-      */
+    /**
+     * @param string $serviceName
+     * @param string $serviceClass
+     * @return object
+     */
     protected function _loadServiceObject($serviceName, $serviceClass) 
     {
        //protection from loop of calls
        $this->_loopChecker->loadingStart($serviceName);
        $reflectionObject = new ReflectionClass($serviceClass);
        $callParamsArray = $this->_getConstructParamsValues($serviceName, $reflectionObject);
-       $serviceObject = $reflectionObject->newInstanceArgs($callParamsArray); // it' like new class($callParamsArray[1], $callParamsArray[2]...)
+       $serviceObject = $reflectionObject->newInstanceArgs($callParamsArray); // it's like new class($callParamsArray[1], $callParamsArray[2]...)
        $this->_loopChecker->loadingFinished($serviceName);
        $this->_servicesStore->addService($serviceName, $serviceObject);
        return $serviceObject;

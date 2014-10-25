@@ -51,26 +51,12 @@
  */
 class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
 {
+    const DIC_NAME_RESOURCE = 'dic'; // for $this->_getBootstrap()->getResource('dic')
+    
      const CONFIG_KEY_CLASS = 'class';       //  comfig.ini :  dic.service.serviceName1.class = className1 ... 
      const CONFIG_KEY_OPTIONS = 'options';   //  comfig.ini :  dic.service.serviceName1.options.key = val  ...
      const CONFIG_KEY_AUTOLOAD = 'autoload'; //  comfig.ini :  dic.service.serviceName1.autoload = true
-    
-    
-  
-    /*
-     * Zaboy_Dic
-     */
-    private $_dic;   
-  
-    /**
-    * param Zaboy_Dic $dic
-    * @return void
-    */  
-    public function __construct( Zaboy_Dic $dic)
-    {
-        $this->_dic = $dic;
-    }        
-    
+
     /*
      * array configurations of Services
      * 
@@ -78,21 +64,23 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
      * from constuctors calling Services 
      */
     private $_servicesConfigs = array();
-    
-    /**
-     * For usees in {@see Zaboy_Dic::__construct()} for load Services Config, 
-     * You have to call that function only once.
-     * 
-     * @param array  array('serviceName' = array('class' = 'ServiceClass', 'options' ...
-     * @return void
-     */    
-    public function setConfigsServices($servicesConfigs)
+
+     /**
+      * Call setters for elements $options if exist and rest copy to {@see Zaboy_Abstract::_attribs}
+      * 
+      * May be two cases for property $options['oneProperty'] = value
+      * If method setOneProperty is exist - it will be call, else $this->_attribs['oneProperty'] = value
+      *
+      * @param array  array('serviceName' = array('class' = 'ServiceClass', 'options' ...
+      * @return Zaboy_Dic_ServicesConfigs
+      */
+    public function setOptions(array $options)
     {
-        if (isset($servicesConfigs)) {
-            $this->_servicesConfigs = $servicesConfigs;           
+        if (isset($options)) {
+            $this->_servicesConfigs = $options;           
         }
-    }
- 
+        return $this;
+    }     
     
     /**
       * return array ( 0=>ServaceName, 1=> NextServiceName ...)
@@ -151,7 +139,9 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
     public function autoloadServices() {
         foreach ($this->_servicesConfigs as $serviceName => $serviceConfig ) {
             if ( (bool) $this->_getServiceAutoload($serviceName)) {
-                $this->_dic->get($serviceName);
+                $this->_getBootstrap()
+                        ->getResource(self::DIC_NAME_RESOURCE)
+                        ->get($serviceName);
             }
         }
      }    

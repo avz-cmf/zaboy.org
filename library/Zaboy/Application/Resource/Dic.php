@@ -27,6 +27,14 @@
       * application.ini :  recurces.dic.class = Avz_Dic...
       */     
      const CONFIG_KEY_CLASS = 'class'; 
+     
+    /**
+     * comfig.ini :  
+     * dic.service.serviceName.class = Same_Class
+     * dic.service.serviceName.options.key = val 
+     */
+     const CONFIG_KEY_SERVICE = 'service';
+     
 
      /**
       * Default class for dependency injection container
@@ -56,10 +64,22 @@
       */
      public function init()
      {
-         $dicClass = $this->_dicClass;       
-         $options = $this->getOptions();
-         $dic= new $dicClass($options);
-         /** @var $dic Zaboy_Dic  */
+        $dicClass = $this->_dicClass;       
+        $options = $this->getOptions();
+        if (isset($options[self::CONFIG_KEY_SERVICE])) {
+            $servicesConfigsOoptions = $options[self::CONFIG_KEY_SERVICE];
+            unset($options[self::CONFIG_KEY_SERVICE]);
+        }else{
+            $servicesConfigsOoptions = Array();
+        }
+        
+        $servicesConfigs = new Zaboy_Dic_ServicesConfigs($servicesConfigsOoptions);
+        $servicesStore = new Zaboy_Dic_ServicesStore();
+        $loopChecker = new Zaboy_Dic_LoopChecker();     
+        
+        $dic= new $dicClass($options, $servicesConfigs, $servicesStore, $loopChecker );
+        /** @var $dic Zaboy_Dic  */
+        
          return $dic;
      }
  }
