@@ -56,12 +56,9 @@ class Zaboy_DicTest extends PHPUnit_Framework_TestCase
     *
     * @var string
     */
-    protected $_additionalConfig = 
+    protected $_minimalAadditionalConfig = 
 <<<'INI'
-;INI TEST START
-pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"    
 resources.dic[] = 
-;INI TEST END
 INI;
     
     /**
@@ -76,7 +73,16 @@ INI;
         if ($productionPosition === false) {die("There is not correct header [production] section");}
         $position = $productionPosition + strlen('[production]' . PHP_EOL) - 1;
         //This is inserting $additionalConfig
-        $testApplicationIni = substr_replace($applicationIni, $additionalConfig . PHP_EOL, $position, 0); 
+        $testApplicationIni = substr_replace($applicationIni,
+                ';INI TEST START'
+                . PHP_EOL
+                . 'pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"'     
+                . PHP_EOL
+                . $additionalConfig 
+                . PHP_EOL
+                . ';INI TEST END'
+                . PHP_EOL
+        , $position, 0); 
         //write new application.ini for test
         $filename = dirname(__FILE__) . '/applicationTest.ini';
         $f = fopen( $filename , "w" );
@@ -116,7 +122,7 @@ INI;
      * @covers Zaboy_Dic::get
     */
     public function testGetObjectWithoutParams() {
-        $this->loadDic($this->_additionalConfig);
+        $this->loadDic($this->_minimalAadditionalConfig);
         $service = $this->object->get('serviceWithoutParams' , 'Zaboy_Example_Service_WithoutParams');
         /* @var $service Zaboy_Example_Service_WithoutParams */
                 $this->assertEquals(
@@ -129,15 +135,11 @@ INI;
      * @covers Zaboy_Dic::get
     */
     public function testGetSingletonServiceWithoutParams() {
-        $additionalConfig = 
+        $this->loadDic(
 <<<'INI1'
-;INI TEST START
 resources.dic.service.serviceWithoutParams.class = Zaboy_Example_Service_WithoutParams
-pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
-;INI TEST END
 INI1
-;       
-        $this->loadDic($additionalConfig);   
+        );
         $service = $this->object->get('serviceWithoutParams' , 'Zaboy_Example_Service_WithoutParams');
         /* @var $service Zaboy_Example_Service_WithoutParams */
                 $this->assertEquals(
@@ -150,7 +152,7 @@ INI1
      * @covers Zaboy_Dic::get
      */
     public function testGetObjectWithOptionsOnly_NoOptionsRetrived() {
-        $this->loadDic($this->_additionalConfig);
+        $this->loadDic($this->_minimalAadditionalConfig);
         $service = $this->object->get('serviceWithOptionsOnly' , 'Zaboy_Example_Service_WithOptionsOnly');
         /* @var $service Zaboy_Example_Service_WithoutParams */
                 $this->assertEquals(
@@ -163,15 +165,11 @@ INI1
      * @covers Zaboy_Dic::get
      */
     public function testGetSingletonServiceWithOptionsOnly_NoOptionsInConfig() {
-        $additionalConfig = 
+        $this->loadDic(
 <<<'INI1'
-;INI TEST START
 resources.dic.service.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
-pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
-;INI TEST END
 INI1
-;       
-        $this->loadDic($additionalConfig); 
+        );
         $service = $this->object->get('serviceWithOptionsOnly' , 'Zaboy_Example_Service_WithOptionsOnly');
         /* @var $service Zaboy_Example_Service_WithoutParams */
                 $this->assertEquals(
@@ -185,16 +183,12 @@ INI1
      * @covers Zaboy_Dic::get
      */
     public function testGetSingletonServiceWithOptionsOnly_MnimalArrayOptionsInConfig() {
-        $additionalConfig = 
+        $this->loadDic(
 <<<'INI1'
-;INI TEST START
 resources.dic.service.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
 resources.dic.service.serviceWithOptionsOnly.options[] = 
-pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
-;INI TEST END
 INI1
-;       
-        $this->loadDic($additionalConfig); 
+        );
         $service = $this->object->get('serviceWithOptionsOnly' , 'Zaboy_Example_Service_WithOptionsOnly');
         /* @var $service Zaboy_Example_Service_WithoutParams */
                 $this->assertEquals(
@@ -207,18 +201,15 @@ INI1
      * @covers Zaboy_Dic::get
      */
     public function testGetSingletonServiceWithOptionsOnly_WithOptionsInConfig() {
-        $additionalConfig = 
+        $this->loadDic(
 <<<'INI1'
-;INI TEST START
 resources.dic.service.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
 ;There is method setParam() - it will be call   
 resources.dic.service.serviceWithOptionsOnly.options.param = paramValue
 ;There isn't method setAttribKey - it will save in attribs array
 resources.dic.service.serviceWithOptionsOnly.options.attribKey = attribValue
-pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
-;INI TEST END
-INI1;
-        $this->loadDic($additionalConfig);
+INI1
+        );
         $service = $this->object->get('serviceWithOptionsOnly' , 'Zaboy_Example_Service_WithOptionsOnly');
         /* @var $service Zaboy_Example_Service_WithoutParams */
         $this->assertEquals(
@@ -235,14 +226,7 @@ INI1;
      * @covers Zaboy_Dic::get
      */
     public function testGetObjectWitNotSpecifiedParam_() {
-        $additionalConfig = 
-<<<'INI1'
-;INI TEST START
-resources.dic[] = 
-pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
-;INI TEST END
-INI1;
-        $this->loadDic($additionalConfig);
+        $this->loadDic($this->_minimalAadditionalConfig);
         $this->setExpectedException('Zaboy_Dic_Exception');    
         $service = $this->object->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Service_NotSpecifiedParam');
         /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
@@ -253,14 +237,11 @@ INI1;
      * @covers Zaboy_Dic::get
      */
     public function testGetServiceWitNotSpecifiedParam_NotDescribedAndNotLoadedBefore() {
-        $additionalConfig = 
+        $this->loadDic(
 <<<'INI1'
-;INI TEST START
 resources.dic.service.serviceWithNotSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
-pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
-;INI TEST END
-INI1;
-        $this->loadDic($additionalConfig);
+INI1
+        );
         $this->setExpectedException('Zaboy_Dic_Exception');    
         $service = $this->object->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Service_NotSpecifiedParam');
         /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
