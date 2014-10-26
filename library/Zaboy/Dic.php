@@ -84,8 +84,8 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
      */
     public function get($name, $class = null)    
     {
-        if (!$this->_servicesConfigs->isService($name)) {
-            $serviceObject = getService($name); 
+        if ($this->_servicesConfigs->isService($name)) {
+            $serviceObject = $this->getService($name); 
             return $serviceObject;
         }else{
             // $name is not Service name            
@@ -109,9 +109,8 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
         switch ($initiation) {
             case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON:
                 // Is Service with $serviceName already was loaded?
-                if ($this->_servicesStore->hasService($serviceName)) {
-                    $serviceObject = $this->_servicesStore->getService($serviceName);
-                }else{
+                $serviceObject = $this->_servicesStore->getService($serviceName);
+                if (!isset($serviceObject)) {
                     $serviceObject = $this->_createServiceObject($serviceName);
                     $this->_servicesStore->addService($serviceName, $serviceObject);
                 }
@@ -180,7 +179,7 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
      */
     protected function _createServiceObject($objectName, $objectClass = null) 
     {
-        if (!$this->_servicesConfigs->isService($objectName)) {
+        if ($this->_servicesConfigs->isService($objectName)) {
             $objectClass = $this->_servicesConfigs->getServiceClass($objectName);
         }else{
             if (!isset($objectClass)) {

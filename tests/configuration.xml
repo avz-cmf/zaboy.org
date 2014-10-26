@@ -1,0 +1,25 @@
+<phpunit
+ bootstrap="./bootstrap.php" 
+ testsuite="Dic"
+ >   
+<testsuites>         
+    <testsuite name="All">
+       <directory>./1</directory>         
+    </testsuite>
+    <testsuite name="Dic">
+       <directory>./library1</directory>         
+    </testsuite>
+ </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../application</directory>
+            <directory suffix=".php">../library</directory>
+            <exclude>
+                <directory suffix=".phtml">../application</directory>
+                <directory prefix="Avz">../library/Zend</directory>
+                <directory prefix="Avz">../library/Test</directory>                
+                <directory prefix="Bootstrap">../application</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
