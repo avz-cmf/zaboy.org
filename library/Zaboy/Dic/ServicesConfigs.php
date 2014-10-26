@@ -57,6 +57,13 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
      const CONFIG_KEY_OPTIONS = 'options';   //  comfig.ini :  dic.service.serviceName1.options.key = val  ...
      const CONFIG_KEY_AUTOLOAD = 'autoload'; //  comfig.ini :  dic.service.serviceName1.autoload = true
 
+     const CONFIG_KEY_INSTANCE = 'instance';    //  comfig.ini :  dic.service.serviceName1.instance = singleton
+     const CONFIG_VALUE_SINGLETON = 'singleton'; //  default value for dic.service.serviceName1.instance
+     const CONFIG_VALUE_CLONE = 'clone';        //  For all request, service will create by clone from etalon   
+     const CONFIG_VALUE_RECREATE = 'recreate';     //  For all request, service will create by constuct() call
+
+    const CONFIG_KEY_PARAMS = 'params';    // dic.service.serviceName1.params.firstparam = serviceName
+     
     /*
      * array configurations of Services
      * 
@@ -115,6 +122,41 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
             return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_OPTIONS];
         }else{
             return array();
+        }
+    }
+    
+    /**
+      * @param string
+      * @return string
+      */    
+    public function getServiceInitiation($serviceName)
+    {
+        if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_INSTANCE])) {
+            return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_INSTANCE];
+        }else{
+            return self::CONFIG_VALUE_SINGLETON;
+        }
+    }    
+        
+    /**
+     *Return TRUE if service with same name was described in config
+     * 
+     * @param string
+     * @return bool
+     */    
+    public function isService($serviceName) 
+    {
+        $servicesNamesArray = $this->getServicesNames();
+        return in_array($serviceName, $servicesNamesArray);
+    }        
+    
+    
+    public function getServiceForConstructParam($serviceName, $paramName)
+    {  
+        if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_PARAMS][$paramName])) {
+            return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_PARAMS][$paramName];
+        }else{
+            return null;
         }
     }
     

@@ -57,7 +57,7 @@ require_once 'Zaboy/Abstract.php';
  * </code>
  * 
  * <b>About optional parametrs</b><br>
- * Optional  parametrs are transmitted to _consruct if they already was loaded or if they is discribed in config.ini
+ * Optional  parametrs are transmitted to _consruct if they already was loaded or if they is described in config.ini
  * 
  * <b>Aliases</b><br>
  * You can take 2 or more instaces of <i>Service</i>. Use aliases.

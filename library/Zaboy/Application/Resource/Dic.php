@@ -74,7 +74,7 @@
         }
         
         $servicesConfigs = new Zaboy_Dic_ServicesConfigs($servicesConfigsOoptions);
-        $servicesStore = new Zaboy_Dic_ServicesStore();
+        $servicesStore = new Zaboy_Dic_ServicesStore(array(), $servicesConfigs);
         $loopChecker = new Zaboy_Dic_LoopChecker();     
         
         $dic= new $dicClass($options, $servicesConfigs, $servicesStore, $loopChecker );

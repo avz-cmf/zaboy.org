@@ -22,18 +22,34 @@
 class Zaboy_Dic_ServicesStore extends Zaboy_Abstract
 {
     /*
+     * @var Zaboy_Dic_ServicesConfigs
+     */
+    private $_servicesConfigs;    
+    
+    /*
      * array of services which are loaded via DIC
      */
     private $_runningServices = array();
     
-
-    /**
-     * @return bool
+    /*
+     * array of services which will be cloned
      */
-    public function hasService($serviceName)
-    { 
-        return isset($this->_runningServices[$serviceName]);
-    }    
+    private $_etalonSevices = array();
+    
+    /**
+    * 
+    * @see $_options
+    * param array <b>options</b> - options from application.ini. <br>It is all after  <i>resources.dic.</i>
+    * @return void
+    */  
+    public function __construct
+    ( 
+        array $options, 
+        Zaboy_Dic_ServicesConfigs $servicesConfigs
+    ){
+        parent::__construct($options);     
+        $this->_servicesConfigs = $servicesConfigs;
+    }     
     
     /**
       * @param string
@@ -41,11 +57,23 @@ class Zaboy_Dic_ServicesStore extends Zaboy_Abstract
       */    
     public function addService($serviceName, $serviceObject)
     {
-        if ($this->hasService($serviceName)) {
-             require_once 'Zaboy/Dic/Exception.php';
-             throw new Zaboy_Dic_Exception("There is Service with name: $serviceName. You cann't revrite it");    
-        }
-        $this->_runningServices[$serviceName] = $serviceObject;
+        $initiation = $this->_servicesConfigs->getServiceInitiation($serviceName);
+        switch ($initiation) {
+            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON:
+                $this->_runningServices[$serviceName] = $serviceObject;
+                break;
+            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_RECREATE :
+                $this->_runningServices[$serviceName][] = $serviceObject;
+                break;
+            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE :
+                $this->_runningServices[$serviceName][] = $serviceObject;
+                break;
+            default:
+                require_once 'Zaboy/Dic/Exception.php';
+                throw new Zaboy_Dic_Exception(
+                    'unknow initiation type - ' . $initiation
+                ); 
+        }        
     }
 
     /**
@@ -57,7 +85,7 @@ class Zaboy_Dic_ServicesStore extends Zaboy_Abstract
     }
 
     /**
-     * @return object
+     * @return object|array
      */
     public function getService($serviceName)
     {
@@ -67,4 +95,18 @@ class Zaboy_Dic_ServicesStore extends Zaboy_Abstract
             return null;
         }
     }
+    
+    public function addEtalon($serviceName, $serviceObject) 
+    {
+        $this->_etalonSevices[$serviceName] = $serviceObject;
+
+    }
+    
+    public function getEtalon($serviceName) {
+        if (isset($this->_etalonSevices[$serviceName])) {
+            return $this->_etalonSevices[$serviceName];
+        }else{
+            return null;
+        }
+    }    
 }

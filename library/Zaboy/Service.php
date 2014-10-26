@@ -90,6 +90,12 @@ class Zaboy_Service extends Zaboy_Abstract
         }
 
      }
+     
+    public function getLazyLoadService($constructParamName)    
+    {
+        
+    }        
+     
     
     /**
       * @param string name of service
