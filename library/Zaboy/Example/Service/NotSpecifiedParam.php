@@ -24,6 +24,9 @@
  */
 class Zaboy_Example_Service_NotSpecifiedParam extends Zaboy_Service
 {
+    
+    public $_notSpecifiedParam;
+            
     /**
      * Service constructor
      * 
@@ -32,6 +35,7 @@ class Zaboy_Example_Service_NotSpecifiedParam extends Zaboy_Service
     public function __construct($notSpecifiedParam)
     {
         parent::__construct($notSpecifiedParam);
+        $this->_notSpecifiedParam = $notSpecifiedParam;
     }
 
 }
