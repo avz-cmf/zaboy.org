@@ -30,10 +30,10 @@
      
     /**
      * comfig.ini :  
-     * dic.service.serviceName.class = Same_Class
-     * dic.service.serviceName.options.key = val 
+     * dic.services.serviceName.class = Same_Class
+     * dic.services.serviceName.options.key = val 
      */
-     const CONFIG_KEY_SERVICE = 'service';
+     const CONFIG_KEY_SERVICE = 'services';
      
 
      /**

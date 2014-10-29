@@ -147,7 +147,7 @@ INI;
     public function testGetSingletonServiceWithoutParams_ClassIsNotSpecifiedButDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.serviceWithoutParams.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.serviceWithoutParams.class = Zaboy_Example_Service_WithoutParams
 INI1
         );
         $service = $this->object->get('serviceWithoutParams');
@@ -164,7 +164,7 @@ INI1
     public function testGetSingletonServiceWithoutParams_SpecifiedAndDescribedClassesAreDifferent() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.serviceWithoutParams.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.serviceWithoutParams.class = Zaboy_Example_Service_WithoutParams
 INI1
         );
         $service = $this->object->get('serviceWithoutParams', 'Zaboy_Service');
@@ -194,7 +194,7 @@ INI1
     public function testGetSingletonServiceWithOptionsOnly_NoOptionsInConfig() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
+resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
 INI1
         );
         $service = $this->object->get('serviceWithOptionsOnly');
@@ -212,8 +212,8 @@ INI1
     public function testGetSingletonServiceWithOptionsOnly_MinimalArrayOptionsInConfig() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
-resources.dic.service.serviceWithOptionsOnly.options[] = 
+resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
+resources.dic.services.serviceWithOptionsOnly.options[] = 
 INI1
         );
         $service = $this->object->get('serviceWithOptionsOnly');
@@ -230,11 +230,11 @@ INI1
     public function testGetSingletonServiceWithOptionsOnly_WithOptionsInConfig() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
+resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
     ;There is method setParam() - it will be call   
-resources.dic.service.serviceWithOptionsOnly.options.param = paramValue
+resources.dic.services.serviceWithOptionsOnly.options.param = paramValue
     ;There isn't method setAttribKey - it will save in attribs array
-resources.dic.service.serviceWithOptionsOnly.options.attribKey = attribValue
+resources.dic.services.serviceWithOptionsOnly.options.attribKey = attribValue
 INI1
         );
         $service = $this->object->get('serviceWithOptionsOnly');
@@ -268,7 +268,7 @@ INI1
     public function testGetSingletonServiceWithNotSpecifiedParam_NotDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.serviceWithNotSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
+resources.dic.services.serviceWithNotSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
 INI1
         );
         $this->setExpectedException('Zaboy_Dic_Exception');    
@@ -282,8 +282,8 @@ INI1
      * If class of praram is not specifed in __construct, 
      * there is only one way to point the class:
      * <code>
-     * resources.dic.service.ServiceName.params.ParamName = AnotherServiceName
-     * resources.dic.service.AnotherServiceName.class = ClassOfAnotherService
+     * resources.dic.services.ServiceName.params.ParamName = AnotherServiceName
+     * resources.dic.services.AnotherServiceName.class = ClassOfAnotherService
      * </code>
      * So, even if if Sevice with name identical name of param is described - 
      * it isn't enough
@@ -293,7 +293,7 @@ INI1
     public function testGetObjectWithNotSpecifiedParam_ServiceWithSameAsParamNameAreDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.notSpecifiedParam.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.notSpecifiedParam.class = Zaboy_Example_Service_WithoutParams
 INI1
         );
         $this->setExpectedException('Zaboy_Dic_Exception');   
@@ -310,8 +310,8 @@ INI1
      * If class of praram is not specifed in __construct, 
      * there is only one way to point the class:
      * <code>
-     * resources.dic.service.ServiceName.params.ParamName = AnotherServiceName
-     * resources.dic.service.AnotherServiceName.class = ClassOfAnotherService
+     * resources.dic.services.ServiceName.params.ParamName = AnotherServiceName
+     * resources.dic.services.AnotherServiceName.class = ClassOfAnotherService
      * </code>
      * So, even if if Sevice with name identical name of param is described - 
      * it isn't enough
@@ -321,8 +321,8 @@ INI1
     public function testGetSingletonServiceWithNotSpecifiedParam_ServiceWithSameNameAreDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.serviceWithNotSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam   
-resources.dic.service.notSpecifiedParam.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.serviceWithNotSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam   
+resources.dic.services.notSpecifiedParam.class = Zaboy_Example_Service_WithoutParams
 INI1
         );
         $this->setExpectedException('Zaboy_Dic_Exception');   
@@ -343,13 +343,13 @@ INI1
     public function testGetSingletonServiceWithTwoLevelDependencies_FullDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.withoutParams.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.withoutParams.class = Zaboy_Example_Service_WithoutParams
 ;    
-resources.dic.service.specifiedParam.params.specifiedParam = withoutParams    
-resources.dic.service.specifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.specifiedParam.params.specifiedParam = withoutParams    
+resources.dic.services.specifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
 ;
-resources.dic.service.notSpecifiedParam.params.notSpecifiedParam = specifiedParam
-resources.dic.service.notSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
+resources.dic.services.notSpecifiedParam.params.notSpecifiedParam = specifiedParam
+resources.dic.services.notSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
 INI1
         );
         $service = $this->object->get('notSpecifiedParam');
@@ -372,10 +372,10 @@ INI1
     public function testGetSingletonServiceWithTwoLevelDependencies_PartDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.service.srvc_specifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_specifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
 ;
-resources.dic.service.srvc_notSpecifiedParam.params.notSpecifiedParam = srvc_specifiedParam
-resources.dic.service.srvc_notSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
+resources.dic.services.srvc_notSpecifiedParam.params.notSpecifiedParam = srvc_specifiedParam
+resources.dic.services.srvc_notSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
 INI1
         );     
         $service = $this->object->get('srvc_notSpecifiedParam');

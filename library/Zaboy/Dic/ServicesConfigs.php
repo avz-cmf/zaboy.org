@@ -18,11 +18,11 @@
  * DIC have got config form resurce plugin { @see Zaboy_Application_Resource_Dic}<br>
  * Part of application.ini:<br>
  *<pre>
- * dic.service.serviceName.class = ServiceClass
- * dic.service.serviceName.options.key11 = val11
- * dic.service.serviceName.options.key12 = val12
- * dic.service.serviceName.autoload = true
- * dic.service.nextServiceName.class = NextServiceClass 
+ * dic.services.serviceName.class = ServiceClass
+ * dic.services.serviceName.options.key11 = val11
+ * dic.services.serviceName.options.key12 = val12
+ * dic.services.serviceName.autoload = true
+ * dic.services.nextServiceName.class = NextServiceClass 
  * ...
  *</pre>
  * It is in $servicesConfig (see{@see setConfigsServices()}
@@ -53,16 +53,16 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
 {
     const DIC_NAME_RESOURCE = 'dic'; // for $this->_getBootstrap()->getResource('dic')
     
-     const CONFIG_KEY_CLASS = 'class';       //  comfig.ini :  dic.service.serviceName1.class = className1 ... 
-     const CONFIG_KEY_OPTIONS = 'options';   //  comfig.ini :  dic.service.serviceName1.options.key = val  ...
-     const CONFIG_KEY_AUTOLOAD = 'autoload'; //  comfig.ini :  dic.service.serviceName1.autoload = true
+     const CONFIG_KEY_CLASS = 'class';       //  comfig.ini :  dic.services.serviceName1.class = className1 ... 
+     const CONFIG_KEY_OPTIONS = 'options';   //  comfig.ini :  dic.services.serviceName1.options.key = val  ...
+     const CONFIG_KEY_AUTOLOAD = 'autoload'; //  comfig.ini :  dic.services.serviceName1.autoload = true
 
-     const CONFIG_KEY_INSTANCE = 'instance';    //  comfig.ini :  dic.service.serviceName1.instance = singleton
-     const CONFIG_VALUE_SINGLETON = 'singleton'; //  default value for dic.service.serviceName1.instance
+     const CONFIG_KEY_INSTANCE = 'instance';    //  comfig.ini :  dic.services.serviceName1.instance = singleton
+     const CONFIG_VALUE_SINGLETON = 'singleton'; //  default value for dic.services.serviceName1.instance
      const CONFIG_VALUE_CLONE = 'clone';        //  For all request, service will create by clone from etalon   
      const CONFIG_VALUE_RECREATE = 'recreate';     //  For all request, service will create by constuct() call
 
-    const CONFIG_KEY_PARAMS = 'params';    // dic.service.serviceName1.params.firstparam = serviceName
+    const CONFIG_KEY_PARAMS = 'params';    // dic.services.serviceName1.params.firstparam = serviceName
      
     /*
      * array configurations of Services
@@ -174,7 +174,7 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
     }
     
     /**
-     * Class must be load if resources.dic.service.WithAutoload.autoload = true, where 'WithAutoload' is services name
+     * Class must be load if resources.dic.services.WithAutoload.autoload = true, where 'WithAutoload' is services name
      * 
      * @return void
      */

@@ -38,8 +38,8 @@ require_once 'Zaboy/Abstract.php';
  * More about <i>$options</i> - see {@see Zaboy_Abstract::setOptions()}.<br>
  * You can note options for <i>Service</i>  in config.ini <br>
  * <code> 
- * resources.dic.service.NameOfService.options.param1 = value1
- * resources.dic.service.NameOfService.options.param2 = value2
+ * resources.dic.services.NameOfService.options.param1 = value1
+ * resources.dic.services.NameOfService.options.param2 = value2
  * </code>
  * or just in SeviceObjectClass - see $_defaultOptions in {@see Zaboy_Services_Abstract}.<br>
  * 
@@ -53,7 +53,7 @@ require_once 'Zaboy/Abstract.php';
  * You can override type for <i>Service</i> in config.ini <br>
  * For example:<br>
  * <code> 
- * resources.dic.service.NameOfService.class = New_Class_For_NameOfService
+ * resources.dic.services.NameOfService.class = New_Class_For_NameOfService
  * </code>
  * 
  * <b>About optional parametrs</b><br>
@@ -75,7 +75,7 @@ require_once 'Zaboy/Abstract.php';
  * <i>Service</i> which was loaded is containing in  <i>Dic</i> and can't is load again. <br>
  * 
  * <b>Autoload</b><br>
- * Class will be load if resources.dic.service.WithAutoload.autoload = true, where 'WithAutoload' is services name <br>
+ * Class will be load if resources.dic.services.WithAutoload.autoload = true, where 'WithAutoload' is services name <br>
  * 
  * <br><b>What is NameOfService?</b><br>
  * It is string - param for (@see Zaboy_Dic::get()} and (@see Zaboy_Dic::has()}<br>
@@ -94,23 +94,23 @@ class Zaboy_Dic_Abstract extends Zaboy_Abstract
    /**
      * comfig.ini :
      * <pre>   
-     *dic.service.serviceName1.class = ServiceClass1
-     *dic.service.serviceName1.options.key11 = val11
-     *dic.service.serviceName1.options.key12 = val12        
-     *dic.service.serviceName1.autoload = true       //optional, by default is FALSE
+     *dic.services.serviceName1.class = ServiceClass1
+     *dic.services.serviceName1.options.key11 = val11
+     *dic.services.serviceName1.options.key12 = val12        
+     *dic.services.serviceName1.autoload = true       //optional, by default is FALSE
      *;
-     *dic.service.serviceName2.class = ServiceClass2
-     *dic.service.serviceName2.options.key21 = val21
-     *dic.service.serviceName2.options.key22 = val22 
+     *dic.services.serviceName2.class = ServiceClass2
+     *dic.services.serviceName2.options.key21 = val21
+     *dic.services.serviceName2.options.key22 = val22 
      * </pre>   
      * /
-    const CONFIG_KEY_SERVICE = 'service';   //  comfig.ini :  dic.service... =  ...  
+    const CONFIG_KEY_SERVICE = 'service';   //  comfig.ini :  dic.services... =  ...  
      
     /**
      * 
      * comfig.ini :
      * <pre>   
-     * dic.service.serviceName1.class = ServiceClass1
+     * dic.services.serviceName1.class = ServiceClass1
      * </pre>   
      * @see CONFIG_KEY_SERVICE
      * /
@@ -120,8 +120,8 @@ class Zaboy_Dic_Abstract extends Zaboy_Abstract
      * 
      * comfig.ini :
      * <pre>   
-     *dic.service.serviceName1.options.key11 = val11
-     *dic.service.serviceName1.options.key12 = val12    
+     *dic.services.serviceName1.options.key11 = val11
+     *dic.services.serviceName1.options.key12 = val12    
      * </pre>   
      * @see CONFIG_KEY_SERVICE
      * /     
@@ -131,7 +131,7 @@ class Zaboy_Dic_Abstract extends Zaboy_Abstract
      * 
      * comfig.ini :
      * <pre>   
-     *dic.service.serviceName1.autoload = true  //optional, by default is FALSE
+     *dic.services.serviceName1.autoload = true  //optional, by default is FALSE
      * </pre>   
      * @see CONFIG_KEY_SERVICE
      * /
@@ -191,11 +191,11 @@ class Zaboy_Dic_Abstract extends Zaboy_Abstract
       * with key which is defined in {@see CONFIG_KEY_SERVICE}<br>
       * Part of application.ini:<br>
       *<pre>
-      * dic.service.serviceName.class = ServiceClass
-      * dic.service.serviceName.options.key11 = val11
-      * dic.service.serviceName.options.key12 = val12
-      * dic.service.serviceName.autoload = true
-      * dic.service.nextServiceName.class = NextServiceClass 
+      * dic.services.serviceName.class = ServiceClass
+      * dic.services.serviceName.options.key11 = val11
+      * dic.services.serviceName.options.key12 = val12
+      * dic.services.serviceName.autoload = true
+      * dic.services.nextServiceName.class = NextServiceClass 
       * ...
       *</pre>
       * It is in $servicesConfig

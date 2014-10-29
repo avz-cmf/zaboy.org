@@ -71,7 +71,7 @@ INI1;
 <<<'INI1'
 ;INI TEST START
 ;There is method setParam() - it will be call
-resources.dic.service.serviceOptionsInConfig.options.param = paramValueFromGonfig
+resources.dic.services.serviceOptionsInConfig.options.param = paramValueFromGonfig
 pluginPaths.Zaboy_Application_Resource = "Zaboy/Application/Resource"
 ;INI TEST END
 INI1;
