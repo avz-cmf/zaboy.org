@@ -25,14 +25,29 @@
  */
 class Zaboy_Example_Service_OptionalParams extends Zaboy_Service
 {
+    public $_specifiedOptionalParam;
+    
+    public $_notSpecifiedOptionalParam;
+
     /**
      * Service constructor
      * 
      * @return void
      */
-    public function __construct($optionalParam = null, Zaboy_Service $specifiedOptionalParam = null)
+    public function __construct($notSpecifiedOptionalParam = null, Zaboy_Service $specifiedOptionalParam = null)
     {
-        parent::__construct($optionalParam, $specifiedOptionalParam);
+        $this->_specifiedOptionalParam = $specifiedOptionalParam;
+        $this->_notSpecifiedOptionalParam = $notSpecifiedOptionalParam;
     }
 
+    /**
+     * Retrieve a single string
+     *
+     * @param  string 
+     * @return string
+     */
+    public function getString($param)
+    {
+        return 'return ' . $param;
+    }
 }

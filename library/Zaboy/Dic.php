@@ -27,50 +27,41 @@
  */
 class Zaboy_Dic extends Zaboy_Dic_Abstract
 {
-    /**
-     * If dependent  Service ( which is specifed in __construct parameters) is optional
-     * it will be loaded only if it was described  in config.
-     * But if that optional Service is already loaded - it will be used
-     */
-     const IT_IS_OPTIONAL = 'this parameter is optional';    
-    
+  
     /*
      * @var Zaboy_Dic_ServicesConfigs
      */
     private $_servicesConfigs;
 
     /*
-     * Object helps chekc loops in dependencies in the tree of services constructors
-     * 
-     * Zaboy_Dic_LoopChecker
-     */
-    private $_loopChecker;
-    
- 
-    /*
      * Object contane information about loaded Services
      * 
      * Zaboy_Dic_ServicesStore
      */
     private $_servicesStore;   
-    
+  
+    /*
+     * @var Zaboy_Dic_Factory
+     */
+    private $_factory;
+        
     /**
-    * 
-    * @see $_options
-    * param array <b>options</b> - options from application.ini. <br>It is all after  <i>resources.dic.</i>
-    * @return void
-    */  
-    public function __construct
-    ( 
+     * 
+     * @param array $options
+     * @param Zaboy_Dic_ServicesConfigs $servicesConfigs
+     * @param Zaboy_Dic_ServicesStore $servicesStore
+     * @param Zaboy_Dic_Factory $factory
+     */
+    public function __construct( 
         array $options, 
         Zaboy_Dic_ServicesConfigs $servicesConfigs,
         Zaboy_Dic_ServicesStore $servicesStore,
-        Zaboy_Dic_LoopChecker $loopChecker        
+        Zaboy_Dic_Factory $factory        
     ){
         parent::__construct($options);     
         $this->_servicesConfigs = $servicesConfigs;
         $this->_servicesStore = $servicesStore;        
-        $this->_loopChecker = $loopChecker;
+        $this->_factory = $factory;
         
         $this->_servicesConfigs->autoloadServices();
     }  
@@ -85,14 +76,20 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
     public function get($name, $class = null)    
     {
         if ($this->_servicesConfigs->isService($name)) {
-            $serviceObject = $this->getService($name); 
-            return $serviceObject;
+            $instance = $this->getService($name); 
         }else{
-            // $name is not Service name            
-            return $this->_createServiceObject($name, $class);            
+            // $name is not Service name     
+            if (!isset($class)) {
+                require_once 'Zaboy/Dic/Exception.php';
+                throw new Zaboy_Dic_Exception(
+                    'can not resolve class for - ' . $name
+                ); 
+            }                
+            $instance = $this->_factory->createObject($class);            
         }
+        return $instance;
     }
-    
+
     /**
      * instantiate service
      * 
@@ -105,39 +102,32 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
             return null;
         }   
         
-        $initiation = $this->_servicesConfigs->getServiceInitiation($serviceName);
-        switch ($initiation) {
-            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON:
+        $initiationType = $this->_servicesConfigs->getServiceInitiationType($serviceName);
+        switch ($initiationType) {
+            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON :
                 // Is Service with $serviceName already was loaded?
-                $serviceObject = $this->_servicesStore->getService($serviceName);
-                if (!isset($serviceObject)) {
-                    $serviceObject = $this->_createServiceObject($serviceName);
-                    $this->_servicesStore->addService($serviceName, $serviceObject);
+                $serviceInstance = $this->_servicesStore->getSingletonService($serviceName);
+                if (!isset($serviceInstance)) {
+                    $serviceInstance = $this->_factory->createService($serviceName);
+                    $this->_servicesStore->addService($serviceName, $serviceInstance);
                 }
                 break;
             case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_RECREATE :
-                $serviceObject = $this->_createServiceObject($serviceName);
-                $this->_servicesStore->addService($serviceName, $serviceObject);
+                $serviceInstance = $this->_factory->createService($serviceName);
+                $this->_servicesStore->addService($serviceName, $serviceInstance);
                 break;
             case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE :
-                // Is etalon Service for clone already was loaded?
-                $etalonObject = $this->_servicesStore->getEtalon($serviceName);
-                if (!isset($etalonObject)) {
-                    $etalonObject = $this->_createServiceObject($serviceName);
-                    $this->_servicesStore->addEtalon($serviceName, $etalonObject);
-                }
-                $serviceObject = clone $etalonObject;
-                $this->_servicesStore->addService($serviceName, $serviceObject);
+                $serviceInstance = $this->_getServiceClone($serviceName);
                 break;
             default:
                 require_once 'Zaboy/Dic/Exception.php';
                 throw new Zaboy_Dic_Exception(
-                    'unknow initiation type - ' . $initiation
+                    'unknow initiation type - ' . $initiationType
                 ); 
         }
-      
-        return $serviceObject;
-    }    
+        
+        return $serviceInstance;
+    }   
     
       /**
        * Return Service Name for Service Object
@@ -156,6 +146,19 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
         return null;       
      }   
 
+    private function _getServiceClone($serviceName) 
+    {
+        // Is etalon Service for clone already was created?
+        $etalonServiceInstance = $this->_servicesStore->getEtalon($serviceName);
+        if (!isset($etalonServiceInstance)) {
+            $etalonServiceInstance = $this->_factory->createService($serviceName) ;
+            $this->_servicesStore->addEtalon($serviceName, $etalonServiceInstance);
+        }
+        $serviceInstance = clone $etalonServiceInstance;
+        $this->_servicesStore->addService($serviceName, $serviceInstance);
+        return $serviceInstance;
+    }
+    
     /**
      * Class in config is more important then class in __constract
      * 
@@ -168,84 +171,5 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
      * @param string Sevice Class. Use if Service isn't load and haven't config. Try don't use it.
      * @return object
      */    
-    public function _get($serviceName,$serviceClassFromParam = null)
-    {
-    }
-
-    /**
-     * @param string $objectName
-     * @param string $objectClass
-     * @return object
-     */
-    protected function _createServiceObject($objectName, $objectClass = null) 
-    {
-        if ($this->_servicesConfigs->isService($objectName)) {
-            $objectClass = $this->_servicesConfigs->getServiceClass($objectName);
-        }else{
-            if (!isset($objectClass)) {
-                require_once 'Zaboy/Dic/Exception.php';
-                throw new Zaboy_Dic_Exception(
-                    'can not resolve class for - ' . $objectName
-                ); 
-            }    
-        }
-       //protection from loop of calls
-       $this->_loopChecker->loadingStart($objectName);
-       $reflectionObject = new ReflectionClass($objectClass);
-       $callParamsArray = $this->_getConstructParamsValues($objectName, $reflectionObject);
-       $objectInstance = $reflectionObject->newInstanceArgs($callParamsArray); // it's like new class($callParamsArray[1], $callParamsArray[2]...)
-       $this->_loopChecker->loadingFinished($objectName);
-
-       return $objectInstance;
-    }
-
-     /**
-     * @param string 
-     * @param /ReflectionObject
-     * @return array  {@see ReflectionClass::newInstanceArgs()}
-     */
-    protected function _getConstructParamsValues($serviceName, $reflectionObject)
-    {
-        //Get params for $className::__construct
-        $reflectionConstruct = $reflectionObject->getMethod('__construct');
-        $reflectionParams = $reflectionConstruct->getParameters();
-        $constructParams = array();
-        //extract option (if exist) from array $reflectionParams
-        if (isset($reflectionParams[0])) {
-            $mayBeOptionsParam = $reflectionParams[0];
-            /** @var $mayBeOptionsParam \ReflectionParameter  */
-            $mayBeOptionsParamName = $mayBeOptionsParam->getName();
-            if ($mayBeOptionsParamName === 'options') {
-                $optionsFromConfig = $this->_servicesConfigs->getServiceOptions($serviceName);
-                $constructParams[] = $optionsFromConfig;
-                array_shift($reflectionParams);               
-            }           
-        }
-        foreach ($reflectionParams as $reflectionParam) {
-            /** @var $reflectionParam \ReflectionParameter  */
-            if ($reflectionParam->isOptional()) {
-                // optional params don't load
-                $serviceObject = null;
-            }else{
-                $constructParamName = $reflectionParam->getName();
-                $serviceForConstructParam = $this->_servicesConfigs
-                    ->getServiceForConstructParam($serviceName, $constructParamName);
-                if (isset($serviceForConstructParam)) {
-                    $serviceObject = $this->getService($serviceForConstructParam);
-                }else{
-                    $constructParamClassObject = $reflectionParam->getClass();
-                    if (isset($constructParamClassObject)) {
-                        $constructParamClass = $constructParamClassObject->getName();
-                    }else{
-                        $constructParamClass = null;
-                    }
-                }
-                
-                $serviceObject = $this->get($constructParamName, $constructParamClass);                
-            }
-            $constructParams[] = $serviceObject;
-        }
-        return $constructParams;
-    } 
 
 }

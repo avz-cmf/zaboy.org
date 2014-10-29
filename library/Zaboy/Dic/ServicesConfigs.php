@@ -129,7 +129,7 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
       * @param string
       * @return string
       */    
-    public function getServiceInitiation($serviceName)
+    public function getServiceInitiationType($serviceName)
     {
         if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_INSTANCE])) {
             return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_INSTANCE];

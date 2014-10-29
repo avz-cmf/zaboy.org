@@ -111,14 +111,5 @@ class Zaboy_Service extends Zaboy_Abstract
         }
 
      } 
-
-      /**
-      * @return Zaboy_Dic
-      */
-     protected function  _getDic() 
-     {
-        $bootstrap = $this->_getBootstrap();
-        $dic = $bootstrap->getResource('dic');     
-        return $dic;
-     }       
+    
 }

@@ -57,22 +57,17 @@ class Zaboy_Dic_ServicesStore extends Zaboy_Abstract
       */    
     public function addService($serviceName, $serviceObject)
     {
-        $initiation = $this->_servicesConfigs->getServiceInitiation($serviceName);
-        switch ($initiation) {
-            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON:
-                $this->_runningServices[$serviceName] = $serviceObject;
-                break;
-            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_RECREATE :
+        $initiationType = $this->_servicesConfigs->getServiceInitiationType($serviceName);
+        if ($initiationType === Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON
+                || $initiationType === Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_RECREATE
+                || $initiationType === Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE 
+        ) {
                 $this->_runningServices[$serviceName][] = $serviceObject;
-                break;
-            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE :
-                $this->_runningServices[$serviceName][] = $serviceObject;
-                break;
-            default:
+        }else{                  
                 require_once 'Zaboy/Dic/Exception.php';
                 throw new Zaboy_Dic_Exception(
-                    'unknow initiation type - ' . $initiation
-                ); 
+                    'unknow initiation type - ' . $initiationType
+            );
         }        
     }
 
@@ -87,10 +82,10 @@ class Zaboy_Dic_ServicesStore extends Zaboy_Abstract
     /**
      * @return object|array
      */
-    public function getService($serviceName)
+    public function getSingletonService($serviceName)
     {
         if (isset($this->_runningServices[$serviceName])) {
-            return $this->_runningServices[$serviceName];
+            return $this->_runningServices[$serviceName][0];
         }else{
             return null;
         }
@@ -108,5 +103,17 @@ class Zaboy_Dic_ServicesStore extends Zaboy_Abstract
         }else{
             return null;
         }
+    }
+
+    public function getServiceName($serviceInstance)
+    {
+        foreach ($this->_runningServices as $serviceName => $runningServices) {
+            foreach ($runningServices as $runningService) {
+                if($serviceInstance === $runningService){
+                    return $serviceName;
+                }
+            }
+        }
+        return null;
     }    
 }

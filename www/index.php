@@ -3,7 +3,7 @@
 include_once '../tests/bootstrap.php';
 include_once '../tests/library/Zaboy/DicTest.php';
 $test = new Zaboy_DicTest();
-$test->testGetSingletonServiceWithOptionsOnly_EmptyArrayOptionsInConfig();
+$test->testGetSingletonServiceWithTwoLevelDependencies_PartDescribed();
 return;        
 */
 

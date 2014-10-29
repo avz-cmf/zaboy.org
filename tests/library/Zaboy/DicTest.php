@@ -252,7 +252,7 @@ INI1
     /**
      * @covers Zaboy_Dic::get
      */
-    public function testGetObjectWitNotSpecifiedParam_() {
+    public function testGetObjectWithNotSpecifiedParam_() {
         $this->loadDic($this->_minimalAadditionalConfig);
         $this->setExpectedException('Zaboy_Dic_Exception');    
         $service = $this
@@ -265,7 +265,7 @@ INI1
     /**
      * @covers Zaboy_Dic::get
      */
-    public function testGetSingletonServiceWitNotSpecifiedParam_NotDescribedAndNotLoadedBefore() {
+    public function testGetSingletonServiceWithNotSpecifiedParam_NotDescribed() {
         $this->loadDic(
 <<<'INI1'
 resources.dic.service.serviceWithNotSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
@@ -277,40 +277,113 @@ INI1
     }        
    
     /**
+     * Object with not specified param, but service with same name exist
+     * 
+     * If class of praram is not specifed in __construct, 
+     * there is only one way to point the class:
+     * <code>
+     * resources.dic.service.ServiceName.params.ParamName = AnotherServiceName
+     * resources.dic.service.AnotherServiceName.class = ClassOfAnotherService
+     * </code>
+     * So, even if if Sevice with name identical name of param is described - 
+     * it isn't enough
+     * 
      * @covers Zaboy_Dic::get
      */
-    public function testGetObjectWitNotSpecifiedParam_ServiceWithSameNameAreDescribed() {
+    public function testGetObjectWithNotSpecifiedParam_ServiceWithSameAsParamNameAreDescribed() {
         $this->loadDic(
 <<<'INI1'
 resources.dic.service.notSpecifiedParam.class = Zaboy_Example_Service_WithoutParams
 INI1
         );
+        $this->setExpectedException('Zaboy_Dic_Exception');   
         $service = $this
                 ->object
                 ->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Service_NotSpecifiedParam');
         /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
-        $this->assertEquals(
-            'Zaboy_Example_Service_WithoutParams',
-            get_class($service->_notSpecifiedParam)
-        );   
     }
     
-     /**
+   
+    /**
+     * Service with not specified param, but service with same name exist
+     * 
+     * If class of praram is not specifed in __construct, 
+     * there is only one way to point the class:
+     * <code>
+     * resources.dic.service.ServiceName.params.ParamName = AnotherServiceName
+     * resources.dic.service.AnotherServiceName.class = ClassOfAnotherService
+     * </code>
+     * So, even if if Sevice with name identical name of param is described - 
+     * it isn't enough
+     * 
      * @covers Zaboy_Dic::get
      */
-    public function testGetSingletonServiceWitNotSpecifiedParam_ServiceWithSameNameAreDescribed() {
+    public function testGetSingletonServiceWithNotSpecifiedParam_ServiceWithSameNameAreDescribed() {
         $this->loadDic(
 <<<'INI1'
 resources.dic.service.serviceWithNotSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam   
 resources.dic.service.notSpecifiedParam.class = Zaboy_Example_Service_WithoutParams
 INI1
         );
-        $service = $this->object->get('serviceWithNotSpecifiedParam');
+        $this->setExpectedException('Zaboy_Dic_Exception');   
+        $service = $this
+                ->object
+                ->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Service_NotSpecifiedParam');
+        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+    } 
+   
+    /**
+     * Zaboy_Example_Service_WithoutParams::__construct() 
+     * Zaboy_Example_Service_WithSpecifiedParam::__construct(Zaboy_Example_Service_WithoutParams $specifiedParam) 
+     * Zaboy_Example_Service_NotSpecifiedParam::__construct($notSpecifiedParam)
+     * 
+     * @covers Zaboy_Dic::get
+     * 
+     */
+    public function testGetSingletonServiceWithTwoLevelDependencies_FullDescribed() {
+        $this->loadDic(
+<<<'INI1'
+resources.dic.service.withoutParams.class = Zaboy_Example_Service_WithoutParams
+;    
+resources.dic.service.specifiedParam.params.specifiedParam = withoutParams    
+resources.dic.service.specifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
+;
+resources.dic.service.notSpecifiedParam.params.notSpecifiedParam = specifiedParam
+resources.dic.service.notSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
+INI1
+        );
+        $service = $this->object->get('notSpecifiedParam');
         /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
         $this->assertEquals(
             'Zaboy_Example_Service_WithoutParams',
-            get_class($service->_notSpecifiedParam)
+            get_class($service->_notSpecifiedParam->_specifiedParam)
         );   
-    }    
+    }
     
+   
+    /**
+     * Zaboy_Example_Service_WithoutParams::__construct() 
+     * Zaboy_Example_Service_WithSpecifiedParam::__construct(Zaboy_Example_Service_WithoutParams $specifiedParam) 
+     * Zaboy_Example_Service_NotSpecifiedParam::__construct($notSpecifiedParam)     * 
+     * 
+     * @covers Zaboy_Dic::get
+     * 
+     */
+    public function testGetSingletonServiceWithTwoLevelDependencies_PartDescribed() {
+        $this->loadDic(
+<<<'INI1'
+resources.dic.service.srvc_specifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
+;
+resources.dic.service.srvc_notSpecifiedParam.params.notSpecifiedParam = srvc_specifiedParam
+resources.dic.service.srvc_notSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
+INI1
+        );     
+        $service = $this->object->get('srvc_notSpecifiedParam');
+        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+        $this->assertEquals(
+            'Zaboy_Example_Service_WithoutParams',
+            get_class($service->_notSpecifiedParam->_specifiedParam)
+        );    
+    } 
+
 }
