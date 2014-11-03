@@ -383,15 +383,51 @@ INI1
             'Zaboy_Example_Service_WithoutParams',
             get_class($service->_notSpecifiedParam->getSpecifiedParam())
         );    
-    } 
-   
+    }
+    
     /**
-     * Zaboy_Example_Service_WithoutParams::__construct() 
-     * Zaboy_Example_Service_WithSpecifiedParam::__construct(Zaboy_Example_Service_WithoutParams $specifiedParam) 
-     * Zaboy_Example_Service_NotSpecifiedParam::__construct($notSpecifiedParam)     * 
-     * 
      * @covers Zaboy_Dic::get
-     * 
+     */
+    public function testGetSingletonServices_isSingletonDefaultMethodOfLoad() {
+        $this->loadDic(
+<<<'INI1'
+resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Service_WithSpecifiedParam
+  ; resources.dic.services.srvc_WithSpecifiedParam_clone.instance = singleton
+INI1
+        );     
+        $service1 = $this->object->get('srvc_WithSpecifiedParam_clone');
+        $service2 = $this->object->get('srvc_WithSpecifiedParam_clone');
+        /* @var $service1 Zaboy_Example_Service_WithoutParams */
+
+        $this->assertTrue(
+            $service1 === $service2
+        );
+    }    
+    
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetSingletonServices() {
+        $this->loadDic(
+<<<'INI1'
+resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_WithSpecifiedParam_clone.instance = singleton
+INI1
+        );     
+        $service1 = $this->object->get('srvc_WithSpecifiedParam_clone');
+        $service2 = $this->object->get('srvc_WithSpecifiedParam_clone');
+        /* @var $service1 Zaboy_Example_Service_WithSpecifiedParam */
+
+        $this->assertTrue(
+            $service1 === $service2
+        );
+        $this->assertTrue(
+            $service1->getSpecifiedParam() === $service2->getSpecifiedParam()
+        );          
+    }
+    
+    /**
+     * @covers Zaboy_Dic::get
      */
     public function testGetClonedServices() {
         $this->loadDic(
@@ -402,7 +438,7 @@ INI1
         );     
         $service1 = $this->object->get('srvc_WithSpecifiedParam_clone');
         $service2 = $this->object->get('srvc_WithSpecifiedParam_clone');
-        /* @var $service1 Zaboy_Example_Service_WithoutParams */
+        /* @var $service1 Zaboy_Example_Service_WithSpecifiedParam */
         
         $this->assertTrue(
             $service1 == $service2
@@ -418,12 +454,7 @@ INI1
     } 
    
     /**
-     * Zaboy_Example_Service_WithoutParams::__construct() 
-     * Zaboy_Example_Service_WithSpecifiedParam::__construct(Zaboy_Example_Service_WithoutParams $specifiedParam) 
-     * Zaboy_Example_Service_NotSpecifiedParam::__construct($notSpecifiedParam)     * 
-     * 
      * @covers Zaboy_Dic::get
-     * 
      */
     public function testGetRecreatedServices() {
         $this->loadDic(
@@ -434,7 +465,7 @@ INI1
         );     
         $service1 = $this->object->get('srvc_WithSpecifiedParam_clone');
         $service2 = $this->object->get('srvc_WithSpecifiedParam_clone');
-        /* @var $service1 Zaboy_Example_Service_WithoutParams */
+        /* @var $service1 Zaboy_Example_Service_WithSpecifiedParam */
         
         $this->assertTrue(
             $service1 == $service2
@@ -489,8 +520,21 @@ INI1
         );           
     }    
 
-    
-    //types of loading
-    //all public methods
-
+    /**
+     * @covers Zaboy_Dic::getRunningServiceName()
+     */
+    public function testGetRunningServiceName() {
+        $this->loadDic(
+<<<'INI1'
+resources.dic.services.srvc_WithSpecifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
+INI1
+        );     
+        $service1 = $this->object->get('srvc_WithSpecifiedParam');
+        /* @var $service1 Zaboy_Example_Service_WithSpecifiedParam */
+        
+        $this->assertEquals(
+            'srvc_WithSpecifiedParam',
+            $this->object->getRunningServiceName($service1)
+        );
+    }    
 }

@@ -103,7 +103,7 @@ class Zaboy_Dic extends Zaboy_Abstract
     public function get($name, $class = null)    
     {
         if ($this->_servicesConfigs->isService($name)) {
-            $instance = $this->getService($name); 
+            $instance = $this->_getService($name); 
         }else{
             // $name is not Service name     
             if (!isset($class)) {
@@ -123,7 +123,7 @@ class Zaboy_Dic extends Zaboy_Abstract
      * @param type $serviceName
      * @return null
      */
-    public function getService($serviceName)    
+    protected function _getService($serviceName)    
     {
         if (!$this->_servicesConfigs->isService($serviceName)) {
             return null;
@@ -164,9 +164,8 @@ class Zaboy_Dic extends Zaboy_Abstract
      */
     public function getRunningServiceName($serviceInstance) 
     {
-        $this->_servicesStore->getRunningServiceName($serviceInstance);
+        return $this->_servicesStore->getRunningServiceName($serviceInstance);
     }
-    
      
     /**
      * Return Service Instance(s) by Name of Service. Method return ARRAY!
@@ -219,7 +218,7 @@ class Zaboy_Dic extends Zaboy_Abstract
      * 
      * @return void
      */
-    private function _autoloadServices() {
+    protected function _autoloadServices() {
         $servicesNames = $this->_servicesConfigs->getServicesNames();
         foreach ($servicesNames as $serviceName ) {
             if (  $this->_servicesConfigs->getServiceAutoload($serviceName)) {
