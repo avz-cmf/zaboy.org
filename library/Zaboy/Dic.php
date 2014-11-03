@@ -144,7 +144,7 @@ class Zaboy_Dic extends Zaboy_Abstract
                 $this->_servicesStore->addService($serviceName, $serviceInstance);
                 break;
             case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE :
-                $serviceInstance = $this->_factory->_getServiceClone($serviceName);
+                $serviceInstance = $this->_factory->getServiceClone($serviceName);
                 break;
             default:
                 require_once 'Zaboy/Dic/Exception.php';

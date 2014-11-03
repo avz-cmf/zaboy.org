@@ -31,6 +31,13 @@ class Zaboy_Dic_Factory
     private $_servicesConfigs;
 
     /*
+     * Object contane information about loaded Services
+     * 
+     * Zaboy_Dic_ServicesStore
+     */
+    private $_servicesStore;   
+
+    /*
      * Object helps check loops in dependencies in the tree of services constructors
      * 
      * @var Zaboy_Dic_LoopChecker
@@ -46,9 +53,11 @@ class Zaboy_Dic_Factory
      */
     public function __construct( 
         Zaboy_Dic_ServicesConfigs $servicesConfigs,
+        Zaboy_Dic_ServicesStore $servicesStore,
         Zaboy_Dic_LoopChecker $loopChecker        
     ){
         $this->_servicesConfigs = $servicesConfigs;
+        $this->_servicesStore = $servicesStore;
         $this->_loopChecker = $loopChecker;
     }  
 
@@ -211,7 +220,7 @@ class Zaboy_Dic_Factory
      * @param string $serviceName
      * @return object
      */
-    private function _getServiceClone($serviceName) 
+    public function getServiceClone($serviceName) 
     {
         // Is etalon Service for clone already was created?
         $etalonServiceInstance = $this->_servicesStore->getEtalon($serviceName);

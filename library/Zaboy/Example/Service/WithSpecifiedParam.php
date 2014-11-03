@@ -20,7 +20,7 @@
 class Zaboy_Example_Service_WithSpecifiedParam
 {
     
-    public $_specifiedParam;
+    protected $_specifiedParam;
     
     /**
     * 
@@ -30,7 +30,17 @@ class Zaboy_Example_Service_WithSpecifiedParam
     {   
         $this->_specifiedParam = $specifiedParam;
     }
-
+    
+    /**
+     * Retrieve Zaboy_Example_Service_WithoutParams instance
+     *
+     * @return object
+     */
+    public function getSpecifiedParam()
+    {
+        return $this->_specifiedParam;
+    }
+    
     /**
      * Retrieve a single string
      *
