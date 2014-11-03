@@ -385,5 +385,48 @@ INI1
             get_class($service->_notSpecifiedParam->_specifiedParam)
         );    
     } 
+    
+    
+    /**
+     * Zaboy_Example_Service_WithoutParams::__construct() 
+     * Zaboy_Example_Service_WithSpecifiedParam::__construct(Zaboy_Example_Service_WithoutParams $specifiedParam) 
+     * Zaboy_Example_Service_NotSpecifiedParam::__construct($notSpecifiedParam)     * 
+     * 
+     * @covers Zaboy_Dic::get
+     * 
+     */
+    public function test_autoloadServices_loadSigletons() {
+        $this->loadDic(
+<<<'INI1'
+resources.dic.services.srvc_specifiedParam_Autoload.autoload = true
+resources.dic.services.srvc_specifiedParam_Autoload.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_withoutParam_Autoload.autoload = true
+resources.dic.services.srvc_withoutParam_Autoload.class = Zaboy_Example_Service_WithoutParams
+;
+resources.dic.services.srvc_withoutParam_notAutoload.autoload = false
+resources.dic.services.srvc_withoutParam_notAutoload.class = Zaboy_Example_Service_WithoutParams
+  ;  resources.dic.services.srvc_specifiedParam_notAutoload.autoload = false
+resources.dic.services.srvc_specifiedParam_notAutoload.class = Zaboy_Example_Service_WithSpecifiedParam
+INI1
+        );     
+        $specifiedParamA = $this->object->getRunningServiceInstance("srvc_specifiedParam_Autoload");
+        $withoutParamA = $this->object->getRunningServiceInstance("srvc_withoutParam_Autoload");        
+        $this->assertEquals(
+            true,
+            isset($specifiedParamA) && isset($withoutParamA)
+        ); 
+        
+        $specifiedParamNA = $this->object->getRunningServiceInstance("srvc_withoutParam_notAutoload");
+        $withoutParamNA = $this->object->getRunningServiceInstance("srvc_specifiedParam_notAutoload");
+        $this->assertEquals(
+            false,
+            isset($specifiedParamNA) || isset($withoutParamNA)               
+            
+        );           
+    }    
+
+    
+    //types of loading
+    //all public methods
 
 }

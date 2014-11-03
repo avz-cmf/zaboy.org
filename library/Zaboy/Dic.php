@@ -8,15 +8,41 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-  require_once 'Zaboy/Dic/Abstract.php';
+  require_once 'Zaboy/Abstract.php';
   require_once 'Zaboy/Dic/ServicesConfigs.php';
   require_once 'Zaboy/Dic/LoopChecker.php';
   require_once 'Zaboy/Dic/ServicesStore.php';
   
 /**
- * Zaboy_Dic
+ * <b>Zaboy_Dic</b><br>
  * 
- * {@inheritdoc}
+ * Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is 
+ * loading as resurce plugin of Bootstrap { @see Zaboy_Application_Resource_Dic}. 
+ * 
+ * Add in <i>application.ini</i> for load { @see Zaboy_Dic}<br>
+ * <code> 
+ * resources.dic[] = 
+ * </code>
+ * You can change class of {@see Zaboy_Dic} for load:
+ * <code> 
+ * resources.dic.class = My_Dic_Class 
+ * </code>
+ * For more information about configuration see {@see Zaboy_Dic_ServicesConfigs} 
+ * and {@see Zaboy_Application_Resource_Dic}<br>  * 
+ * 
+ * You can get <i>Dic</i> as resource: <br>
+ * <code> 
+ *   $dic = $bootstrap->getResource('dic');
+ * </code>
+ * <br>
+ * 
+ * <b>Objects and Services for DIC</b><br>
+ * Zaboy_Dic can load any object which corresponds a some requirements.<br>
+ * Zaboy_Dic also can contane that objectif it is described in Services config 
+ * ( in most cases it is application.ini).
+ * In that case it is Service. <br>
+ * For more information about Objects, Services and requirements for them, 
+ * see {@see Zaboy_Service}
  * 
  * @see Zaboy_Dic_Interface
  * @category   Dic
@@ -25,7 +51,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Dic extends Zaboy_Dic_Abstract
+class Zaboy_Dic extends Zaboy_Abstract
 {
   
     /*
@@ -139,6 +165,47 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
     public function getRunningServiceName($serviceInstance) 
     {
         $this->_servicesStore->getRunningServiceName($serviceInstance);
+    }
+    
+     
+    /**
+     * Return Service Instance(s) by Name of Service. Method return ARRAY!
+     * 
+     * If Service Name isn't specified all running services will be returned
+     * Format of returnet data (if $serviceName = null):
+     * <code>
+     * [
+     *  singletonServiceName1 = [ 0 => instanceSingletonService1]
+     *  singletonServiceName2 = [ 0 => instanceSingletonService2]
+     *  clonedServiceName1 = 
+     *      [   
+     *          0 => instanceClonedService11
+     *          1 => instanceClonedService12
+     *          ...
+     *      ]
+     * ]
+     * </code>
+     * if $serviceName = singletonServiceName1 :
+     * <code>
+     * [
+     *  singletonServiceName1 = [ 0 => instanceSingletonService1]
+     * </code>
+     * 
+     * @param  string $serviceName  Service Name
+     * @return array|null Instance(s)
+     */
+    public function getRunningServiceInstance($serviceName = null) 
+    {
+        $services = $this->_servicesStore->getRunningServices();
+        if (is_null($serviceName)) {
+            return $services;
+        }else{
+            if (isset($services[$serviceName])) {
+                return $services[$serviceName];
+            }else{
+                return null;
+            }
+        }
     }   
 
     /**
