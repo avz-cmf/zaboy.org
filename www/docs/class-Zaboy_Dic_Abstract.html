@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_Abstract | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1201522576"></script>
+	<script type="text/javascript" src="elementlist.js?503291574"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -24,6 +24,10 @@
 				<li class="active"><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
+						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
 						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
@@ -44,6 +48,7 @@
 				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
 				<li class="active"><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
 				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
+				<li><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></li>
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></li>
@@ -83,6 +88,9 @@
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
 			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -94,29 +102,34 @@
 
 	<div class="description">
 	
-<p>Zaboy_Dic_Abstract</p>
+<p>The base class for <code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code></p>
 
-<p><b>Zaboy_Dic</b></p>
+<p><b>Zaboy_Dic</b><br />
+</p>
 
 <p>Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is
 loading as resurce plugin of Bootstrap { @see
 Zaboy_Application_Resource_Dic}.</p>
 
-<p>Add in <i>application.ini</i> for load<br />
+<p>Add in <i>application.ini</i> for load { @see Zaboy_Dic}<br />
 </p>
 
 <pre>
 resources.dic[] =
 </pre>
 
-<p>You can change class of DIC for load:</p>
+<p>You can change class of <code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code> for load:</p>
 
 <pre>
 resources.dic.<span
 class="php-keyword1">class</span> = My_Dic_Class
 </pre>
 
-<p>You can get <i>Dic</i>:<br />
+<p>For more information about configuration see <code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code>
+and <code><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></code><br />
+*</p>
+
+<p>You can get <i>Dic</i> as resource:<br />
 </p>
 
 <pre>
@@ -125,91 +138,15 @@ class="php-var">$bootstrap</span>-&gt;getResource(<span
 class="php-quote">'dic'</span>);
 </pre>
 
-<p><br />
-It can load and contane any object which implements Zaboy_Dic_Service_Interface. That object we call <i>Service</i>. Specific of
-<i>Service</i> is parametrs of it's __consruct.<br />
-The <b>$options</b> ( if it exist as parametr for __construct ) have to first
-parametr. More about <i>__consruct()</i> - see Zaboy_Services_Abstract::__consruct().<br />
-More about <i>$options</i> - see <code><a href="class-Zaboy_Abstract.html#_setOptions">Zaboy_Abstract::setOptions()</a></code>.<br />
-You can note options for <i>Service</i> in config.ini<br />
-</p>
+<div><br />
+</div>
 
-<pre>
-resources.dic.service.NameOfService.options.param1 = value1
-resources.dic.service.NameOfService.options.param2 = value2
-</pre>
-
-<p>or just in SeviceObjectClass - see $_defaultOptions in Zaboy_Services_Abstract.<br />
-</p>
-
-<p><b>All other parametrs must be Services!</b>. That parametr we call
-<i>Service Param.</i><br />
-<i>Service Param</i> in declaration of __construct must has type.<br />
-</p>
-
-<pre>
-  <span class="php-keyword1">public</span> <span
-class="php-keyword1">function</span> __construct(<span
-class="php-var">$options</span>, Test_Service_First <span
-class="php-var">$testFirst</span>, Test_Service_Next <span
-class="php-var">$testNext</span>)
-{ ...}
-</pre>
-
-<p><br />
-You can override type for <i>Service</i> in config.ini<br />
-For example:<br />
-</p>
-
-<pre>
-resources.dic.service.NameOfService.<span
-class="php-keyword1">class</span> = New_Class_For_NameOfService
-</pre>
-
-<p><b>About optional parametrs</b><br />
-Optional parametrs are transmitted to _consruct if they already was loaded or if
-they is discribed in config.ini</p>
-
-<p><b>Aliases</b><br />
-You can take 2 or more instaces of <i>Service</i>. Use aliases.</p>
-
-<pre>
-  <span class="php-keyword1">public</span> <span
-class="php-keyword1">function</span> __construct(Service_One_Type <span
-class="php-var">$firstExemplar</span>, Service_One_Type <span
-class="php-var">$secondExemplar</span>)
-{ ...}
-</pre>
-
-<p><br />
-You can load <i>Service</i> () see <code><a href="class-Zaboy_Dic.html#_get">Zaboy_Dic::get()</a></code>:</p>
-
-<pre>
-<span class="php-var">$dic</span>-&gt;get(<span
-class="php-quote">'NameOrAlias'</span>); <span
-class="php-comment">//if class isn't noted in cofig.ini - exception</span>
-<span
-class="php-comment">//or</span>
-<span class="php-var">$dic</span>-&gt;get(<span
-class="php-quote">'NameOrAlias'</span>, <span
-class="php-quote">'Service_Class'</span>); <span
-class="php-comment">//if class is noted in cofig.ini, parameter  'Service_Class' ignore.</span>
-</pre>
-
-<p><i>Service</i> which was loaded is containing in <i>Dic</i> and can't is load
-again.<br />
-</p>
-
-<p><b>Autoload</b><br />
-Class will be load if resources.dic.service.WithAutoload.autoload = true, where
-'WithAutoload' is services name<br />
-</p>
-
-<p><br />
-<b>What is NameOfService?</b><br />
-It is string - param for (@see Zaboy_Dic::get()} and (@see Zaboy_Dic::has()}<br
-/>
-See more about it : (@see Zaboy_Dic_Interface)</p>
+<p><b>Objects and Services for DIC</b><br />
+Zaboy_Dic can load any object which corresponds a some requirements.<br />
+Zaboy_Dic also can contane that objectif it is described in Services config ( in
+most cases it is application.ini). In that case it is Service.<br />
+For more information about Objects, Services and requirements for them, see
+<code><a href="class-Zaboy_Service.html">Zaboy_Service</a></code></p>
 
 	</div>
 
@@ -255,7 +192,7 @@ See more about it : (@see Zaboy_Dic_Interface)</p>
 				<code><code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code></code><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc. @<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_Abstract.html#13-231" title="Go to source code">library/Zaboy/Dic/Abstract.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_Abstract.html#13-90" title="Go to source code">library/Zaboy/Dic/Abstract.php</a><br />
 	</div>
 
 
@@ -273,7 +210,7 @@ See more about it : (@see Zaboy_Dic_Interface)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get">#</a>
-		<code><a href="source-class-Zaboy_Dic_Abstract.html#169-185" title="Go to source code">get</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClass</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Abstract.html#57-73" title="Go to source code">get</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$serviceClass</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -336,6 +273,8 @@ href="http://stackoverflow.com/questions/1935771/how-to-use-call-user-func-array
 	<tr>
 		<td><code>
 			<a href="class-Zaboy_Abstract.html#___construct">__construct()</a>, 
+			<a href="class-Zaboy_Abstract.html#__getBootstrap">_getBootstrap()</a>, 
+			<a href="class-Zaboy_Abstract.html#__getDic">_getDic()</a>, 
 			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 

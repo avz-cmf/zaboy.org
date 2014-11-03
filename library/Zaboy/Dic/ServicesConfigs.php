@@ -12,20 +12,22 @@
   
 /**
  * Zaboy_Dic_ServicesConfigs
- * <b>Services Config/<b><br>
+ * 
+ * <b>Services Config</b><br>
  * Usialy Services Config is part of DIC config in application.ini with key 
- * which is defined in {@see Zaboy_Dic::CONFIG_KEY_SERVICE}<br> 
- * DIC have got config form resurce plugin { @see Zaboy_Application_Resource_Dic}<br>
- * Part of application.ini:<br>
+ * which is defined in {@see Zaboy_Application_Resource_Dic::CONFIG_KEY_SERVICE}<br> 
+ * DIC have got config form resurce plugin {@see Zaboy_Application_Resource_Dic}<br>
+ * This is part of application.ini:<br>
  *<pre>
  * dic.services.serviceName.class = ServiceClass
  * dic.services.serviceName.options.key11 = val11
  * dic.services.serviceName.options.key12 = val12
  * dic.services.serviceName.autoload = true
+ * dic.services.serviceName.params.secondParam = OtherServiceName 
  * dic.services.nextServiceName.class = NextServiceClass 
  * ...
  *</pre>
- * It is in $servicesConfig (see{@see setConfigsServices()}
+ * It is in $servicesConfig (see{@see setConfigsServices()})
  *<code>
  * array(
  *     'serviceName' = array(
@@ -35,6 +37,9 @@
  *             'key2' = val2
  *         (
  *         'autoload' = true
+ *         'params' = array(
+ *             'secondParam' = 'OtherServiceName' 
+ *         ) 
  *     )
  * )
  * array(
@@ -51,34 +56,69 @@
  */
 class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
 {
-    const DIC_NAME_RESOURCE = 'dic'; // for $this->_getBootstrap()->getResource('dic')
+    /**
+     * for $this->_getBootstrap()->getResource('dic')
+     * comfig.ini :  dic.services...
+     */
+    const DIC_NAME_RESOURCE = 'dic';
     
-     const CONFIG_KEY_CLASS = 'class';       //  comfig.ini :  dic.services.serviceName1.class = className1 ... 
-     const CONFIG_KEY_OPTIONS = 'options';   //  comfig.ini :  dic.services.serviceName1.options.key = val  ...
-     const CONFIG_KEY_AUTOLOAD = 'autoload'; //  comfig.ini :  dic.services.serviceName1.autoload = true
+    /**
+     * comfig.ini :  dic.services.serviceName1.class = className1 ... 
+     */
+    const CONFIG_KEY_CLASS = 'class';
+   
+    /**
+     * comfig.ini :  dic.services.serviceName1.instance = singleton
+     */
+    const CONFIG_KEY_INSTANCE = 'instance';
+    
+    /**
+     * default value for dic.services.serviceName1.instance
+     * comfig.ini :  dic.services.serviceName1.instance = singleton
+     */
+    const CONFIG_VALUE_SINGLETON = 'singleton';
+    
+    /**
+     * For all request, service will create by clone from etalon
+     * comfig.ini :  dic.services.serviceName1.instance = clone
+     */
+    const CONFIG_VALUE_CLONE = 'clone';
+    
+    /**
+     * For all request, service will create by constuct() call
+     * comfig.ini :  dic.services.serviceName1.instance = recreate
+     */
+    const CONFIG_VALUE_RECREATE = 'recreate';
+    
+    /**
+     * comfig.ini :  dic.services.serviceName1.options.key = val  ...
+     */
+    const CONFIG_KEY_OPTIONS = 'options'; 
+    
+    /**
+     * dic.services.serviceName1.params.firstparam = serviceName
+     */   
+    const CONFIG_KEY_PARAMS = 'params';
+   
+    /**
+     * comfig.ini :  dic.services.serviceName1.autoload = true
+     * Default value is FALSE.
+     */
+    const CONFIG_KEY_AUTOLOAD = 'autoload';
 
-     const CONFIG_KEY_INSTANCE = 'instance';    //  comfig.ini :  dic.services.serviceName1.instance = singleton
-     const CONFIG_VALUE_SINGLETON = 'singleton'; //  default value for dic.services.serviceName1.instance
-     const CONFIG_VALUE_CLONE = 'clone';        //  For all request, service will create by clone from etalon   
-     const CONFIG_VALUE_RECREATE = 'recreate';     //  For all request, service will create by constuct() call
 
-    const CONFIG_KEY_PARAMS = 'params';    // dic.services.serviceName1.params.firstparam = serviceName
-     
+
     /*
-     * array configurations of Services
+     * Array with configurations of Services
      * 
-     * Contains information about Services from application.ini and
-     * from constuctors calling Services 
+     * Contains information about Services from application.ini 
      */
     private $_servicesConfigs = array();
 
      /**
-      * Call setters for elements $options if exist and rest copy to {@see Zaboy_Abstract::_attribs}
+      * Set $this->_servicesConfigs = $options; 
       * 
-      * May be two cases for property $options['oneProperty'] = value
-      * If method setOneProperty is exist - it will be call, else $this->_attribs['oneProperty'] = value
-      *
-      * @param array  array('serviceName' = array('class' = 'ServiceClass', 'options' ...
+      * @param array  It's contaned array('serviceName' = array('class' = 'ServiceClass', 'options' ...
       * @return Zaboy_Dic_ServicesConfigs
       */
     public function setOptions(array $options)
@@ -90,19 +130,19 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
     }     
     
     /**
-      * return array ( 0=>ServaceName, 1=> NextServiceName ...)
-      * 
-      * @return array ( 0=>ServaceName, 1=> NextServiceName ...)
-      */    
+     * return array ( 0=>ServaceName, 1=> NextServiceName ...)
+     * 
+     * @return array ( 0=>ServaceName, 1=> NextServiceName ...)
+     */    
     public function getServicesNames()
     {
             return array_keys (  $this->_servicesConfigs );
     }
     
     /**
-      * @param string
-      * @return string|null
-      */    
+     * @param string
+     * @return string|null
+     */    
     public function getServiceClass($serviceName)
     {
         if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_CLASS])) {
@@ -113,9 +153,9 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
     }
     
     /**
-      * @param string
-      * @return array
-      */    
+     * @param string
+     * @return array
+     */    
     public function getServiceOptions($serviceName)
     {
         if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_OPTIONS])) {
@@ -126,9 +166,14 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
     }
     
     /**
-      * @param string
-      * @return string
-      */    
+     * There are some variety of making Service
+     * 
+     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON
+     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE
+     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_RECREATE
+     * @param string
+     * @return string
+     */    
     public function getServiceInitiationType($serviceName)
     {
         if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_INSTANCE])) {
@@ -139,7 +184,7 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
     }    
         
     /**
-     *Return TRUE if service with same name was described in config
+     * Return TRUE if service with same name was described in config
      * 
      * @param string
      * @return bool
@@ -150,8 +195,13 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
         return in_array($serviceName, $servicesNamesArray);
     }        
     
-    
-    public function getServiceForConstructParam($serviceName, $paramName)
+    /**
+     * 
+     * @param string $serviceName
+     * @param string $paramName
+     * @return string|null
+     */
+    public function getServiceNameForConstructParam($serviceName, $paramName)
     {  
         if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_PARAMS][$paramName])) {
             return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_PARAMS][$paramName];
@@ -161,30 +211,19 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
     }
     
     /**
-      * @param string
-      * @return bool
-      */    
-    public function _getServiceAutoload($serviceName)
+     * Return TRUE if service has to be started automatically
+     * 
+     * By default is FALSE
+     * 
+     * @param string
+     * @return bool
+     */    
+    public function getServiceAutoload($serviceName)
     {
         if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_AUTOLOAD])) {
             return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_AUTOLOAD];
         }else{
-            return false;
+            return false; //by default
         }
     }
-    
-    /**
-     * Class must be load if resources.dic.services.WithAutoload.autoload = true, where 'WithAutoload' is services name
-     * 
-     * @return void
-     */
-    public function autoloadServices() {
-        foreach ($this->_servicesConfigs as $serviceName => $serviceConfig ) {
-            if ( (bool) $this->_getServiceAutoload($serviceName)) {
-                $this->_getBootstrap()
-                        ->getResource(self::DIC_NAME_RESOURCE)
-                        ->get($serviceName);
-            }
-        }
-     }    
 }

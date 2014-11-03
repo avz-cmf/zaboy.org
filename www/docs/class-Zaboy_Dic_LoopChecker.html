@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_LoopChecker | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1201522576"></script>
+	<script type="text/javascript" src="elementlist.js?503291574"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -24,6 +24,10 @@
 				<li class="active"><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
+						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
 						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
@@ -44,6 +48,7 @@
 				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
 				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
 				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
+				<li><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></li>
 				<li class="active"><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></li>
@@ -83,6 +88,9 @@
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
 			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -96,22 +104,10 @@
 	
 <p>Zaboy_Dic_LoopChecker</p>
 
+<p>It check loop of dependencies in a running services</p>
+
 	</div>
 
-	<dl class="tree">
-		<dd style="padding-left:0px">
-			<a href="class-Zaboy_Abstract.html"><span>Zaboy_Abstract</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:30px">
-			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Zaboy_Dic_LoopChecker</span></b>			
-			
-			
-		</dd>
-	</dl>
 
 
 
@@ -134,7 +130,7 @@
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_LoopChecker.html#13-50" title="Go to source code">library/Zaboy/Dic/LoopChecker.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_LoopChecker.html#11-54" title="Go to source code">library/Zaboy/Dic/LoopChecker.php</a><br />
 	</div>
 
 
@@ -152,19 +148,23 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_loadingStart">#</a>
-		<code><a href="source-class-Zaboy_Dic_LoopChecker.html#29-40" title="Go to source code">loadingStart</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_LoopChecker.html#29-42" title="Go to source code">loadingStart</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			
+<p>Add running service to $_runningServices</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Add running service to $_runningServices</p>
+
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$serviceName</var></dt>
+					<dt><var>$name</var></dt>
 					<dd><code>string</code></dd>
 				</dl></div>
 
@@ -186,19 +186,23 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_loadingFinished">#</a>
-		<code><a href="source-class-Zaboy_Dic_LoopChecker.html#42-49" title="Go to source code">loadingFinished</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_LoopChecker.html#44-53" title="Go to source code">loadingFinished</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			
+<p>Delete running service from $_runningServices</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Delete running service from $_runningServices</p>
+
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$serviceName</var></dt>
+					<dt><var>$name</var></dt>
 					<dd><code>string</code></dd>
 				</dl></div>
 
@@ -211,21 +215,6 @@
 	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#___construct">__construct()</a>, 
-			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_removeAttrib">removeAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttrib">setAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttribs">setAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setOptions">setOptions()</a>
-		</code></td>
-	</tr>
-	</table>
 
 
 
@@ -238,14 +227,6 @@
 
 
 
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-Zaboy_Abstract.html#properties">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#$_attribs"><var>$_attribs</var></a>
-		</code></td>
-	</tr>
-	</table>
 
 
 

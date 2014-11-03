@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Zaboy_Example_Service_NotSpecifiedParam | _zaboy.org</title>
+	<title>Class Zaboy_Example_Service_ManyParams | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
 	<script type="text/javascript" src="elementlist.js?503291574"></script>
@@ -44,8 +44,8 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Zaboy_Example_Service_ManyParams.html">Zaboy_Example_Service_ManyParams</a></li>
-				<li class="active"><a href="class-Zaboy_Example_Service_NotSpecifiedParam.html">Zaboy_Example_Service_NotSpecifiedParam</a></li>
+				<li class="active"><a href="class-Zaboy_Example_Service_ManyParams.html">Zaboy_Example_Service_ManyParams</a></li>
+				<li><a href="class-Zaboy_Example_Service_NotSpecifiedParam.html">Zaboy_Example_Service_NotSpecifiedParam</a></li>
 				<li><a href="class-Zaboy_Example_Service_OptionalParams.html">Zaboy_Example_Service_OptionalParams</a></li>
 				<li><a href="class-Zaboy_Example_Service_WithOptionsOnly.html">Zaboy_Example_Service_WithOptionsOnly</a></li>
 				<li><a href="class-Zaboy_Example_Service_WithoutParams.html">Zaboy_Example_Service_WithoutParams</a></li>
@@ -96,39 +96,15 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Zaboy_Example_Service_NotSpecifiedParam</h1>
+	<h1>Class Zaboy_Example_Service_ManyParams</h1>
 
 
 	<div class="description">
 	
-<p>Zaboy_Example_Service_NotSpecifiedParam</p>
-
-<p>You have to describe param in application.ini or service with same name have
-to be loaded before</p>
+<p>Zaboy_Example_Service_ManyParams.</p>
 
 	</div>
 
-	<dl class="tree">
-		<dd style="padding-left:0px">
-			<a href="class-Zaboy_Abstract.html"><span>Zaboy_Abstract</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:30px">
-			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-Zaboy_Service.html"><span>Zaboy_Service</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:60px">
-			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Zaboy_Example_Service_NotSpecifiedParam</span></b>			
-			
-			
-		</dd>
-	</dl>
 
 
 
@@ -151,7 +127,7 @@ to be loaded before</p>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Example_Service_NotSpecifiedParam.html#13-40" title="Go to source code">library/Zaboy/Example/Service/NotSpecifiedParam.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Example_Service_ManyParams.html#11-54" title="Go to source code">library/Zaboy/Example/Service/ManyParams.php</a><br />
 	</div>
 
 
@@ -169,63 +145,68 @@ to be loaded before</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Example_Service_NotSpecifiedParam.html#30-38" title="Go to source code">__construct</a>( <span>array <var>$notSpecifiedParam</var></span> )</code>
+		<code><a href="source-class-Zaboy_Example_Service_ManyParams.html#27-42" title="Go to source code">__construct</a>( <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span>, <span><code><a href="class-Zaboy_Example_Service_WithoutParams.html">Zaboy_Example_Service_WithoutParams</a></code> <var>$specifiedParam</var></span>, <span>mixed <var>$notSpecifiedParam</var></span>, <span><code><a href="class-Zaboy_Service.html">Zaboy_Service</a></code> <var>$optionalParam</var> = <span class="php-keyword1">null</span> </span> )</code>
 
 		<div class="description short">
 			
-<p>Service constructor</p>
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getString" id="_getString">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getString">#</a>
+		<code><a href="source-class-Zaboy_Example_Service_ManyParams.html#44-53" title="Go to source code">getString</a>( <span>string <var>$param</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Retrieve a single string</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Service constructor</p>
+<p>Retrieve a single string</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$notSpecifiedParam</var></dt>
-					<dd><code>array</code></dd>
+					<dt><var>$param</var></dt>
+					<dd><code>string</code></dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
 
 
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-Zaboy_Service.html#___construct">Zaboy_Service::__construct()</a></code></div>
 
 		</div>
 		</div></td>
 	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Zaboy_Service.html#methods">Zaboy_Service</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Service.html#_getInjectedService">getInjectedService()</a>, 
-			<a href="class-Zaboy_Service.html#_getInjectedServicesNames">getInjectedServicesNames()</a>, 
-			<a href="class-Zaboy_Service.html#_getLazyLoadService">getLazyLoadService()</a>
-		</code></td>
-	</tr>
-	</table>
-	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#__getBootstrap">_getBootstrap()</a>, 
-			<a href="class-Zaboy_Abstract.html#__getDic">_getDic()</a>, 
-			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_removeAttrib">removeAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttrib">setAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttribs">setAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setOptions">setOptions()</a>
-		</code></td>
-	</tr>
-	</table>
 
 
 
@@ -234,19 +215,34 @@ to be loaded before</p>
 
 
 
-	<table class="summary inherited">
-	<caption>Constants inherited from <a href="class-Zaboy_Service.html#constants">Zaboy_Service</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Service.html#OPTIONS_KEY_INJECTED_SERVICES"><b>OPTIONS_KEY_INJECTED_SERVICES</b></a>
-		</code></td>
-	</tr>
-	</table>
 
 
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
+	<tr data-order="_specifiedParam" id="$_specifiedParam">
+		<td class="attributes"><code>
+			public  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Zaboy_Example_Service_ManyParams.html#23" title="Go to source code"><var>$_specifiedParam</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$_specifiedParam" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
 	<tr data-order="_notSpecifiedParam" id="$_notSpecifiedParam">
 		<td class="attributes"><code>
 			public  
@@ -254,7 +250,7 @@ to be loaded before</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_Example_Service_NotSpecifiedParam.html#28" title="Go to source code"><var>$_notSpecifiedParam</var></a>
+				<a href="source-class-Zaboy_Example_Service_ManyParams.html#24" title="Go to source code"><var>$_notSpecifiedParam</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -270,24 +266,31 @@ to be loaded before</p>
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="_optionalParam" id="$_optionalParam">
+		<td class="attributes"><code>
+			public  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Zaboy_Example_Service_ManyParams.html#25" title="Go to source code"><var>$_optionalParam</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$_optionalParam" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-Zaboy_Service.html#properties">Zaboy_Service</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Service.html#$_defaultOptions"><var>$_defaultOptions</var></a>
-		</code></td>
-	</tr>
-	</table>
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-Zaboy_Abstract.html#properties">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#$_attribs"><var>$_attribs</var></a>
-		</code></td>
-	</tr>
-	</table>
 
 
 

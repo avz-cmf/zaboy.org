@@ -7,11 +7,11 @@
  * @copyright  Zaboychenko Andrey
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
-
-  require_once 'Zaboy/Abstract.php';
   
 /**
  * Zaboy_Dic_LoopChecker
+ * 
+ * It check loop of dependencies in a running services
  * 
  * @category   Dic
  * @package    Dic
@@ -19,7 +19,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Dic_LoopChecker extends Zaboy_Abstract
+class Zaboy_Dic_LoopChecker
 {
     /*
      * array of services which are starting for check loop depends
@@ -27,24 +27,28 @@ class Zaboy_Dic_LoopChecker extends Zaboy_Abstract
     private $_runningServices = array();
 
      /**
-      * @param string
-      * @return void
-      */    
-    public function loadingStart($serviceName)
+     * Add running service to {@see $_runningServices}
+     * 
+     * @param string
+     * @return void
+     */    
+    public function loadingStart($name)
     {
-        if (isset($this->_runningServices[$serviceName])) {
+        if (isset($this->_runningServices[$name])) {
              require_once 'Zaboy/Dic/Exception.php';
-             throw new Zaboy_Dic_Exception("Loop in depends while load Service($serviceName) is detected"); 
+             throw new Zaboy_Dic_Exception("Loop in depends while load Service( $name ) is detected"); 
          }
-        $this->_runningServices[$serviceName] = true; 
+        $this->_runningServices[$name] = true; 
     }   
     
     /**
-      * @param string
-      * @return void
-      */    
-    public function loadingFinished($serviceName)
+     * Delete running service from {@see $_runningServices}
+     * 
+     * @param string
+     * @return void
+     */    
+    public function loadingFinished($name)
     {
-        $this->_runningServices[$serviceName] = null;
+        unset( $this->_runningServices[$name]);
     }
 }

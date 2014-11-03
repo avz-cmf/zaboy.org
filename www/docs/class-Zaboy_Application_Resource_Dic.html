@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Application_Resource_Dic | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1201522576"></script>
+	<script type="text/javascript" src="elementlist.js?503291574"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -24,6 +24,10 @@
 				<li class="active"><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
+						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
 						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
@@ -44,6 +48,7 @@
 				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
 				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
 				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
+				<li><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></li>
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></li>
@@ -82,6 +87,9 @@
 		<ul>
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
 			</li>
 		</ul>
 		<ul>
@@ -133,7 +141,7 @@ Zend_Application_Resource_ResourceAbstract
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Application_Resource_Dic.html#14-69" title="Go to source code">library/Zaboy/Application/Resource/Dic.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Application_Resource_Dic.html#14-85" title="Go to source code">library/Zaboy/Application/Resource/Dic.php</a><br />
 	</div>
 
 
@@ -151,7 +159,7 @@ Zend_Application_Resource_ResourceAbstract
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setClass">#</a>
-		<code><a href="source-class-Zaboy_Application_Resource_Dic.html#43-50" title="Go to source code">setClass</a>( <span>string <var>$dicClass</var></span> )</code>
+		<code><a href="source-class-Zaboy_Application_Resource_Dic.html#51-58" title="Go to source code">setClass</a>( <span>string <var>$dicClass</var></span> )</code>
 
 		<div class="description short">
 			
@@ -185,7 +193,7 @@ Zend_Application_Resource_ResourceAbstract
 
 		<td class="name"><div>
 		<a class="anchor" href="#_init">#</a>
-		<code><a href="source-class-Zaboy_Application_Resource_Dic.html#52-68" title="Go to source code">init</a>( )</code>
+		<code><a href="source-class-Zaboy_Application_Resource_Dic.html#60-84" title="Go to source code">init</a>( )</code>
 
 		<div class="description short">
 			
@@ -248,11 +256,37 @@ recurces.dic.class = Avz_Dic...</p>
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="CONFIG_KEY_SERVICE" id="CONFIG_KEY_SERVICE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Application_Resource_Dic.html#31-36" title="Go to source code"><b>CONFIG_KEY_SERVICE</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'services'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_SERVICE" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>comfig.ini : dic.services.serviceName.class = Same_Class
+dic.services.serviceName.options.key = val</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>comfig.ini : dic.services.serviceName.class = Same_Class
+dic.services.serviceName.options.key = val</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	<tr data-order="DEFAULT_CLASS_FOR_DIC" id="DEFAULT_CLASS_FOR_DIC">
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Application_Resource_Dic.html#31-34" title="Go to source code"><b>DEFAULT_CLASS_FOR_DIC</b></a>
+				<a href="source-class-Zaboy_Application_Resource_Dic.html#39-42" title="Go to source code"><b>DEFAULT_CLASS_FOR_DIC</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'Zaboy_Dic'</span></code></td>
 		<td class="description"><div>
@@ -286,7 +320,7 @@ recurces.dic.class = Avz_Dic...</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_Application_Resource_Dic.html#36-41" title="Go to source code"><var>$_dicClass</var></a>
+				<a href="source-class-Zaboy_Application_Resource_Dic.html#44-49" title="Go to source code"><var>$_dicClass</var></a>
 		</td>
 		<td class="value"><code><code><a href="class-Zaboy_Application_Resource_Dic.html#DEFAULT_CLASS_FOR_DIC">Zaboy_Application_Resource_Dic::<b>DEFAULT_CLASS_FOR_DIC</b></a></code></code></td>
 		<td class="description"><div>

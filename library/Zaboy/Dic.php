@@ -51,6 +51,7 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
      * @param Zaboy_Dic_ServicesConfigs $servicesConfigs
      * @param Zaboy_Dic_ServicesStore $servicesStore
      * @param Zaboy_Dic_Factory $factory
+     * @return void
      */
     public function __construct( 
         array $options, 
@@ -63,14 +64,14 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
         $this->_servicesStore = $servicesStore;        
         $this->_factory = $factory;
         
-        $this->_servicesConfigs->autoloadServices();
+        $this->_autoloadServices();
     }  
     
     /**
      * Return Service if is described or just object with injected dependencies
      * 
      * @param string $name
-     * @param string $class
+     * @param string|null $class
      * @return object|null
      */
     public function get($name, $class = null)    
@@ -91,7 +92,7 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
     }
 
     /**
-     * instantiate service
+     * Instantiate service
      * 
      * @param type $serviceName
      * @return null
@@ -106,7 +107,7 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
         switch ($initiationType) {
             case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON :
                 // Is Service with $serviceName already was loaded?
-                $serviceInstance = $this->_servicesStore->getSingletonService($serviceName);
+                $serviceInstance = $this->_servicesStore->getRunningSingletonService($serviceName);
                 if (!isset($serviceInstance)) {
                     $serviceInstance = $this->_factory->createService($serviceName);
                     $this->_servicesStore->addService($serviceName, $serviceInstance);
@@ -117,7 +118,7 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
                 $this->_servicesStore->addService($serviceName, $serviceInstance);
                 break;
             case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE :
-                $serviceInstance = $this->_getServiceClone($serviceName);
+                $serviceInstance = $this->_factory->_getServiceClone($serviceName);
                 break;
             default:
                 require_once 'Zaboy/Dic/Exception.php';
@@ -129,47 +130,34 @@ class Zaboy_Dic extends Zaboy_Dic_Abstract
         return $serviceInstance;
     }   
     
-      /**
-       * Return Service Name for Service Object
-       * 
-       * @param object $objectInstance usually $this
-       * @return string Service Name
-       */
-    public function getServiceName($objectInstance) 
+    /**
+     * Return Service Name by Service Object
+     * 
+     * @param object $serviceInstance usually $this
+     * @return string|null Service Name
+     */
+    public function getRunningServiceName($serviceInstance) 
     {
-        $servicesArray = $this->_servicesStore->getServices();
-        foreach ($servicesArray as $serviceName => $serviceObjectFromStore) {
-            if ($objectInstance === $serviceObjectFromStore) {
-                return $serviceName;
+        $this->_servicesStore->getRunningServiceName($serviceInstance);
+    }   
+
+    /**
+     * Some services have to be started automatically
+     * 
+     * Class must be load if in config
+     * <code>
+     * resources.dic.services.WithAutoload.autoload = true
+     * </code>
+     * where 'WithAutoload' is services name
+     * 
+     * @return void
+     */
+    private function _autoloadServices() {
+        $servicesNames = $this->_servicesConfigs->getServicesNames();
+        foreach ($servicesNames as $serviceName ) {
+            if (  $this->_servicesConfigs->getServiceAutoload($serviceName)) {
+                $this->get($serviceName);
             }
         }
-        return null;       
-     }   
-
-    private function _getServiceClone($serviceName) 
-    {
-        // Is etalon Service for clone already was created?
-        $etalonServiceInstance = $this->_servicesStore->getEtalon($serviceName);
-        if (!isset($etalonServiceInstance)) {
-            $etalonServiceInstance = $this->_factory->createService($serviceName) ;
-            $this->_servicesStore->addEtalon($serviceName, $etalonServiceInstance);
-        }
-        $serviceInstance = clone $etalonServiceInstance;
-        $this->_servicesStore->addService($serviceName, $serviceInstance);
-        return $serviceInstance;
-    }
-    
-    /**
-     * Class in config is more important then class in __constract
-     * 
-     * About Avz_Dic see {@see Avz_Dic_Interface}<br>
-     * also see {@see Avz_Dic_Interface::get()}<br><br>
-     * {@inheritdoc}
-     * 
-     * @see http://stackoverflow.com/questions/1935771/how-to-use-call-user-func-array-with-an-object-with-a-construct-method-in-php
-     * @param string Service Name
-     * @param string Sevice Class. Use if Service isn't load and haven't config. Try don't use it.
-     * @return object
-     */    
-
+     }    
 }

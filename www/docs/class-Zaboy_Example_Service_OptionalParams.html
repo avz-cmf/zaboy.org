@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Example_Service_OptionalParams | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1201522576"></script>
+	<script type="text/javascript" src="elementlist.js?503291574"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -25,6 +25,10 @@
 						</li>
 				<li class="active"><a href="package-Example.html">Example</a>
 						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
 				<li><a href="package-Test.html">Test</a>
@@ -40,11 +44,13 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Zaboy_Example_Service_DefaultOptions.html">Zaboy_Example_Service_DefaultOptions</a></li>
+				<li><a href="class-Zaboy_Example_Service_ManyParams.html">Zaboy_Example_Service_ManyParams</a></li>
 				<li><a href="class-Zaboy_Example_Service_NotSpecifiedParam.html">Zaboy_Example_Service_NotSpecifiedParam</a></li>
 				<li class="active"><a href="class-Zaboy_Example_Service_OptionalParams.html">Zaboy_Example_Service_OptionalParams</a></li>
 				<li><a href="class-Zaboy_Example_Service_WithOptionsOnly.html">Zaboy_Example_Service_WithOptionsOnly</a></li>
 				<li><a href="class-Zaboy_Example_Service_WithoutParams.html">Zaboy_Example_Service_WithoutParams</a></li>
+				<li><a href="class-Zaboy_Example_Service_WithSpecifiedParam.html">Zaboy_Example_Service_WithSpecifiedParam</a></li>
+				<li><a href="class-Zaboy_Services_Example_DefaultOptions.html">Zaboy_Services_Example_DefaultOptions</a></li>
 			</ul>
 
 
@@ -80,6 +86,9 @@
 		<ul>
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
 			</li>
 		</ul>
 		<ul>
@@ -143,7 +152,7 @@ class was described in application.ini</p>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Example_Service_OptionalParams.html#13-38" title="Go to source code">library/Zaboy/Example/Service/OptionalParams.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Example_Service_OptionalParams.html#13-53" title="Go to source code">library/Zaboy/Example/Service/OptionalParams.php</a><br />
 	</div>
 
 
@@ -161,7 +170,7 @@ class was described in application.ini</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Example_Service_OptionalParams.html#28-36" title="Go to source code">__construct</a>( <span>array <var>$optionalParam</var> = <span class="php-keyword1">null</span></span>, <span><code><a href="class-Zaboy_Service.html">Zaboy_Service</a></code> <var>$specifiedOptionalParam</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Example_Service_OptionalParams.html#32-41" title="Go to source code">__construct</a>( <span>array <var>$notSpecifiedOptionalParam</var> = <span class="php-keyword1">null</span></span>, <span><code><a href="class-Zaboy_Service.html">Zaboy_Service</a></code> <var>$specifiedOptionalParam</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -177,7 +186,7 @@ class was described in application.ini</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$optionalParam</var></dt>
+					<dt><var>$notSpecifiedOptionalParam</var></dt>
 					<dd><code>array</code></dd>
 					<dt><var>$specifiedOptionalParam</var></dt>
 					<dd></dd>
@@ -192,16 +201,57 @@ class was described in application.ini</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getString" id="_getString">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getString">#</a>
+		<code><a href="source-class-Zaboy_Example_Service_OptionalParams.html#43-52" title="Go to source code">getString</a>( <span>string <var>$param</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Retrieve a single string</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve a single string</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$param</var></dt>
+					<dd><code>string</code></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	</table>
 
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-Zaboy_Service.html#methods">Zaboy_Service</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-Zaboy_Service.html#__getBootstrap">_getBootstrap()</a>, 
-			<a href="class-Zaboy_Service.html#__getDic">_getDic()</a>, 
 			<a href="class-Zaboy_Service.html#_getInjectedService">getInjectedService()</a>, 
-			<a href="class-Zaboy_Service.html#_getInjectedServicesNames">getInjectedServicesNames()</a>
+			<a href="class-Zaboy_Service.html#_getInjectedServicesNames">getInjectedServicesNames()</a>, 
+			<a href="class-Zaboy_Service.html#_getLazyLoadService">getLazyLoadService()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -209,6 +259,8 @@ class was described in application.ini</p>
 	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-Zaboy_Abstract.html#__getBootstrap">_getBootstrap()</a>, 
+			<a href="class-Zaboy_Abstract.html#__getDic">_getDic()</a>, 
 			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
@@ -238,6 +290,55 @@ class was described in application.ini</p>
 
 
 
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="_specifiedOptionalParam" id="$_specifiedOptionalParam">
+		<td class="attributes"><code>
+			public  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Zaboy_Example_Service_OptionalParams.html#28" title="Go to source code"><var>$_specifiedOptionalParam</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$_specifiedOptionalParam" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="_notSpecifiedOptionalParam" id="$_notSpecifiedOptionalParam">
+		<td class="attributes"><code>
+			public  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Zaboy_Example_Service_OptionalParams.html#30" title="Go to source code"><var>$_notSpecifiedOptionalParam</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$_notSpecifiedOptionalParam" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
 
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-Zaboy_Service.html#properties">Zaboy_Service</a></caption>

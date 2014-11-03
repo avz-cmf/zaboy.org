@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Service | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1201522576"></script>
+	<script type="text/javascript" src="elementlist.js?503291574"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -24,6 +24,10 @@
 				<li><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
+						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
 						</li>
 				<li class="active"><a href="package-Services.html">Services</a>
 						</li>
@@ -81,6 +85,9 @@
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
 			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -93,6 +100,89 @@
 	<div class="description">
 	
 <p>Zaboy_Service</p>
+
+<p>The <b>$options</b> ( if it exist as parametr for __construct ) have to first
+parameter. More about <i>__consruct()</i> - see Zaboy_Services_Abstract::__consruct().<br />
+More about <i>$options</i> - see <code><a href="class-Zaboy_Abstract.html#_setOptions">Zaboy_Abstract::setOptions()</a></code>.<br />
+You can note options for <i>Service</i> in config.ini<br />
+</p>
+
+<pre>
+resources.dic.services.NameOfService.options.param1 = value1
+resources.dic.services.NameOfService.options.param2 = value2
+</pre>
+
+<p>or just in SeviceObjectClass - see $_defaultOptions in Zaboy_Services_Abstract.<br />
+</p>
+
+<p><b>All other parametrs must be Services!</b>. That parametr we call
+<i>Service Param.</i><br />
+<i>Service Param</i> in declaration of __construct must has type.<br />
+</p>
+
+<pre>
+  <span class="php-keyword1">public</span> <span
+class="php-keyword1">function</span> __construct(<span
+class="php-var">$options</span>, Test_Service_First <span
+class="php-var">$testFirst</span>, Test_Service_Next <span
+class="php-var">$testNext</span>)
+{ ...}
+</pre>
+
+<p><br />
+You can override type for <i>Service</i> in config.ini<br />
+For example:<br />
+</p>
+
+<pre>
+resources.dic.services.NameOfService.<span
+class="php-keyword1">class</span> = New_Class_For_NameOfService
+</pre>
+
+<p><b>About optional parametrs</b><br />
+Optional parametrs are transmitted to _consruct if they already was loaded or if
+they is described in config.ini</p>
+
+<p><b>Aliases</b><br />
+You can take 2 or more instaces of <i>Service</i>. Use aliases.</p>
+
+<pre>
+  <span class="php-keyword1">public</span> <span
+class="php-keyword1">function</span> __construct(Service_One_Type <span
+class="php-var">$firstExemplar</span>, Service_One_Type <span
+class="php-var">$secondExemplar</span>)
+{ ...}
+</pre>
+
+<p><br />
+You can load <i>Service</i> () see <code><a href="class-Zaboy_Dic.html#_get">Zaboy_Dic::get()</a></code>:</p>
+
+<pre>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'NameOrAlias'</span>); <span
+class="php-comment">//if class isn't noted in cofig.ini - exception</span>
+<span
+class="php-comment">//or</span>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'NameOrAlias'</span>, <span
+class="php-quote">'Service_Class'</span>); <span
+class="php-comment">//if class is noted in cofig.ini, parameter  'Service_Class' ignore.</span>
+</pre>
+
+<p><i>Service</i> which was loaded is containing in <i>Dic</i> and can't is load
+again.<br />
+</p>
+
+<p><b>Autoload</b><br />
+Class will be load if resources.dic.services.WithAutoload.autoload = true, where
+'WithAutoload' is services name<br />
+</p>
+
+<p><br />
+<b>What is NameOfService?</b><br />
+It is string - param for (@see Zaboy_Dic::get()} and (@see Zaboy_Dic::has()}<br
+/>
+See more about it : (@see Zaboy_Dic_Interface)</p>
 
 	</div>
 
@@ -114,9 +204,9 @@
 
 	<div>
 		<h4>Direct known subclasses</h4>
-			<a href="class-Zaboy_Example_Service_DefaultOptions.html">Zaboy_Example_Service_DefaultOptions</a>, 
 			<a href="class-Zaboy_Example_Service_NotSpecifiedParam.html">Zaboy_Example_Service_NotSpecifiedParam</a>, 
-			<a href="class-Zaboy_Example_Service_OptionalParams.html">Zaboy_Example_Service_OptionalParams</a>
+			<a href="class-Zaboy_Example_Service_OptionalParams.html">Zaboy_Example_Service_OptionalParams</a>, 
+			<a href="class-Zaboy_Services_Example_DefaultOptions.html">Zaboy_Services_Example_DefaultOptions</a>
 	</div>
 
 
@@ -138,7 +228,7 @@
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Service.html#13-114" title="Go to source code">library/Zaboy/Service.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Service.html#13-165" title="Go to source code">library/Zaboy/Service.php</a><br />
 	</div>
 
 
@@ -156,7 +246,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Service.html#38-67" title="Go to source code">__construct</a>( )</code>
+		<code><a href="source-class-Zaboy_Service.html#88-127" title="Go to source code">__construct</a>( )</code>
 
 		<div class="description short">
 			
@@ -195,7 +285,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getInjectedServicesNames">#</a>
-		<code><a href="source-class-Zaboy_Service.html#69-77" title="Go to source code">getInjectedServicesNames</a>( )</code>
+		<code><a href="source-class-Zaboy_Service.html#129-142" title="Go to source code">getInjectedServicesNames</a>( )</code>
 
 		<div class="description short">
 			
@@ -217,6 +307,35 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getLazyLoadService" id="_getLazyLoadService">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLazyLoadService">#</a>
+		<code><a href="source-class-Zaboy_Service.html#144-147" title="Go to source code">getLazyLoadService</a>( <span>mixed <var>$constructParamName</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="getInjectedService" id="_getInjectedService">
 
 		<td class="attributes"><code>
@@ -228,7 +347,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getInjectedService">#</a>
-		<code><a href="source-class-Zaboy_Service.html#79-92" title="Go to source code">getInjectedService</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Service.html#150-163" title="Go to source code">getInjectedService</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -255,78 +374,14 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_getBootstrap" id="__getBootstrap">
-
-		<td class="attributes"><code>
-			 protected 
-			Zend_Application_Bootstrap_Bootstrap
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__getBootstrap">#</a>
-		<code><a href="source-class-Zaboy_Service.html#94-103" title="Go to source code">_getBootstrap</a>( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>Zend_Application_Bootstrap_Bootstrap</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="_getDic" id="__getDic">
-
-		<td class="attributes"><code>
-			 protected 
-			<code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__getDic">#</a>
-		<code><a href="source-class-Zaboy_Service.html#105-113" title="Go to source code">_getDic</a>( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code></code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	</table>
 
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-Zaboy_Abstract.html#__getBootstrap">_getBootstrap()</a>, 
+			<a href="class-Zaboy_Abstract.html#__getDic">_getDic()</a>, 
 			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
@@ -350,7 +405,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Service.html#24-29" title="Go to source code"><b>OPTIONS_KEY_INJECTED_SERVICES</b></a>
+				<a href="source-class-Zaboy_Service.html#74-79" title="Go to source code"><b>OPTIONS_KEY_INJECTED_SERVICES</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'injectedServices'</span></code></td>
 		<td class="description"><div>
@@ -388,7 +443,7 @@ Another_Servece_Class $servece2, ...)) or just ()</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_Service.html#31-36" title="Go to source code"><var>$_defaultOptions</var></a>
+				<a href="source-class-Zaboy_Service.html#81-86" title="Go to source code"><var>$_defaultOptions</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
 		<td class="description"><div>

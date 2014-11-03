@@ -7,7 +7,7 @@
 	<title>Package Dic | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1201522576"></script>
+	<script type="text/javascript" src="elementlist.js?503291574"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -24,6 +24,10 @@
 				<li class="active"><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
+						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
 						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
@@ -44,6 +48,7 @@
 				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
 				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
 				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
+				<li><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></li>
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></li>
@@ -82,6 +87,9 @@
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
 			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -96,8 +104,7 @@
 <caption>Classes summary</caption>
 <tr>
 	<td class="name"><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></td>
-	<td>Zaboy_Application_Resource_Dic
-<!-- by Texy2! --></td>
+	<td>Zaboy_Application_Resource_Dic</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></td>
@@ -105,11 +112,15 @@
 </tr>
 <tr>
 	<td class="name"><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></td>
-	<td>Zaboy_Dic_Abstract</td>
+	<td>The base class for <code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code></td>
 </tr>
 <tr>
 	<td class="name"><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></td>
 	<td>Zaboy_Dic_Exception</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></td>
+	<td>This is factory for "make" service and objects which are created <code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code></td>
 </tr>
 <tr>
 	<td class="name"><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></td>
@@ -117,20 +128,7 @@
 </tr>
 <tr>
 	<td class="name"><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></td>
-	<td>Zaboy_Dic_ServicesConfigs <b>Services Config/<b><br />
-Usialy Services Config is part of DIC config in application.ini with key which
-is defined in <code><a href="class-Zaboy_Dic.html#CONFIG_KEY_SERVICE">Zaboy_Dic::<b>CONFIG_KEY_SERVICE</b></a></code><br />
-DIC have got config form resurce plugin { @see
-Zaboy_Application_Resource_Dic}<br />
-Part of application.ini:<br />
-&lt;pre&gt; dic.service.serviceName.class = ServiceClass
-dic.service.serviceName.options.key11 = val11
-dic.service.serviceName.options.key12 = val12 dic.service.serviceName.autoload =
-true dic.service.nextServiceName.class = NextServiceClass ... &lt;/pre&gt; It is
-in $servicesConfig (see<code><a href="class-Zaboy_Dic_ServicesConfigs.html#_setConfigsServices">Zaboy_Dic_ServicesConfigs::setConfigsServices()</a></code> &lt;code&gt; array(
-'serviceName' = array( 'class' = 'ServiceClass' 'options' = array( 'key1' = val1
-'key2' = val2 ( 'autoload' = true ) ) array( 'nextServiceName' = array( 'class'
-= 'NextServiceClass' ... &lt;/code&gt;</b></b></td>
+	<td>Zaboy_Dic_ServicesConfigs</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></td>

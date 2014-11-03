@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Zaboy_Example_Service_DefaultOptions | _zaboy.org</title>
+	<title>Class Zaboy_Services_Example_DefaultOptions | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1201522576"></script>
+	<script type="text/javascript" src="elementlist.js?503291574"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -25,6 +25,10 @@
 						</li>
 				<li class="active"><a href="package-Example.html">Example</a>
 						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
 				<li><a href="package-Test.html">Test</a>
@@ -40,11 +44,13 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-Zaboy_Example_Service_DefaultOptions.html">Zaboy_Example_Service_DefaultOptions</a></li>
+				<li><a href="class-Zaboy_Example_Service_ManyParams.html">Zaboy_Example_Service_ManyParams</a></li>
 				<li><a href="class-Zaboy_Example_Service_NotSpecifiedParam.html">Zaboy_Example_Service_NotSpecifiedParam</a></li>
 				<li><a href="class-Zaboy_Example_Service_OptionalParams.html">Zaboy_Example_Service_OptionalParams</a></li>
 				<li><a href="class-Zaboy_Example_Service_WithOptionsOnly.html">Zaboy_Example_Service_WithOptionsOnly</a></li>
 				<li><a href="class-Zaboy_Example_Service_WithoutParams.html">Zaboy_Example_Service_WithoutParams</a></li>
+				<li><a href="class-Zaboy_Example_Service_WithSpecifiedParam.html">Zaboy_Example_Service_WithSpecifiedParam</a></li>
+				<li class="active"><a href="class-Zaboy_Services_Example_DefaultOptions.html">Zaboy_Services_Example_DefaultOptions</a></li>
 			</ul>
 
 
@@ -81,18 +87,21 @@
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
 			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
 		</ul>
 		<ul>
 		</ul>
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Zaboy_Example_Service_DefaultOptions</h1>
+	<h1>Class Zaboy_Services_Example_DefaultOptions</h1>
 
 
 	<div class="description">
 	
-<p>Zaboy_Example_Service_DefaultOptions.</p>
+<p>Zaboy_Services_Example_DefaultOptions.</p>
 
 	</div>
 
@@ -112,7 +121,7 @@
 		</dd>
 		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Zaboy_Example_Service_DefaultOptions</span></b>			
+<b><span>Zaboy_Services_Example_DefaultOptions</span></b>			
 			
 			
 		</dd>
@@ -139,7 +148,7 @@
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Example_Service_DefaultOptions.html#13-67" title="Go to source code">library/Zaboy/Example/Service/DefaultOptions.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Services_Example_DefaultOptions.html#13-67" title="Go to source code">library/Zaboy/Services/Example/DefaultOptions.php</a><br />
 	</div>
 
 
@@ -157,7 +166,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Example_Service_DefaultOptions.html#42-53" title="Go to source code">__construct</a>( <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-Zaboy_Services_Example_DefaultOptions.html#42-53" title="Go to source code">__construct</a>( <span>array <var>$options</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			
@@ -201,7 +210,7 @@ Will use $this-&gt;_defaultOptions if object was inherited from Zaboy_Services<b
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setParam">#</a>
-		<code><a href="source-class-Zaboy_Example_Service_DefaultOptions.html#55-66" title="Go to source code">setParam</a>( <span>mixed <var>$param</var></span> )</code>
+		<code><a href="source-class-Zaboy_Services_Example_DefaultOptions.html#55-66" title="Go to source code">setParam</a>( <span>mixed <var>$param</var></span> )</code>
 
 		<div class="description short">
 			
@@ -234,10 +243,9 @@ Zaboy_Services<br />
 	<caption>Methods inherited from <a href="class-Zaboy_Service.html#methods">Zaboy_Service</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-Zaboy_Service.html#__getBootstrap">_getBootstrap()</a>, 
-			<a href="class-Zaboy_Service.html#__getDic">_getDic()</a>, 
 			<a href="class-Zaboy_Service.html#_getInjectedService">getInjectedService()</a>, 
-			<a href="class-Zaboy_Service.html#_getInjectedServicesNames">getInjectedServicesNames()</a>
+			<a href="class-Zaboy_Service.html#_getInjectedServicesNames">getInjectedServicesNames()</a>, 
+			<a href="class-Zaboy_Service.html#_getLazyLoadService">getLazyLoadService()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -245,6 +253,8 @@ Zaboy_Services<br />
 	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
 	<tr>
 		<td><code>
+			<a href="class-Zaboy_Abstract.html#__getBootstrap">_getBootstrap()</a>, 
+			<a href="class-Zaboy_Abstract.html#__getDic">_getDic()</a>, 
 			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
@@ -283,7 +293,7 @@ Zaboy_Services<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_Example_Service_DefaultOptions.html#24-32" title="Go to source code"><var>$_defaultOptions</var></a>
+				<a href="source-class-Zaboy_Services_Example_DefaultOptions.html#24-32" title="Go to source code"><var>$_defaultOptions</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>(
 <span class="php-quote">'param'</span> =&gt; <span class="php-quote">'test param value from $_defaultOptions'</span>,
@@ -317,7 +327,7 @@ Zaboy_Services<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_Example_Service_DefaultOptions.html#34-40" title="Go to source code"><var>$param</var></a>
+				<a href="source-class-Zaboy_Services_Example_DefaultOptions.html#34-40" title="Go to source code"><var>$param</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -333,7 +343,7 @@ Zaboy_Services<br />
 					<h4>See</h4>
 					<div class="list">
 							Zaboy_Services::setOptions()<br />
-							<code><code><a href="class-Zaboy_Example_Service_DefaultOptions.html#_setParam">Zaboy_Example_Service_DefaultOptions::setParam()</a></code></code><br />
+							<code><code><a href="class-Zaboy_Services_Example_DefaultOptions.html#_setParam">Zaboy_Services_Example_DefaultOptions::setParam()</a></code></code><br />
 					</div>
 			</div>
 		</div></td>

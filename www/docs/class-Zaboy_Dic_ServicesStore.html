@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_ServicesStore | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?1201522576"></script>
+	<script type="text/javascript" src="elementlist.js?503291574"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -24,6 +24,10 @@
 				<li class="active"><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
+						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
 						</li>
 				<li><a href="package-Services.html">Services</a>
 						</li>
@@ -44,6 +48,7 @@
 				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
 				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
 				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
+				<li><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></li>
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
 				<li><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></li>
 				<li class="active"><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></li>
@@ -82,6 +87,9 @@
 		<ul>
 			<li>
 				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
 			</li>
 		</ul>
 		<ul>
@@ -134,25 +142,25 @@
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesStore.html#13-70" title="Go to source code">library/Zaboy/Dic/ServicesStore.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesStore.html#13-121" title="Go to source code">library/Zaboy/Dic/ServicesStore.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="hasService" id="_hasService">
+	<tr data-order="__construct" id="___construct">
 
 		<td class="attributes"><code>
 			 public 
-			boolean
+			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_hasService">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#30-36" title="Go to source code">hasService</a>( <span>mixed <var>$serviceName</var></span> )</code>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#39-52" title="Go to source code">__construct</a>( <span>array <var>$options</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> <var>$servicesConfigs</var></span> )</code>
 
 		<div class="description short">
 			
@@ -163,13 +171,16 @@
 
 
 
-				<h4>Returns</h4>
+
+
+				<h4>See</h4>
 				<div class="list">
-					<code>boolean</code><br />
+						$_options param array <b>options</b> - options from application.ini.<br />
+It is all after <i>resources.dic.</i><br />
 				</div>
 
-
-
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-Zaboy_Abstract.html#___construct">Zaboy_Abstract::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -185,7 +196,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addService">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#38-49" title="Go to source code">addService</a>( <span>string <var>$serviceName</var></span>, <span>mixed <var>$serviceObject</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#54-72" title="Go to source code">addService</a>( <span>string <var>$serviceName</var></span>, <span>mixed <var>$serviceObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -210,7 +221,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getServices" id="_getServices">
+	<tr data-order="getRunningServices" id="_getRunningServices">
 
 		<td class="attributes"><code>
 			 public 
@@ -220,21 +231,25 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getServices">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#51-57" title="Go to source code">getServices</a>( )</code>
+		<a class="anchor" href="#_getRunningServices">#</a>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#74-82" title="Go to source code">getRunningServices</a>( )</code>
 
 		<div class="description short">
 			
+<p>Return an array with names of running Services</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Return an array with names of running Services</p>
+
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>array</code><br />
+					<code>array</code><br>array with names of running Services<br />
 				</div>
 
 
@@ -243,18 +258,18 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getService" id="_getService">
+	<tr data-order="getRunningSingletonService" id="_getRunningSingletonService">
 
 		<td class="attributes"><code>
 			 public 
-			object
+			object|array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getService">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#59-69" title="Go to source code">getService</a>( <span>mixed <var>$serviceName</var></span> )</code>
+		<a class="anchor" href="#_getRunningSingletonService">#</a>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#84-94" title="Go to source code">getRunningSingletonService</a>( <span>mixed <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -267,8 +282,95 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>object</code><br />
+					<code>object|array</code><br />
 				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addEtalon" id="_addEtalon">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addEtalon">#</a>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#96-100" title="Go to source code">addEtalon</a>( <span>mixed <var>$serviceName</var></span>, <span>mixed <var>$serviceObject</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getEtalon" id="_getEtalon">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getEtalon">#</a>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#102-108" title="Go to source code">getEtalon</a>( <span>mixed <var>$serviceName</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getRunningServiceName" id="_getRunningServiceName">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getRunningServiceName">#</a>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#110-120" title="Go to source code">getRunningServiceName</a>( <span>mixed <var>$serviceInstance</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
 
 
 
@@ -282,7 +384,8 @@
 	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-Zaboy_Abstract.html#___construct">__construct()</a>, 
+			<a href="class-Zaboy_Abstract.html#__getBootstrap">_getBootstrap()</a>, 
+			<a href="class-Zaboy_Abstract.html#__getDic">_getDic()</a>, 
 			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
 			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
