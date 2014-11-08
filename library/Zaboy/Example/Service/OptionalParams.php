@@ -8,7 +8,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-  require_once 'Zaboy/Service.php';
+  require_once 'Zaboy/Services.php';
 
 /**
  * Zaboy_Example_Service_OptionalParams
@@ -23,7 +23,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Example_Service_OptionalParams extends Zaboy_Service
+class Zaboy_Example_Service_OptionalParams extends Zaboy_Services
 {
     public $_specifiedOptionalParam;
     
@@ -34,7 +34,7 @@ class Zaboy_Example_Service_OptionalParams extends Zaboy_Service
      * 
      * @return void
      */
-    public function __construct($notSpecifiedOptionalParam = null, Zaboy_Service $specifiedOptionalParam = null)
+    public function __construct($notSpecifiedOptionalParam = null, Zaboy_Services $specifiedOptionalParam = null)
     {
         $this->_specifiedOptionalParam = $specifiedOptionalParam;
         $this->_notSpecifiedOptionalParam = $notSpecifiedOptionalParam;

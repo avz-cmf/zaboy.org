@@ -15,7 +15,6 @@
 /**
  * This is factory for "make" service and objects which are created {@see Zaboy_Dic}
  * 
- * @todo Autoloar
  * @category   Dic
  * @package    Dic
  * @copyright  Zaboychenko Andrey
@@ -71,6 +70,11 @@ class Zaboy_Dic_Factory
     {
         $serviceClass = $this->_servicesConfigs->getServiceClass($serviceName);
         $this->_loopChecker->loadingStart($serviceName);
+        if (empty($serviceClass)) {
+                    require_once 'Zaboy/Dic/Exception.php';
+                    throw new Zaboy_Dic_Exception(
+                        "Class isn't defined in Service Config for Service: " . $serviceName);
+        }
         $reflectionObject = new ReflectionClass($serviceClass);
         /* @var $reflectionObject /ReflectionObject */
         $callParamsArray = $this->_getConstructParamsValues( $reflectionObject, $serviceName);

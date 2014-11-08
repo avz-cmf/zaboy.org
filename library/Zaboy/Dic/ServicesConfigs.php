@@ -48,6 +48,7 @@
  *          ...
  *</code>
  * 
+ * @todo Make docs about config keys
  * @category   Dic
  * @package    Dic
  * @copyright  Zaboychenko Andrey

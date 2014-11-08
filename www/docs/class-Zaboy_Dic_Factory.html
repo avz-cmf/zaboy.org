@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_Factory | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?503291574"></script>
+	<script type="text/javascript" src="elementlist.js?3409950636"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -46,7 +46,6 @@
 			<ul>
 				<li><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></li>
 				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
-				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
 				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
 				<li class="active"><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></li>
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
@@ -106,20 +105,6 @@
 
 	</div>
 
-	<dl class="tree">
-		<dd style="padding-left:0px">
-			<a href="class-Zaboy_Abstract.html"><span>Zaboy_Abstract</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:30px">
-			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Zaboy_Dic_Factory</span></b>			
-			
-			
-		</dd>
-	</dl>
 
 
 
@@ -142,9 +127,7 @@
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-				<b>Todo:</b>
-				Autoloar<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_Factory.html#15-229" title="Go to source code">library/Zaboy/Dic/Factory.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_Factory.html#15-235" title="Go to source code">library/Zaboy/Dic/Factory.php</a><br />
 	</div>
 
 
@@ -162,7 +145,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#40-55" title="Go to source code">__construct</a>( <span>array <var>$options</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> <var>$servicesConfigs</var></span>, <span><code><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></code> <var>$loopChecker</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#46-61" title="Go to source code">__construct</a>( <span><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> <var>$servicesConfigs</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></code> <var>$servicesStore</var></span>, <span><code><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></code> <var>$loopChecker</var></span> )</code>
 
 		<div class="description short">
 			
@@ -174,9 +157,9 @@
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$options</var></dt>
-					<dd><code>array</code><br>$options</dd>
 					<dt><var>$servicesConfigs</var></dt>
+					<dd><code>array</code><br>$options</dd>
+					<dt><var>$servicesStore</var></dt>
 					<dd><code><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code></code><br>$servicesConfigs</dd>
 					<dt><var>$loopChecker</var></dt>
 					<dd><code><code><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></code></code><br>$loopChecker</dd>
@@ -185,8 +168,6 @@
 
 
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-Zaboy_Abstract.html#___construct">Zaboy_Abstract::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -202,7 +183,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_createService">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#57-74" title="Go to source code">createService</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#63-80" title="Go to source code">createService</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -240,7 +221,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_createObject">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#76-92" title="Go to source code">createObject</a>( <span>string <var>$objectClass</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#82-98" title="Go to source code">createObject</a>( <span>string <var>$objectClass</var></span> )</code>
 
 		<div class="description short">
 			
@@ -278,7 +259,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getConstructParamsValues">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#94-121" title="Go to source code">_getConstructParamsValues</a>( <span>/ReflectionObject <var>$reflectionObject</var></span>, <span>string|null <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#100-127" title="Go to source code">_getConstructParamsValues</a>( <span>/ReflectionObject <var>$reflectionObject</var></span>, <span>string|null <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -307,7 +288,7 @@ will be used</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>array</code><br>ReflectionClass::newInstanceArgs()<br />
+					<code>array</code><br>params for /ReflectionClass::newInstanceArgs()<br />
 				</div>
 
 
@@ -327,7 +308,7 @@ will be used</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getConstructParamValue">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#124-156" title="Go to source code">_getConstructParamValue</a>( <span>/ReflectionParameter <var>$reflectionParam</var></span>, <span>string <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#130-162" title="Go to source code">_getConstructParamValue</a>( <span>/ReflectionParameter <var>$reflectionParam</var></span>, <span>string|null <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -352,7 +333,7 @@ used.</p>
 					<dt><var>$reflectionParam</var></dt>
 					<dd><code>/ReflectionParameter</code><br>$reflectionParam</dd>
 					<dt><var>$serviceName</var></dt>
-					<dd><code>string</code><br>$serviceName</dd>
+					<dd><code>string|null</code><br>$serviceName</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -377,7 +358,7 @@ used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__resolveOptions">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#158-181" title="Go to source code">_resolveOptions</a>( <span>array <var>$reflectionParams</var></span>, <span>mixed <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#164-187" title="Go to source code">_resolveOptions</a>( <span>array <var>$reflectionParams</var></span>, <span>mixed <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -423,7 +404,7 @@ Service config</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__resolveServiceForConstructParam">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#183-203" title="Go to source code">_resolveServiceForConstructParam</a>( <span><code><a href="class-ReflectionParameter.html">ReflectionParameter</a></code> <var>$reflectionParam</var></span>, <span>string|null <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#189-209" title="Go to source code">_resolveServiceForConstructParam</a>( <span><code><a href="class-ReflectionParameter.html">ReflectionParameter</a></code> <var>$reflectionParam</var></span>, <span>string|null <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -456,22 +437,55 @@ Service config</p>
 		</div>
 		</div></td>
 	</tr>
-	</table>
+	<tr data-order="getServiceClone" id="_getServiceClone">
 
-	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#__getBootstrap">_getBootstrap()</a>, 
-			<a href="class-Zaboy_Abstract.html#__getDic">_getDic()</a>, 
-			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_removeAttrib">removeAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttrib">setAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttribs">setAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setOptions">setOptions()</a>
-		</code></td>
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getServiceClone">#</a>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#211-233" title="Go to source code">getServiceClone</a>( <span>string <var>$serviceName</var></span> )</code>
+
+		<div class="description short">
+			
+<p>One of method of making Service is cloning.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>One of method of making Service is cloning.</p>
+
+<p>Reference clone is needs for it. It is stored in $_servicesStore</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceName</var></dt>
+					<dd><code>string</code><br>$serviceName</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_SINGLETON">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_SINGLETON</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_CLONE">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_CLONE</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_RECREATE">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_RECREATE</b></a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
 	</tr>
 	</table>
 
@@ -486,14 +500,7 @@ Service config</p>
 
 
 
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-Zaboy_Abstract.html#properties">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#$_attribs"><var>$_attribs</var></a>
-		</code></td>
-	</tr>
-	</table>
+
 
 
 

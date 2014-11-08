@@ -90,6 +90,7 @@ INI;
         fclose( $f );
         return $filename;        
     }
+    
     /**
     * Sets up the fixture, for example, opens a network connection.
     */

@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?503291574"></script>
+	<script type="text/javascript" src="elementlist.js?3409950636"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -46,7 +46,6 @@
 			<ul>
 				<li><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></li>
 				<li class="active"><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
-				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
 				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
 				<li><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></li>
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
@@ -102,14 +101,11 @@
 
 	<div class="description">
 	
-<p>Zaboy_Dic</p>
-
 <p><b>Zaboy_Dic</b><br />
 </p>
 
-<p>Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is
-loading as resurce plugin of Bootstrap { @see
-Zaboy_Application_Resource_Dic}.</p>
+<p>Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i>
+load as resurce plugin of Bootstrap <code><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></code>.</p>
 
 <p>Add in <i>application.ini</i> for load { @see Zaboy_Dic}<br />
 </p>
@@ -121,8 +117,7 @@ resources.dic[] =
 <p>You can change class of <code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code> for load:</p>
 
 <pre>
-resources.dic.<span
-class="php-keyword1">class</span> = My_Dic_Class
+resources.dic.class = My_Dic_Class
 </pre>
 
 <p>For more information about configuration see <code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code>
@@ -143,10 +138,15 @@ class="php-quote">'dic'</span>);
 
 <p><b>Objects and Services for DIC</b><br />
 Zaboy_Dic can load any object which corresponds a some requirements.<br />
-Zaboy_Dic also can contane that objectif it is described in Services config ( in
-most cases it is application.ini). In that case it is Service.<br />
-For more information about Objects, Services and requirements for them, see
-<code><a href="class-Zaboy_Service.html">Zaboy_Service</a></code></p>
+Zaboy_Dic also can contane that object if it is described in Services config (
+in most cases it is application.ini). In that case this object is Service.<br />
+Objects, which was loaded via Dic is not stored in Dic. Every call <code><a href="class-Zaboy_Dic.html#_get">Zaboy_Dic::get()</a></code>
+will return new object. For Services you will get singleton instance be default.
+You can change this behavior in Service config. See <code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> for details.<br />
+</p>
+
+<p>For more information about Objects, Services and requirements for them, see
+<code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code></p>
 
 	</div>
 
@@ -158,13 +158,6 @@ For more information about Objects, Services and requirements for them, see
 			
 		</dd>
 		<dd style="padding-left:30px">
-			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-Zaboy_Dic_Abstract.html"><span>Zaboy_Dic_Abstract</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by" />
 <b><span>Zaboy_Dic</span></b>			
 			
@@ -195,7 +188,9 @@ For more information about Objects, Services and requirements for them, see
 				Zaboy_Dic_Interface<br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic.html#16-145" title="Go to source code">library/Zaboy/Dic.php</a><br />
+				<b>Todo:</b>
+				Optional Params - make method getLazyLoadedService($ServiceName)<br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic.html#16-235" title="Go to source code">library/Zaboy/Dic.php</a><br />
 	</div>
 
 
@@ -213,7 +208,7 @@ For more information about Objects, Services and requirements for them, see
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#48-68" title="Go to source code">__construct</a>( <span>array <var>$options</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> <var>$servicesConfigs</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></code> <var>$servicesStore</var></span>, <span><code><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></code> <var>$factory</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#80-100" title="Go to source code">__construct</a>( <span>array <var>$options</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> <var>$servicesConfigs</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></code> <var>$servicesStore</var></span>, <span><code><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></code> <var>$factory</var></span> )</code>
 
 		<div class="description short">
 			
@@ -255,7 +250,7 @@ For more information about Objects, Services and requirements for them, see
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#70-92" title="Go to source code">get</a>( <span>string <var>$name</var></span>, <span>string|null <var>$class</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#102-124" title="Go to source code">get</a>( <span>string <var>$name</var></span>, <span>string|null <var>$class</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -284,24 +279,22 @@ For more information about Objects, Services and requirements for them, see
 
 
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-Zaboy_Dic_Abstract.html#_get">Zaboy_Dic_Abstract::get()</a></code></div>
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getService" id="_getService">
+	<tr data-order="_getService" id="__getService">
 
 		<td class="attributes"><code>
-			 public 
+			 protected 
 			null
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getService">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#94-131" title="Go to source code">getService</a>( <span>type <var>$serviceName</var></span> )</code>
+		<a class="anchor" href="#__getService">#</a>
+		<code><a href="source-class-Zaboy_Dic.html#126-163" title="Go to source code">_getService</a>( <span>type <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -343,7 +336,7 @@ For more information about Objects, Services and requirements for them, see
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRunningServiceName">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#133-142" title="Go to source code">getRunningServiceName</a>( <span>object <var>$serviceInstance</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#165-174" title="Go to source code">getRunningServiceName</a>( <span>object <var>$serviceInstance</var></span> )</code>
 
 		<div class="description short">
 			
@@ -367,6 +360,118 @@ For more information about Objects, Services and requirements for them, see
 				<div class="list">
 					<code>string|null</code><br>Service Name<br />
 				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getRunningServiceInstance" id="_getRunningServiceInstance">
+
+		<td class="attributes"><code>
+			 public 
+			array|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getRunningServiceInstance">#</a>
+		<code><a href="source-class-Zaboy_Dic.html#176-214" title="Go to source code">getRunningServiceInstance</a>( <span>string <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Return Service Instance(s) by Name of Service. Method return ARRAY!</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return Service Instance(s) by Name of Service. Method return ARRAY!</p>
+
+<p>If Service Name isn't specified all running services will be returned Format
+of returnet data (if $serviceName = null):</p>
+
+<pre>
+[
+ singletonServiceName1 = [ <span
+class="php-num">0</span> =&gt; instanceSingletonService1]
+ singletonServiceName2 = [ <span
+class="php-num">0</span> =&gt; instanceSingletonService2]
+ clonedServiceName1 =
+     [
+         <span
+class="php-num">0</span> =&gt; instanceClonedService11
+         <span
+class="php-num">1</span> =&gt; instanceClonedService12
+         ...
+     ]
+]
+</pre>
+
+<p>if $serviceName = singletonServiceName1 :</p>
+
+<pre>
+[
+ singletonServiceName1 = [ <span
+class="php-num">0</span> =&gt; instanceSingletonService1]
+</pre>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceName</var></dt>
+					<dd><code>string</code><br>$serviceName Service Name</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array|null</code><br>Instance(s)<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_autoloadServices" id="__autoloadServices">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__autoloadServices">#</a>
+		<code><a href="source-class-Zaboy_Dic.html#216-234" title="Go to source code">_autoloadServices</a>( )</code>
+
+		<div class="description short">
+			
+<p>Some services have to be started automatically</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Some services have to be started automatically</p>
+
+<p>Class must be load if in config</p>
+
+<pre>
+resources.dic.services.WithAutoload.autoload = <span
+class="php-keyword1">true</span>
+</pre>
+
+<p>where 'WithAutoload' is services name</p>
+
+
+
+
 
 
 

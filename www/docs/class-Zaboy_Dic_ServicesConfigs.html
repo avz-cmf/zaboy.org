@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_ServicesConfigs | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?503291574"></script>
+	<script type="text/javascript" src="elementlist.js?3409950636"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -46,7 +46,6 @@
 			<ul>
 				<li><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></li>
 				<li><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></li>
-				<li><a href="class-Zaboy_Dic_Abstract.html">Zaboy_Dic_Abstract</a></li>
 				<li><a href="class-Zaboy_Dic_Exception.html">Zaboy_Dic_Exception</a></li>
 				<li><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></li>
 				<li><a href="class-Zaboy_Dic_LoopChecker.html">Zaboy_Dic_LoopChecker</a></li>
@@ -201,7 +200,7 @@ class="php-quote">'NextServiceClass'</span>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesConfigs.html#13-230" title="Go to source code">library/Zaboy/Dic/ServicesConfigs.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesConfigs.html#13-229" title="Go to source code">library/Zaboy/Dic/ServicesConfigs.php</a><br />
 	</div>
 
 
@@ -377,14 +376,18 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceInitiationType">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#168-179" title="Go to source code">getServiceInitiationType</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#168-184" title="Go to source code">getServiceInitiationType</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
+<p>There are some variety of making Service</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>There are some variety of making Service</p>
+
 
 
 				<h4>Parameters</h4>
@@ -399,6 +402,12 @@ class="php-quote">'NextServiceClass'</span>
 				</div>
 
 
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_SINGLETON">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_SINGLETON</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_CLONE">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_CLONE</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_RECREATE">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_RECREATE</b></a></code></code><br />
+				</div>
 
 
 		</div>
@@ -415,7 +424,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isService">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#181-191" title="Go to source code">isService</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#186-196" title="Go to source code">isService</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -446,18 +455,18 @@ class="php-quote">'NextServiceClass'</span>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getServiceForConstructParam" id="_getServiceForConstructParam">
+	<tr data-order="getServiceNameForConstructParam" id="_getServiceNameForConstructParam">
 
 		<td class="attributes"><code>
 			 public 
-			
+			string|null
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getServiceForConstructParam">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#194-201" title="Go to source code">getServiceForConstructParam</a>( <span>mixed <var>$serviceName</var></span>, <span>mixed <var>$paramName</var></span> )</code>
+		<a class="anchor" href="#_getServiceNameForConstructParam">#</a>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#198-211" title="Go to source code">getServiceNameForConstructParam</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$paramName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -467,7 +476,18 @@ class="php-quote">'NextServiceClass'</span>
 			
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceName</var></dt>
+					<dd><code>string</code><br>$serviceName</dd>
+					<dt><var>$paramName</var></dt>
+					<dd><code>string</code><br>$paramName</dd>
+				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
 
 
 
@@ -475,7 +495,7 @@ class="php-quote">'NextServiceClass'</span>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_getServiceAutoload" id="__getServiceAutoload">
+	<tr data-order="getServiceAutoload" id="_getServiceAutoload">
 
 		<td class="attributes"><code>
 			 public 
@@ -485,15 +505,21 @@ class="php-quote">'NextServiceClass'</span>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#__getServiceAutoload">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#203-214" title="Go to source code">_getServiceAutoload</a>( <span>string <var>$serviceName</var></span> )</code>
+		<a class="anchor" href="#_getServiceAutoload">#</a>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#213-228" title="Go to source code">getServiceAutoload</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
+<p>Return TRUE if service has to be started automatically</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Return TRUE if service has to be started automatically</p>
+
+<p>By default is FALSE</p>
+
 
 
 				<h4>Parameters</h4>
@@ -506,41 +532,6 @@ class="php-quote">'NextServiceClass'</span>
 				<div class="list">
 					<code>boolean</code><br />
 				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="autoloadServices" id="_autoloadServices">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_autoloadServices">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#216-229" title="Go to source code">autoloadServices</a>( )</code>
-
-		<div class="description short">
-			
-<p>Class must be load if resources.dic.services.WithAutoload.autoload = true,
-where 'WithAutoload' is services name</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Class must be load if resources.dic.services.WithAutoload.autoload = true,
-where 'WithAutoload' is services name</p>
-
-
-
-
 
 
 

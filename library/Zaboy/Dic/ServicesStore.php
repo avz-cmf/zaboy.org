@@ -41,10 +41,8 @@ class Zaboy_Dic_ServicesStore
      * @param Zaboy_Dic_ServicesConfigs $servicesConfigs
      * @return void
      */
-    public function __construct
-    ( 
-        Zaboy_Dic_ServicesConfigs $servicesConfigs
-    ){
+    public function __construct ( Zaboy_Dic_ServicesConfigs $servicesConfigs )
+    {
         $this->_servicesConfigs = $servicesConfigs;
     }     
     
@@ -113,7 +111,6 @@ class Zaboy_Dic_ServicesStore
     public function addEtalon($serviceName, $serviceObject) 
     {
         $this->_etalonsServices[$serviceName] = $serviceObject;
-
     }
     
     /**

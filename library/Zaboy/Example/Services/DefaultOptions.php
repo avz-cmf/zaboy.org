@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Services_Example_DefaultOptions
+ * Zaboy_Example_Services_DefaultOptions
  * 
  * @category   Example
  * @package    Example
@@ -8,10 +8,10 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-  require_once 'Zaboy/Service.php';
+  require_once 'Zaboy/Services.php';
 
 /**
- * Zaboy_Services_Example_DefaultOptions.
+ * Zaboy_Example_Services_DefaultOptions.
  * 
  * @category   Example
  * @package    Example
@@ -19,7 +19,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Services_Example_DefaultOptions extends Zaboy_Service
+class Zaboy_Example_Services_DefaultOptions extends Zaboy_Services
 {
     /**
     * @var array default Options
@@ -53,13 +53,9 @@ class Zaboy_Services_Example_DefaultOptions extends Zaboy_Service
     }
     
     /**
-    * Service constructor
-    *
-    * Constructor without params<br>
-    * Will use $this->_defaultOptions if object was inherited from Zaboy_Services <br>
-    *
-    * @return void
-    */
+     * 
+     * @param mix $param
+     */
     public function setParam($param)
     {
         $this->param = $param;

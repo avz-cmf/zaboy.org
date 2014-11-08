@@ -32,7 +32,7 @@ class Zaboy_Example_Service_ManyParams
             array $options = array(),
             Zaboy_Example_Service_WithoutParams $specifiedParam,
             $notSpecifiedParam,
-            Zaboy_Service $optionalParam = null
+            Zaboy_Services $optionalParam = null
             
     ){   
         parent::__construct($options);

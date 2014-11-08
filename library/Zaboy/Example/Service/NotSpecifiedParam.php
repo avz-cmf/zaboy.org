@@ -8,7 +8,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-  require_once 'Zaboy/Service.php';
+  require_once 'Zaboy/Services.php';
 
 /**
  * Zaboy_Example_Service_NotSpecifiedParam
@@ -22,7 +22,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Example_Service_NotSpecifiedParam extends Zaboy_Service
+class Zaboy_Example_Service_NotSpecifiedParam extends Zaboy_Services
 {
     
     public $_notSpecifiedParam;

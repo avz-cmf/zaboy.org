@@ -16,17 +16,17 @@
 /**
  * <b>Zaboy_Dic</b><br>
  * 
- * Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> is 
- * loading as resurce plugin of Bootstrap { @see Zaboy_Application_Resource_Dic}. 
+ * Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> 
+ * load as resurce plugin of Bootstrap {@see Zaboy_Application_Resource_Dic}. 
  * 
- * Add in <i>application.ini</i> for load { @see Zaboy_Dic}<br>
- * <code> 
+ * Add in <i>application.ini</i> for load {@see Zaboy_Dic}<br>
+ * <pre> 
  * resources.dic[] = 
- * </code>
+ * </pre>
  * You can change class of {@see Zaboy_Dic} for load:
- * <code> 
+ * <pre> 
  * resources.dic.class = My_Dic_Class 
- * </code>
+* </pre>
  * For more information about configuration see {@see Zaboy_Dic_ServicesConfigs} 
  * and {@see Zaboy_Application_Resource_Dic}<br>  * 
  * 
@@ -38,12 +38,18 @@
  * 
  * <b>Objects and Services for DIC</b><br>
  * Zaboy_Dic can load any object which corresponds a some requirements.<br>
- * Zaboy_Dic also can contane that objectif it is described in Services config 
+ * Zaboy_Dic also can contane that object if it is described in Services Config 
  * ( in most cases it is application.ini).
- * In that case it is Service. <br>
- * For more information about Objects, Services and requirements for them, 
- * see {@see Zaboy_Service}
+ * In that case this object is Service. <br>
+ * Objects, which was loaded via Dic is not stored in Dic. Every call 
+ * {@link get()} will return new object. 
+ * For Services you will get singleton instance be default. You can change this
+ * behavior in Service config. See {@link Zaboy_Dic_ServicesConfigs} for details.<br>
  * 
+ * For more information about Objects, Services and requirements for them, 
+ * see {@see Zaboy_Services}
+ * 
+ * @todo Optional Params  - make method getLazyLoadedService($ServiceName)
  * @see Zaboy_Dic_Interface
  * @category   Dic
  * @package    Dic
