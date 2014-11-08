@@ -161,7 +161,7 @@ resources.dic[] =
 INI1
         );
         $service = $this->object->get('serviceWithDefaultOptions' , $this->objectClassWithDefaultOptions);
-        /* @var $service Zaboy_Example_Service_WithoutParams */
+
         $this->assertEquals(
             'test param value from $_defaultOptions',
             $service->param

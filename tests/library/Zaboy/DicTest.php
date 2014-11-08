@@ -11,8 +11,12 @@
 */
 
 require_once 'Zaboy/Dic.php';
-require_once 'Zaboy/Example/Service/WithoutParams.php';
-require_once 'Zaboy/Example/Service/WithOptionsOnly.php';
+require_once 'Zaboy/Example/Dic/ManyParams.php';
+require_once 'Zaboy/Example/Dic/NotSpecifiedParam.php';
+require_once 'Zaboy/Example/Dic/OptionalParams.php';
+require_once 'Zaboy/Example/Dic/WithOptionsOnly.php';
+require_once 'Zaboy/Example/Dic/WithSpecifiedParam.php';
+require_once 'Zaboy/Example/Dic/WithoutParams.php';
 require_once 'Zend/Application.php';
 require_once 'Zend/Application/Bootstrap/Bootstrap.php';
 
@@ -124,8 +128,8 @@ INI;
     */
     public function testGetObjectWithoutParams_ClassIsSpecified() {
         $this->loadDic($this->_minimalAadditionalConfig);
-        $service = $this->object->get('serviceWithoutParams' , 'Zaboy_Example_Service_WithoutParams');
-        /* @var $service Zaboy_Example_Service_WithoutParams */
+        $service = $this->object->get('serviceWithoutParams' , 'Zaboy_Example_Dic_WithoutParams');
+        /* @var $service Zaboy_Example_Dic_WithoutParams */
                 $this->assertEquals(
                 'return ' . 'testValue',
                 $service->getString('testValue')
@@ -139,7 +143,7 @@ INI;
         $this->loadDic($this->_minimalAadditionalConfig);
         $this->setExpectedException('Zaboy_Dic_Exception');    
         $service = $this->object->get('serviceWithoutParams');
-        /* @var $service Zaboy_Example_Service_WithoutParams */
+        /* @var $service Zaboy_Example_Dic_WithoutParams */
     }     
 
     /**
@@ -148,11 +152,11 @@ INI;
     public function testGetSingletonServiceWithoutParams_ClassIsNotSpecifiedButDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.serviceWithoutParams.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.serviceWithoutParams.class = Zaboy_Example_Dic_WithoutParams
 INI1
         );
         $service = $this->object->get('serviceWithoutParams');
-        /* @var $service Zaboy_Example_Service_WithoutParams */
+        /* @var $service Zaboy_Example_Dic_WithoutParams */
                 $this->assertEquals(
                 'return ' . 'testValue',
                 $service->getString('testValue')
@@ -165,13 +169,13 @@ INI1
     public function testGetSingletonServiceWithoutParams_SpecifiedAndDescribedClassesAreDifferent() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.serviceWithoutParams.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.serviceWithoutParams.class = Zaboy_Example_Dic_WithoutParams
 INI1
         );
         $service = $this->object->get('serviceWithoutParams', 'Zaboy_Service');
-        /* @var $service Zaboy_Example_Service_WithoutParams */
+        /* @var $service Zaboy_Example_Dic_WithoutParams */
                 $this->assertEquals(
-                'Zaboy_Example_Service_WithoutParams',
+                'Zaboy_Example_Dic_WithoutParams',
                 get_class($service)
         );
     }
@@ -181,8 +185,8 @@ INI1
      */
     public function testGetObjectWithOptionsOnly_NoOptionsSpecified() {
         $this->loadDic($this->_minimalAadditionalConfig);
-        $service = $this->object->get('serviceWithOptionsOnly' , 'Zaboy_Example_Service_WithOptionsOnly');
-        /* @var $service Zaboy_Example_Service_WithoutParams */
+        $service = $this->object->get('serviceWithOptionsOnly' , 'Zaboy_Example_Dic_WithOptionsOnly');
+        /* @var $service Zaboy_Example_Dic_WithoutParams */
                 $this->assertEquals(
                 array(),
                 $service->getAttribs()
@@ -195,11 +199,11 @@ INI1
     public function testGetSingletonServiceWithOptionsOnly_NoOptionsInConfig() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
+resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Dic_WithOptionsOnly
 INI1
         );
         $service = $this->object->get('serviceWithOptionsOnly');
-        /* @var $service Zaboy_Example_Service_WithoutParams */
+        /* @var $service Zaboy_Example_Dic_WithoutParams */
                 $this->assertEquals(
                 array(),
                 $service->getAttribs()
@@ -213,12 +217,12 @@ INI1
     public function testGetSingletonServiceWithOptionsOnly_MinimalArrayOptionsInConfig() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
+resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Dic_WithOptionsOnly
 resources.dic.services.serviceWithOptionsOnly.options[] = 
 INI1
         );
         $service = $this->object->get('serviceWithOptionsOnly');
-        /* @var $service Zaboy_Example_Service_WithoutParams */
+        /* @var $service Zaboy_Example_Dic_WithoutParams */
                 $this->assertEquals(
                 array(0 =>''),         // string  "...options[] = " is equals array(0 =>'')
                 $service->getAttribs()
@@ -231,7 +235,7 @@ INI1
     public function testGetSingletonServiceWithOptionsOnly_WithOptionsInConfig() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Service_WithOptionsOnly
+resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Dic_WithOptionsOnly
     ;There is method setParam() - it will be call   
 resources.dic.services.serviceWithOptionsOnly.options.param = paramValue
     ;There isn't method setAttribKey - it will save in attribs array
@@ -239,7 +243,7 @@ resources.dic.services.serviceWithOptionsOnly.options.attribKey = attribValue
 INI1
         );
         $service = $this->object->get('serviceWithOptionsOnly');
-        /* @var $service Zaboy_Example_Service_WithoutParams */
+        /* @var $service Zaboy_Example_Dic_WithoutParams */
         $this->assertEquals(
             'paramValue',
             $service->param
@@ -258,8 +262,8 @@ INI1
         $this->setExpectedException('Zaboy_Dic_Exception');    
         $service = $this
                 ->object
-                ->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Service_NotSpecifiedParam');
-        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+                ->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Dic_NotSpecifiedParam');
+        /* @var $service Zaboy_Example_Dic_NotSpecifiedParam */
     }    
     
    
@@ -269,12 +273,12 @@ INI1
     public function testGetSingletonServiceWithNotSpecifiedParam_NotDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.serviceWithNotSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
+resources.dic.services.serviceWithNotSpecifiedParam.class = Zaboy_Example_Dic_NotSpecifiedParam
 INI1
         );
         $this->setExpectedException('Zaboy_Dic_Exception');    
         $service = $this->object->get('serviceWithNotSpecifiedParam');
-        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+        /* @var $service Zaboy_Example_Dic_NotSpecifiedParam */
     }        
    
     /**
@@ -294,14 +298,14 @@ INI1
     public function testGetObjectWithNotSpecifiedParam_ServiceWithSameAsParamNameAreDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.notSpecifiedParam.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.notSpecifiedParam.class = Zaboy_Example_Dic_WithoutParams
 INI1
         );
         $this->setExpectedException('Zaboy_Dic_Exception');   
         $service = $this
                 ->object
-                ->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Service_NotSpecifiedParam');
-        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+                ->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Dic_NotSpecifiedParam');
+        /* @var $service Zaboy_Example_Dic_NotSpecifiedParam */
     }
     
    
@@ -322,21 +326,21 @@ INI1
     public function testGetSingletonServiceWithNotSpecifiedParam_ServiceWithSameNameAreDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.serviceWithNotSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam   
-resources.dic.services.notSpecifiedParam.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.serviceWithNotSpecifiedParam.class = Zaboy_Example_Dic_NotSpecifiedParam   
+resources.dic.services.notSpecifiedParam.class = Zaboy_Example_Dic_WithoutParams
 INI1
         );
         $this->setExpectedException('Zaboy_Dic_Exception');   
         $service = $this
                 ->object
-                ->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Service_NotSpecifiedParam');
-        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+                ->get('serviceWithNotSpecifiedParam' , 'Zaboy_Example_Dic_NotSpecifiedParam');
+        /* @var $service Zaboy_Example_Dic_NotSpecifiedParam */
     } 
    
     /**
-     * Zaboy_Example_Service_WithoutParams::__construct() 
-     * Zaboy_Example_Service_WithSpecifiedParam::__construct(Zaboy_Example_Service_WithoutParams $specifiedParam) 
-     * Zaboy_Example_Service_NotSpecifiedParam::__construct($notSpecifiedParam)
+     * Zaboy_Example_Dic_WithoutParams::__construct() 
+     * Zaboy_Example_Dic_WithSpecifiedParam::__construct(Zaboy_Example_Dic_WithoutParams $specifiedParam) 
+     * Zaboy_Example_Dic_NotSpecifiedParam::__construct($notSpecifiedParam)
      * 
      * @covers Zaboy_Dic::get
      * 
@@ -344,27 +348,27 @@ INI1
     public function testGetSingletonServiceWithTwoLevelDependencies_FullDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.withoutParams.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.withoutParams.class = Zaboy_Example_Dic_WithoutParams
 ;    
 resources.dic.services.specifiedParam.params.specifiedParam = withoutParams    
-resources.dic.services.specifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.specifiedParam.class = Zaboy_Example_Dic_WithSpecifiedParam
 ;
 resources.dic.services.notSpecifiedParam.params.notSpecifiedParam = specifiedParam
-resources.dic.services.notSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
+resources.dic.services.notSpecifiedParam.class = Zaboy_Example_Dic_NotSpecifiedParam
 INI1
         );
         $service = $this->object->get('notSpecifiedParam');
-        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+        /* @var $service Zaboy_Example_Dic_NotSpecifiedParam */
         $this->assertEquals(
-            'Zaboy_Example_Service_WithoutParams',
+            'Zaboy_Example_Dic_WithoutParams',
             get_class($service->_notSpecifiedParam->getSpecifiedParam())
         );   
     }
     
     /**
-     * Zaboy_Example_Service_WithoutParams::__construct() 
-     * Zaboy_Example_Service_WithSpecifiedParam::__construct(Zaboy_Example_Service_WithoutParams $specifiedParam) 
-     * Zaboy_Example_Service_NotSpecifiedParam::__construct($notSpecifiedParam)     * 
+     * Zaboy_Example_Dic_WithoutParams::__construct() 
+     * Zaboy_Example_Dic_WithSpecifiedParam::__construct(Zaboy_Example_Dic_WithoutParams $specifiedParam) 
+     * Zaboy_Example_Dic_NotSpecifiedParam::__construct($notSpecifiedParam)     * 
      * 
      * @covers Zaboy_Dic::get
      * 
@@ -372,16 +376,16 @@ INI1
     public function testGetSingletonServiceWithTwoLevelDependencies_PartDescribed() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.srvc_specifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_specifiedParam.class = Zaboy_Example_Dic_WithSpecifiedParam
 ;
 resources.dic.services.srvc_notSpecifiedParam.params.notSpecifiedParam = srvc_specifiedParam
-resources.dic.services.srvc_notSpecifiedParam.class = Zaboy_Example_Service_NotSpecifiedParam
+resources.dic.services.srvc_notSpecifiedParam.class = Zaboy_Example_Dic_NotSpecifiedParam
 INI1
         );     
         $service = $this->object->get('srvc_notSpecifiedParam');
-        /* @var $service Zaboy_Example_Service_NotSpecifiedParam */
+        /* @var $service Zaboy_Example_Dic_NotSpecifiedParam */
         $this->assertEquals(
-            'Zaboy_Example_Service_WithoutParams',
+            'Zaboy_Example_Dic_WithoutParams',
             get_class($service->_notSpecifiedParam->getSpecifiedParam())
         );    
     }
@@ -392,13 +396,13 @@ INI1
     public function testGetSingletonServices_isSingletonDefaultMethodOfLoad() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Dic_WithSpecifiedParam
   ; resources.dic.services.srvc_WithSpecifiedParam_clone.instance = singleton
 INI1
         );     
         $service1 = $this->object->get('srvc_WithSpecifiedParam_clone');
         $service2 = $this->object->get('srvc_WithSpecifiedParam_clone');
-        /* @var $service1 Zaboy_Example_Service_WithoutParams */
+        /* @var $service1 Zaboy_Example_Dic_WithoutParams */
 
         $this->assertTrue(
             $service1 === $service2
@@ -411,13 +415,13 @@ INI1
     public function testGetSingletonServices() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Dic_WithSpecifiedParam
 resources.dic.services.srvc_WithSpecifiedParam_clone.instance = singleton
 INI1
         );     
         $service1 = $this->object->get('srvc_WithSpecifiedParam_clone');
         $service2 = $this->object->get('srvc_WithSpecifiedParam_clone');
-        /* @var $service1 Zaboy_Example_Service_WithSpecifiedParam */
+        /* @var $service1 Zaboy_Example_Dic_WithSpecifiedParam */
 
         $this->assertTrue(
             $service1 === $service2
@@ -433,13 +437,13 @@ INI1
     public function testGetClonedServices() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Dic_WithSpecifiedParam
 resources.dic.services.srvc_WithSpecifiedParam_clone.instance = clone
 INI1
         );     
         $service1 = $this->object->get('srvc_WithSpecifiedParam_clone');
         $service2 = $this->object->get('srvc_WithSpecifiedParam_clone');
-        /* @var $service1 Zaboy_Example_Service_WithSpecifiedParam */
+        /* @var $service1 Zaboy_Example_Dic_WithSpecifiedParam */
         
         $this->assertTrue(
             $service1 == $service2
@@ -460,13 +464,13 @@ INI1
     public function testGetRecreatedServices() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_WithSpecifiedParam_clone.class = Zaboy_Example_Dic_WithSpecifiedParam
 resources.dic.services.srvc_WithSpecifiedParam_clone.instance = recreate
 INI1
         );     
         $service1 = $this->object->get('srvc_WithSpecifiedParam_clone');
         $service2 = $this->object->get('srvc_WithSpecifiedParam_clone');
-        /* @var $service1 Zaboy_Example_Service_WithSpecifiedParam */
+        /* @var $service1 Zaboy_Example_Dic_WithSpecifiedParam */
         
         $this->assertTrue(
             $service1 == $service2
@@ -484,9 +488,9 @@ INI1
     } 
     
     /**
-     * Zaboy_Example_Service_WithoutParams::__construct() 
-     * Zaboy_Example_Service_WithSpecifiedParam::__construct(Zaboy_Example_Service_WithoutParams $specifiedParam) 
-     * Zaboy_Example_Service_NotSpecifiedParam::__construct($notSpecifiedParam)     * 
+     * Zaboy_Example_Dic_WithoutParams::__construct() 
+     * Zaboy_Example_Dic_WithSpecifiedParam::__construct(Zaboy_Example_Dic_WithoutParams $specifiedParam) 
+     * Zaboy_Example_Dic_NotSpecifiedParam::__construct($notSpecifiedParam)     * 
      * 
      * @covers Zaboy_Dic::get
      * 
@@ -495,14 +499,14 @@ INI1
         $this->loadDic(
 <<<'INI1'
 resources.dic.services.srvc_specifiedParam_Autoload.autoload = true
-resources.dic.services.srvc_specifiedParam_Autoload.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_specifiedParam_Autoload.class = Zaboy_Example_Dic_WithSpecifiedParam
 resources.dic.services.srvc_withoutParam_Autoload.autoload = true
-resources.dic.services.srvc_withoutParam_Autoload.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.srvc_withoutParam_Autoload.class = Zaboy_Example_Dic_WithoutParams
 ;
 resources.dic.services.srvc_withoutParam_notAutoload.autoload = false
-resources.dic.services.srvc_withoutParam_notAutoload.class = Zaboy_Example_Service_WithoutParams
+resources.dic.services.srvc_withoutParam_notAutoload.class = Zaboy_Example_Dic_WithoutParams
   ;  resources.dic.services.srvc_specifiedParam_notAutoload.autoload = false
-resources.dic.services.srvc_specifiedParam_notAutoload.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_specifiedParam_notAutoload.class = Zaboy_Example_Dic_WithSpecifiedParam
 INI1
         );     
         $specifiedParamA = $this->object->getRunningServiceInstance("srvc_specifiedParam_Autoload");
@@ -527,11 +531,11 @@ INI1
     public function testGetRunningServiceName() {
         $this->loadDic(
 <<<'INI1'
-resources.dic.services.srvc_WithSpecifiedParam.class = Zaboy_Example_Service_WithSpecifiedParam
+resources.dic.services.srvc_WithSpecifiedParam.class = Zaboy_Example_Dic_WithSpecifiedParam
 INI1
         );     
         $service1 = $this->object->get('srvc_WithSpecifiedParam');
-        /* @var $service1 Zaboy_Example_Service_WithSpecifiedParam */
+        /* @var $service1 Zaboy_Example_Dic_WithSpecifiedParam */
         
         $this->assertEquals(
             'srvc_WithSpecifiedParam',

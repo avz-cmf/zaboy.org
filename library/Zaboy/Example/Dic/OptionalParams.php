@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Example_Service_OptionalParams
+ * Zaboy_Example_Dic_OptionalParams
  * 
  * @category   Example
  * @package    Example
@@ -11,7 +11,7 @@
   require_once 'Zaboy/Services.php';
 
 /**
- * Zaboy_Example_Service_OptionalParams
+ * Zaboy_Example_Dic_OptionalParams
  * 
  * You have to describe param in application.ini or service with same name 
  * have to be loaded before, but if Service Paramm is optional it will be load if
@@ -23,7 +23,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Example_Service_OptionalParams extends Zaboy_Services
+class Zaboy_Example_Dic_OptionalParams extends Zaboy_Services
 {
     public $_specifiedOptionalParam;
     

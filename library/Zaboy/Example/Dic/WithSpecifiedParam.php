@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Example_Service_WithoutParams
+ * Zaboy_Example_Dic_WithoutParams
  * 
  * @category   Example
  * @package    Example
@@ -9,7 +9,7 @@
  */
 
 /**
- * Zaboy_Example_Service_WithoutParams.
+ * Zaboy_Example_Dic_WithoutParams.
  * 
  * @category   Example
  * @package    Example
@@ -17,7 +17,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Example_Service_WithSpecifiedParam
+class Zaboy_Example_Dic_WithSpecifiedParam
 {
     
     protected $_specifiedParam;
@@ -26,13 +26,13 @@ class Zaboy_Example_Service_WithSpecifiedParam
     * 
     * @return void
     */  
-    public function __construct(Zaboy_Example_Service_WithoutParams $specifiedParam) 
+    public function __construct(Zaboy_Example_Dic_WithoutParams $specifiedParam) 
     {   
         $this->_specifiedParam = $specifiedParam;
     }
     
     /**
-     * Retrieve Zaboy_Example_Service_WithoutParams instance
+     * Retrieve Zaboy_Example_Dic_WithoutParams instance
      *
      * @return object
      */

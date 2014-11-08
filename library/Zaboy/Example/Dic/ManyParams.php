@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Example_Service_ManyParams
+ * Zaboy_Example_Dic_ManyParams
  * 
  * @category   Example
  * @package    Example
@@ -9,7 +9,7 @@
  */
 
 /**
- * Zaboy_Example_Service_ManyParams.
+ * Zaboy_Example_Dic_ManyParams.
  * 
  * @category   Example
  * @package    Example
@@ -17,7 +17,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Example_Service_ManyParams
+class Zaboy_Example_Dic_ManyParams
 {
     
     public $_specifiedParam;
@@ -30,7 +30,7 @@ class Zaboy_Example_Service_ManyParams
     */  
     public function __construct(
             array $options = array(),
-            Zaboy_Example_Service_WithoutParams $specifiedParam,
+            Zaboy_Example_Dic_WithoutParams $specifiedParam,
             $notSpecifiedParam,
             Zaboy_Services $optionalParam = null
             
