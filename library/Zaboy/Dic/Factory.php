@@ -75,11 +75,11 @@ class Zaboy_Dic_Factory
                     throw new Zaboy_Dic_Exception(
                         "Class isn't defined in Service Config for Service: " . $serviceName);
         }
-        $reflectionObject = new ReflectionClass($serviceClass);
-        /* @var $reflectionObject /ReflectionObject */
-        $callParamsArray = $this->_getConstructParamsValues( $reflectionObject, $serviceName);
+        $reflectionClass = new ReflectionClass($serviceClass);
+        /* @var $reflectionClass /ReflectionClass */
+        $callParamsArray = $this->_getConstructParamsValues( $reflectionClass, $serviceName);
         // it's like new class($callParamsArray[0], $callParamsArray[1]...)              
-        $serviceInstance = $reflectionObject->newInstanceArgs($callParamsArray); 
+        $serviceInstance = $reflectionClass->newInstanceArgs($callParamsArray); 
         $this->_loopChecker->loadingFinished($serviceName);    
         return $serviceInstance;            
     }    
@@ -93,62 +93,73 @@ class Zaboy_Dic_Factory
     public function createObject($objectClass)    
     {
         $this->_loopChecker->loadingStart($objectClass);
-        $reflectionObject = new ReflectionClass($objectClass);  
-        /* @var $reflectionObject /ReflectionObject */
-        $callParamsArray = $this->_getConstructParamsValues( $reflectionObject);
+        $reflectionClass = new ReflectionClass($objectClass);  
+        /* @var $reflectionClass /ReflectionClass */
+        $callParamsArray = $this->_getConstructParamsValues( $reflectionClass);
         // it's like new class($callParamsArray[1], $callParamsArray[2]...)              
-        $objectInstance = $reflectionObject->newInstanceArgs($callParamsArray); 
+        $objectInstance = $reflectionClass->newInstanceArgs($callParamsArray); 
         $this->_loopChecker->loadingFinished($objectClass);        
         return $objectInstance;
     }
 
     /**
-     * Get ( or make) all params for _constructor of class which $reflectionObject was taken
+     * Get ( or make) all params for _constructor of class which $reflectionClass was taken
      * 
      * If it is Service, ($serviceName isn't null) information from service config
      * will be used
      * 
-     * @param /ReflectionObject $reflectionObject
+     * @param /ReflectionClass $reflectionClass
      * @param string|null $serviceName
      * @return array  params for /ReflectionClass::newInstanceArgs()
      */
-    protected function _getConstructParamsValues( $reflectionObject, $serviceName= null)
+    protected function _getConstructParamsValues( $reflectionClass, $serviceName= null)
     {
         $constructParams = array();
          //Get params for $className::__construct
-        $reflectionConstruct = $reflectionObject->getMethod('__construct');
+        $reflectionConstruct = $this->_getReflectionConstruct( $reflectionClass );
         /* @var $reflectionConstruct /ReflectionMethod */
-        $reflectionParams = $reflectionConstruct->getParameters();
-        // $reflectionParams array of ReflectionParameter
-        $options = $this->_resolveOptions($reflectionParams, $serviceName);
-        if (isset($options)) {
-            $constructParams[] = $options;
-            array_shift($reflectionParams);
-        }            
-        foreach ($reflectionParams as $reflectionParam) {
-            $constructParams[] = $this->_getConstructParamValue($reflectionParam, $serviceName);
+        if (!is_null($reflectionConstruct)) {
+            $reflectionParams = $reflectionConstruct->getParameters();
+            // $reflectionParams array of ReflectionParameter
+            $options = $this->_resolveOptions($reflectionParams, $serviceName);
+            if (isset($options)) {
+                $constructParams[] = $options;
+                array_shift($reflectionParams);
+            }            
+            foreach ($reflectionParams as $reflectionParam) {
+                $constructParams[] = $this->_getConstructParamValue($reflectionParam, $serviceName);
+            }
         }
         return $constructParams;
     } 
 
     /**
      * 
-     * @param /ReflectionObject $reflectionObject
+     * @param /ReflectionClass $reflectionClass
      * @return /ReflectionMethod
      */
-    protected function _getReflectionConstruct( $reflectionObject )    
+    protected function _getReflectionConstruct( ReflectionClass $reflectionClass )    
     {
-        $reflectionConstruct = $reflectionObject->getMethod('__construct');
-        /**if (!isset($reflectionConstruct)){
-            $parentReflectionObject = $reflectionObject->getParentClass();
-            $reflectionConstruct = $this->_getReflectionConstruct($parentReflectionObject);
-
-        }*/
+        $reflectionMethods = $reflectionClass->getMethods();
+        var_dump($reflectionMethods);
+        foreach ($reflectionMethods as $reflectionMethod) {
+            if ($reflectionMethod->name === '__construct') {
+                return $reflectionMethod;
+            }
+        }
+        
+        $parentReflectionClass = $reflectionClass->getParentClass();
+        //$parentReflectionClass = null;
+        if (is_object($parentReflectionClass)) {
+            $reflectionConstruct = $this->_getReflectionConstruct($parentReflectionClass);
+        }else{
+            $reflectionConstruct = null;
+        }    
         return $reflectionConstruct;
     }
 
      /**
-     * Get ( or make) one param for _constructor of class which $reflectionObject was taken
+     * Get ( or make) one param for _constructor of class which $reflectionClass was taken
      * 
      * If it is Service, ($serviceName isn't null) inforvation from service cofig
      * will be used. Else classes which are specified in {@see __construct()} will used.

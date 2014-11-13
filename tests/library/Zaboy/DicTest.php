@@ -60,7 +60,7 @@ class Zaboy_DicTest extends PHPUnit_Framework_TestCase
     *
     * @var string
     */
-    protected $_minimalAadditionalConfig = 
+    protected $_minimalAdditionalConfig = 
 <<<'INI'
 resources.dic[] = 
 INI;
@@ -126,26 +126,37 @@ INI;
     /**
      * @covers Zaboy_Dic::get
      */
-    public function testGetObjectsChild_WithoutConstruct() {
-        $this->loadDic($this->_minimalAadditionalConfig);
+    public function testGetObjectsChild_WithConstructInParent() {
+        $this->loadDic($this->_minimalAdditionalConfig);
         $service = $this->object->get('serviceChild' , 'Zaboy_Example_Dic_WithSpecifiedParam_Child');
-        /* @var $service Zaboy_Example_Dic_WithOptionsOnly */
+        /* @var $service Zaboy_Example_Dic_WithSpecifiedParam_Child */
         $this->assertTrue   (
         is_object($service)
         );
     }   
     
-
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetObjects_WithoutConstruct() {
+        $this->loadDic($this->_minimalAdditionalConfig);
+        $service = $this->object->get('serviceWithoutConstruct' , 'Zaboy_Example_Dic_WithoutConstruct');
+        /* @var $service Zaboy_Example_Dic_WithoutConstruct */
+        $this->assertTrue   (
+        is_object($service)
+        );
+    }   
+    
     /**
      * @covers Zaboy_Dic::get
      */
     public function testGetObjectWithoutParams_ClassIsSpecified() {
-        $this->loadDic($this->_minimalAadditionalConfig);
+        $this->loadDic($this->_minimalAdditionalConfig);
         $service = $this->object->get('serviceWithoutParams' , 'Zaboy_Example_Dic_WithoutParams');
         /* @var $service Zaboy_Example_Dic_WithoutParams */
-                $this->assertEquals(
-                'return ' . 'testValue',
-                $service->getString('testValue')
+        $this->assertEquals(
+            'return ' . 'testValue',
+            $service->getString('testValue')
         );
     } 
     
@@ -153,7 +164,7 @@ INI;
      * @covers Zaboy_Dic::get
      */
     public function testGetObjectWithoutParams_ClassIsNotSpecified() {
-        $this->loadDic($this->_minimalAadditionalConfig);
+        $this->loadDic($this->_minimalAdditionalConfig);
         $this->setExpectedException('Zaboy_Dic_Exception');    
         $service = $this->object->get('serviceWithoutParams');
         /* @var $service Zaboy_Example_Dic_WithoutParams */
@@ -170,9 +181,9 @@ INI1
         );
         $service = $this->object->get('serviceWithoutParams');
         /* @var $service Zaboy_Example_Dic_WithoutParams */
-                $this->assertEquals(
-                'return ' . 'testValue',
-                $service->getString('testValue')
+        $this->assertEquals(
+            'return ' . 'testValue',
+            $service->getString('testValue')
         );
     }
     
@@ -187,9 +198,9 @@ INI1
         );
         $service = $this->object->get('serviceWithoutParams', 'Zaboy_Service');
         /* @var $service Zaboy_Example_Dic_WithoutParams */
-                $this->assertEquals(
-                'Zaboy_Example_Dic_WithoutParams',
-                get_class($service)
+        $this->assertEquals(
+            'Zaboy_Example_Dic_WithoutParams',
+            get_class($service)
         );
     }
 
@@ -197,12 +208,12 @@ INI1
      * @covers Zaboy_Dic::get
      */
     public function testGetObjectWithOptionsOnly_NoOptionsSpecified() {
-        $this->loadDic($this->_minimalAadditionalConfig);
+        $this->loadDic($this->_minimalAdditionalConfig);
         $service = $this->object->get('serviceWithOptionsOnly' , 'Zaboy_Example_Dic_WithOptionsOnly');
         /* @var $service Zaboy_Example_Dic_WithoutParams */
-                $this->assertEquals(
-                array(),
-                $service->getAttribs()
+        $this->assertEquals(
+            array(),
+            $service->getAttribs()
         );
     } 
 
@@ -217,9 +228,9 @@ INI1
         );
         $service = $this->object->get('serviceWithOptionsOnly');
         /* @var $service Zaboy_Example_Dic_WithoutParams */
-                $this->assertEquals(
-                array(),
-                $service->getAttribs()
+        $this->assertEquals(
+            array(),
+            $service->getAttribs()
         );
     }     
 
@@ -236,9 +247,9 @@ INI1
         );
         $service = $this->object->get('serviceWithOptionsOnly');
         /* @var $service Zaboy_Example_Dic_WithoutParams */
-                $this->assertEquals(
-                array(0 =>''),         // string  "...options[] = " is equals array(0 =>'')
-                $service->getAttribs()
+        $this->assertEquals(
+            array(0 =>''),         // string  "...options[] = " is equals array(0 =>'')
+            $service->getAttribs()
         );
     }     
     
@@ -271,7 +282,7 @@ INI1
      * @covers Zaboy_Dic::get
      */
     public function testGetObjectWithNotSpecifiedParam_() {
-        $this->loadDic($this->_minimalAadditionalConfig);
+        $this->loadDic($this->_minimalAdditionalConfig);
         $this->setExpectedException('Zaboy_Dic_Exception');    
         $service = $this
                 ->object
