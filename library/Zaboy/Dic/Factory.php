@@ -130,9 +130,24 @@ class Zaboy_Dic_Factory
         }
         return $constructParams;
     } 
-    
 
     /**
+     * 
+     * @param /ReflectionObject $reflectionObject
+     * @return /ReflectionMethod
+     */
+    protected function _getReflectionConstruct( $reflectionObject )    
+    {
+        $reflectionConstruct = $reflectionObject->getMethod('__construct');
+        /**if (!isset($reflectionConstruct)){
+            $parentReflectionObject = $reflectionObject->getParentClass();
+            $reflectionConstruct = $this->_getReflectionConstruct($parentReflectionObject);
+
+        }*/
+        return $reflectionConstruct;
+    }
+
+     /**
      * Get ( or make) one param for _constructor of class which $reflectionObject was taken
      * 
      * If it is Service, ($serviceName isn't null) inforvation from service cofig
@@ -164,7 +179,7 @@ class Zaboy_Dic_Factory
             }
         }
         return $instance;
-    }
+    }   
     
     /**
      * If $option present in params ( first position ) method return array from Service config

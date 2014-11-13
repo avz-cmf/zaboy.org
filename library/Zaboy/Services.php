@@ -95,6 +95,7 @@
  * Also, you can define $options for Service in config.ini. 
  * See about it (@see Zaboy_Dic_ServicesConfigs} <br>
  * 
+ * @todo getDefaultOptions() - to make
  * @todo Object_Class::_defaultOptions - rewrite docs
  * @todo Optional Params  - make method getOPtionalParam($lazyLoadedServiceName)
  * @category   Services

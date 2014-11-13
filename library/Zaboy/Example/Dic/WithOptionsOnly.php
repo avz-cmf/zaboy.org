@@ -30,18 +30,18 @@ class Zaboy_Example_Dic_WithOptionsOnly extends Zaboy_Abstract
     */
     public $param;
     
-    /**
+    /* *
     * Service constructor
     *
     * Constructor without $options<br>
     * Will use $this->_defaultOptions if object was inherited from {@see Zaboy_Services} <br>
     *
     * @return void
-    */
+    * /
     public function __construct($options = array())
     {
         parent::__construct($options);
-    }
+    } */
     
     /**
     * Service constructor

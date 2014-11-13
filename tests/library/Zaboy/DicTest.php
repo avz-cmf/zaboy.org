@@ -122,10 +122,23 @@ INI;
     */
     protected function tearDown() {
     }
+    
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetObjectsChild_WithoutConstruct() {
+        $this->loadDic($this->_minimalAadditionalConfig);
+        $service = $this->object->get('serviceChild' , 'Zaboy_Example_Dic_WithSpecifiedParam_Child');
+        /* @var $service Zaboy_Example_Dic_WithOptionsOnly */
+        $this->assertTrue   (
+        is_object($service)
+        );
+    }   
+    
 
     /**
      * @covers Zaboy_Dic::get
-    */
+     */
     public function testGetObjectWithoutParams_ClassIsSpecified() {
         $this->loadDic($this->_minimalAadditionalConfig);
         $service = $this->object->get('serviceWithoutParams' , 'Zaboy_Example_Dic_WithoutParams');
@@ -138,7 +151,7 @@ INI;
     
     /**
      * @covers Zaboy_Dic::get
-    */
+     */
     public function testGetObjectWithoutParams_ClassIsNotSpecified() {
         $this->loadDic($this->_minimalAadditionalConfig);
         $this->setExpectedException('Zaboy_Dic_Exception');    
@@ -148,7 +161,7 @@ INI;
 
     /**
      * @covers Zaboy_Dic::get
-    */
+     */
     public function testGetSingletonServiceWithoutParams_ClassIsNotSpecifiedButDescribed() {
         $this->loadDic(
 <<<'INI1'
