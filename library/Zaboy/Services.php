@@ -9,6 +9,7 @@
  */
 
   require_once 'Zaboy/Abstract.php';
+  require_once 'Zaboy/Services/Interface.php';  
   
 /**
  * Base class for Services
@@ -85,12 +86,12 @@
  * It is just string - param for (@see Zaboy_Dic::get()}<br> 
  * 
  * <b>Object_Class::_defaultOptions</b><br>
- * If Service Object is inherited from {@see Zaboy_Services} it contains
- * {@see Zaboy_Services::_defaultOptions}<br>
- * If $options haven't submitted via __construct - _defaultOptions will be used.<br>
- * See {@see Zaboy_Services_Example_SimpleTest::testSetDefaultOptionsInConstruct()}<br>
- * If $options is not empty - _defaultOptions will not be used fully ( any part)<br>
- * See {@see Zaboy_Services_Example_OptionsTest::testSetDefaultOptionsInConstruct()}<br>
+    * If Service Object is inherited from {@see Zaboy_Services} it contains
+    * {@see Zaboy_Services::_defaultOptions}<br>
+    * If $options haven't submitted via __construct - _defaultOptions will be used.<br>
+    * See {@see Zaboy_Services_Example_SimpleTest::testSetDefaultOptionsInConstruct()}<br>
+    * If $options is not empty - _defaultOptions will not be used fully ( any part)<br>
+    * See {@see Zaboy_Services_Example_OptionsTest::testSetDefaultOptionsInConstruct()}<br>
  * 
  * Also, you can define $options for Service in config.ini. 
  * See about it (@see Zaboy_Dic_ServicesConfigs} <br>
@@ -104,28 +105,47 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Services extends Zaboy_Abstract
+class Zaboy_Services extends Zaboy_Abstract implements Zaboy_Services_Interface
 {
     /**
-     * If $options haven't submitted via __construct() - it is used
      * 
-     * @var array default Options
      */   
-    protected $_defaultOptions = array();
-
+    static protected $_defaultServiceConfig = 
+        array(
+            //self::CONFIG_KEY_INSTANCE => null,
+            //self::CONFIG_KEY_OPTIONS => null,
+            //self::CONFIG_KEY_PARAMS => null,
+            //self::CONFIG_KEY_AUTOLOAD => null
+        )
+    ;
+    
     /**
-     * Service constructor can use default options
      * 
-     * @param array
-     * @return void
-     */  
-    public function __construct(array $options=array()) 
+     * @return array
+     */
+    static function getDefaultServiceConfig()
     {
-        if ($options === array()){
-            $options = $this->_defaultOptions;
-        }
-        // See Zaboy_Abstract::setOptions(array $options) and  
-        // See Zaboy_Abstract::setAttrib($key, $value)
-        parent::__construct($options);
+        return static::$_defaultServiceConfig;
+    }        
+    
+    /**
+     * @return Zend_Application_Bootstrap_Bootstrap
+     */
+    protected function _getBootstrap()
+    {
+        global $application;
+        /* @var $application Zend_Application */
+        $bootstrap = $application->getBootstrap();
+        return $bootstrap;
     }
+    
+      /**
+      * @return Zaboy_Dic
+      */
+     protected function  _getDic() 
+     {
+        $bootstrap = $this->_getBootstrap();
+        $dic = $bootstrap->getResource('dic');     
+        return $dic;
+     }       
 }

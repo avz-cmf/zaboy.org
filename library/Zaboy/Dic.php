@@ -137,7 +137,7 @@ class Zaboy_Dic extends Zaboy_Abstract
         
         $initiationType = $this->_servicesConfigs->getServiceInitiationType($serviceName);
         switch ($initiationType) {
-            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON :
+            case Zaboy_Services_Interface::CONFIG_VALUE_SINGLETON :
                 // Is Service with $serviceName already was loaded?
                 $serviceInstance = $this->_servicesStore->getRunningSingletonService($serviceName);
                 if (!isset($serviceInstance)) {
@@ -145,11 +145,11 @@ class Zaboy_Dic extends Zaboy_Abstract
                     $this->_servicesStore->addService($serviceName, $serviceInstance);
                 }
                 break;
-            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_RECREATE :
+            case Zaboy_Services_Interface::CONFIG_VALUE_RECREATE :
                 $serviceInstance = $this->_factory->createService($serviceName);
                 $this->_servicesStore->addService($serviceName, $serviceInstance);
                 break;
-            case Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE :
+            case Zaboy_Services_Interface::CONFIG_VALUE_CLONE :
                 $serviceInstance = $this->_factory->getServiceClone($serviceName);
                 break;
             default:

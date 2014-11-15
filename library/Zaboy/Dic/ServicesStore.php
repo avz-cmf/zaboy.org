@@ -53,9 +53,9 @@ class Zaboy_Dic_ServicesStore
     public function addService($serviceName, $serviceObject)
     {
         $initiationType = $this->_servicesConfigs->getServiceInitiationType($serviceName);
-        if ($initiationType === Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON
-                || $initiationType === Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_RECREATE
-                || $initiationType === Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE 
+        if ($initiationType === Zaboy_Services_Interface::CONFIG_VALUE_SINGLETON
+                || $initiationType === Zaboy_Services_Interface::CONFIG_VALUE_RECREATE
+                || $initiationType === Zaboy_Services_Interface::CONFIG_VALUE_CLONE 
         ) {
                 $this->_runningServices[$serviceName][] = $serviceObject;
         }else{                  
@@ -84,7 +84,7 @@ class Zaboy_Dic_ServicesStore
     public function getRunningSingletonService($serviceName)
     {
         if ($this->_servicesConfigs->getServiceInitiationType($serviceName)
-                !== Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON
+                !== Zaboy_Services_Interface::CONFIG_VALUE_SINGLETON
         ) {
             require_once 'Zaboy/Dic/Exception.php';
             throw new Zaboy_Dic_Exception(
@@ -104,7 +104,7 @@ class Zaboy_Dic_ServicesStore
      * One of methods of making Service is cloning. 
      * Reference clone is needs for it. It is stored in {@link $_etalonsServices}
      * 
-     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE
+     * @see Zaboy_Services_Interface::CONFIG_VALUE_CLONE
      * @param string $serviceName
      * @param object $serviceObject
      */
@@ -119,7 +119,7 @@ class Zaboy_Dic_ServicesStore
      * One of methods of making Service is cloning. 
      * Reference clone is needs for it. It is stored in {@link $_etalonsServices}
      * 
-     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE
+     * @see Zaboy_Services_Interface::CONFIG_VALUE_CLONE
      * @param string $serviceName
      * @return object|null
      */

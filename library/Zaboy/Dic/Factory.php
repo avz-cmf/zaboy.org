@@ -141,7 +141,6 @@ class Zaboy_Dic_Factory
     protected function _getReflectionConstruct( ReflectionClass $reflectionClass )    
     {
         $reflectionMethods = $reflectionClass->getMethods();
-        var_dump($reflectionMethods);
         foreach ($reflectionMethods as $reflectionMethod) {
             if ($reflectionMethod->name === '__construct') {
                 return $reflectionMethod;
@@ -244,9 +243,9 @@ class Zaboy_Dic_Factory
      * 
      * Reference clone is needs for it. It is stored in {@link $_servicesStore}
      * 
-     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON
-     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE
-     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_RECREATE
+     * @see Zaboy_Services_Interface::CONFIG_VALUE_SINGLETON
+     * @see Zaboy_Services_Interface::CONFIG_VALUE_CLONE
+     * @see Zaboy_Services_Interface::CONFIG_VALUE_RECREATE
      * @param string $serviceName
      * @return object
      */

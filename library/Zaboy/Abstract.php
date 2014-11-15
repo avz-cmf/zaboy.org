@@ -153,25 +153,4 @@ abstract class Zaboy_Abstract
         }
         return false;
     }
-     
-    /**
-     * @return Zend_Application_Bootstrap_Bootstrap
-     */
-    protected function _getBootstrap()
-    {
-        global $application;
-        /* @var $application Zend_Application */
-        $bootstrap = $application->getBootstrap();
-        return $bootstrap;
-    }
-    
-      /**
-      * @return Zaboy_Dic
-      */
-     protected function  _getDic() 
-     {
-        $bootstrap = $this->_getBootstrap();
-        $dic = $bootstrap->getResource('dic');     
-        return $dic;
-     }       
 }

@@ -156,7 +156,7 @@ INI;
         $this->loadDic(
 <<<'INI1'
 ;INI TEST START
-resources.dic[] = 
+resources.dic.services.serviceWithDefaultOptions.class = Zaboy_Example_Services_DefaultOptions
 ;INI TEST END
 INI1
         );

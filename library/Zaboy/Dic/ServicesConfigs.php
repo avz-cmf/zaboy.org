@@ -8,7 +8,7 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-  require_once 'Zaboy/Abstract.php';
+  require_once 'Zaboy/Services/Interface.php';
   
 /**
  * Zaboy_Dic_ServicesConfigs
@@ -55,59 +55,8 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
+class Zaboy_Dic_ServicesConfigs
 {
-    /**
-     * for $this->_getBootstrap()->getResource('dic')
-     * comfig.ini :  dic.services...
-     */
-    const DIC_NAME_RESOURCE = 'dic';
-    
-    /**
-     * comfig.ini :  dic.services.serviceName1.class = className1 ... 
-     */
-    const CONFIG_KEY_CLASS = 'class';
-   
-    /**
-     * comfig.ini :  dic.services.serviceName1.instance = singleton
-     */
-    const CONFIG_KEY_INSTANCE = 'instance';
-    
-    /**
-     * default value for dic.services.serviceName1.instance
-     * comfig.ini :  dic.services.serviceName1.instance = singleton
-     */
-    const CONFIG_VALUE_SINGLETON = 'singleton';
-    
-    /**
-     * For all request, service will create by clone from etalon
-     * comfig.ini :  dic.services.serviceName1.instance = clone
-     */
-    const CONFIG_VALUE_CLONE = 'clone';
-    
-    /**
-     * For all request, service will create by constuct() call
-     * comfig.ini :  dic.services.serviceName1.instance = recreate
-     */
-    const CONFIG_VALUE_RECREATE = 'recreate';
-    
-    /**
-     * comfig.ini :  dic.services.serviceName1.options.key = val  ...
-     */
-    const CONFIG_KEY_OPTIONS = 'options'; 
-    
-    /**
-     * dic.services.serviceName1.params.firstparam = serviceName
-     */   
-    const CONFIG_KEY_PARAMS = 'params';
-   
-    /**
-     * comfig.ini :  dic.services.serviceName1.autoload = true
-     * Default value is FALSE.
-     */
-    const CONFIG_KEY_AUTOLOAD = 'autoload';
-
-
 
     /*
      * Array with configurations of Services
@@ -115,19 +64,43 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
      * Contains information about Services from application.ini 
      */
     private $_servicesConfigs = array();
+    
+    /**
+     * I houpe you know what is __construct()
+     * 
+     * @param array  $servicesConfigs It's contaned array('serviceName' = array('class' = 'ServiceClass', 'options' ...
+     */
+    public function __construct($servicesConfigs) {
+        $this->_setServicesConfigs($servicesConfigs);
+    }
 
-     /**
+    /**
       * Set $this->_servicesConfigs = $options; 
       * 
       * @param array  It's contaned array('serviceName' = array('class' = 'ServiceClass', 'options' ...
       * @return Zaboy_Dic_ServicesConfigs
       */
-    public function setOptions(array $options)
+     private function _setServicesConfigs(array $servicesConfigs)
     {
-        if (isset($options)) {
-            $this->_servicesConfigs = $options;           
+        foreach ($servicesConfigs as $serviceName => $serviceConfig) {
+            if (isset($servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_CLASS])) {
+                $serviceClass = $servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_CLASS];
+            }else{
+                require_once 'Zaboy/Dic/Exception.php';
+                throw new Zaboy_Dic_Exception(
+                    "There isn't 'class' key in service config for service: $serviceName");
+            }
+            if (is_a ( $serviceClass, 'Zaboy_Services_Interface' , true)){
+                $defaultConfig = $serviceClass::getDefaultServiceConfig();
+                if (isset($defaultConfig[Zaboy_Services_Interface::CONFIG_KEY_CLASS])) {
+                    require_once 'Zaboy/Dic/Exception.php';
+                    throw new Zaboy_Dic_Exception(
+                        "You try set default class in $serviceClass for service $serviceName");
+                }
+                $serviceConfig = array_merge($defaultConfig, $serviceConfig);
+            }
+            $this->_servicesConfigs[$serviceName] = $serviceConfig; 
         }
-        return $this;
     }     
     
     /**
@@ -137,7 +110,7 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
      */    
     public function getServicesNames()
     {
-            return array_keys (  $this->_servicesConfigs );
+        return array_keys (  $this->_servicesConfigs );
     }
     
     /**
@@ -146,8 +119,8 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
      */    
     public function getServiceClass($serviceName)
     {
-        if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_CLASS])) {
-            return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_CLASS];
+        if (isset($this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_CLASS])) {
+            return $this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_CLASS];
         }else{
             return null;
         }
@@ -159,8 +132,8 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
      */    
     public function getServiceOptions($serviceName)
     {
-        if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_OPTIONS])) {
-            return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_OPTIONS];
+        if (isset($this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_OPTIONS])) {
+            return $this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_OPTIONS];
         }else{
             return array();
         }
@@ -169,18 +142,18 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
     /**
      * There are some variety of making Service
      * 
-     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_SINGLETON
-     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_CLONE
-     * @see Zaboy_Dic_ServicesConfigs::CONFIG_VALUE_RECREATE
+     * @see Zaboy_Services_Interface::CONFIG_VALUE_SINGLETON
+     * @see Zaboy_Services_Interface::CONFIG_VALUE_CLONE
+     * @see Zaboy_Services_Interface::CONFIG_VALUE_RECREATE
      * @param string
      * @return string
      */    
     public function getServiceInitiationType($serviceName)
     {
-        if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_INSTANCE])) {
-            return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_INSTANCE];
+        if (isset($this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_INSTANCE])) {
+            return $this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_INSTANCE];
         }else{
-            return self::CONFIG_VALUE_SINGLETON;
+            return Zaboy_Services_Interface::CONFIG_VALUE_SINGLETON;
         }
     }    
         
@@ -204,8 +177,8 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
      */
     public function getServiceNameForConstructParam($serviceName, $paramName)
     {  
-        if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_PARAMS][$paramName])) {
-            return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_PARAMS][$paramName];
+        if (isset($this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_PARAMS][$paramName])) {
+            return $this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_PARAMS][$paramName];
         }else{
             return null;
         }
@@ -221,8 +194,8 @@ class Zaboy_Dic_ServicesConfigs extends Zaboy_Abstract
      */    
     public function getServiceAutoload($serviceName)
     {
-        if (isset($this->_servicesConfigs[$serviceName][self::CONFIG_KEY_AUTOLOAD])) {
-            return $this->_servicesConfigs[$serviceName][self::CONFIG_KEY_AUTOLOAD];
+        if (isset($this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_AUTOLOAD])) {
+            return $this->_servicesConfigs[$serviceName][Zaboy_Services_Interface::CONFIG_KEY_AUTOLOAD];
         }else{
             return false; //by default
         }

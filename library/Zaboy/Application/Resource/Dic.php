@@ -23,10 +23,10 @@
  class Zaboy_Application_Resource_Dic extends Zend_Application_Resource_ResourceAbstract
  {
      /**
-      * If you change this, rename self::setClass()
-      * application.ini :  recurces.dic.class = Avz_Dic...
+      * If you change this, rename self::setClassForDic()
+      * application.ini :  recurces.dic.classForDic = Avz_Dic...
       */     
-     const CONFIG_KEY_CLASS = 'class'; 
+     const CONFIG_KEY_CLASS_FOR_DIC = 'classForDic'; 
      
     /**
      * comfig.ini :  
@@ -52,7 +52,7 @@
       * @param string
       * @return void
       */
-     public function setClass( $dicClass)
+     public function setClassForDic( $dicClass)
      {
          $this->_dicClass = $dicClass;
      }
@@ -67,13 +67,13 @@
         $dicClass = $this->_dicClass;       
         $options = $this->getOptions();
         if (isset($options[self::CONFIG_KEY_SERVICE])) {
-            $servicesConfigsOoptions = $options[self::CONFIG_KEY_SERVICE];
+            $servicesConfigsOptions = $options[self::CONFIG_KEY_SERVICE];
             unset($options[self::CONFIG_KEY_SERVICE]);
         }else{
-            $servicesConfigsOoptions = Array();
+            $servicesConfigsOptions = Array();
         }
         
-        $servicesConfigs = new Zaboy_Dic_ServicesConfigs($servicesConfigsOoptions);
+        $servicesConfigs = new Zaboy_Dic_ServicesConfigs($servicesConfigsOptions);
         $servicesStore = new Zaboy_Dic_ServicesStore($servicesConfigs);
         $loopChecker = new Zaboy_Dic_LoopChecker();     
         $factory = new Zaboy_Dic_Factory($servicesConfigs, $servicesStore, $loopChecker);        
