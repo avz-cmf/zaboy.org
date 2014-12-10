@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Interface Avz_DataStore_Interface | _zaboy.org</title>
+
+	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
+	<script type="text/javascript" src="elementlist.js?4053811989"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="package-DataStore.html">DataStore</a>
+						</li>
+				<li><a href="package-DataStores.html">DataStores</a>
+						</li>
+				<li><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-Example.html">Example</a>
+						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+				<li><a href="package-Services.html">Services</a>
+						</li>
+				<li><a href="package-Test.html">Test</a>
+						</li>
+				<li><a href="package-Zaboy.html">Zaboy</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li class="active"><a href="class-Avz_DataStore_Interface.html">Avz_DataStore_Interface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-DataStore.html" title="Summary of DataStore"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface Avz_DataStore_Interface</h1>
+
+
+	<div class="description">
+	
+<p>Avz_DataStore_Read_Interface</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>Avz_DataStore_Interface</span></b>			
+			 implements 
+				<a href="class-ArrayAccess.html"><span>ArrayAccess</span></a>, 
+			
+				<a href="class-Iterator.html"><span>Iterator</span></a>, 
+			
+				<a href="class-Countable.html"><span>Countable</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-DataStore.html">DataStore</a><br />
+
+				<b>Category:</b>
+				DataStore<br />
+				<b>Copyright:</b>
+				Zaboychenko Andrey<br />
+				<b>License:</b>
+				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
+				<b>See:</b>
+				<code><code><a href="class-Avz_DataStore_Interface.html">Avz_DataStore_Interface</a></code></code><br />
+				<b>Uses:</b>
+				Zend Framework from Zend Technologies USA Inc.<br />
+		<b>Located at</b> <a href="source-class-Avz_DataStore_Interface.html#11-286" title="Go to source code">library/Zaboy/DataStores/Interface.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="fetch" id="_fetch">
+
+		<td class="attributes"><code>
+			 public 
+			array|object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fetch">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#24-86" title="Go to source code">fetch</a>( <span>string|array <var>$where</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>Param $where can be null, numeric, string or array<br />
+<br />
+<b>null, numeric, string</b><br />
+If param $where is not array - it is for "Primary Key" ( See <code><a href="class-Avz_DataStore_Interface.html#_getIdentifier">Avz_DataStore_Interface::getIdentifier()</a></code> )</p>
+
+<pre>
+fetch (), fetch (<span
+class="php-keyword1">null</span>) --&gt;&gt; select
+fetch(<span
+class="php-quote">&quot;5&quot;</span>) --&gt;&gt; where <span
+class="php-quote">'id'</span>=<span class="php-quote">'5'</span>
+fetch(<span
+class="php-num">5</span>) --&gt;&gt; where <span
+class="php-quote">'id'</span>=<span class="php-num">5</span>
+fetch(<span
+class="php-quote">'&gt;5'</span>) --&gt;&gt; where &lt;b&gt;<span
+class="php-quote">'id'</span> = <span
+class="php-quote">'&gt;5'</span>&lt;/b&gt; <span
+class="php-comment">//but what do you think? :-) Use $where = array( 'id'=&gt;...</span>
+</pre>
+<b>array</b><br />
+If param $where is array, it may be:
+<ul>
+	<li>associative array 'keyName'=&gt;'condition' without numeric indexes</li>
+
+	<li>simple array of associative arrays</li>
+</ul>
+ <b>combine conditions via AND</b><br />
+If param $where is associative array - it means "keyName" =&gt; "condition"
+<pre>
+fetch(<span class="php-keyword1">array</span>(<span
+class="php-quote">&quot;id&quot;</span> =&gt; <span
+class="php-quote">&quot;10&quot;</span>, <span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">&quot;&gt; 5&quot;</span>) --&gt;&gt; where <span
+class="php-quote">'id'</span>=<span class="php-num">10</span> <span
+class="php-keyword1">AND</span> <span
+class="php-quote">&quot;fild&quot;</span>&gt;<span
+class="php-num">5</span>
+fetch (<span class="php-keyword1">array</span>(<span
+class="php-quote">&quot;id&quot;</span> =&gt; <span
+class="php-quote">&quot;&lt;&gt;666&quot;</span>, <span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">&quot;&lt;&gt; '666'&quot;</span>) --&gt;&gt; where <span
+class="php-quote">'id'</span>=<span
+class="php-quote">&quot;&lt;&gt;666&quot;</span> <span
+class="php-keyword1">AND</span> <span
+class="php-quote">&quot;fild&quot;</span>&lt;&gt;<span
+class="php-num">6666</span> <span class="php-comment">//sic!</span>
+fetch (<span
+class="php-keyword1">array</span>(<span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">'NOT NULL'</span>) --&gt;&gt; where <span
+class="php-quote">'fild'</span> IS NOT <span
+class="php-keyword1">NULL</span>
+fetch (<span
+class="php-keyword1">array</span>(<span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">'NULL'</span>) --&gt;&gt; where <span
+class="php-quote">'fild'</span> IS <span class="php-keyword1">NULL</span>
+</pre>
+
+<p><b>combine conditions via OR</b><br />
+If param $where is simple array of arrays (subarray) - it means subarray1 OR
+subarray2 OR ...</p>
+
+<pre>
+fetch(
+    <span class="php-keyword1">array</span>(
+        <span
+class="php-keyword1">array</span>(<span
+class="php-quote">&quot;id&quot;</span> =&gt; <span
+class="php-quote">&quot; &gt; 0&quot;</span>, <span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">&quot; = 'ok'&quot;</span>)
+        <span
+class="php-keyword1">array</span>(<span
+class="php-quote">&quot;id&quot;</span> =&gt; <span
+class="php-quote">&quot; &lt; 10&quot;</span>)
+    )
+)
+--&gt;&gt; where <span
+class="php-quote">&quot;id&quot;</span> &gt; <span
+class="php-num">0</span> <span class="php-keyword1">AND</span> <span
+class="php-quote">&quot;fild&quot;</span> = <span
+class="php-quote">'ok'</span> <span class="php-keyword1">OR</span> <span
+class="php-quote">&quot;id&quot;</span> &lt; <span
+class="php-num">10</span>
+</pre>
+
+<p><b>Note</b><br />
+</p>
+
+<pre>
+<span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span
+class="php-quote">'10'</span>) === <span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span
+class="php-quote">' = 10'</span>)
+<span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span
+class="php-quote">'&lt;&gt; NULL'</span>) --&gt;&gt; WHERE <span
+class="php-quote">'id'</span> &lt;&gt; <span
+class="php-quote">'NULL'</span> <span
+class="php-comment">// you have to use array('id' =&gt; 'NOT NULL'), if you want WHERE 'id' NOT NULL</span>
+</pre>
+<br />
+<b>Param $options</b><br />
+Can has 3 keys
+<ul>
+	<li>ORDER</li>
+
+	<li>LIMIT</li>
+
+	<li>OFFSET</li>
+</ul>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Param $where can be null, numeric, string or array<br />
+<br />
+<b>null, numeric, string</b><br />
+If param $where is not array - it is for "Primary Key" ( See <code><a href="class-Avz_DataStore_Interface.html#_getIdentifier">Avz_DataStore_Interface::getIdentifier()</a></code> )</p>
+
+<pre>
+fetch (), fetch (<span
+class="php-keyword1">null</span>) --&gt;&gt; select
+fetch(<span
+class="php-quote">&quot;5&quot;</span>) --&gt;&gt; where <span
+class="php-quote">'id'</span>=<span class="php-quote">'5'</span>
+fetch(<span
+class="php-num">5</span>) --&gt;&gt; where <span
+class="php-quote">'id'</span>=<span class="php-num">5</span>
+fetch(<span
+class="php-quote">'&gt;5'</span>) --&gt;&gt; where &lt;b&gt;<span
+class="php-quote">'id'</span> = <span
+class="php-quote">'&gt;5'</span>&lt;/b&gt; <span
+class="php-comment">//but what do you think? :-) Use $where = array( 'id'=&gt;...</span>
+</pre>
+<b>array</b><br />
+If param $where is array, it may be:
+<ul>
+	<li>associative array 'keyName'=&gt;'condition' without numeric indexes</li>
+
+	<li>simple array of associative arrays</li>
+</ul>
+ <b>combine conditions via AND</b><br />
+If param $where is associative array - it means "keyName" =&gt; "condition"
+<pre>
+fetch(<span class="php-keyword1">array</span>(<span
+class="php-quote">&quot;id&quot;</span> =&gt; <span
+class="php-quote">&quot;10&quot;</span>, <span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">&quot;&gt; 5&quot;</span>) --&gt;&gt; where <span
+class="php-quote">'id'</span>=<span class="php-num">10</span> <span
+class="php-keyword1">AND</span> <span
+class="php-quote">&quot;fild&quot;</span>&gt;<span
+class="php-num">5</span>
+fetch (<span class="php-keyword1">array</span>(<span
+class="php-quote">&quot;id&quot;</span> =&gt; <span
+class="php-quote">&quot;&lt;&gt;666&quot;</span>, <span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">&quot;&lt;&gt; '666'&quot;</span>) --&gt;&gt; where <span
+class="php-quote">'id'</span>=<span
+class="php-quote">&quot;&lt;&gt;666&quot;</span> <span
+class="php-keyword1">AND</span> <span
+class="php-quote">&quot;fild&quot;</span>&lt;&gt;<span
+class="php-num">6666</span> <span class="php-comment">//sic!</span>
+fetch (<span
+class="php-keyword1">array</span>(<span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">'NOT NULL'</span>) --&gt;&gt; where <span
+class="php-quote">'fild'</span> IS NOT <span
+class="php-keyword1">NULL</span>
+fetch (<span
+class="php-keyword1">array</span>(<span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">'NULL'</span>) --&gt;&gt; where <span
+class="php-quote">'fild'</span> IS <span class="php-keyword1">NULL</span>
+</pre>
+
+<p><b>combine conditions via OR</b><br />
+If param $where is simple array of arrays (subarray) - it means subarray1 OR
+subarray2 OR ...</p>
+
+<pre>
+fetch(
+    <span class="php-keyword1">array</span>(
+        <span
+class="php-keyword1">array</span>(<span
+class="php-quote">&quot;id&quot;</span> =&gt; <span
+class="php-quote">&quot; &gt; 0&quot;</span>, <span
+class="php-quote">&quot;fild&quot;</span> =&gt; <span
+class="php-quote">&quot; = 'ok'&quot;</span>)
+        <span
+class="php-keyword1">array</span>(<span
+class="php-quote">&quot;id&quot;</span> =&gt; <span
+class="php-quote">&quot; &lt; 10&quot;</span>)
+    )
+)
+--&gt;&gt; where <span
+class="php-quote">&quot;id&quot;</span> &gt; <span
+class="php-num">0</span> <span class="php-keyword1">AND</span> <span
+class="php-quote">&quot;fild&quot;</span> = <span
+class="php-quote">'ok'</span> <span class="php-keyword1">OR</span> <span
+class="php-quote">&quot;id&quot;</span> &lt; <span
+class="php-num">10</span>
+</pre>
+
+<p><b>Note</b><br />
+</p>
+
+<pre>
+<span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span
+class="php-quote">'10'</span>) === <span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span
+class="php-quote">' = 10'</span>)
+<span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span
+class="php-quote">'&lt;&gt; NULL'</span>) --&gt;&gt; WHERE <span
+class="php-quote">'id'</span> &lt;&gt; <span
+class="php-quote">'NULL'</span> <span
+class="php-comment">// you have to use array('id' =&gt; 'NOT NULL'), if you want WHERE 'id' NOT NULL</span>
+</pre>
+<br />
+<b>Param $options</b><br />
+Can has 3 keys
+<ul>
+	<li>ORDER</li>
+
+	<li>LIMIT</li>
+
+	<li>OFFSET</li>
+</ul>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$where</var></dt>
+					<dd><code>string|array</code><br><code><a href="class-Avz_DataStore_Interface.html#_fetch">Avz_DataStore_Interface::fetch()</a></code></dd>
+					<dt><var>$options</var></dt>
+					<dd><code>array</code><br>it may contains ORDER LIMIT ect.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array|object</code><br>of array's ArrayAccess,Traversable,Countable<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setIdentifier" id="_setIdentifier">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setIdentifier">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#88-94" title="Go to source code">setIdentifier</a>( <span>string|integer|null <var>$identifier</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set identifier for item lookups</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set identifier for item lookups</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$identifier</var></dt>
+					<dd><code>string|integer|null</code><br>$identifier</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getIdentifier" id="_getIdentifier">
+
+		<td class="attributes"><code>
+			 public 
+			string|integer|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getIdentifier">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#96-101" title="Go to source code">getIdentifier</a>( )</code>
+
+		<div class="description short">
+			
+<p>Retrieve current item identifier</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve current item identifier</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|integer|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="hasItem" id="_hasItem">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_hasItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#103-109" title="Go to source code">hasItem</a>( <span>string|integer <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Does an item with the given identifier exist?</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Does an item with the given identifier exist?</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd><code>string|integer</code><br>$id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getItem" id="_getItem">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#111-119" title="Go to source code">getItem</a>( <span>string <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Retrieve an item by identifier</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve an item by identifier</p>
+
+<p>Item retrieved will be flattened to an array.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd><code>string</code><br>$id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addItem" id="_addItem">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#120-127" title="Go to source code">addItem</a>( <span>array|object <var>$item</var></span>, <span>string|null <var>$id</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Add an individual item, optionally by identifier</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add an individual item, optionally by identifier</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$item</var></dt>
+					<dd><code>array|object</code><br>$item</dd>
+					<dt><var>$id</var></dt>
+					<dd><code>string|null</code><br>$id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setItem" id="_setItem">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#129-136" title="Go to source code">setItem</a>( <span>array|object <var>$item</var></span>, <span>string|null <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set an individual item, optionally by identifier (overwrites)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set an individual item, optionally by identifier (overwrites)</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$item</var></dt>
+					<dd><code>array|object</code><br>$item</dd>
+					<dt><var>$id</var></dt>
+					<dd><code>string|null</code><br>$identifier</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="updateItem" id="_updateItem">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_updateItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#138" title="Go to source code">updateItem</a>( <span>mixed <var>$item</var></span>, <span>mixed <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeItem" id="_removeItem">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#140-146" title="Go to source code">removeItem</a>( <span>string <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Remove item by identifier</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Remove item by identifier</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd><code>string</code><br>$id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getItems" id="_getItems">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getItems">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#148-155" title="Go to source code">getItems</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get all items as an array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get all items as an array</p>
+
+<p>Serializes items to arrays.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setItems" id="_setItems">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setItems">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#157-163" title="Go to source code">setItems</a>( <span>array|<code><a href="class-Traversable.html">Traversable</a></code> <var>$items</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set the items to collect</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set the items to collect</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$items</var></dt>
+					<dd><code>array|<code><a href="class-Traversable.html">Traversable</a></code></code><br>$items</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeItems" id="_removeItems">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeItems">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#165-170" title="Go to source code">removeItems</a>( )</code>
+
+		<div class="description short">
+			
+<p>Remove all items at once</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Remove all items at once</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setLabel" id="_setLabel">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setLabel">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#172-178" title="Go to source code">setLabel</a>( <span>string|null <var>$label</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set label to use for displaying item associations</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set label to use for displaying item associations</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$label</var></dt>
+					<dd><code>string|null</code><br>$label</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLabel" id="_getLabel">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLabel">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#180-185" title="Go to source code">getLabel</a>( )</code>
+
+		<div class="description short">
+			
+<p>Retrieve item association label</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve item association label</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setMetadata" id="_setMetadata">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setMetadata">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#187-193" title="Go to source code">setMetadata</a>( <span>array <var>$metadata</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set metadata by key =&gt; value</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set metadata by key =&gt; value</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$metadata</var></dt>
+					<dd><code>array</code><br>$metadata</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMetadata" id="_getMetadata">
+
+		<td class="attributes"><code>
+			 public 
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMetadata">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#195-201" title="Go to source code">getMetadata</a>( <span>null|string <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Get metadata item or all metadata</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get metadata item or all metadata</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>null|string</code><br>$key Metadata key when pulling single metadata item</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>mixed</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeMetadata" id="_removeMetadata">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeMetadata">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#203-209" title="Go to source code">removeMetadata</a>( <span>null|string <var>$key</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Clear individual or all metadata item(s)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Clear individual or all metadata item(s)</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd><code>null|string</code><br>$key</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fromArray" id="_fromArray">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fromArray">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#211-217" title="Go to source code">fromArray</a>( <span>array <var>$data</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Load object from array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Load object from array</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd><code>array</code><br>$data</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toArray" id="_toArray">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toArray">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#219-224" title="Go to source code">toArray</a>( )</code>
+
+		<div class="description short">
+			
+<p>Seralize entire data structure, including identifier and label, to array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Seralize entire data structure, including identifier and label, to array</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fromJson" id="_fromJson">
+
+		<td class="attributes"><code>
+			 public 
+			Zend_Dojo_Data
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fromJson">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#226-232" title="Go to source code">fromJson</a>( <span>string <var>$json</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Load object from JSON</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Load object from JSON</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$json</var></dt>
+					<dd><code>string</code><br>$json</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Zend_Dojo_Data</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toJson" id="_toJson">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toJson">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#234-239" title="Go to source code">toJson</a>( )</code>
+
+		<div class="description short">
+			
+<p>Serialize to JSON (dojo.data format)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Serialize to JSON (dojo.data format)</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="itemsToArray" id="_itemsToArray">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_itemsToArray">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#242-271" title="Go to source code">itemsToArray</a>( )</code>
+
+		<div class="description short">
+			
+<p>Seralize entire data to array. Primary key - 'id' (for Dojo)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Seralize entire data to array. Primary key - 'id' (for Dojo)</p>
+
+<p>out<br />
+&lt;/code&gt; array( Avz_DataStore_Array::KEY_IDENTIFIER =&gt; 'anotherId',
+Avz_DataStore_Array::KEY_LABEL =&gt; 'it is label',
+Avz_DataStore_Array::KEY_METADATA =&gt; array('keyMetadata1' =&gt;
+'valMetadata1'), Avz_DataStore_Array::KEY_ITEMS =&gt; array( array( 'anotherId'
+=&gt; 1, 'fString' =&gt; 'val1', 'fInt' =&gt; 10), array( 'anotherId' =&gt; 2,
+'fString' =&gt; 'val2', 'fInt' =&gt; 20), array( 'anotherId' =&gt; 3, 'fString'
+=&gt; 'val3', 'fInt' =&gt; 30) ) ) &lt;/code&gt; out<br />
+&lt;/code&gt; array( array( 'id' =&gt; 1, 'fString' =&gt; 'val1', 'fInt' =&gt;
+10), array( 'id' =&gt; 2, 'fString' =&gt; 'val2', 'fInt' =&gt; 20), array( 'id'
+=&gt; 3, 'fString' =&gt; 'val3', 'fInt' =&gt; 30) ) &lt;/code&gt;</p>
+
+<p>&lt;/code&gt;</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="itemsToJson" id="_itemsToJson">
+
+		<td class="attributes"><code>
+			 public 
+			Json
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_itemsToJson">#</a>
+		<code><a href="source-class-Avz_DataStore_Interface.html#273-276" title="Go to source code">itemsToJson</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Json</code><br>for dojo data object<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-ArrayAccess.html#methods">ArrayAccess</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ArrayAccess.html#_offsetExists">offsetExists()</a>, 
+			<a href="class-ArrayAccess.html#_offsetGet">offsetGet()</a>, 
+			<a href="class-ArrayAccess.html#_offsetSet">offsetSet()</a>, 
+			<a href="class-ArrayAccess.html#_offsetUnset">offsetUnset()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Iterator.html#methods">Iterator</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Iterator.html#_current">current()</a>, 
+			<a href="class-Iterator.html#_key">key()</a>, 
+			<a href="class-Iterator.html#_next">next()</a>, 
+			<a href="class-Iterator.html#_rewind">rewind()</a>, 
+			<a href="class-Iterator.html#_valid">valid()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Countable.html#methods">Countable</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Countable.html#_count">count()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		_zaboy.org API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

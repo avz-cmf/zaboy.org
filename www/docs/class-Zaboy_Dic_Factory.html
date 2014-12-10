@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_Factory | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?3409950636"></script>
+	<script type="text/javascript" src="elementlist.js?4053811989"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -21,6 +21,10 @@
 		<div id="groups">
 			<h3>Packages</h3>
 			<ul>
+				<li><a href="package-DataStore.html">DataStore</a>
+						</li>
+				<li><a href="package-DataStores.html">DataStores</a>
+						</li>
 				<li class="active"><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
@@ -127,7 +131,7 @@
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_Factory.html#15-235" title="Go to source code">library/Zaboy/Dic/Factory.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_Factory.html#15-265" title="Go to source code">library/Zaboy/Dic/Factory.php</a><br />
 	</div>
 
 
@@ -183,7 +187,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_createService">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#63-80" title="Go to source code">createService</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#63-85" title="Go to source code">createService</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -221,7 +225,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_createObject">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#82-98" title="Go to source code">createObject</a>( <span>string <var>$objectClass</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#87-103" title="Go to source code">createObject</a>( <span>string <var>$objectClass</var></span> )</code>
 
 		<div class="description short">
 			
@@ -259,18 +263,18 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getConstructParamsValues">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#100-127" title="Go to source code">_getConstructParamsValues</a>( <span>/ReflectionObject <var>$reflectionObject</var></span>, <span>string|null <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#105-134" title="Go to source code">_getConstructParamsValues</a>( <span>/ReflectionClass <var>$reflectionClass</var></span>, <span>string|null <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
-<p>Get ( or make) all params for _constructor of class which $reflectionObject
+<p>Get ( or make) all params for _constructor of class which $reflectionClass
 was taken</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get ( or make) all params for _constructor of class which $reflectionObject
+<p>Get ( or make) all params for _constructor of class which $reflectionClass
 was taken</p>
 
 <p>If it is Service, ($serviceName isn't null) information from service config
@@ -280,8 +284,8 @@ will be used</p>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$reflectionObject</var></dt>
-					<dd><code>/ReflectionObject</code><br>$reflectionObject</dd>
+					<dt><var>$reflectionClass</var></dt>
+					<dd><code>/ReflectionClass</code><br>$reflectionClass</dd>
 					<dt><var>$serviceName</var></dt>
 					<dd><code>string|null</code><br>$serviceName</dd>
 				</dl></div>
@@ -289,6 +293,44 @@ will be used</p>
 				<h4>Returns</h4>
 				<div class="list">
 					<code>array</code><br>params for /ReflectionClass::newInstanceArgs()<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_getReflectionConstruct" id="__getReflectionConstruct">
+
+		<td class="attributes"><code>
+			 protected 
+			/ReflectionMethod
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__getReflectionConstruct">#</a>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#136-158" title="Go to source code">_getReflectionConstruct</a>( <span><code><a href="class-ReflectionClass.html">ReflectionClass</a></code> <var>$reflectionClass</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$reflectionClass</var></dt>
+					<dd><code>/ReflectionClass</code><br>$reflectionClass</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>/ReflectionMethod</code><br />
 				</div>
 
 
@@ -308,19 +350,19 @@ will be used</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getConstructParamValue">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#130-162" title="Go to source code">_getConstructParamValue</a>( <span>/ReflectionParameter <var>$reflectionParam</var></span>, <span>string|null <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#160-192" title="Go to source code">_getConstructParamValue</a>( <span>/ReflectionParameter <var>$reflectionParam</var></span>, <span>string|null <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
-<p>Get ( or make) one param for _constructor of class which $reflectionObject
-was taken</p>
+<p>Get ( or make) one param for _constructor of class which $reflectionClass was
+taken</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Get ( or make) one param for _constructor of class which $reflectionObject
-was taken</p>
+<p>Get ( or make) one param for _constructor of class which $reflectionClass was
+taken</p>
 
 <p>If it is Service, ($serviceName isn't null) inforvation from service cofig
 will be used. Else classes which are specified in <code><a href="class-Zaboy_Dic_Factory.html#___construct">Zaboy_Dic_Factory::__construct()</a></code> will
@@ -338,7 +380,7 @@ used.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>object</code><br>ReflectionClass::newInstanceArgs()<br />
+					<code>object</code><br><code><a href="class-ReflectionClass.html#_newInstanceArgs">ReflectionClass::newInstanceArgs()</a></code><br />
 				</div>
 
 
@@ -358,7 +400,7 @@ used.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__resolveOptions">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#164-187" title="Go to source code">_resolveOptions</a>( <span>array <var>$reflectionParams</var></span>, <span>mixed <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#194-217" title="Go to source code">_resolveOptions</a>( <span>array <var>$reflectionParams</var></span>, <span>mixed <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -384,7 +426,7 @@ Service config</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>array|null</code><br>ReflectionClass::newInstanceArgs()<br />
+					<code>array|null</code><br><code><a href="class-ReflectionClass.html#_newInstanceArgs">ReflectionClass::newInstanceArgs()</a></code><br />
 				</div>
 
 
@@ -404,7 +446,7 @@ Service config</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#__resolveServiceForConstructParam">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#189-209" title="Go to source code">_resolveServiceForConstructParam</a>( <span><code><a href="class-ReflectionParameter.html">ReflectionParameter</a></code> <var>$reflectionParam</var></span>, <span>string|null <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#219-239" title="Go to source code">_resolveServiceForConstructParam</a>( <span><code><a href="class-ReflectionParameter.html">ReflectionParameter</a></code> <var>$reflectionParam</var></span>, <span>string|null <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -448,7 +490,7 @@ Service config</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceClone">#</a>
-		<code><a href="source-class-Zaboy_Dic_Factory.html#211-233" title="Go to source code">getServiceClone</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_Factory.html#241-263" title="Go to source code">getServiceClone</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -478,9 +520,9 @@ Service config</p>
 
 				<h4>See</h4>
 				<div class="list">
-						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_SINGLETON">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_SINGLETON</b></a></code></code><br />
-						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_CLONE">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_CLONE</b></a></code></code><br />
-						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_RECREATE">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_RECREATE</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_SINGLETON">Zaboy_Services_Interface::<b>CONFIG_VALUE_SINGLETON</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_CLONE">Zaboy_Services_Interface::<b>CONFIG_VALUE_CLONE</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_RECREATE">Zaboy_Services_Interface::<b>CONFIG_VALUE_RECREATE</b></a></code></code><br />
 				</div>
 
 

@@ -133,9 +133,10 @@ interface Avz_DataStore_Interface extends ArrayAccess, Iterator, Countable
      * @param  string|null $identifier
      * @return Zend_Dojo_Data
      */
-    public function setItem($item, $id = null);
+    public function setItem($item, $id);
     
- 
+    public function updateItem($item, $id);
+    
     /**
      * Remove item by identifier
      *

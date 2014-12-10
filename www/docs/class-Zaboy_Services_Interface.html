@@ -7,7 +7,7 @@
 	<title>Interface Zaboy_Services_Interface | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?3409950636"></script>
+	<script type="text/javascript" src="elementlist.js?4053811989"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -21,6 +21,10 @@
 		<div id="groups">
 			<h3>Packages</h3>
 			<ul>
+				<li><a href="package-DataStore.html">DataStore</a>
+						</li>
+				<li><a href="package-DataStores.html">DataStores</a>
+						</li>
 				<li><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
@@ -99,84 +103,26 @@
 
 	<div class="description">
 	
-<p><b>Interface Zaboy_Services_Interface</b> - it is Interface for Service
-Objects classes</p>
-There are 4 different entities: Service, Service Name, Service Object, Class of
-Service Object<br />
-<br />
-<b>Service</b><br />
-Service is resurse (Service Objec) which was loaded and registered in <code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code> via <code><a href="class-Zaboy_Dic.html#_get">Zaboy_Dic::get()</a></code> with Service Name<br />
-Service = Service Name + Service Object<br />
-More about
-<ul>
-	<li>Service</li>
-
-	<li>Service Object</li>
-
-	<li>Service Name</li>
-
-	<li>Zaboy_Dic</li>
-</ul>
-see there: Zaboy_Dic_Interface<br />
-
-<p><b>Service Object class</b><br />
-Class of Service Object may be is inherited from <code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code> or not
-There are requirements for (@see Zaboy_Services::__construct()}:<br />
-</p>
-<b>Object_Class::__construct()</b><br />
-Constructor's params must be:
-<ul>
-	<li>(array $options, Servece_Class $servece1, Another_Servece_Class $servece2,
-	...) or</li>
-
-	<li>(Servece_Class $servece1, Another_Servece_Class $servece2, ...)) or</li>
-
-	<li>(array $options). See Zaboy_Services_Example_Options. Or just</li>
-
-	<li>public function __construct(). See Zaboy_Services_Example_Simple</li>
-</ul>
- <i>$options</i> have to first or absent<br />
-You have to call
-<pre>
-        parent::__construct(<span class="php-var">$options</span>);
-<span
-class="php-comment">// or</span>
-        parent::__construct();
-</pre>
-
-<p>in your constructor if parent::__construct() exist.<br />
-</p>
-
-<p><b>Object_Class::_defaultOptions</b><br />
-If Service Object is inherited from <code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code> it contains <code><a href="class-Zaboy_Services.html#$_defaultOptions">Zaboy_Services::<var>$_defaultOptions</var></a></code><br />
-If $options haven't submitted via __construct - _defaultOptions will be used.<br
-/>
-See Zaboy_Services_Example_SimpleTest::testSetDefaultOptionsInConstruct()<br />
-If $options is not empty - _defaultOptions will not be used fully ( any part)<br
-/>
-See <code><a href="class-Zaboy_Services_Example_OptionsTest.html#_testSetDefaultOptionsInConstruct">Zaboy_Services_Example_OptionsTest::testSetDefaultOptionsInConstruct()</a></code><br />
-</p>
-
-<p>Also, you can describe object and $options for this object in config.ini. See
-about it (@see Zaboy_Dic_Interface}<br />
-</p>
+<p>Zaboy_Services_Interface</p>
 
 	</div>
 
-	<dl class="tree">
-		<dd style="padding-left:0px">
-<b><span>Zaboy_Services_Interface</span></b>			
-			 implements 
-<span>Zaboy_Interface</span>
-			
-			
-		</dd>
-	</dl>
 
 
 
 
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-Zaboy_Services.html">Zaboy_Services</a>
+	</div>
 
+	<div>
+		<h4>Indirect known implementers</h4>
+			<a href="class-Zaboy_DataStores_Source_Abstract.html">Zaboy_DataStores_Source_Abstract</a>, 
+			<a href="class-Zaboy_Example_Dic_NotSpecifiedParam.html">Zaboy_Example_Dic_NotSpecifiedParam</a>, 
+			<a href="class-Zaboy_Example_Dic_OptionalParams.html">Zaboy_Example_Dic_OptionalParams</a>, 
+			<a href="class-Zaboy_Example_Services_DefaultOptions.html">Zaboy_Example_Services_DefaultOptions</a>
+	</div>
 
 
 
@@ -192,13 +138,51 @@ about it (@see Zaboy_Dic_Interface}<br />
 				Zaboychenko Andrey<br />
 				<b>License:</b>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
+				<b>See:</b>
+				<code><code><a href="class-Avz_DataStore_Interface.html">Avz_DataStore_Interface</a></code></code><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Services_Interface.html#11-60" title="Go to source code">library/Zaboy/Services/Interface.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Services_Interface.html#11-74" title="Go to source code">library/Zaboy/Services/Interface.php</a><br />
 	</div>
 
 
 
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="getDefaultServiceConfig" id="_getDefaultServiceConfig">
+
+		<td class="attributes"><code>
+			 public static
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDefaultServiceConfig">#</a>
+		<code><a href="source-class-Zaboy_Services_Interface.html#68-72" title="Go to source code">getDefaultServiceConfig</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
 
 
 
@@ -207,6 +191,209 @@ about it (@see Zaboy_Dic_Interface}<br />
 
 
 
+	<table class="summary" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="CONFIG_KEY_CLASS" id="CONFIG_KEY_CLASS">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Services_Interface.html#24-27" title="Go to source code"><b>CONFIG_KEY_CLASS</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'class'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_CLASS" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>comfig.ini : dic.services.serviceName1.class = className1 ...</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>comfig.ini : dic.services.serviceName1.class = className1 ...</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_KEY_INSTANCE" id="CONFIG_KEY_INSTANCE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Services_Interface.html#29-32" title="Go to source code"><b>CONFIG_KEY_INSTANCE</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'instance'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_INSTANCE" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>comfig.ini : dic.services.serviceName1.instance = singleton</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>comfig.ini : dic.services.serviceName1.instance = singleton</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_VALUE_SINGLETON" id="CONFIG_VALUE_SINGLETON">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Services_Interface.html#34-38" title="Go to source code"><b>CONFIG_VALUE_SINGLETON</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'singleton'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_VALUE_SINGLETON" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>default value for dic.services.serviceName1.instance comfig.ini :
+dic.services.serviceName1.instance = singleton</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>default value for dic.services.serviceName1.instance comfig.ini :
+dic.services.serviceName1.instance = singleton</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_VALUE_CLONE" id="CONFIG_VALUE_CLONE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Services_Interface.html#40-44" title="Go to source code"><b>CONFIG_VALUE_CLONE</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'clone'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_VALUE_CLONE" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>For all request, service will create by clone from etalon comfig.ini :
+dic.services.serviceName1.instance = clone</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>For all request, service will create by clone from etalon comfig.ini :
+dic.services.serviceName1.instance = clone</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_VALUE_RECREATE" id="CONFIG_VALUE_RECREATE">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Services_Interface.html#46-50" title="Go to source code"><b>CONFIG_VALUE_RECREATE</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'recreate'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_VALUE_RECREATE" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>For all request, service will create by constuct() call comfig.ini :
+dic.services.serviceName1.instance = recreate</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>For all request, service will create by constuct() call comfig.ini :
+dic.services.serviceName1.instance = recreate</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_KEY_OPTIONS" id="CONFIG_KEY_OPTIONS">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Services_Interface.html#52-55" title="Go to source code"><b>CONFIG_KEY_OPTIONS</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'options'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_OPTIONS" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>comfig.ini : dic.services.serviceName1.options.key = val ...</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>comfig.ini : dic.services.serviceName1.options.key = val ...</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_KEY_PARAMS" id="CONFIG_KEY_PARAMS">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Services_Interface.html#57-60" title="Go to source code"><b>CONFIG_KEY_PARAMS</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'params'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_PARAMS" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>dic.services.serviceName1.params.firstparam = serviceName</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>dic.services.serviceName1.params.firstparam = serviceName</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CONFIG_KEY_AUTOLOAD" id="CONFIG_KEY_AUTOLOAD">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Services_Interface.html#62-66" title="Go to source code"><b>CONFIG_KEY_AUTOLOAD</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'autoload'</span></code></td>
+		<td class="description"><div>
+			<a href="#CONFIG_KEY_AUTOLOAD" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>comfig.ini : dic.services.serviceName1.autoload = true Default value is
+FALSE.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>comfig.ini : dic.services.serviceName1.autoload = true Default value is
+FALSE.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
 
 
 

@@ -124,45 +124,6 @@ class Zaboy_Dic extends Zaboy_Abstract
     }
 
     /**
-     * Instantiate service
-     * 
-     * @param type $serviceName
-     * @return null
-     */
-    protected function _getService($serviceName)    
-    {
-        if (!$this->_servicesConfigs->isService($serviceName)) {
-            return null;
-        }   
-        
-        $initiationType = $this->_servicesConfigs->getServiceInitiationType($serviceName);
-        switch ($initiationType) {
-            case Zaboy_Services_Interface::CONFIG_VALUE_SINGLETON :
-                // Is Service with $serviceName already was loaded?
-                $serviceInstance = $this->_servicesStore->getRunningSingletonService($serviceName);
-                if (!isset($serviceInstance)) {
-                    $serviceInstance = $this->_factory->createService($serviceName);
-                    $this->_servicesStore->addService($serviceName, $serviceInstance);
-                }
-                break;
-            case Zaboy_Services_Interface::CONFIG_VALUE_RECREATE :
-                $serviceInstance = $this->_factory->createService($serviceName);
-                $this->_servicesStore->addService($serviceName, $serviceInstance);
-                break;
-            case Zaboy_Services_Interface::CONFIG_VALUE_CLONE :
-                $serviceInstance = $this->_factory->getServiceClone($serviceName);
-                break;
-            default:
-                require_once 'Zaboy/Dic/Exception.php';
-                throw new Zaboy_Dic_Exception(
-                    'unknow initiation type - ' . $initiationType
-                ); 
-        }
-        
-        return $serviceInstance;
-    }   
-    
-    /**
      * Return Service Name by Service Object
      * 
      * @param object $serviceInstance usually $this
@@ -212,6 +173,28 @@ class Zaboy_Dic extends Zaboy_Abstract
             }
         }
     }   
+    
+    public function getLazyLoadedParam($instance, $paramName) 
+    {
+        if ($paramName === 'options') {
+            require_once 'Zaboy/Dic/Exception.php';
+            throw new Zaboy_Dic_Exception(
+                'You cann\'t lazy load $options'
+            ); 
+        }
+        $serviceName = $this->getRunningServiceName($instance);
+        $className = get_class($instance);
+        $reflectionClass = new ReflectionClass($className);  
+        $lazyLoadedParam = $this
+            ->_factory
+                ->getOptionalParamValue(
+                    $paramName, 
+                    $reflectionClass, 
+                    $serviceName
+                )
+        ;
+        return $lazyLoadedParam; 
+    }
 
     /**
      * Some services have to be started automatically
@@ -232,4 +215,44 @@ class Zaboy_Dic extends Zaboy_Abstract
             }
         }
      }    
+
+    /**
+     * Instantiate service
+     * 
+     * @param type $serviceName
+     * @return null
+     */
+    protected function _getService($serviceName)    
+    {
+        if (!$this->_servicesConfigs->isService($serviceName)) {
+            return null;
+        }   
+        
+        $initiationType = $this->_servicesConfigs->getServiceInitiationType($serviceName);
+        switch ($initiationType) {
+            case Zaboy_Services_Interface::CONFIG_VALUE_SINGLETON :
+                // Is Service with $serviceName already was loaded?
+                $serviceInstance = $this->_servicesStore->getRunningSingletonService($serviceName);
+                if (!isset($serviceInstance)) {
+                    $serviceInstance = $this->_factory->createService($serviceName);
+                    $this->_servicesStore->addService($serviceName, $serviceInstance);
+                }
+                break;
+            case Zaboy_Services_Interface::CONFIG_VALUE_RECREATE :
+                $serviceInstance = $this->_factory->createService($serviceName);
+                $this->_servicesStore->addService($serviceName, $serviceInstance);
+                break;
+            case Zaboy_Services_Interface::CONFIG_VALUE_CLONE :
+                $serviceInstance = $this->_factory->getServiceClone($serviceName);
+                break;
+            default:
+                require_once 'Zaboy/Dic/Exception.php';
+                throw new Zaboy_Dic_Exception(
+                    'Unknow initiation type - ' . $initiationType
+                ); 
+        }
+        
+        return $serviceInstance;
+    }   
+         
 }

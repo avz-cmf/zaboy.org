@@ -67,9 +67,23 @@ class Zaboy_Dic_ServicesStore
     }
 
     /**
-     * Return an array with names of running Services
+     * Return an array with Service Name => (array)running Services
      * 
-     * @return array array with names of running Services
+     * Format of data:
+     * <code>
+     * [
+     *  singletonServiceName1 = [ 0 => instanceSingletonService1]
+     *  singletonServiceName2 = [ 0 => instanceSingletonService2]
+     *  clonedServiceName1 = 
+     *      [   
+     *          0 => instanceClonedService11
+     *          1 => instanceClonedService12
+     *          ...
+     *      ]
+     * ]
+     * </code>
+     * 
+     * @return array array with Service Name => (array)running Services
      */
     public function getRunningServices()
     { 

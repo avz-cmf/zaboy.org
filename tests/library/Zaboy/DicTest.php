@@ -131,7 +131,7 @@ INI;
         $service = $this->object->get('serviceChild' , 'Zaboy_Example_Dic_WithSpecifiedParam_Child');
         /* @var $service Zaboy_Example_Dic_WithSpecifiedParam_Child */
         $this->assertTrue   (
-        is_object($service)
+        is_object($service->getSpecifiedParam())
         );
     }   
     

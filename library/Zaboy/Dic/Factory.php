@@ -69,18 +69,12 @@ class Zaboy_Dic_Factory
     public function createService($serviceName)    
     {
         $serviceClass = $this->_servicesConfigs->getServiceClass($serviceName);
-        $this->_loopChecker->loadingStart($serviceName);
         if (empty($serviceClass)) {
                     require_once 'Zaboy/Dic/Exception.php';
                     throw new Zaboy_Dic_Exception(
                         "Class isn't defined in Service Config for Service: " . $serviceName);
         }
-        $reflectionClass = new ReflectionClass($serviceClass);
-        /* @var $reflectionClass /ReflectionClass */
-        $callParamsArray = $this->_getConstructParamsValues( $reflectionClass, $serviceName);
-        // it's like new class($callParamsArray[0], $callParamsArray[1]...)              
-        $serviceInstance = $reflectionClass->newInstanceArgs($callParamsArray); 
-        $this->_loopChecker->loadingFinished($serviceName);    
+        $serviceInstance = $this->_create($serviceClass, $serviceName); 
         return $serviceInstance;            
     }    
 
@@ -92,13 +86,63 @@ class Zaboy_Dic_Factory
      */
     public function createObject($objectClass)    
     {
-        $this->_loopChecker->loadingStart($objectClass);
-        $reflectionClass = new ReflectionClass($objectClass);  
+        $objectInstance = $this->_create($objectClass);
+        return $objectInstance;
+    }
+    
+    /**
+     * Instantiate Object for param by $paramName in $reflectionClass
+     * 
+     * Don't work with $paramName = 'options'
+     * It is used Dic::getLazyLoadedParam()
+     * 
+     * @param string $paramName
+     * @param /ReflectionClass $reflectionClass
+     * @param string $serviceName
+     * @return object
+     */
+    public function getOptionalParamValue($paramName, $reflectionClass, $serviceName = null)    
+    {
+        //Get params for $className::__construct
+        $reflectionConstruct = $this->_getReflectionConstruct( $reflectionClass );
+        /* @var $reflectionConstruct /ReflectionMethod */
+        if (!is_null($reflectionConstruct)) {
+            $reflectionParams = $reflectionConstruct->getParameters();
+            // $reflectionParams array of ReflectionParameter
+            foreach ($reflectionParams as $reflectionParam) {
+                /* @var $reflectionParam /ReflectionParameter */
+                if ($reflectionParam->isOptional() && $reflectionParam->getName() === $paramName ) {
+                    $constructParamValue = $this
+                        ->_getConstructParamValue($reflectionParam, $serviceName);
+                    return $constructParamValue;   
+                }    
+            }        
+        }
+        require_once 'Zaboy/Dic/Exception.php';
+        throw new Zaboy_Dic_Exception(
+            "There isn't param  $paramName in class " . $reflectionClass->getName());        
+    }
+    
+    /**
+     * 
+     * @param string $className
+     * @param string $serviceName
+     * @return object
+     */
+    public function _create($className, $serviceName = null)    
+    {
+        if (is_null($serviceName)) {
+            $loopCheckId = $className;    
+        }else{
+            $loopCheckId = $serviceName;            
+        }
+        $this->_loopChecker->loadingStart($loopCheckId);
+        $reflectionClass = new ReflectionClass($className);  
         /* @var $reflectionClass /ReflectionClass */
-        $callParamsArray = $this->_getConstructParamsValues( $reflectionClass);
+        $callParamsArray = $this->_getConstructParamsValues( $reflectionClass, $serviceName);
         // it's like new class($callParamsArray[1], $callParamsArray[2]...)              
         $objectInstance = $reflectionClass->newInstanceArgs($callParamsArray); 
-        $this->_loopChecker->loadingFinished($objectClass);        
+        $this->_loopChecker->loadingFinished($loopCheckId);        
         return $objectInstance;
     }
 
@@ -127,7 +171,13 @@ class Zaboy_Dic_Factory
                 array_shift($reflectionParams);
             }            
             foreach ($reflectionParams as $reflectionParam) {
-                $constructParams[] = $this->_getConstructParamValue($reflectionParam, $serviceName);
+                if ($reflectionParam->isOptional()) {
+                    // optional params isn't loaded
+                    $constructParams[] = null;
+                }else{
+                    $constructParams[] = $this
+                        ->_getConstructParamValue($reflectionParam, $serviceName);
+                }    
             }
         }
         return $constructParams;
@@ -146,15 +196,7 @@ class Zaboy_Dic_Factory
                 return $reflectionMethod;
             }
         }
-        
-        $parentReflectionClass = $reflectionClass->getParentClass();
-        //$parentReflectionClass = null;
-        if (is_object($parentReflectionClass)) {
-            $reflectionConstruct = $this->_getReflectionConstruct($parentReflectionClass);
-        }else{
-            $reflectionConstruct = null;
-        }    
-        return $reflectionConstruct;
+        return null;
     }
 
      /**
@@ -167,30 +209,25 @@ class Zaboy_Dic_Factory
      * @param string|null $serviceName
      * @return object  {@see ReflectionClass::newInstanceArgs()}
      */
-    protected function _getConstructParamValue( $reflectionParam, $serviceName= null)    
+    protected function _getConstructParamValue( $reflectionParam, $serviceName = null)    
     {
-        if ($reflectionParam->isOptional()) {
-            // optional params isn't loaded
-            $instance = null;
-        }else{
-            $constructParamService = $this
-                ->_resolveServiceForConstructParam($reflectionParam, $serviceName);
-            if (isset($constructParamService)) {
-               $instance = $this->createService($constructParamService);
-            }else{                    
-                $constructParamClassObject = $reflectionParam->getClass();
-                if (!isset($constructParamClassObject)) {
-                    require_once 'Zaboy/Dic/Exception.php';
-                    throw new Zaboy_Dic_Exception(
-                        "Cann't resolve class for param  - " . $reflectionParam->getName());
-                }
-                $constructParamClass = $constructParamClassObject->getName();
-                $instance = $this->createObject($constructParamClass);
+        $constructParamService = $this
+            ->_resolveServiceForConstructParam($reflectionParam, $serviceName);
+        if (isset($constructParamService)) {
+           $instance = $this->createService($constructParamService);
+        }else{                    
+            $constructParamClassObject = $reflectionParam->getClass();
+            if (!isset($constructParamClassObject)) {
+                require_once 'Zaboy/Dic/Exception.php';
+                throw new Zaboy_Dic_Exception(
+                    "Cann't resolve class for param  - " . $reflectionParam->getName());
             }
+            $constructParamClass = $constructParamClassObject->getName();
+            $instance = $this->createObject($constructParamClass);
         }
         return $instance;
     }   
-    
+
     /**
      * If $option present in params ( first position ) method return array from Service config
      * 

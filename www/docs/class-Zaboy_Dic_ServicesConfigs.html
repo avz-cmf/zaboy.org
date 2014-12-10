@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_ServicesConfigs | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?3409950636"></script>
+	<script type="text/javascript" src="elementlist.js?4053811989"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -21,6 +21,10 @@
 		<div id="groups">
 			<h3>Packages</h3>
 			<ul>
+				<li><a href="package-DataStore.html">DataStore</a>
+						</li>
+				<li><a href="package-DataStores.html">DataStores</a>
+						</li>
 				<li class="active"><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
@@ -164,20 +168,6 @@ class="php-quote">'NextServiceClass'</span>
 
 	</div>
 
-	<dl class="tree">
-		<dd style="padding-left:0px">
-			<a href="class-Zaboy_Abstract.html"><span>Zaboy_Abstract</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:30px">
-			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Zaboy_Dic_ServicesConfigs</span></b>			
-			
-			
-		</dd>
-	</dl>
 
 
 
@@ -200,54 +190,50 @@ class="php-quote">'NextServiceClass'</span>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesConfigs.html#13-229" title="Go to source code">library/Zaboy/Dic/ServicesConfigs.php</a><br />
+				<b>Todo:</b>
+				Make docs about config keys<br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesConfigs.html#13-203" title="Go to source code">library/Zaboy/Dic/ServicesConfigs.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="setOptions" id="_setOptions">
+	<tr data-order="__construct" id="___construct">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code>
+			
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setOptions">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#118-130" title="Go to source code">setOptions</a>( <span>array <var>$options</var></span> )</code>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#68-75" title="Go to source code">__construct</a>( <span>array <var>$servicesConfigs</var></span> )</code>
 
 		<div class="description short">
 			
-<p>Set $this-&gt;_servicesConfigs = $options;</p>
+<p>I houpe you know what is __construct()</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Set $this-&gt;_servicesConfigs = $options;</p>
+<p>I houpe you know what is __construct()</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$options</var></dt>
-					<dd><code>array</code><br>It's contaned array('serviceName' = array('class' = 'ServiceClass', 'options'
-...</dd>
+					<dt><var>$servicesConfigs</var></dt>
+					<dd><code>array</code><br>$servicesConfigs It's contaned array('serviceName' = array('class' =
+'ServiceClass', 'options' ...</dd>
 				</dl></div>
 
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code></code><br />
-				</div>
 
 
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-Zaboy_Abstract.html#_setOptions">Zaboy_Abstract::setOptions()</a></code></div>
 
 		</div>
 		</div></td>
@@ -263,7 +249,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServicesNames">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#132-140" title="Go to source code">getServicesNames</a>( )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#106-114" title="Go to source code">getServicesNames</a>( )</code>
 
 		<div class="description short">
 			
@@ -300,7 +286,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceClass">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#142-153" title="Go to source code">getServiceClass</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#116-127" title="Go to source code">getServiceClass</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -338,7 +324,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceOptions">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#155-166" title="Go to source code">getServiceOptions</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#129-140" title="Go to source code">getServiceOptions</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -376,7 +362,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceInitiationType">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#168-184" title="Go to source code">getServiceInitiationType</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#142-158" title="Go to source code">getServiceInitiationType</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -404,9 +390,9 @@ class="php-quote">'NextServiceClass'</span>
 
 				<h4>See</h4>
 				<div class="list">
-						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_SINGLETON">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_SINGLETON</b></a></code></code><br />
-						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_CLONE">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_CLONE</b></a></code></code><br />
-						<code><code><a href="class-Zaboy_Dic_ServicesConfigs.html#CONFIG_VALUE_RECREATE">Zaboy_Dic_ServicesConfigs::<b>CONFIG_VALUE_RECREATE</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_SINGLETON">Zaboy_Services_Interface::<b>CONFIG_VALUE_SINGLETON</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_CLONE">Zaboy_Services_Interface::<b>CONFIG_VALUE_CLONE</b></a></code></code><br />
+						<code><code><a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_RECREATE">Zaboy_Services_Interface::<b>CONFIG_VALUE_RECREATE</b></a></code></code><br />
 				</div>
 
 
@@ -424,7 +410,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isService">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#186-196" title="Go to source code">isService</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#160-170" title="Go to source code">isService</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -466,7 +452,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceNameForConstructParam">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#198-211" title="Go to source code">getServiceNameForConstructParam</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$paramName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#172-185" title="Go to source code">getServiceNameForConstructParam</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$paramName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -506,7 +492,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceAutoload">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#213-228" title="Go to source code">getServiceAutoload</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#187-202" title="Go to source code">getServiceAutoload</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -541,22 +527,6 @@ class="php-quote">'NextServiceClass'</span>
 	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#___construct">__construct()</a>, 
-			<a href="class-Zaboy_Abstract.html#__getBootstrap">_getBootstrap()</a>, 
-			<a href="class-Zaboy_Abstract.html#__getDic">_getDic()</a>, 
-			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_removeAttrib">removeAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttrib">setAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttribs">setAttribs()</a>
-		</code></td>
-	</tr>
-	</table>
 
 
 
@@ -564,248 +534,11 @@ class="php-quote">'NextServiceClass'</span>
 
 
 
-	<table class="summary" id="constants">
-	<caption>Constants summary</caption>
-	<tr data-order="DIC_NAME_RESOURCE" id="DIC_NAME_RESOURCE">
 
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic_ServicesConfigs.html#59-63" title="Go to source code"><b>DIC_NAME_RESOURCE</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'dic'</span></code></td>
-		<td class="description"><div>
-			<a href="#DIC_NAME_RESOURCE" class="anchor">#</a>
 
-			<div class="description short">
-				
-<p>for $this-&gt;_getBootstrap()-&gt;getResource('dic') comfig.ini :
-dic.services...</p>
 
-			</div>
 
-			<div class="description detailed hidden">
-				
-<p>for $this-&gt;_getBootstrap()-&gt;getResource('dic') comfig.ini :
-dic.services...</p>
 
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="CONFIG_KEY_CLASS" id="CONFIG_KEY_CLASS">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic_ServicesConfigs.html#65-68" title="Go to source code"><b>CONFIG_KEY_CLASS</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'class'</span></code></td>
-		<td class="description"><div>
-			<a href="#CONFIG_KEY_CLASS" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>comfig.ini : dic.services.serviceName1.class = className1 ...</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>comfig.ini : dic.services.serviceName1.class = className1 ...</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="CONFIG_KEY_INSTANCE" id="CONFIG_KEY_INSTANCE">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic_ServicesConfigs.html#70-73" title="Go to source code"><b>CONFIG_KEY_INSTANCE</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'instance'</span></code></td>
-		<td class="description"><div>
-			<a href="#CONFIG_KEY_INSTANCE" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>comfig.ini : dic.services.serviceName1.instance = singleton</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>comfig.ini : dic.services.serviceName1.instance = singleton</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="CONFIG_VALUE_SINGLETON" id="CONFIG_VALUE_SINGLETON">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic_ServicesConfigs.html#75-79" title="Go to source code"><b>CONFIG_VALUE_SINGLETON</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'singleton'</span></code></td>
-		<td class="description"><div>
-			<a href="#CONFIG_VALUE_SINGLETON" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>default value for dic.services.serviceName1.instance comfig.ini :
-dic.services.serviceName1.instance = singleton</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>default value for dic.services.serviceName1.instance comfig.ini :
-dic.services.serviceName1.instance = singleton</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="CONFIG_VALUE_CLONE" id="CONFIG_VALUE_CLONE">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic_ServicesConfigs.html#81-85" title="Go to source code"><b>CONFIG_VALUE_CLONE</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'clone'</span></code></td>
-		<td class="description"><div>
-			<a href="#CONFIG_VALUE_CLONE" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>For all request, service will create by clone from etalon comfig.ini :
-dic.services.serviceName1.instance = clone</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>For all request, service will create by clone from etalon comfig.ini :
-dic.services.serviceName1.instance = clone</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="CONFIG_VALUE_RECREATE" id="CONFIG_VALUE_RECREATE">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic_ServicesConfigs.html#87-91" title="Go to source code"><b>CONFIG_VALUE_RECREATE</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'recreate'</span></code></td>
-		<td class="description"><div>
-			<a href="#CONFIG_VALUE_RECREATE" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>For all request, service will create by constuct() call comfig.ini :
-dic.services.serviceName1.instance = recreate</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>For all request, service will create by constuct() call comfig.ini :
-dic.services.serviceName1.instance = recreate</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="CONFIG_KEY_OPTIONS" id="CONFIG_KEY_OPTIONS">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic_ServicesConfigs.html#93-96" title="Go to source code"><b>CONFIG_KEY_OPTIONS</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'options'</span></code></td>
-		<td class="description"><div>
-			<a href="#CONFIG_KEY_OPTIONS" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>comfig.ini : dic.services.serviceName1.options.key = val ...</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>comfig.ini : dic.services.serviceName1.options.key = val ...</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="CONFIG_KEY_PARAMS" id="CONFIG_KEY_PARAMS">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic_ServicesConfigs.html#98-101" title="Go to source code"><b>CONFIG_KEY_PARAMS</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'params'</span></code></td>
-		<td class="description"><div>
-			<a href="#CONFIG_KEY_PARAMS" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>dic.services.serviceName1.params.firstparam = serviceName</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>dic.services.serviceName1.params.firstparam = serviceName</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	<tr data-order="CONFIG_KEY_AUTOLOAD" id="CONFIG_KEY_AUTOLOAD">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_Dic_ServicesConfigs.html#103-107" title="Go to source code"><b>CONFIG_KEY_AUTOLOAD</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'autoload'</span></code></td>
-		<td class="description"><div>
-			<a href="#CONFIG_KEY_AUTOLOAD" class="anchor">#</a>
-
-			<div class="description short">
-				
-<p>comfig.ini : dic.services.serviceName1.autoload = true Default value is
-FALSE.</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>comfig.ini : dic.services.serviceName1.autoload = true Default value is
-FALSE.</p>
-
-
-			</div>
-		</div></td>
-	</tr>
-	</table>
-
-
-
-
-
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-Zaboy_Abstract.html#properties">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#$_attribs"><var>$_attribs</var></a>
-		</code></td>
-	</tr>
-	</table>
 
 
 

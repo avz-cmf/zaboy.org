@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Interface Zaboy_Dic_DataStores_Adapter_Write_Interface | _zaboy.org</title>
+
+	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
+	<script type="text/javascript" src="elementlist.js?4053811989"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li><a href="package-DataStore.html">DataStore</a>
+						</li>
+				<li class="active"><a href="package-DataStores.html">DataStores</a>
+						</li>
+				<li><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-Example.html">Example</a>
+						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+				<li><a href="package-Services.html">Services</a>
+						</li>
+				<li><a href="package-Test.html">Test</a>
+						</li>
+				<li><a href="package-Zaboy.html">Zaboy</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Zaboy_DataStores.html">Zaboy_DataStores</a></li>
+				<li><a href="class-Zaboy_DataStores_Abstract.html">Zaboy_DataStores_Abstract</a></li>
+				<li><a href="class-Zaboy_DataStores_Exception.html">Zaboy_DataStores_Exception</a></li>
+				<li><a href="class-Zaboy_DataStores_Source_Abstract.html">Zaboy_DataStores_Source_Abstract</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Zaboy_DataStores_Adapter_Read_Interface.html">Zaboy_DataStores_Adapter_Read_Interface</a></li>
+				<li class="active"><a href="class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html">Zaboy_Dic_DataStores_Adapter_Write_Interface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-DataStores.html" title="Summary of DataStores"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface Zaboy_Dic_DataStores_Adapter_Write_Interface</h1>
+
+
+	<div class="description">
+	
+<p>Interface Zaboy_Dic_DataStores_Adapter_Write_Interface</p>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-DataStores.html">DataStores</a><br />
+
+				<b>Category:</b>
+				DataStores<br />
+				<b>Copyright:</b>
+				Zaboychenko Andrey<br />
+				<b>License:</b>
+				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
+				<b>See:</b>
+				<a
+href="http://en.wikipedia.org/wiki/Create">http://en.wikipedia.org/wiki/Create</a>, _read, _update_and_delete<br />
+				<b>See:</b>
+				<a
+href="http://rudocs.exdat.com/docs/index-567188.html?page=5">http://rudocs.exdat.com/docs/index-567188.html?page=5</a><br />
+				<b>Uses:</b>
+				Zend Framework from Zend Technologies USA Inc.<br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#11-96" title="Go to source code">library/Zaboy/DataStores/Adapter/Write/Interface.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="create" id="_create">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_create">#</a>
+		<code><a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#39-50" title="Go to source code">create</a>( <span>array <var>$itemData</var></span>, <span>mixed <var>$rewriteIfExist</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Insert new (by create) Item. It can't overwrite existing item. You can get
+item "id" by call getLastInsertedId()</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Insert new (by create) Item. It can't overwrite existing item. You can get
+item "id" by call getLastInsertedId()</p>
+
+<p>If $item[getPrimaryKey()] !== null, item set with that id. But if item with
+same id already exist in store - method will throw exception</p>
+
+<p>If $item[getPrimaryKey()] is not set or ===null, item will be insert with
+autoincrement PrimryKey.<br />
+You can get item's "id" by call getLastInsertedId() in this case<br />
+</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$itemData</var></dt>
+					<dd><code>array</code><br>$item associated array with or without PrimaryKey</dd>
+					<dt><var>$rewriteIfExist</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="read" id="_read">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_read">#</a>
+		<code><a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#52-58" title="Go to source code">read</a>( <span>integer|string <var>$id</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Return Item by id. Method return null if item with that id is absent.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return Item by id. Method return null if item with that id is absent.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd><code>integer|string</code><br>$id PrimaryKey</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="crudFind" id="_crudFind">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_crudFind">#</a>
+		<code><a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#60-66" title="Go to source code">crudFind</a>( <span>mixed <var>$filds</var> = <span class="php-keyword1">array</span>(self::DEFAULT_IDENTIFIER)</span>, <span>mixed <var>$equalities</var> = <span class="php-keyword1">array</span>()</span>, <span>mixed <var>$order</var> = <span class="php-keyword1">array</span>()</span>, <span>mixed <var>$limit</var> = <span class="php-num">0</span></span>, <span>mixed <var>$offset</var> = <span class="php-num">0</span> </span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="update" id="_update">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_update">#</a>
+		<code><a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#73-84" title="Go to source code">update</a>( <span>array <var>$itemData</var></span>, <span>mixed <var>$createIfAbsent</var> = <span class="php-keyword1">false</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Update existing Item with PrimaryKey = $item[getPrimaryKey()]. You can't get
+that Id by call getLastInsertedId()</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Update existing Item with PrimaryKey = $item[getPrimaryKey()]. You can't get
+that Id by call getLastInsertedId()</p>
+
+<p>If item with this PrimryKey is existing in the store, this item will be
+updated<br />
+Filds wich don't present in $item will not change in stores item<br />
+If item with this PrimryKey is absent in the store, method throws exception<br
+/>
+You can not get item's id by call getLastInsertedId()<br />
+</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$itemData</var></dt>
+					<dd><code>array</code><br>$item associated array with or without PrimaryKey</dd>
+					<dt><var>$createIfAbsent</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="delete" id="_delete">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_delete">#</a>
+		<code><a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#86-92" title="Go to source code">delete</a>( <span>integer|string <var>$id</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Delete Item by id. Method do nothing if item with that id is absent.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Delete Item by id. Method do nothing if item with that id is absent.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd><code>integer|string</code><br>$id PrimaryKey</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="CRUD_METADATA" id="CRUD_METADATA">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#26" title="Go to source code"><b>CRUD_METADATA</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'crud-metadata'</span></code></td>
+		<td class="description"><div>
+			<a href="#CRUD_METADATA" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="METADATA_KEY_IDENTIFIER" id="METADATA_KEY_IDENTIFIER">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#27" title="Go to source code"><b>METADATA_KEY_IDENTIFIER</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'identifier'</span></code></td>
+		<td class="description"><div>
+			<a href="#METADATA_KEY_IDENTIFIER" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="CRUD_LAST_INSERTED_ID" id="CRUD_LAST_INSERTED_ID">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#29" title="Go to source code"><b>CRUD_LAST_INSERTED_ID</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'crud-last-inserted-id'</span></code></td>
+		<td class="description"><div>
+			<a href="#CRUD_LAST_INSERTED_ID" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="DEFAULT_IDENTIFIER" id="DEFAULT_IDENTIFIER">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html#31-36" title="Go to source code"><b>DEFAULT_IDENTIFIER</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'id'</span></code></td>
+		<td class="description"><div>
+			<a href="#DEFAULT_IDENTIFIER" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Default identifier</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Default identifier</p>
+
+
+					<h4>See</h4>
+					<div class="list">
+							getIdentifier()<br />
+					</div>
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		_zaboy.org API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>
