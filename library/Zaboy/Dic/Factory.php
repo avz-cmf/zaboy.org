@@ -94,7 +94,7 @@ class Zaboy_Dic_Factory
      * Instantiate Object for param by $paramName in $reflectionClass
      * 
      * Don't work with $paramName = 'options'
-     * It is used Dic::getLazyLoadedParam()
+     * It is used Dic::getOptionalParamValue()
      * 
      * @param string $paramName
      * @param /ReflectionClass $reflectionClass

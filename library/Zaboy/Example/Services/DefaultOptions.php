@@ -48,7 +48,6 @@ class Zaboy_Example_Services_DefaultOptions extends Zaboy_Services
      */
     public function setParam($param)
     {
-        var_dump($param);
         $this->param = $param;
     } 
 }

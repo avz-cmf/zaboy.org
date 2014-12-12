@@ -119,6 +119,25 @@ class Zaboy_Services extends Zaboy_Abstract implements Zaboy_Services_Interface
         )
     ;
     
+    /*
+     * Array with constructors optional params
+     * 
+     * <code>
+     * array() 
+     * //if there isn't optional params in __construct
+     * array( 'param1'=> null, 'param2'=> null) 
+     * // if they present
+     * or
+     * array( 'param1'=> null, 'param2'=> object) 
+     * //after $this->_optionalParams['param2'] = $dic->getOptionalParamValue($this, 'param2') 
+     * </code>
+     * 
+     * @see _getOptionalParams() 
+     * @var array|null
+     */
+    protected $_optionalParams;
+
+
     /**
      * 
      * @return array
@@ -139,13 +158,119 @@ class Zaboy_Services extends Zaboy_Abstract implements Zaboy_Services_Interface
         return $bootstrap;
     }
     
-      /**
-      * @return Zaboy_Dic
-      */
+    /**
+     * @return Zaboy_Dic
+     */
      protected function  _getDic() 
      {
         $bootstrap = $this->_getBootstrap();
         $dic = $bootstrap->getResource('dic');     
         return $dic;
      }       
+
+    /**
+     * Return array with costructor prams which are optional (except $options)
+     * 
+     * Return: 
+     * <code>
+     * array() 
+     * //if there isn't optional params in __construct
+     * array( 'param1'=> null, 'param2'=> null) 
+     * // if they present
+     * or
+     * array( 'param1'=> null, 'param2'=> object) 
+     * //after $this->_optionalParams['param2'] = $dic->getOptionalParamValue($this, 'param2') 
+     * </code>
+     * 
+     * @param /ReflectionClass $reflectionClass
+     * @return array
+     */
+    protected function _getOptionalParams()    
+    {
+        if (isset($this->_optionalParams)) {
+            return $this->_optionalParams;   
+        }
+        $this->_optionalParams = array();
+        $reflectionClass = new ReflectionClass(get_class($this));  
+        //Get params for $className::__construct
+        $reflectionMethods = $reflectionClass->getMethods();
+        foreach ($reflectionMethods as $reflectionMethod) {
+            if ($reflectionMethod->name === '__construct') {
+                /* @var $reflectionConstruct /ReflectionMethod */                
+                $reflectionParams = $reflectionMethod->getParameters();
+                // $reflectionParams array of ReflectionParameter
+                foreach ($reflectionParams as $reflectionParam) {
+                    /* @var $reflectionParam /ReflectionParameter */
+                    if ($reflectionParam->isOptional()) {
+                        $paramName = $reflectionParam->getName();
+                        if ($paramName !== 'options') {
+                            $this->_optionalParams[$paramName] = '';
+                        }        
+                    }    
+                }        
+            }
+        }
+        return $this->_optionalParams;       
+    }       
+
+    /**
+     * Set param after $_getOptionalParams initiate
+     * 
+     * @param string $name
+     * @return void
+     */
+    protected function _setOptionalParam($name)    
+    {
+        $this->_getOptionalParams();
+        $dic = $this->_getDic();
+        try {
+            $this->_optionalParams[$name] = $dic->getOptionalParamValue($this, $name);
+        } catch (Exception $exc) {
+            require_once 'Zaboy/Services/Exception.php';
+            throw new Zaboy_Services_Exception(
+                    __METHOD__ . '($name) throws Exception. $name = ' . $name,
+                    0,
+                    $exc
+            );
+        }
+    }
+    
+    public function __get($name) 
+    {
+        $optionalParams = $this->_getOptionalParams();
+        if (array_key_exists($name, $optionalParams)) {
+            if (empty($optionalParams[$name])) {
+                $this->_setOptionalParam($name); 
+            }
+            return $this->_optionalParams[$name];
+        }else{
+            require_once 'Zaboy/Services/Exception.php';
+            throw new Zaboy_Services_Exception(
+                "Wrong property $name in class" . get_class($this)
+            ); 
+        }
+    }
+
+    public function __isset($name) 
+    {
+        $isSetParam = isset($this->_optionalParams) 
+            && !empty($this->_optionalParams[$name]);
+        return $isSetParam;
+    }
+
+    public function __set($name, $value) 
+    {
+        require_once 'Zaboy/Services/Exception.php';
+        throw new Zaboy_Services_Exception(
+            "Don't try set property $name - just use it"
+        ); 
+    }
+    
+    public function __unset($name) 
+    {
+        require_once 'Zaboy/Services/Exception.php';
+        throw new Zaboy_Services_Exception(
+            "You cann't unset property $name"
+        ); 
+    }    
 }

@@ -8,14 +8,10 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
-  require_once 'Zaboy/Services.php';
+  require_once 'Zaboy/Abstract.php';
 
 /**
  * Zaboy_Example_Dic_OptionalParams
- * 
- * You have to describe param in application.ini or service with same name 
- * have to be loaded before, but if Service Paramm is optional it will be load if
- * his class was described in application.ini
  * 
  * @category   Example
  * @package    Example
@@ -23,11 +19,11 @@
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Example_Dic_OptionalParams extends Zaboy_Services
+class Zaboy_Example_Dic_OptionalParams extends Zaboy_Abstract
 {
-    public $_specifiedOptionalParam;
+    public $specifiedOptionalParam;
     
-    public $_notSpecifiedOptionalParam;
+    public $notSpecifiedOptionalParam;
 
     /**
      * Service constructor
@@ -36,8 +32,8 @@ class Zaboy_Example_Dic_OptionalParams extends Zaboy_Services
      */
     public function __construct($notSpecifiedOptionalParam = null, Zaboy_Services $specifiedOptionalParam = null)
     {
-        $this->_specifiedOptionalParam = $specifiedOptionalParam;
-        $this->_notSpecifiedOptionalParam = $notSpecifiedOptionalParam;
+        $this->specifiedOptionalParam = $specifiedOptionalParam;
+        $this->notSpecifiedOptionalParam = $notSpecifiedOptionalParam;
     }
 
     /**

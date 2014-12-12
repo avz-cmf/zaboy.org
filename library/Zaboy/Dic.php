@@ -174,7 +174,7 @@ class Zaboy_Dic extends Zaboy_Abstract
         }
     }   
     
-    public function getLazyLoadedParam($instance, $paramName) 
+    public function getOptionalParamValue($instance, $paramName) 
     {
         if ($paramName === 'options') {
             require_once 'Zaboy/Dic/Exception.php';

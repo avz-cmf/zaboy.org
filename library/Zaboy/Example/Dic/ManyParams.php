@@ -41,14 +41,4 @@ class Zaboy_Example_Dic_ManyParams
         $this->_optionalParam = $optionalParam;        
     }
 
-    /**
-     * Retrieve a single string
-     *
-     * @param  string 
-     * @return string
-     */
-    public function getString($param)
-    {
-        return 'return ' . $param;
-    }
 }
