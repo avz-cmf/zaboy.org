@@ -19,6 +19,7 @@ require_once 'Zaboy/Example/Dic/WithSpecifiedParam.php';
 require_once 'Zaboy/Example/Dic/WithoutParams.php';
 require_once 'Zend/Application.php';
 require_once 'Zend/Application/Bootstrap/Bootstrap.php';
+require_once 'Zend/Test/PHPUnit/ControllerTestCase.php';
 
 /**
 * Zaboy_DicTest
@@ -123,6 +124,129 @@ INI;
     protected function tearDown() {
     }
     
+     /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetObject_WithOptionalParams() {
+        $this->loadDic($this->_minimalAdditionalConfig);
+        $service = $this->object->get('withOptionalParams' , 'Zaboy_Example_Dic_OptionalParams');
+        /* @var $service Zaboy_Example_Dic_OptionalParams */
+        $this->assertNull($service->specifiedOptionalParam);
+        $this->assertNull($service->notSpecifiedOptionalParam);        
+    }
+    
+     /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetService_WithOptionalParams() {
+        $this->loadDic(
+<<<'INI1'
+resources.dic.services.withOptionalParams.class = Zaboy_Example_Dic_OptionalParams
+INI1
+        );
+        $service = $this->object->get('withOptionalParams');
+        /* @var $service Zaboy_Example_Dic_OptionalParams */
+        $this->assertNull($service->specifiedOptionalParam);
+        $this->assertNull($service->notSpecifiedOptionalParam);  
+    }   
+    
+     /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetLazyLoadedParam_withObject() {
+        $this->loadDic($this->_minimalAdditionalConfig);
+        $service = $this->object->get('withOptionalParams' , 'Zaboy_Example_Dic_OptionalParams');
+        /* @var $service Zaboy_Example_Dic_OptionalParams */
+        $this->assertNull($service->specifiedOptionalParam);
+        $service->specifiedOptionalParam = $this->object->getOptionalParamValue($service, 'specifiedOptionalParam');
+        $this->assertTrue(
+            is_object($service->specifiedOptionalParam)
+        );
+    }
+    
+     /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetLazyLoadedParam_withService_ParamIsNotDescribedAndSpecified() {
+        $this->loadDic(
+<<<'INI1'
+resources.dic.services.withOptionalParams.class = Zaboy_Example_Dic_OptionalParams
+INI1
+        );
+        $service = $this->object->get('withOptionalParams' );
+        /* @var $service Zaboy_Example_Dic_OptionalParams */
+        $this->assertNull($service->specifiedOptionalParam);
+        $service->specifiedOptionalParam = $this->object->getOptionalParamValue($service, 'specifiedOptionalParam');
+        $this->assertTrue(
+            is_object($service->specifiedOptionalParam)
+        );
+    } 
+    
+      /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetLazyLoadedParam_withService_ParamIsDescribedAndSpecified() {
+        $this->loadDic(
+<<<'INI1'
+;tested service   
+resources.dic.services.withOptionalParams.class = Zaboy_Example_Dic_OptionalParams
+resources.dic.services.withOptionalParams.params.specifiedOptionalParam = optionalParam
+;service for param specifiedOptionalParam
+resources.dic.services.optionalParam.class = Zaboy_Example_Dic_WithoutConstruct
+INI1
+        );
+        $service = $this->object->get('withOptionalParams' );
+        /* @var $service Zaboy_Example_Dic_OptionalParams */
+        $this->assertNull($service->specifiedOptionalParam);
+        $service->specifiedOptionalParam = $this->object->getOptionalParamValue($service, 'specifiedOptionalParam');
+        $this->assertEquals(
+            'Zaboy_Example_Dic_WithoutConstruct',
+            get_class($service->specifiedOptionalParam)
+        );
+    }  
+    
+      /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetLazyLoadedParam_withService_ParamIsNotDescribedAndNotSpecified() {
+        $this->loadDic(
+<<<'INI1'
+;tested service   
+resources.dic.services.withOptionalParams.class = Zaboy_Example_Dic_OptionalParams
+INI1
+        );
+        $service = $this->object->get('withOptionalParams' );
+        /* @var $service Zaboy_Example_Dic_OptionalParams */
+        $this->assertNull($service->notSpecifiedOptionalParam);
+        $this->setExpectedException('Zaboy_Dic_Exception');    
+        $service->notSpecifiedOptionalParam = $this->object->getOptionalParamValue($service, 'notSpecifiedOptionalParam');
+    }    
+    
+      /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testGetLazyLoadedParam_withService_ParamIsDescribedAndNotSpecified() {
+        $this->loadDic(
+<<<'INI1'
+;tested service   
+resources.dic.services.withOptionalParams.class = Zaboy_Example_Dic_OptionalParams
+resources.dic.services.withOptionalParams.params.notSpecifiedOptionalParam = optionalParam
+;service for param specifiedOptionalParam
+resources.dic.services.optionalParam.class = Zaboy_Example_Dic_WithoutConstruct
+INI1
+        );
+        $service = $this->object->get('withOptionalParams' );
+        /* @var $service Zaboy_Example_Dic_OptionalParams */
+        $this->assertNull($service->specifiedOptionalParam);
+        $dic = $this->object;
+        $param  = $dic->getOptionalParamValue($service, 'notSpecifiedOptionalParam');
+        $service->specifiedOptionalParam = $param;
+        $this->assertEquals(
+            'Zaboy_Example_Dic_WithoutConstruct',
+            get_class($service->specifiedOptionalParam)
+        );
+    } 
+    
     /**
      * @covers Zaboy_Dic::get
      */
@@ -131,7 +255,7 @@ INI;
         $service = $this->object->get('serviceChild' , 'Zaboy_Example_Dic_WithSpecifiedParam_Child');
         /* @var $service Zaboy_Example_Dic_WithSpecifiedParam_Child */
         $this->assertTrue   (
-        is_object($service->getSpecifiedParam())
+            is_object($service->getSpecifiedParam())
         );
     }   
     

@@ -196,4 +196,113 @@ INI1;
              $service->getAttrib('attribKey')               
         );                
     }     
+    
+   
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testMagicMethodsOptionalParams_SpecifiedAndNotDescribedOptionalParam() {
+    $this->loadDic( 
+<<<'INI1'
+;INI TEST START
+resources.dic.services.serviceOptionalParams.class = Zaboy_Example_Services_OptionalParams
+;INI TEST END
+INI1
+    );
+
+        $service = $this->object->get('serviceOptionalParams');
+        $this->assertEquals(
+            'stdClass',
+            get_class($service->specifiedParam)
+        );
+        $this->setExpectedException('Zaboy_Services_Exception');   
+        var_dump($service->notSpecifiedParam);              
+    }     
+   
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testMagicMethodsOptionalParams_DescribedOptionalParam() {
+    $this->loadDic( 
+<<<'INI1'
+;INI TEST START
+resources.dic.services.serviceOptionalParams.class = Zaboy_Example_Services_OptionalParams
+resources.dic.services.serviceOptionalParams.params.notSpecifiedParam = serviceWithOptionsOnly
+resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Dic_WithOptionsOnly
+;INI TEST END
+INI1
+    );
+
+        $service = $this->object->get('serviceOptionalParams');
+        $this->assertEquals(
+            'Zaboy_Example_Dic_WithOptionsOnly',
+            get_class($service->notSpecifiedParam)
+        );
+    }   
+   
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testMagicMethodsOptionalParams_isSet() {
+    $this->loadDic( 
+<<<'INI1'
+;INI TEST START
+resources.dic.services.serviceOptionalParams.class = Zaboy_Example_Services_OptionalParams
+resources.dic.services.serviceOptionalParams.params.notSpecifiedParam = serviceWithOptionsOnly
+resources.dic.services.serviceWithOptionsOnly.class = Zaboy_Example_Dic_WithOptionsOnly
+;INI TEST END
+INI1
+    );
+
+        $service = $this->object->get('serviceOptionalParams');
+        
+        $this->assertFalse( isset($service->notSpecifiedParam) );
+        $this->assertFalse( isset($service->specifiedParam) );
+        
+        $a = $service->notSpecifiedParam;
+        $b = $service->specifiedParam;
+        
+        $this->assertTrue( isset($service->notSpecifiedParam) );
+        $this->assertTrue( isset($service->specifiedParam) );       
+                
+    }   
+    
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testMagicMethodsOptionalParams_unSet() {
+    $this->loadDic( 
+<<<'INI1'
+;INI TEST START
+resources.dic.services.serviceOptionalParams.class = Zaboy_Example_Services_OptionalParams
+;INI TEST END
+INI1
+    );
+
+        $service = $this->object->get('serviceOptionalParams');
+        
+        $a = $service->specifiedParam;        
+        $this->setExpectedException('Zaboy_Services_Exception');   
+        unset($service->specifiedParam);
+
+    }  
+    
+    /**
+     * @covers Zaboy_Dic::get
+     */
+    public function testMagicMethodsOptionalParams_Set() {
+    $this->loadDic( 
+<<<'INI1'
+;INI TEST START
+resources.dic.services.serviceOptionalParams.class = Zaboy_Example_Services_OptionalParams
+;INI TEST END
+INI1
+    );
+
+        $service = $this->object->get('serviceOptionalParams');
+        
+        $this->setExpectedException('Zaboy_Services_Exception');   
+        $service->specifiedParam = new stdClass();
+
+    }   
 }
