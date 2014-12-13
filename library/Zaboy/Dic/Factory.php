@@ -15,6 +15,10 @@
 /**
  * This is factory for "make" service and objects which are created {@see Zaboy_Dic}
  * 
+ * There is special method {@see getOptionalParamValue()} for lazy load.
+ * See  {@see Zaboy_Dic::getOptionalParamValue()} and 
+ * magic methods in {@see Zaboy_Services}. 
+ * 
  * @category   Dic
  * @package    Dic
  * @copyright  Zaboychenko Andrey
@@ -44,11 +48,11 @@ class Zaboy_Dic_Factory
     private $_loopChecker;
     
     /**
+     * Constructor - I hope you know what is this
      * 
-     * @param array $options
      * @param Zaboy_Dic_ServicesConfigs $servicesConfigs
+     * @param Zaboy_Dic_ServicesStore $servicesStore
      * @param Zaboy_Dic_LoopChecker $loopChecker
-     * @return void
      */
     public function __construct( 
         Zaboy_Dic_ServicesConfigs $servicesConfigs,

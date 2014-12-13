@@ -7,7 +7,7 @@
 	<title>Interface Zaboy_Services_Interface | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?4053811989"></script>
+	<script type="text/javascript" src="elementlist.js?842065495"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -49,6 +49,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Zaboy_Services.html">Zaboy_Services</a></li>
+				<li><a href="class-Zaboy_Services_Exception.html">Zaboy_Services_Exception</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -120,8 +121,8 @@
 		<h4>Indirect known implementers</h4>
 			<a href="class-Zaboy_DataStores_Source_Abstract.html">Zaboy_DataStores_Source_Abstract</a>, 
 			<a href="class-Zaboy_Example_Dic_NotSpecifiedParam.html">Zaboy_Example_Dic_NotSpecifiedParam</a>, 
-			<a href="class-Zaboy_Example_Dic_OptionalParams.html">Zaboy_Example_Dic_OptionalParams</a>, 
-			<a href="class-Zaboy_Example_Services_DefaultOptions.html">Zaboy_Example_Services_DefaultOptions</a>
+			<a href="class-Zaboy_Example_Services_DefaultOptions.html">Zaboy_Example_Services_DefaultOptions</a>, 
+			<a href="class-Zaboy_Example_Services_OptionalParams.html">Zaboy_Example_Services_OptionalParams</a>
 	</div>
 
 
@@ -142,7 +143,7 @@
 				<code><code><a href="class-Avz_DataStore_Interface.html">Avz_DataStore_Interface</a></code></code><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Services_Interface.html#11-74" title="Go to source code">library/Zaboy/Services/Interface.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Services_Interface.html#11-132" title="Go to source code">library/Zaboy/Services/Interface.php</a><br />
 	</div>
 
 
@@ -160,14 +161,25 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefaultServiceConfig">#</a>
-		<code><a href="source-class-Zaboy_Services_Interface.html#68-72" title="Go to source code">getDefaultServiceConfig</a>( )</code>
+		<code><a href="source-class-Zaboy_Services_Interface.html#119-130" title="Go to source code">getDefaultServiceConfig</a>( )</code>
 
 		<div class="description short">
 			
+<p>Return Default Config on that case if some keys is absent in
+<tt>application.ini</tt></p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Return Default Config on that case if some keys is absent in
+<tt>application.ini</tt></p>
+
+<p>Function return default configuration of service. If some keys of config
+aren't defined in <tt>application.ini</tt>, configuration for these keys from
+returned array is used. If any key of top level is present in
+<tt>application.ini</tt> - this part of Default Config is ignored completely</p>
+
 
 
 
@@ -197,7 +209,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Services_Interface.html#24-27" title="Go to source code"><b>CONFIG_KEY_CLASS</b></a>
+				<a href="source-class-Zaboy_Services_Interface.html#24-32" title="Go to source code"><b>CONFIG_KEY_CLASS</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'class'</span></code></td>
 		<td class="description"><div>
@@ -205,13 +217,31 @@
 
 			<div class="description short">
 				
-<p>comfig.ini : dic.services.serviceName1.class = className1 ...</p>
+<p>All strings record which specified Service have to begin with</p>
+
+<pre> dic.services. </pre>
+
+<p>If you want to define Service you must specified Service Name and Service
+Class in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName.class = Service_Class_Name </pre>
+
+<p>It is minimal requrement for Service definition.</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>comfig.ini : dic.services.serviceName1.class = className1 ...</p>
+<p>All strings record which specified Service have to begin with</p>
+
+<pre> dic.services. </pre>
+
+<p>If you want to define Service you must specified Service Name and Service
+Class in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName.class = Service_Class_Name </pre>
+
+<p>It is minimal requrement for Service definition.</p>
 
 
 			</div>
@@ -221,7 +251,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Services_Interface.html#29-32" title="Go to source code"><b>CONFIG_KEY_INSTANCE</b></a>
+				<a href="source-class-Zaboy_Services_Interface.html#34-45" title="Go to source code"><b>CONFIG_KEY_INSTANCE</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'instance'</span></code></td>
 		<td class="description"><div>
@@ -229,13 +259,37 @@
 
 			<div class="description short">
 				
-<p>comfig.ini : dic.services.serviceName1.instance = singleton</p>
+<p>You can specified how Service will be loaded by Dic.<br />
+By default, all calls</p>
+
+<pre>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'serviceName'</span>);
+</pre>
+
+<p>return singleton. Example of use in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName1.instance = singleton </pre>
+
+<p>See also <code><a href="class-Zaboy_Services_Interface.html#_getDefaultServiceConfig">Zaboy_Services_Interface::getDefaultServiceConfig()</a></code></p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>comfig.ini : dic.services.serviceName1.instance = singleton</p>
+<p>You can specified how Service will be loaded by Dic.<br />
+By default, all calls</p>
+
+<pre>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'serviceName'</span>);
+</pre>
+
+<p>return singleton. Example of use in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName1.instance = singleton </pre>
+
+<p>See also <code><a href="class-Zaboy_Services_Interface.html#_getDefaultServiceConfig">Zaboy_Services_Interface::getDefaultServiceConfig()</a></code></p>
 
 
 			</div>
@@ -245,7 +299,7 @@
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Services_Interface.html#34-38" title="Go to source code"><b>CONFIG_VALUE_SINGLETON</b></a>
+				<a href="source-class-Zaboy_Services_Interface.html#47-53" title="Go to source code"><b>CONFIG_VALUE_SINGLETON</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'singleton'</span></code></td>
 		<td class="description"><div>
@@ -253,15 +307,23 @@
 
 			<div class="description short">
 				
-<p>default value for dic.services.serviceName1.instance comfig.ini :
-dic.services.serviceName1.instance = singleton</p>
+<p>One of three possibly values for key <code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_INSTANCE">Zaboy_Services_Interface::<b>CONFIG_KEY_INSTANCE</b></a></code><br />
+Example of use in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName1.instance = singleton </pre>
+
+<p>It is default value for Services</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>default value for dic.services.serviceName1.instance comfig.ini :
-dic.services.serviceName1.instance = singleton</p>
+<p>One of three possibly values for key <code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_INSTANCE">Zaboy_Services_Interface::<b>CONFIG_KEY_INSTANCE</b></a></code><br />
+Example of use in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName1.instance = singleton </pre>
+
+<p>It is default value for Services</p>
 
 
 			</div>
@@ -271,7 +333,7 @@ dic.services.serviceName1.instance = singleton</p>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Services_Interface.html#40-44" title="Go to source code"><b>CONFIG_VALUE_CLONE</b></a>
+				<a href="source-class-Zaboy_Services_Interface.html#55-60" title="Go to source code"><b>CONFIG_VALUE_CLONE</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'clone'</span></code></td>
 		<td class="description"><div>
@@ -279,15 +341,19 @@ dic.services.serviceName1.instance = singleton</p>
 
 			<div class="description short">
 				
-<p>For all request, service will create by clone from etalon comfig.ini :
-dic.services.serviceName1.instance = clone</p>
+<p>One of three possibly values for key <code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_INSTANCE">Zaboy_Services_Interface::<b>CONFIG_KEY_INSTANCE</b></a></code><br />
+Example of use in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName1.instance = clone </pre>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>For all request, service will create by clone from etalon comfig.ini :
-dic.services.serviceName1.instance = clone</p>
+<p>One of three possibly values for key <code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_INSTANCE">Zaboy_Services_Interface::<b>CONFIG_KEY_INSTANCE</b></a></code><br />
+Example of use in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName1.instance = clone </pre>
 
 
 			</div>
@@ -297,7 +363,7 @@ dic.services.serviceName1.instance = clone</p>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Services_Interface.html#46-50" title="Go to source code"><b>CONFIG_VALUE_RECREATE</b></a>
+				<a href="source-class-Zaboy_Services_Interface.html#62-67" title="Go to source code"><b>CONFIG_VALUE_RECREATE</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'recreate'</span></code></td>
 		<td class="description"><div>
@@ -305,15 +371,19 @@ dic.services.serviceName1.instance = clone</p>
 
 			<div class="description short">
 				
-<p>For all request, service will create by constuct() call comfig.ini :
-dic.services.serviceName1.instance = recreate</p>
+<p>One of three possibly values for key <code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_INSTANCE">Zaboy_Services_Interface::<b>CONFIG_KEY_INSTANCE</b></a></code><br />
+Example of use in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName1.instance = recreate </pre>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>For all request, service will create by constuct() call comfig.ini :
-dic.services.serviceName1.instance = recreate</p>
+<p>One of three possibly values for key <code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_INSTANCE">Zaboy_Services_Interface::<b>CONFIG_KEY_INSTANCE</b></a></code><br />
+Example of use in <tt>application.ini</tt>:</p>
+
+<pre> dic.services.serviceName1.instance = recreate </pre>
 
 
 			</div>
@@ -323,7 +393,7 @@ dic.services.serviceName1.instance = recreate</p>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Services_Interface.html#52-55" title="Go to source code"><b>CONFIG_KEY_OPTIONS</b></a>
+				<a href="source-class-Zaboy_Services_Interface.html#69-93" title="Go to source code"><b>CONFIG_KEY_OPTIONS</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'options'</span></code></td>
 		<td class="description"><div>
@@ -331,13 +401,87 @@ dic.services.serviceName1.instance = recreate</p>
 
 			<div class="description short">
 				
-<p>comfig.ini : dic.services.serviceName1.options.key = val ...</p>
+<p>If <tt>__construct()</tt> has parameter $options ( it have to be first ),
+__construct() will retrived from Dic empty array in this parameter by default.
+But you can define options array in <tt>application.ini</tt>:</p>
+
+<pre>
+dic.services.serviceName.options.key1 = val-1
+dic.services.serviceName.options.key2[] = val-2_1
+dic.services.serviceName.options.key2[] = val1-2_2
+dic.services.serviceName.options.key3.arrayKey1 = val-3_1
+dic.services.serviceName.options.key3.arrayKey2 = val-3_2
+</pre>
+
+<p>Dic will assign $options:</p>
+
+<pre>
+<span class="php-keyword1">array</span>(
+    <span
+class="php-quote">'key1'</span> =&gt; <span
+class="php-quote">'val-1'</span>,
+    <span
+class="php-quote">'key2'</span> =&gt; <span
+class="php-keyword1">array</span>( <span
+class="php-quote">'val-2_1'</span>, <span
+class="php-quote">'val1-2_2'</span>),
+    <span
+class="php-quote">'key3'</span> =&gt; <span
+class="php-keyword1">array</span>(
+        <span
+class="php-quote">'arrayKey1'</span> =&gt; <span
+class="php-quote">'val-3_1'</span>,
+        <span
+class="php-quote">'arrayKey2'</span> =&gt; <span
+class="php-quote">'val-3_1'</span>
+    )
+)
+</pre>
+
+<p>See also <code><a href="class-Zaboy_Abstract.html#_setOptions">Zaboy_Abstract::setOptions()</a></code></p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>comfig.ini : dic.services.serviceName1.options.key = val ...</p>
+<p>If <tt>__construct()</tt> has parameter $options ( it have to be first ),
+__construct() will retrived from Dic empty array in this parameter by default.
+But you can define options array in <tt>application.ini</tt>:</p>
+
+<pre>
+dic.services.serviceName.options.key1 = val-1
+dic.services.serviceName.options.key2[] = val-2_1
+dic.services.serviceName.options.key2[] = val1-2_2
+dic.services.serviceName.options.key3.arrayKey1 = val-3_1
+dic.services.serviceName.options.key3.arrayKey2 = val-3_2
+</pre>
+
+<p>Dic will assign $options:</p>
+
+<pre>
+<span class="php-keyword1">array</span>(
+    <span
+class="php-quote">'key1'</span> =&gt; <span
+class="php-quote">'val-1'</span>,
+    <span
+class="php-quote">'key2'</span> =&gt; <span
+class="php-keyword1">array</span>( <span
+class="php-quote">'val-2_1'</span>, <span
+class="php-quote">'val1-2_2'</span>),
+    <span
+class="php-quote">'key3'</span> =&gt; <span
+class="php-keyword1">array</span>(
+        <span
+class="php-quote">'arrayKey1'</span> =&gt; <span
+class="php-quote">'val-3_1'</span>,
+        <span
+class="php-quote">'arrayKey2'</span> =&gt; <span
+class="php-quote">'val-3_1'</span>
+    )
+)
+</pre>
+
+<p>See also <code><a href="class-Zaboy_Abstract.html#_setOptions">Zaboy_Abstract::setOptions()</a></code></p>
 
 
 			</div>
@@ -347,7 +491,7 @@ dic.services.serviceName1.instance = recreate</p>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Services_Interface.html#57-60" title="Go to source code"><b>CONFIG_KEY_PARAMS</b></a>
+				<a href="source-class-Zaboy_Services_Interface.html#95-106" title="Go to source code"><b>CONFIG_KEY_PARAMS</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'params'</span></code></td>
 		<td class="description"><div>
@@ -355,13 +499,31 @@ dic.services.serviceName1.instance = recreate</p>
 
 			<div class="description short">
 				
-<p>dic.services.serviceName1.params.firstparam = serviceName</p>
+<p>You can instruct the Dic what kaind of Service have to be given for each
+parameter. Example of use in <tt>application.ini</tt>:</p>
+
+<pre>
+dic.services.serviceIsHadParm.params.paramName1 = serviceForParam1
+;you also have to describe Service with name 'serviceForParam1'
+dic.services.serviceForParam1.class = One_Class_Name
+</pre>
+
+<p>See also <code><a href="class-Zaboy_Services_Interface.html#_getDefaultServiceConfig">Zaboy_Services_Interface::getDefaultServiceConfig()</a></code></p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>dic.services.serviceName1.params.firstparam = serviceName</p>
+<p>You can instruct the Dic what kaind of Service have to be given for each
+parameter. Example of use in <tt>application.ini</tt>:</p>
+
+<pre>
+dic.services.serviceIsHadParm.params.paramName1 = serviceForParam1
+;you also have to describe Service with name 'serviceForParam1'
+dic.services.serviceForParam1.class = One_Class_Name
+</pre>
+
+<p>See also <code><a href="class-Zaboy_Services_Interface.html#_getDefaultServiceConfig">Zaboy_Services_Interface::getDefaultServiceConfig()</a></code></p>
 
 
 			</div>
@@ -371,7 +533,7 @@ dic.services.serviceName1.instance = recreate</p>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_Services_Interface.html#62-66" title="Go to source code"><b>CONFIG_KEY_AUTOLOAD</b></a>
+				<a href="source-class-Zaboy_Services_Interface.html#108-117" title="Go to source code"><b>CONFIG_KEY_AUTOLOAD</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'autoload'</span></code></td>
 		<td class="description"><div>
@@ -379,15 +541,27 @@ dic.services.serviceName1.instance = recreate</p>
 
 			<div class="description short">
 				
-<p>comfig.ini : dic.services.serviceName1.autoload = true Default value is
-FALSE.</p>
+<p>You can load some Service automaticly, just after Dic will be loaded. Add to
+these services descriptions in <tt>application.ini</tt>:</p>
+
+<pre>
+dic.services.serviceName1.autoload = true
+</pre>
+
+<p>Default value for this key is FALSE. See also <code><a href="class-Zaboy_Services_Interface.html#_getDefaultServiceConfig">Zaboy_Services_Interface::getDefaultServiceConfig()</a></code></p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>comfig.ini : dic.services.serviceName1.autoload = true Default value is
-FALSE.</p>
+<p>You can load some Service automaticly, just after Dic will be loaded. Add to
+these services descriptions in <tt>application.ini</tt>:</p>
+
+<pre>
+dic.services.serviceName1.autoload = true
+</pre>
+
+<p>Default value for this key is FALSE. See also <code><a href="class-Zaboy_Services_Interface.html#_getDefaultServiceConfig">Zaboy_Services_Interface::getDefaultServiceConfig()</a></code></p>
 
 
 			</div>

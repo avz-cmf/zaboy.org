@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Example_Dic_OptionalParams | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?4053811989"></script>
+	<script type="text/javascript" src="elementlist.js?842065495"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -57,6 +57,7 @@
 				<li><a href="class-Zaboy_Example_Dic_WithSpecifiedParam.html">Zaboy_Example_Dic_WithSpecifiedParam</a></li>
 				<li><a href="class-Zaboy_Example_Dic_WithSpecifiedParam_Child.html">Zaboy_Example_Dic_WithSpecifiedParam_Child</a></li>
 				<li><a href="class-Zaboy_Example_Services_DefaultOptions.html">Zaboy_Example_Services_DefaultOptions</a></li>
+				<li><a href="class-Zaboy_Example_Services_OptionalParams.html">Zaboy_Example_Services_OptionalParams</a></li>
 			</ul>
 
 
@@ -109,10 +110,6 @@
 	
 <p>Zaboy_Example_Dic_OptionalParams</p>
 
-<p>You have to describe param in application.ini or service with same name have
-to be loaded before, but if Service Paramm is optional it will be load if his
-class was described in application.ini</p>
-
 	</div>
 
 	<dl class="tree">
@@ -123,15 +120,6 @@ class was described in application.ini</p>
 			
 		</dd>
 		<dd style="padding-left:30px">
-			<img src="resources/inherit.png" alt="Extended by" />
-			<a href="class-Zaboy_Services.html"><span>Zaboy_Services</span></a>
-			
-			 implements 
-				<a href="class-Zaboy_Services_Interface.html"><span>Zaboy_Services_Interface</span></a>
-			
-			
-		</dd>
-		<dd style="padding-left:60px">
 			<img src="resources/inherit.png" alt="Extended by" />
 <b><span>Zaboy_Example_Dic_OptionalParams</span></b>			
 			
@@ -160,7 +148,7 @@ class was described in application.ini</p>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Example_Dic_OptionalParams.html#13-53" title="Go to source code">library/Zaboy/Example/Dic/OptionalParams.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Example_Dic_OptionalParams.html#13-49" title="Go to source code">library/Zaboy/Example/Dic/OptionalParams.php</a><br />
 	</div>
 
 
@@ -178,7 +166,7 @@ class was described in application.ini</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Example_Dic_OptionalParams.html#32-41" title="Go to source code">__construct</a>( <span>mixed <var>$notSpecifiedOptionalParam</var> = <span class="php-keyword1">null</span></span>, <span><code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code> <var>$specifiedOptionalParam</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Example_Dic_OptionalParams.html#28-37" title="Go to source code">__construct</a>( <span>mixed <var>$notSpecifiedOptionalParam</var> = <span class="php-keyword1">null</span></span>, <span><code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code> <var>$specifiedOptionalParam</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -213,7 +201,7 @@ class was described in application.ini</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getString">#</a>
-		<code><a href="source-class-Zaboy_Example_Dic_OptionalParams.html#43-52" title="Go to source code">getString</a>( <span>string <var>$param</var></span> )</code>
+		<code><a href="source-class-Zaboy_Example_Dic_OptionalParams.html#39-48" title="Go to source code">getString</a>( <span>string <var>$param</var></span> )</code>
 
 		<div class="description short">
 			
@@ -247,16 +235,6 @@ class was described in application.ini</p>
 	</table>
 
 	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Zaboy_Services.html#methods">Zaboy_Services</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Services.html#__getBootstrap">_getBootstrap()</a>, 
-			<a href="class-Zaboy_Services.html#__getDic">_getDic()</a>, 
-			<a href="class-Zaboy_Services.html#_getDefaultServiceConfig">getDefaultServiceConfig()</a>
-		</code></td>
-	</tr>
-	</table>
-	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
 	<tr>
 		<td><code>
@@ -278,38 +256,23 @@ class was described in application.ini</p>
 
 
 
-	<table class="summary inherited">
-	<caption>Constants inherited from <a href="class-Zaboy_Services_Interface.html#constants">Zaboy_Services_Interface</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_AUTOLOAD"><b>CONFIG_KEY_AUTOLOAD</b></a>, 
-			<a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_CLASS"><b>CONFIG_KEY_CLASS</b></a>, 
-			<a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_INSTANCE"><b>CONFIG_KEY_INSTANCE</b></a>, 
-			<a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_OPTIONS"><b>CONFIG_KEY_OPTIONS</b></a>, 
-			<a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_PARAMS"><b>CONFIG_KEY_PARAMS</b></a>, 
-			<a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_CLONE"><b>CONFIG_VALUE_CLONE</b></a>, 
-			<a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_RECREATE"><b>CONFIG_VALUE_RECREATE</b></a>, 
-			<a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_SINGLETON"><b>CONFIG_VALUE_SINGLETON</b></a>
-		</code></td>
-	</tr>
-	</table>
 
 
 
 	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="_specifiedOptionalParam" id="$_specifiedOptionalParam">
+	<tr data-order="specifiedOptionalParam" id="$specifiedOptionalParam">
 		<td class="attributes"><code>
 			public  
 			mixed
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_Example_Dic_OptionalParams.html#28" title="Go to source code"><var>$_specifiedOptionalParam</var></a>
+				<a href="source-class-Zaboy_Example_Dic_OptionalParams.html#24" title="Go to source code"><var>$specifiedOptionalParam</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$_specifiedOptionalParam" class="anchor">#</a>
+			<a href="#$specifiedOptionalParam" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -321,18 +284,18 @@ class was described in application.ini</p>
 			</div>
 		</div></td>
 	</tr>
-	<tr data-order="_notSpecifiedOptionalParam" id="$_notSpecifiedOptionalParam">
+	<tr data-order="notSpecifiedOptionalParam" id="$notSpecifiedOptionalParam">
 		<td class="attributes"><code>
 			public  
 			mixed
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_Example_Dic_OptionalParams.html#30" title="Go to source code"><var>$_notSpecifiedOptionalParam</var></a>
+				<a href="source-class-Zaboy_Example_Dic_OptionalParams.html#26" title="Go to source code"><var>$notSpecifiedOptionalParam</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
-			<a href="#$_notSpecifiedOptionalParam" class="anchor">#</a>
+			<a href="#$notSpecifiedOptionalParam" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -346,14 +309,6 @@ class was described in application.ini</p>
 	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-Zaboy_Services.html#properties">Zaboy_Services</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Services.html#$_defaultServiceConfig"><var>$_defaultServiceConfig</var></a>
-		</code></td>
-	</tr>
-	</table>
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-Zaboy_Abstract.html#properties">Zaboy_Abstract</a></caption>
 	<tr>

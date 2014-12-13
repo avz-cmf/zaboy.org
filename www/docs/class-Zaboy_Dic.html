@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?4053811989"></script>
+	<script type="text/javascript" src="elementlist.js?842065495"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -108,10 +108,10 @@
 <p><b>Zaboy_Dic</b><br />
 </p>
 
-<p>Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i>
-load as resurce plugin of Bootstrap <code><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></code>.</p>
+<p>Zaboy_Dic is dependency injection container class (<tt>Dic</tt>).
+<tt>Dic</tt> load as resurce plugin of Bootstrap <code><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></code>.</p>
 
-<p>Add in <i>application.ini</i> for load <code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code><br />
+<p>Add in <tt>application.ini</tt> for load <code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code><br />
 </p>
 
 <pre>
@@ -126,9 +126,7 @@ resources.dic.class = My_Dic_Class
 
 <p>For more information about configuration see <code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code>
 and <code><a href="class-Zaboy_Application_Resource_Dic.html">Zaboy_Application_Resource_Dic</a></code><br />
-*</p>
-
-<p>You can get <i>Dic</i> as resource:<br />
+You can get <tt>Dic</tt> as resource:<br />
 </p>
 
 <pre>
@@ -144,13 +142,148 @@ class="php-quote">'dic'</span>);
 Zaboy_Dic can load any object which corresponds a some requirements.<br />
 Zaboy_Dic also can contane that object if it is described in Services Config (
 in most cases it is application.ini). In that case this object is Service.<br />
-Objects, which was loaded via Dic is not stored in Dic. Every call <code><a href="class-Zaboy_Dic.html#_get">Zaboy_Dic::get()</a></code>
-will return new object. For Services you will get singleton instance be default.
-You can change this behavior in Service config. See <code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> for details.<br />
+Ordinary Objects ( not Services ), which was loaded via Dic is not stored in
+Dic. Every call {@See get()} will return new object for them.<br />
+For Services you will get from {@See Zaboy_Dic::get()} singleton instance by
+default.</p>
+
+<p><b>Requirements for Objects, which will load via DIC</b><br />
+There are some requirements for <tt>__consruct()</tt> of Objects, which will
+load by <tt>Dic</tt>. Next variants is possibly:</p>
+
+<pre>
+<span
+class="php-comment">//constructor is allowed not to have parameters</span>
+<span
+class="php-keyword1">function</span> __construct()
+
+<span
+class="php-comment">//there is $options only. Param has to have name $options</span>
+<span
+class="php-keyword1">function</span> __construct(<span
+class="php-keyword1">array</span> <span class="php-var">$options</span>)
+
+<span
+class="php-comment">//There are some object type parameters with specified class name</span>
+<span
+class="php-keyword1">function</span> __construct(Class_Name <span
+class="php-var">$object1</span>, Another_Class <span
+class="php-var">$object2</span>, ...)
+<span
+class="php-comment">//or</span>
+<span
+class="php-keyword1">function</span> __construct(<span
+class="php-keyword1">array</span> <span
+class="php-var">$options</span>, Class_Name <span
+class="php-var">$object1</span>,  Another_Class ...)
+<span
+class="php-comment">//the $options if it exist as parametr for __construct have to be a first parameter.</span>
+
+<span
+class="php-comment">//There are some parameters which is Services with specified class name or not</span>
+<span
+class="php-keyword1">function</span> __construct(Service_Class <span
+class="php-var">$service1</span>, Another_Service_Class <span
+class="php-var">$service2</span>, ...)
+<span
+class="php-keyword1">function</span> __construct(<span
+class="php-keyword1">array</span> <span
+class="php-var">$options</span>, Service_Class <span
+class="php-var">$service1</span>, Another_Service_Class ...)
+
+<span
+class="php-comment">//According to requirements for Service describe, class of Service have to</span>
+<span
+class="php-comment">//specified in Service Config. Because this reason, you may have not to notify classes</span>
+<span
+class="php-comment">// for Services in parameters, but it is recommended for type control.</span>
+<span
+class="php-keyword1">function</span> __construct(Service_Class <span
+class="php-var">$service1</span>, <span
+class="php-var">$service2</span>  ...)
+<span
+class="php-keyword1">function</span> __construct(<span
+class="php-keyword1">array</span> <span class="php-var">$options</span>, <span
+class="php-var">$service1</span>, <span
+class="php-var">$service2</span>  ...)
+
+<span
+class="php-comment">//And all together:</span>
+<span
+class="php-keyword1">function</span> __construct(<span
+class="php-keyword1">array</span> <span
+class="php-var">$options</span>, Service_Class <span
+class="php-var">$service1</span>, <span
+class="php-var">$service2</span>, Class_Name <span
+class="php-var">$object1</span>)
+<span
+class="php-comment">//In this case we must have in Services config:</span>
+</pre>
+
+<pre>
+resources.dic.service1.class = Service_Class
+resources.dic.service2.class = Next_Service_Class
+</pre>
+
+<p>In another words: only objects in parameters except array of options which
+has to be in first place or can be absent.<br />
+</p>
+
+<p>About optional parametrs in <tt>__consruct():</tt><br />
+All optional params will be ignored (NULL will be retrived instead of them in to
+consructor).<br />
+NOTED: you can use this parameters in runtime - see <code><a href="class-Zaboy_Dic.html#_getOptionalParamValue">Zaboy_Dic::getOptionalParamValue()</a></code></p>
+
+<p><b>Loading ordinary Objects (not Services) via DIC</b><br />
+</p>
+
+<pre>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-keyword1">null</span>, Class_Name);
+<span
+class="php-comment">// or</span>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'anyName'</span>, Class_Name);
+<span
+class="php-comment">//if 'anyName' isn't described in &lt;tt&gt;application.ini&lt;/tt&gt; as Service - it will be ignored</span>
+</pre>
+
+<p>Objects is not stored in Dic. Every call {@See Zaboy_Dic::get()} will return
+new object<br />
+All dependencies will be loaded recursively.</p>
+
+<p><b>Loading Services via DIC</b><br />
+</p>
+
+<pre>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'ServiceName'</span>);
+<span
+class="php-comment">// or</span>
+<span class="php-var">$dic</span>-&gt;get(<span
+class="php-quote">'ServiceName'</span>, Class_Name);
+<span
+class="php-comment">//'Class_Name' will be ignored</span>
+</pre>
+
+<p>Objects is not stored in Dic. Every call {@See Zaboy_Dic::get()} will return
+singleton by default. You can change it in <tt>application.ini</tt><br />
+See Zaboy_Dic_ServicesConfigs, Zaboy_Services for details.<br />
+All dependencies will be loaded recursively.</p>
+
+<p><b>What different betwin Object and Service</b><br />
+Only one - Service is described in <tt>application.ini</tt><br />
 </p>
 
 <p>For more information about Objects, Services and requirements for them, see
-<code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code></p>
+<code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code><br />
+</p>
+
+<p><b>Dependencies in __construct</b><br />
+When you load Object or Service via $dic-&gt;get(), all dependencies will be
+loaded recursively. Optional params will be ignored. But you can load and use
+these dependencies later. See <code><a href="class-Zaboy_Dic.html#_getOptionalParamValue">Zaboy_Dic::getOptionalParamValue()</a></code> and magic methods
+in <code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code>.</p>
 
 	</div>
 
@@ -194,7 +327,7 @@ You can change this behavior in Service config. See <code><a href="class-Zaboy_D
 				Zend Framework from Zend Technologies USA Inc.<br />
 				<b>Todo:</b>
 				Optional Params - make method getLazyLoadedService($ServiceName)<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic.html#16-235" title="Go to source code">library/Zaboy/Dic.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic.html#16-339" title="Go to source code">library/Zaboy/Dic.php</a><br />
 	</div>
 
 
@@ -212,7 +345,7 @@ You can change this behavior in Service config. See <code><a href="class-Zaboy_D
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#80-100" title="Go to source code">__construct</a>( <span>array <var>$options</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> <var>$servicesConfigs</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></code> <var>$servicesStore</var></span>, <span><code><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></code> <var>$factory</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#154-174" title="Go to source code">__construct</a>( <span>array <var>$options</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> <var>$servicesConfigs</var></span>, <span><code><a href="class-Zaboy_Dic_ServicesStore.html">Zaboy_Dic_ServicesStore</a></code> <var>$servicesStore</var></span>, <span><code><a href="class-Zaboy_Dic_Factory.html">Zaboy_Dic_Factory</a></code> <var>$factory</var></span> )</code>
 
 		<div class="description short">
 			
@@ -254,7 +387,7 @@ You can change this behavior in Service config. See <code><a href="class-Zaboy_D
 
 		<td class="name"><div>
 		<a class="anchor" href="#_get">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#102-124" title="Go to source code">get</a>( <span>string <var>$name</var></span>, <span>string|null <var>$class</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#176-198" title="Go to source code">get</a>( <span>string <var>$name</var></span>, <span>string|null <var>$class</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -287,48 +420,6 @@ You can change this behavior in Service config. See <code><a href="class-Zaboy_D
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="_getService" id="__getService">
-
-		<td class="attributes"><code>
-			 protected 
-			null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#__getService">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#126-163" title="Go to source code">_getService</a>( <span>type <var>$serviceName</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Instantiate service</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Instantiate service</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$serviceName</var></dt>
-					<dd><code>type</code><br>$serviceName</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>null</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="getRunningServiceName" id="_getRunningServiceName">
 
 		<td class="attributes"><code>
@@ -340,7 +431,7 @@ You can change this behavior in Service config. See <code><a href="class-Zaboy_D
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRunningServiceName">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#165-174" title="Go to source code">getRunningServiceName</a>( <span>object <var>$serviceInstance</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#200-209" title="Go to source code">getRunningServiceName</a>( <span>object <var>$serviceInstance</var></span> )</code>
 
 		<div class="description short">
 			
@@ -382,7 +473,7 @@ You can change this behavior in Service config. See <code><a href="class-Zaboy_D
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRunningServiceInstance">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#176-214" title="Go to source code">getRunningServiceInstance</a>( <span>string <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-Zaboy_Dic.html#211-249" title="Go to source code">getRunningServiceInstance</a>( <span>string <var>$serviceName</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -441,6 +532,54 @@ class="php-num">0</span> =&gt; instanceSingletonService1]
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getOptionalParamValue" id="_getOptionalParamValue">
+
+		<td class="attributes"><code>
+			 public 
+			object
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getOptionalParamValue">#</a>
+		<code><a href="source-class-Zaboy_Dic.html#251-280" title="Go to source code">getOptionalParamValue</a>( <span>object <var>$instance</var></span>, <span>string <var>$paramName</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Uses for lazy load Services and object for optional parameters of
+__constructor</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Uses for lazy load Services and object for optional parameters of
+__constructor</p>
+
+<p>See magic methods in <code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code> for exavple of uses.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$instance</var></dt>
+					<dd><code>object</code><br>$instance it is $this in most cases</dd>
+					<dt><var>$paramName</var></dt>
+					<dd><code>string</code><br>$paramName name of optional parameter of __constructor</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>object</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="_autoloadServices" id="__autoloadServices">
 
 		<td class="attributes"><code>
@@ -452,7 +591,7 @@ class="php-num">0</span> =&gt; instanceSingletonService1]
 
 		<td class="name"><div>
 		<a class="anchor" href="#__autoloadServices">#</a>
-		<code><a href="source-class-Zaboy_Dic.html#216-234" title="Go to source code">_autoloadServices</a>( )</code>
+		<code><a href="source-class-Zaboy_Dic.html#282-300" title="Go to source code">_autoloadServices</a>( )</code>
 
 		<div class="description short">
 			
@@ -476,6 +615,48 @@ class="php-keyword1">true</span>
 
 
 
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_getService" id="__getService">
+
+		<td class="attributes"><code>
+			 protected 
+			null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__getService">#</a>
+		<code><a href="source-class-Zaboy_Dic.html#302-337" title="Go to source code">_getService</a>( <span>type <var>$serviceName</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Instantiate service</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Instantiate service</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$serviceName</var></dt>
+					<dd><code>type</code><br>$serviceName</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>null</code><br />
+				</div>
 
 
 

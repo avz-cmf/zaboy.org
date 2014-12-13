@@ -823,7 +823,7 @@ class Zaboy_DataStore_Read_Array implements Zaboy_DataStores_Read_Interface
     }            
     
     /**
-     * Return same like "return  $item1['f2']  > $item2['f2']  && $item1['f1'] === $item2['f1']  || $item1['f1']  < $item2['f1']  ;"
+     * Return some like "return  $item1['f2']  > $item2['f2']  && $item1['f1'] === $item2['f1']  || $item1['f1']  < $item2['f1']  ;"
      * 
      * @see fetch()
      * @param string|array $order array( '-f1', '+f2' )

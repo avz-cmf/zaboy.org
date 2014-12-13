@@ -48,7 +48,21 @@
  *          ...
  *</code>
  * 
- * @todo Make docs about config keys
+ * There are next keys for using after <tt>'dic.services.'</tt> in appalication .ini:<br>
+ * <ul>
+ *     <li><tt>class</tt> See:{@see Zaboy_Services::CONFIG_KEY_CLASS} </li>
+ *     <li>
+ *         <tt>instance</tt> See:{@see Zaboy_Services::CONFIG_KEY_INSTANCE}
+ *         <ul>
+ *             <li><tt>singleton</tt> See:{@see Zaboy_Services::CONFIG_VALUE_SINGLETON} </li>
+ *             <li><tt>clone</tt> See:{@see Zaboy_Services::CONFIG_VALUE_CLONE} </li> 
+ *             <li><tt>recreate</tt> See:{@see Zaboy_Services::CONFIG_VALUE_RECREATE} </li> 
+ *         </ul> 
+ *     </li>
+ *     <li><tt>options</tt> See:{@see Zaboy_Services::CONFIG_KEY_OPTIONS} </li>
+ *     <li><tt>params</tt> See:{@see Zaboy_Services::CONFIG_KEY_PARAMS} </li>
+ * </ul> 
+ * 
  * @category   Dic
  * @package    Dic
  * @copyright  Zaboychenko Andrey
@@ -114,6 +128,8 @@ class Zaboy_Dic_ServicesConfigs
     }
     
     /**
+     * Return Service Class Name or null if absent
+     * 
      * @param string
      * @return string|null
      */    
@@ -127,6 +143,8 @@ class Zaboy_Dic_ServicesConfigs
     }
     
     /**
+     * About Service options see {@see Zaboy_Services_Interface::CONFIG_KEY_OPTIONS}
+     * 
      * @param string
      * @return array
      */    

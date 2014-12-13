@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Services | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?4053811989"></script>
+	<script type="text/javascript" src="elementlist.js?842065495"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -49,6 +49,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li class="active"><a href="class-Zaboy_Services.html">Zaboy_Services</a></li>
+				<li><a href="class-Zaboy_Services_Exception.html">Zaboy_Services_Exception</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -130,9 +131,9 @@ resources.dic.myService.class = My_Service_Class
 
 <p><br />
 <b>Service Class</b><br />
-There isn't any special interface for Service Classes. Class of Service Object
-may be inherited from <code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code> or not. There are some requirements
-for (@see Zaboy_Services::__construct()} definition.<br />
+There isn't any required interface for Service Classes. Class of Service Object
+may be inherited from <code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code> or not and may implement <code><a href="class-Zaboy_Services_Interface.html">Zaboy_Services_Interface</a></code> or not. There are some requirements for (@see
+Zaboy_Services::__construct()} definition.<br />
 Next variants is possibly:</p>
 
 <pre>
@@ -225,28 +226,14 @@ class="php-comment">// or</span>
 <p>in your constructor<br />
 </p>
 
-<p><b>About optional parametrs</b><br />
-All optional params will be ignored (NULL will be retrived instead of them in to
-consructor).<br />
-</p>
+<p>About optional parametrs in <tt>__consruct():</tt><br />
+All optional params will be ignored. (NULL will be retrived instead of them in
+to consructor).<br />
+NOTED: you can use this parameters in runtime - see <code><a href="class-Zaboy_Dic.html#_getOptionalParamValue">Zaboy_Dic::getOptionalParamValue()</a></code></p>
 
 <p><br />
 <b>What is Service Name?</b><br />
 It is just string - param for (@see Zaboy_Dic::get()}<br />
-</p>
-
-<p><b>Object_Class::_defaultOptions</b><br />
-If Service Object is inherited from <code><a href="class-Zaboy_Services.html">Zaboy_Services</a></code> it contains Zaboy_Services::_defaultOptions<br />
-If $options haven't submitted via __construct - _defaultOptions will be used.<br
-/>
-See Zaboy_Services_Example_SimpleTest::testSetDefaultOptionsInConstruct()<br />
-If $options is not empty - _defaultOptions will not be used fully ( any part)<br
-/>
-See Zaboy_Services_Example_OptionsTest::testSetDefaultOptionsInConstruct()<br />
-</p>
-
-<p>Also, you can define $options for Service in config.ini. See about it (@see
-Zaboy_Dic_ServicesConfigs}<br />
 </p>
 
 	</div>
@@ -273,8 +260,8 @@ Zaboy_Dic_ServicesConfigs}<br />
 		<h4>Direct known subclasses</h4>
 			<a href="class-Zaboy_DataStores_Source_Abstract.html">Zaboy_DataStores_Source_Abstract</a>, 
 			<a href="class-Zaboy_Example_Dic_NotSpecifiedParam.html">Zaboy_Example_Dic_NotSpecifiedParam</a>, 
-			<a href="class-Zaboy_Example_Dic_OptionalParams.html">Zaboy_Example_Dic_OptionalParams</a>, 
-			<a href="class-Zaboy_Example_Services_DefaultOptions.html">Zaboy_Example_Services_DefaultOptions</a>
+			<a href="class-Zaboy_Example_Services_DefaultOptions.html">Zaboy_Example_Services_DefaultOptions</a>, 
+			<a href="class-Zaboy_Example_Services_OptionalParams.html">Zaboy_Example_Services_OptionalParams</a>
 	</div>
 
 
@@ -300,7 +287,7 @@ Zaboy_Dic_ServicesConfigs}<br />
 				Object_Class :: _defaultOptions - rewrite docs<br />
 				<b>Todo:</b>
 				Optional Params - make method getOPtionalParam($lazyLoadedServiceName)<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Services.html#14-151" title="Go to source code">library/Zaboy/Services.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Services.html#14-274" title="Go to source code">library/Zaboy/Services.php</a><br />
 	</div>
 
 
@@ -318,14 +305,25 @@ Zaboy_Dic_ServicesConfigs}<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefaultServiceConfig">#</a>
-		<code><a href="source-class-Zaboy_Services.html#122-129" title="Go to source code">getDefaultServiceConfig</a>( )</code>
+		<code><a href="source-class-Zaboy_Services.html#132-146" title="Go to source code">getDefaultServiceConfig</a>( )</code>
 
 		<div class="description short">
 			
+<p>Return Default Config on that case if same keys is absent in
+<tt>application.ini</tt></p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Return Default Config on that case if same keys is absent in
+<tt>application.ini</tt></p>
+
+<p>Function return default configuration of service. If same keys of config
+aren't defined in <tt>application.ini</tt>, configuration for these keys from
+returned array is used. If any key of top level is present in
+<tt>application.ini</tt> - this part of Default Config is ignored completely</p>
+
 
 
 
@@ -353,7 +351,7 @@ Zaboy_Dic_ServicesConfigs}<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getBootstrap">#</a>
-		<code><a href="source-class-Zaboy_Services.html#131-140" title="Go to source code">_getBootstrap</a>( )</code>
+		<code><a href="source-class-Zaboy_Services.html#148-157" title="Go to source code">_getBootstrap</a>( )</code>
 
 		<div class="description short">
 			
@@ -386,7 +384,7 @@ Zaboy_Dic_ServicesConfigs}<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#__getDic">#</a>
-		<code><a href="source-class-Zaboy_Services.html#142-150" title="Go to source code">_getDic</a>( )</code>
+		<code><a href="source-class-Zaboy_Services.html#159-167" title="Go to source code">_getDic</a>( )</code>
 
 		<div class="description short">
 			
@@ -401,6 +399,221 @@ Zaboy_Dic_ServicesConfigs}<br />
 				<div class="list">
 					<code><code><a href="class-Zaboy_Dic.html">Zaboy_Dic</a></code></code><br />
 				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_getOptionalParams" id="__getOptionalParams">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__getOptionalParams">#</a>
+		<code><a href="source-class-Zaboy_Services.html#169-212" title="Go to source code">_getOptionalParams</a>( )</code>
+
+		<div class="description short">
+			
+<p>Return array with costructor prams which are optional (except $options)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return array with costructor prams which are optional (except $options)</p>
+
+<p>Return:</p>
+
+<pre>
+<span class="php-keyword1">array</span>()
+<span
+class="php-comment">//if there isn't optional params in __construct</span>
+<span
+class="php-keyword1">array</span>( <span
+class="php-quote">'param1'</span>=&gt; <span
+class="php-keyword1">null</span>, <span
+class="php-quote">'param2'</span>=&gt; <span
+class="php-keyword1">null</span>)
+<span
+class="php-comment">// if they present</span>
+<span
+class="php-keyword1">or</span>
+<span class="php-keyword1">array</span>( <span
+class="php-quote">'param1'</span>=&gt; <span
+class="php-keyword1">null</span>, <span
+class="php-quote">'param2'</span>=&gt; object)
+<span
+class="php-comment">//after $this-&gt;_optionalParams['param2'] = $dic-&gt;getOptionalParamValue($this, 'param2')</span>
+</pre>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_setOptionalParam" id="__setOptionalParam">
+
+		<td class="attributes"><code>
+			 protected 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__setOptionalParam">#</a>
+		<code><a href="source-class-Zaboy_Services.html#214-234" title="Go to source code">_setOptionalParam</a>( <span>string <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set param after $_getOptionalParams initiate</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set param after $_getOptionalParams initiate</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd><code>string</code><br>$name</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__get" id="___get">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___get">#</a>
+		<code><a href="source-class-Zaboy_Services.html#236-250" title="Go to source code">__get</a>( <span>mixed <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__isset" id="___isset">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___isset">#</a>
+		<code><a href="source-class-Zaboy_Services.html#252-257" title="Go to source code">__isset</a>( <span>mixed <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__set" id="___set">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___set">#</a>
+		<code><a href="source-class-Zaboy_Services.html#259-265" title="Go to source code">__set</a>( <span>mixed <var>$name</var></span>, <span>mixed <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__unset" id="___unset">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___unset">#</a>
+		<code><a href="source-class-Zaboy_Services.html#267-273" title="Go to source code">__unset</a>( <span>mixed <var>$name</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
 
 
 
@@ -460,7 +673,7 @@ Zaboy_Dic_ServicesConfigs}<br />
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_Services.html#110-120" title="Go to source code"><var>$_defaultServiceConfig</var></a>
+				<a href="source-class-Zaboy_Services.html#100-111" title="Go to source code"><var>$_defaultServiceConfig</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">array</span>(
         <span class="php-comment">//self::CONFIG_KEY_INSTANCE =&gt; null,</span>
@@ -471,6 +684,35 @@ Zaboy_Dic_ServicesConfigs}<br />
 </code></td>
 		<td class="description"><div>
 			<a href="#$_defaultServiceConfig" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Default Config on that case if same keys is absent in
+<tt>application.ini</tt> See also <code><a href="class-Zaboy_Services.html#_getDefaultServiceConfig">Zaboy_Services::getDefaultServiceConfig()</a></code></p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Default Config on that case if same keys is absent in
+<tt>application.ini</tt> See also <code><a href="class-Zaboy_Services.html#_getDefaultServiceConfig">Zaboy_Services::getDefaultServiceConfig()</a></code></p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="_optionalParams" id="$_optionalParams">
+		<td class="attributes"><code>
+			protected  
+			mixed
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Zaboy_Services.html#129" title="Go to source code"><var>$_optionalParams</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$_optionalParams" class="anchor">#</a>
 
 			<div class="description short">
 				

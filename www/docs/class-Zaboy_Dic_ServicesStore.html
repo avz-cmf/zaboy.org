@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_ServicesStore | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?4053811989"></script>
+	<script type="text/javascript" src="elementlist.js?842065495"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -131,7 +131,7 @@
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesStore.html#13-153" title="Go to source code">library/Zaboy/Dic/ServicesStore.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesStore.html#13-167" title="Go to source code">library/Zaboy/Dic/ServicesStore.php</a><br />
 	</div>
 
 
@@ -219,24 +219,43 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRunningServices">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#69-77" title="Go to source code">getRunningServices</a>( )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#69-91" title="Go to source code">getRunningServices</a>( )</code>
 
 		<div class="description short">
 			
-<p>Return an array with names of running Services</p>
+<p>Return an array with Service Name =&gt; (array)running Services</p>
 
 		</div>
 
 		<div class="description detailed hidden">
 			
-<p>Return an array with names of running Services</p>
+<p>Return an array with Service Name =&gt; (array)running Services</p>
+
+<p>Format of data:</p>
+
+<pre>
+[
+ singletonServiceName1 = [ <span
+class="php-num">0</span> =&gt; instanceSingletonService1]
+ singletonServiceName2 = [ <span
+class="php-num">0</span> =&gt; instanceSingletonService2]
+ clonedServiceName1 =
+     [
+         <span
+class="php-num">0</span> =&gt; instanceClonedService11
+         <span
+class="php-num">1</span> =&gt; instanceClonedService12
+         ...
+     ]
+]
+</pre>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>array</code><br>array with names of running Services<br />
+					<code>array</code><br>array with Service Name =&gt; (array)running Services<br />
 				</div>
 
 
@@ -256,7 +275,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRunningSingletonService">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#79-99" title="Go to source code">getRunningSingletonService</a>( <span>mixed <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#93-113" title="Go to source code">getRunningSingletonService</a>( <span>mixed <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -293,7 +312,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addEtalon">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#101-114" title="Go to source code">addEtalon</a>( <span>string <var>$serviceName</var></span>, <span>object <var>$serviceObject</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#115-128" title="Go to source code">addEtalon</a>( <span>string <var>$serviceName</var></span>, <span>object <var>$serviceObject</var></span> )</code>
 
 		<div class="description short">
 			
@@ -340,7 +359,7 @@ It is stored in $_etalonsServices</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getEtalon">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#116-132" title="Go to source code">getEtalon</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#130-146" title="Go to source code">getEtalon</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -389,7 +408,7 @@ It is stored in $_etalonsServices</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRunningServiceName">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#134-152" title="Go to source code">getRunningServiceName</a>( <span>object <var>$serviceInstance</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesStore.html#148-166" title="Go to source code">getRunningServiceName</a>( <span>object <var>$serviceInstance</var></span> )</code>
 
 		<div class="description short">
 			

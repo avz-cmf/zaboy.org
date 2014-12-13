@@ -31,8 +31,9 @@
  * Mor about rules of desrcribe Services in Service Config see {@link Zaboy_Dic_ServicesConfigs}
  * 
  * <br><b>Service Class</b><br>
- * There isn't any special interface for Service Classes.
- * Class of Service Object may be inherited from {@see Zaboy_Services} or not.
+ * There isn't any required interface for Service Classes. 
+ * Class of Service Object may be inherited from {@see Zaboy_Services} or not
+ * and may implement {@see Zaboy_Services_Interface} or not.
  * There are some requirements for (@see Zaboy_Services::__construct()} definition.<br>
  * Next variants is possibly:
  * <code> 
@@ -78,25 +79,14 @@
  * </code> 
  * in your constructor<br>
  * 
- * <b>About optional parametrs</b><br>
- * All optional params will be ignored 
- *(NULL will be retrived instead of them in to consructor).<br>
+ * About optional parametrs in <tt>__consruct():</tt><br>
+ * All optional params will be ignored.
+ * (NULL will be retrived instead of them in to consructor).<br>
+ * NOTED: you can use this parameters in runtime - see {@see Zaboy_Dic::getOptionalParamValue()}
  * 
  * <br><b>What is Service Name?</b><br>
  * It is just string - param for (@see Zaboy_Dic::get()}<br> 
  * 
- * <b>Object_Class::_defaultOptions</b><br>
-    * If Service Object is inherited from {@see Zaboy_Services} it contains
-    * {@see Zaboy_Services::_defaultOptions}<br>
-    * If $options haven't submitted via __construct - _defaultOptions will be used.<br>
-    * See {@see Zaboy_Services_Example_SimpleTest::testSetDefaultOptionsInConstruct()}<br>
-    * If $options is not empty - _defaultOptions will not be used fully ( any part)<br>
-    * See {@see Zaboy_Services_Example_OptionsTest::testSetDefaultOptionsInConstruct()}<br>
- * 
- * Also, you can define $options for Service in config.ini. 
- * See about it (@see Zaboy_Dic_ServicesConfigs} <br>
- * 
-
  * @todo Object_Class :: _defaultOptions - rewrite docs
  * @todo Optional Params  - make method getOPtionalParam($lazyLoadedServiceName)
  * @category   Services
@@ -108,7 +98,8 @@
 class Zaboy_Services extends Zaboy_Abstract implements Zaboy_Services_Interface
 {
     /**
-     * 
+     * Default Config on that case if same keys is absent in <tt>application.ini</tt>
+     * See also {@see getDefaultServiceConfig()}
      */   
     static protected $_defaultServiceConfig = 
         array(
@@ -139,8 +130,15 @@ class Zaboy_Services extends Zaboy_Abstract implements Zaboy_Services_Interface
 
 
     /**
+     * Return Default Config on that case if same keys is absent in <tt>application.ini</tt> 
      * 
-     * @return array
+     * Function return default configuration of service.
+     * If same keys of config aren't defined in  <tt>application.ini</tt>,
+     * configuration for these keys from returned array is used.
+     * If any key of top level is present in <tt>application.ini</tt> - this
+     * part of Default Config is ignored completely
+     * 
+     * @return array 
      */
     static function getDefaultServiceConfig()
     {

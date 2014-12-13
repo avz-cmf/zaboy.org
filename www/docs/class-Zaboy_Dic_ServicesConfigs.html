@@ -7,7 +7,7 @@
 	<title>Class Zaboy_Dic_ServicesConfigs | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?4053811989"></script>
+	<script type="text/javascript" src="elementlist.js?842065495"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -165,6 +165,26 @@ class="php-quote">'class'</span> = <span
 class="php-quote">'NextServiceClass'</span>
          ...
 </pre>
+There are next keys for using after <tt>'dic.services.'</tt> in appalication
+.ini:<br />
+
+<ul>
+	<li><tt>class</tt> See:<code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_CLASS">Zaboy_Services_Interface::<b>CONFIG_KEY_CLASS</b></a></code></li>
+
+	<li><tt>instance</tt> See:<code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_INSTANCE">Zaboy_Services_Interface::<b>CONFIG_KEY_INSTANCE</b></a></code>
+		<ul>
+			<li><tt>singleton</tt> See:<code><a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_SINGLETON">Zaboy_Services_Interface::<b>CONFIG_VALUE_SINGLETON</b></a></code></li>
+
+			<li><tt>clone</tt> See:<code><a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_CLONE">Zaboy_Services_Interface::<b>CONFIG_VALUE_CLONE</b></a></code></li>
+
+			<li><tt>recreate</tt> See:<code><a href="class-Zaboy_Services_Interface.html#CONFIG_VALUE_RECREATE">Zaboy_Services_Interface::<b>CONFIG_VALUE_RECREATE</b></a></code></li>
+		</ul>
+	</li>
+
+	<li><tt>options</tt> See:<code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_OPTIONS">Zaboy_Services_Interface::<b>CONFIG_KEY_OPTIONS</b></a></code></li>
+
+	<li><tt>params</tt> See:<code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_PARAMS">Zaboy_Services_Interface::<b>CONFIG_KEY_PARAMS</b></a></code></li>
+</ul>
 
 	</div>
 
@@ -190,9 +210,7 @@ class="php-quote">'NextServiceClass'</span>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-				<b>Todo:</b>
-				Make docs about config keys<br />
-		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesConfigs.html#13-203" title="Go to source code">library/Zaboy/Dic/ServicesConfigs.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_Dic_ServicesConfigs.html#13-221" title="Go to source code">library/Zaboy/Dic/ServicesConfigs.php</a><br />
 	</div>
 
 
@@ -210,7 +228,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#68-75" title="Go to source code">__construct</a>( <span>array <var>$servicesConfigs</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#82-89" title="Go to source code">__construct</a>( <span>array <var>$servicesConfigs</var></span> )</code>
 
 		<div class="description short">
 			
@@ -249,7 +267,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServicesNames">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#106-114" title="Go to source code">getServicesNames</a>( )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#120-128" title="Go to source code">getServicesNames</a>( )</code>
 
 		<div class="description short">
 			
@@ -286,14 +304,18 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceClass">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#116-127" title="Go to source code">getServiceClass</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#130-143" title="Go to source code">getServiceClass</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
+<p>Return Service Class Name or null if absent</p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>Return Service Class Name or null if absent</p>
+
 
 
 				<h4>Parameters</h4>
@@ -324,14 +346,18 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceOptions">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#129-140" title="Go to source code">getServiceOptions</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#145-158" title="Go to source code">getServiceOptions</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
+<p>About Service options see <code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_OPTIONS">Zaboy_Services_Interface::<b>CONFIG_KEY_OPTIONS</b></a></code></p>
+
 		</div>
 
 		<div class="description detailed hidden">
 			
+<p>About Service options see <code><a href="class-Zaboy_Services_Interface.html#CONFIG_KEY_OPTIONS">Zaboy_Services_Interface::<b>CONFIG_KEY_OPTIONS</b></a></code></p>
+
 
 
 				<h4>Parameters</h4>
@@ -362,7 +388,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceInitiationType">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#142-158" title="Go to source code">getServiceInitiationType</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#160-176" title="Go to source code">getServiceInitiationType</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -410,7 +436,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isService">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#160-170" title="Go to source code">isService</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#178-188" title="Go to source code">isService</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -452,7 +478,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceNameForConstructParam">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#172-185" title="Go to source code">getServiceNameForConstructParam</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$paramName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#190-203" title="Go to source code">getServiceNameForConstructParam</a>( <span>string <var>$serviceName</var></span>, <span>string <var>$paramName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -492,7 +518,7 @@ class="php-quote">'NextServiceClass'</span>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getServiceAutoload">#</a>
-		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#187-202" title="Go to source code">getServiceAutoload</a>( <span>string <var>$serviceName</var></span> )</code>
+		<code><a href="source-class-Zaboy_Dic_ServicesConfigs.html#205-220" title="Go to source code">getServiceAutoload</a>( <span>string <var>$serviceName</var></span> )</code>
 
 		<div class="description short">
 			

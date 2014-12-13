@@ -16,21 +16,20 @@
 /**
  * <b>Zaboy_Dic</b><br>
  * 
- * Zaboy_Dic is dependency injection container class (<i>Dic</i>). <i>Dic</i> 
+ * Zaboy_Dic is dependency injection container class (<tt>Dic</tt>). <tt>Dic</tt> 
  * load as resurce plugin of Bootstrap {@see Zaboy_Application_Resource_Dic}. 
  * 
- * Add in <i>application.ini</i> for load {@see Zaboy_Dic}<br>
+ * Add in <tt>application.ini</tt> for load {@see Zaboy_Dic}<br>
  * <pre> 
  * resources.dic[] = 
  * </pre>
  * You can change class of {@see Zaboy_Dic} for load:
  * <pre> 
  * resources.dic.class = My_Dic_Class 
-* </pre>
+ * </pre>
  * For more information about configuration see {@see Zaboy_Dic_ServicesConfigs} 
- * and {@see Zaboy_Application_Resource_Dic}<br>  * 
- * 
- * You can get <i>Dic</i> as resource: <br>
+ * and {@see Zaboy_Application_Resource_Dic}<br>  
+ * You can get <tt>Dic</tt>  as resource: <br>
  * <code> 
  *   $dic = $bootstrap->getResource('dic');
  * </code>
@@ -41,13 +40,88 @@
  * Zaboy_Dic also can contane that object if it is described in Services Config 
  * ( in most cases it is application.ini).
  * In that case this object is Service. <br>
- * Objects, which was loaded via Dic is not stored in Dic. Every call 
- * {@link get()} will return new object. 
- * For Services you will get singleton instance be default. You can change this
- * behavior in Service config. See {@link Zaboy_Dic_ServicesConfigs} for details.<br>
+ * Ordinary Objects ( not Services ), which was loaded via Dic is not stored in Dic. 
+ * Every call {@See get()} will return new object for them. <br>
+ * For Services you will get from {@See Zaboy_Dic::get()} singleton instance by default. 
+ * 
+ * <b>Requirements for Objects, which will load via DIC</b><br>
+ * There are some requirements for <tt>__consruct()</tt> of Objects, which will load by <tt>Dic</tt>.
+ * Next variants is possibly:
+ * <code> 
+ * //constructor is allowed not to have parameters
+ * function __construct()
+ * 
+ * //there is $options only. Param has to have name $options
+ * function __construct(array $options)
+ * 
+ * //There are some object type parameters with specified class name  
+ * function __construct(Class_Name $object1, Another_Class $object2, ...)
+ * //or 
+ * function __construct(array $options, Class_Name $object1,  Another_Class ...)
+ * //the $options if it exist as parametr for __construct have to be a first parameter.
+ * 
+ * //There are some parameters which is Services with specified class name or not
+ * function __construct(Service_Class $service1, Another_Service_Class $service2, ...)
+ * function __construct(array $options, Service_Class $service1, Another_Service_Class ...)
+ * 
+ * //According to requirements for Service describe, class of Service have to 
+ * //specified in Service Config. Because this reason, you may have not to notify classes
+ * // for Services in parameters, but it is recommended for type control. 
+ * function __construct(Service_Class $service1, $service2  ...)
+ * function __construct(array $options, $service1, $service2  ...)
+ * 
+ * //And all together:
+ * function __construct(array $options, Service_Class $service1, $service2, Class_Name $object1)
+ * //In this case we must have in Services config:
+ * </code>
+ * <pre> 
+ * resources.dic.service1.class = Service_Class
+ * resources.dic.service2.class = Next_Service_Class
+ * </pre>
+ * 
+ * In another words: only objects in parameters except array of options which 
+ * has to be in first place or can be absent.<br>
+ * 
+ * About optional parametrs in <tt>__consruct():</tt><br>
+ * All optional params will be ignored 
+ * (NULL will be retrived instead of them in to consructor).<br>
+ * NOTED: you can use this parameters in runtime - see {@see Zaboy_Dic::getOptionalParamValue()}
+ * 
+ * <b>Loading ordinary Objects (not Services) via DIC</b><br>
+ * <code>
+ * $dic->get(null, Class_Name);
+ * // or
+ * $dic->get('anyName', Class_Name);
+ * //if 'anyName' isn't described in <tt>application.ini</tt> as Service - it will be ignored
+ * </code>
+ * Objects is not stored in Dic. 
+ * Every call {@See Zaboy_Dic::get()} will return new object<br>
+ * All dependencies will be loaded recursively.
+ * 
+ * <b>Loading Services via DIC</b><br>
+ * <code>
+ * $dic->get('ServiceName');
+ * // or
+ * $dic->get('ServiceName', Class_Name);
+ * //'Class_Name' will be ignored
+ * </code>
+ * Objects is not stored in Dic. 
+ * Every call {@See Zaboy_Dic::get()} will return singleton by default.
+ * You can change it in <tt>application.ini</tt><br>
+ * See {@see Zaboy_Dic_ServicesConfigs, Zaboy_Services} for details.<br>
+ * All dependencies will be loaded recursively.
+ * 
+ * <b>What different betwin Object and Service</b><br>
+ * Only one - Service is described in <tt>application.ini</tt><br>
  * 
  * For more information about Objects, Services and requirements for them, 
- * see {@see Zaboy_Services}
+ * see {@see Zaboy_Services}<br>
+ * 
+ * <b>Dependencies in __construct</b><br>
+ * When you load Object or Service via $dic->get(), all dependencies will be loaded
+ * recursively. Optional params will be ignored. But you can load and use these  
+ * dependencies later. See {@see getOptionalParamValue()} and 
+ * magic methods in {@see Zaboy_Services}.
  * 
  * @todo Optional Params  - make method getLazyLoadedService($ServiceName)
  * @see Zaboy_Dic_Interface
@@ -174,6 +248,15 @@ class Zaboy_Dic extends Zaboy_Abstract
         }
     }   
     
+    /**
+     * Uses for lazy load Services and object for optional parameters of __constructor
+     * 
+     * See magic methods in {@see Zaboy_Services} for exavple of uses.
+     * 
+     * @param object $instance it is $this in most cases
+     * @param string $paramName name of optional parameter of __constructor
+     * @return object
+     */
     public function getOptionalParamValue($instance, $paramName) 
     {
         if ($paramName === 'options') {
@@ -227,7 +310,6 @@ class Zaboy_Dic extends Zaboy_Abstract
         if (!$this->_servicesConfigs->isService($serviceName)) {
             return null;
         }   
-        
         $initiationType = $this->_servicesConfigs->getServiceInitiationType($serviceName);
         switch ($initiationType) {
             case Zaboy_Services_Interface::CONFIG_VALUE_SINGLETON :
@@ -251,7 +333,6 @@ class Zaboy_Dic extends Zaboy_Abstract
                     'Unknow initiation type - ' . $initiationType
                 ); 
         }
-        
         return $serviceInstance;
     }   
          
