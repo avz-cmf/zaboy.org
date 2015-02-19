@@ -38,8 +38,15 @@ class TestController extends Zend_Controller_Action
         $dic->get('serviceWithOptionalParams' , 'Zaboy_Example_Service_OptionalParams');
     }
 
+    public function countinterfaceAction()
+    {
+        // action body
+    }
+
 
 }
+
+
 
 
 

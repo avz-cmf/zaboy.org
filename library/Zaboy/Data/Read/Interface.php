@@ -1,25 +1,24 @@
 <?php
 /**
- * Zaboy_DataStores_Read_Interface
+ * Zaboy_Data_Read_Interface
  * 
- * @category   DataStores
- * @package    DataStores
+ * @category   Data
+ * @package    Data
  * @copyright  Zaboychenko Andrey
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  */
 
 /**
- * Interface Zaboy_DataStores_Read_Interface
+ * Interface Zaboy_Data_Read_Interface
  * 
- * @category   DataStores
- * @package    DataStores
+ * @category   Data
+ * @package    Data
  * @copyright  Zaboychenko Andrey
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  * @see http://en.wikipedia.org/wiki/Create,_read,_update_and_delete 
- * @see http://rudocs.exdat.com/docs/index-567188.html?page=5
  */
-interface Zaboy_DataStores_Read_Interface
+interface Zaboy_Data_Read_Interface extends Countable, IteratorAggregate
 {    
 
     /**
@@ -32,12 +31,22 @@ interface Zaboy_DataStores_Read_Interface
     /**
      * sorting by ascending
      */
-    const ASC = '+';
+    const ASC = 'ASC';
     
     /**
      * sorting by descending
      */
-    const DESC = '-';    
+    const DESC = 'DESC';    
+    
+    /**
+     * Return primary key
+     * 
+     * Return "id" by default
+     * 
+     * @see DEF_ID
+     * @return string "id" by default
+     */
+    public function getIdentifier();    
     
     
     /**
@@ -51,7 +60,7 @@ interface Zaboy_DataStores_Read_Interface
      */
     public function read($id);
     
-     /**
+    /**
      * Return true if item with that id is present.
      * 
      * @param int|string $id PrimaryKey
@@ -66,28 +75,41 @@ interface Zaboy_DataStores_Read_Interface
      * <code>
      * find(
      *    array(self::DEF_ID), // return only identifiers
-     *    array('fild2' = 2, 'fild5' = 'something'), // 'fild2' === 2 && 'fild5 === 'something' 
+     *    array('fild2' => 2, 'fild5' => 'something'), // 'fild2' === 2 && 'fild5 === 'something' 
      *    array(self::DEF_ID => self::DESC),  // Sorting in reverse order by 'id" fild
      *    10, // not more then 10 items
-     *    5 // from 6th items in result set (first item is 0th)
+     *    5 // from 5th items in result set (first item is 0th)
      * ) 
      * </code>
      * 
+     * ORDER
+     * http://www.simplecoding.org/sortirovka-v-mysql-neskolko-redko-ispolzuemyx-vozmozhnostej.html
+     * http://ru.php.net/manual/ru/function.usort.php
+     * 
      * @see ASC
      * @see DESC
-     * @param Array $filds What filds will be included in result set. All by default 
-     * @param Array $where
-     * @param Array $order
-     * @param int $limit
-     * @param int $offset
+     * @param string|int|Array|null $where   
+     * @param Array|null $filds What filds will be included in result set. All by default 
+     * @param Array|null $order
+     * @param int|null $limit
+     * @param int|null $offset
+     * @return array    Empty array or array of arrays
      */
     public function find(
-        $filds = array(), 
-        $where = array(), 
-        $order = array(),            
-        $limit = 0, 
-        $offset = 0 
+        $where = null,             
+        $filds = null, 
+        $order = null,            
+        $limit = null, 
+        $offset = null 
     );
+
+//** Interface "Coutable" **                      **                          **
+    
+    /**
+     * @see coutable
+     * @return int
+     */
+    public function count($where = array());    
 
     
 //** Interface "IteratorAggregate" **             **                          **
@@ -98,12 +120,4 @@ interface Zaboy_DataStores_Read_Interface
      */
     public function  getIterator();
     
-    
-//** Interface "Coutable" **                      **                          **
-    
-    /**
-     * @see coutable
-     * @return int
-     */
-    public function count();    
 }

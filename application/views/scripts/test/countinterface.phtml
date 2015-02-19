@@ -1,0 +1,24 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Test</b> and script/action name <b>countinterface</b></p>
+</div>
+
+
+
+
+<?php
+class CountInterfaceClass implements Countable
+{
+    public function count($where = array())
+    {
+        return null;
+    }
+ 
+}
+
+$A = new CountInterfaceClass();
+if (is_a($A, Countable)) {
+    print('Conclusion - You can add optional parameters to interface method!');
+}
+
+// Conclusion - You can add optional parameters to interface method!
