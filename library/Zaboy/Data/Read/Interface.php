@@ -109,14 +109,14 @@ interface Zaboy_Data_Read_Interface extends Countable, IteratorAggregate
      * @see coutable
      * @return int
      */
-    public function count($where = array());    
+    public function count();    
 
     
 //** Interface "IteratorAggregate" **             **                          **
     
     /**
-    * @see IteratorAggregate 
-    * @return IteratorAggregate
+     * @see IteratorAggregate 
+     * @return IteratorAggregate
      */
     public function  getIterator();
     
