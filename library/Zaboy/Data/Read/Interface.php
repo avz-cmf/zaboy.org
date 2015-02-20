@@ -74,8 +74,8 @@ interface Zaboy_Data_Read_Interface extends Countable, IteratorAggregate
      * Example:
      * <code>
      * find(
-     *    array(self::DEF_ID), // return only identifiers
      *    array('fild2' => 2, 'fild5' => 'something'), // 'fild2' === 2 && 'fild5 === 'something' 
+     *    array(self::DEF_ID), // return only identifiers
      *    array(self::DEF_ID => self::DESC),  // Sorting in reverse order by 'id" fild
      *    10, // not more then 10 items
      *    5 // from 5th items in result set (first item is 0th)
@@ -89,8 +89,8 @@ interface Zaboy_Data_Read_Interface extends Countable, IteratorAggregate
      * @see ASC
      * @see DESC
      * @param string|int|Array|null $where   
-     * @param Array|null $filds What filds will be included in result set. All by default 
-     * @param Array|null $order
+     * @param array|null $filds What filds will be included in result set. All by default 
+     * @param array|null $order
      * @param int|null $limit
      * @param int|null $offset
      * @return array    Empty array or array of arrays
