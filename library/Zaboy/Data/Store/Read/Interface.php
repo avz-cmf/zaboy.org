@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Data_Read_Interface
+ * Zaboy_Data_Store_Read_Interface
  * 
  * @category   Data
  * @package    Data
@@ -9,7 +9,7 @@
  */
 
 /**
- * Interface Zaboy_Data_Read_Interface
+ * Interface Zaboy_Data_Store_Read_Interface
  * 
  * @category   Data
  * @package    Data
@@ -18,7 +18,7 @@
  * @uses Zend Framework from Zend Technologies USA Inc.
  * @see http://en.wikipedia.org/wiki/Create,_read,_update_and_delete 
  */
-interface Zaboy_Data_Read_Interface extends Countable, IteratorAggregate
+interface Zaboy_Data_Store_Read_Interface extends Countable, IteratorAggregate
 {    
 
     /**
@@ -67,6 +67,12 @@ interface Zaboy_Data_Read_Interface extends Countable, IteratorAggregate
      * @return bool
      */
     public function has($id);   
+    
+    /**
+     * 
+     * @return array array of keys or empty array
+     */
+    public function  getKeys();        
     
     /**
      * Return items by criteria with mapping, sorting and paging

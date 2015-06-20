@@ -26,7 +26,8 @@ class Zaboy_Example_Services_OptionalParams extends Zaboy_Services
      * @param object|null $notSpecifiedParam
      * @param stdClass|null $specifiedParam
      */
-    public function __construct($notSpecifiedParam = null, stdClass $specifiedParam = null) {
+    public function __construct($notSpecifiedParam = null, stdClass $specifiedParam = null) 
+    {
         parent::__construct();
     }
     

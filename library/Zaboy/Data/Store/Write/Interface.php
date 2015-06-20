@@ -1,6 +1,6 @@
 <?php
 /**
- * Zaboy_Data_Write_Interface
+ * Zaboy_Data_Store_Write_Interface
  * 
  * @category   Data
  * @package    Data
@@ -9,7 +9,7 @@
  */
 
 /**
- * Interface Zaboy_Data_Write_Interface
+ * Interface Zaboy_Data_Store_Write_Interface
  * 
  * @category   Data
  * @package    Data
@@ -18,7 +18,7 @@
  * @uses Zend Framework from Zend Technologies USA Inc.
  * @see http://en.wikipedia.org/wiki/Create,_read,_update_and_delete 
  */
-interface Zaboy_Data_Write_Interface extends Zaboy_Data_Read_Interface
+interface Zaboy_Data_Store_Write_Interface
 {    
     
     /**
