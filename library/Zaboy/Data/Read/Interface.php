@@ -78,7 +78,7 @@ interface Zaboy_Data_Read_Interface extends Countable, IteratorAggregate
      *    array(self::DEF_ID), // return only identifiers
      *    array(self::DEF_ID => self::DESC),  // Sorting in reverse order by 'id" fild
      *    10, // not more then 10 items
-     *    5 // from 5th items in result set (first item is 0th)
+     *    5 // from 6th items in result set (offset of the first item is 0)
      * ) 
      * </code>
      * 
