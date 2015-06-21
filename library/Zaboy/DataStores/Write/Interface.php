@@ -52,7 +52,7 @@ interface Zaboy_DataStores_Write_Interface
      * 
      * 
      * @param array $itemData associated array with PrimaryKey
-     * @return int number of updeted (created) items: 0 or 1
+     * @return int number of updeted (created) items: 0 , 1 or null if object doesn't support it
      */
     public function update($itemData, $createIfAbsent = false);
     
@@ -60,7 +60,14 @@ interface Zaboy_DataStores_Write_Interface
       * Delete Item by id. Method do nothing if item with that id is absent.
       * 
       * @param int|string $id PrimaryKey
-      * @return int number of deleted items: 0 or 1
+      * @return int number of deleted items: 0 , 1 or null if object doesn't support it
       */
     public function delete($id); 
+    
+     /**
+      * Delete all Items.
+      * 
+      * @return int number of deleted items or null if object doesn't support it
+      */
+    public function deleteAll();    
 }

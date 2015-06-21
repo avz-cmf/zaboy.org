@@ -18,7 +18,7 @@
  * @uses Zend Framework from Zend Technologies USA Inc.
  * @see http://en.wikipedia.org/wiki/Create,_read,_update_and_delete 
  */
-interface Zaboy_DataStores_Read_Interface extends Countable, Traversable
+interface Zaboy_DataStores_Read_Interface
 {    
 
     /**
@@ -109,21 +109,4 @@ interface Zaboy_DataStores_Read_Interface extends Countable, Traversable
         $offset = null 
     );
 
-//** Interface "Coutable" **                      **                          **
-    
-    /**
-     * @see coutable
-     * @return int
-     */
-    public function count();    
-
-    
-//** Interface "IteratorAggregate" **             **                          **
-    
-    /**
-     * @see IteratorAggregate 
-     * @return IteratorAggregate
-     */
-    public function  getIterator();
-    
 }
