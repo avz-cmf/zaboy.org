@@ -7,7 +7,7 @@
 	<title>Interface Zaboy_DataStores_Read_Interface | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?842065495"></script>
+	<script type="text/javascript" src="elementlist.js?2441432232"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -29,6 +29,8 @@
 						</li>
 				<li><a href="package-Example.html">Example</a>
 						</li>
+				<li><a href="package-Model.html">Model</a>
+						</li>
 				<li><a href="package-None.html">None</a>
 						</li>
 				<li><a href="package-PHP.html">PHP</a>
@@ -49,16 +51,17 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Avz_DataStores_Abstract.html">Avz_DataStores_Abstract</a></li>
-				<li><a href="class-Zaboy_DataStores.html">Zaboy_DataStores</a></li>
-				<li><a href="class-Zaboy_DataStores_Abstract.html">Zaboy_DataStores_Abstract</a></li>
-				<li><a href="class-Zaboy_DataStores_Exception.html">Zaboy_DataStores_Exception</a></li>
+				<li><a href="class-Zaboy_DataStores_InnerTraversable.html">Zaboy_DataStores_InnerTraversable</a></li>
+				<li><a href="class-Zaboy_DataStores_OuterTraversable.html">Zaboy_DataStores_OuterTraversable</a></li>
 				<li><a href="class-Zaboy_DataStores_Source_Abstract.html">Zaboy_DataStores_Source_Abstract</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
+				<li><a href="class-Zaboy_DataStores_Interface.html">Zaboy_DataStores_Interface</a></li>
 				<li><a href="class-Zaboy_DataStores_Read_Finder_Interface.html">Zaboy_DataStores_Read_Finder_Interface</a></li>
 				<li class="active"><a href="class-Zaboy_DataStores_Read_Interface.html">Zaboy_DataStores_Read_Interface</a></li>
+				<li><a href="class-Zaboy_DataStores_Write_Interface.html">Zaboy_DataStores_Write_Interface</a></li>
 				<li><a href="class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html">Zaboy_Dic_DataStores_Adapter_Write_Interface</a></li>
 			</ul>
 
@@ -119,9 +122,15 @@
 
 	<div>
 		<h4>Direct known implementers</h4>
-			<a href="class-Zaboy_DataStore_Read_Array.html">Zaboy_DataStore_Read_Array</a>
+			<a href="class-Zaboy_DataStore_Read_Array.html">Zaboy_DataStore_Read_Array</a>, 
+			<a href="class-Zaboy_DataStores_Interface.html">Zaboy_DataStores_Interface</a>
 	</div>
 
+	<div>
+		<h4>Indirect known implementers</h4>
+			<a href="class-Zaboy_DataStores_InnerTraversable.html">Zaboy_DataStores_InnerTraversable</a>, 
+			<a href="class-Zaboy_DataStores_OuterTraversable.html">Zaboy_DataStores_OuterTraversable</a>
+	</div>
 
 
 
@@ -140,18 +149,58 @@
 				<b>See:</b>
 				<a
 href="http://en.wikipedia.org/wiki/Create">http://en.wikipedia.org/wiki/Create</a>, _read, _update_and_delete<br />
-				<b>See:</b>
-				<a
-href="http://rudocs.exdat.com/docs/index-567188.html?page=5">http://rudocs.exdat.com/docs/index-567188.html?page=5</a><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_DataStores_Read_Interface.html#11-109" title="Go to source code">library/Zaboy/DataStores/Read/Interface.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_DataStores_Read_Interface.html#11-112" title="Go to source code">library/Zaboy/DataStores/Read/Interface.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
+	<tr data-order="getIdentifier" id="_getIdentifier">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getIdentifier">#</a>
+		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#41-49" title="Go to source code">getIdentifier</a>( )</code>
+
+		<div class="description short">
+			
+<p>Return primary key</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return primary key</p>
+
+<p>Return "id" by default</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br>"id" by default<br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Zaboy_DataStores_Read_Interface.html#DEF_ID">Zaboy_DataStores_Read_Interface::<b>DEF_ID</b></a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="read" id="_read">
 
 		<td class="attributes"><code>
@@ -163,7 +212,7 @@ href="http://rudocs.exdat.com/docs/index-567188.html?page=5">http://rudocs.exdat
 
 		<td class="name"><div>
 		<a class="anchor" href="#_read">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#43-52" title="Go to source code">read</a>( <span>integer|string <var>$id</var></span> )</code>
+		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#52-61" title="Go to source code">read</a>( <span>integer|string <var>$id</var></span> )</code>
 
 		<div class="description short">
 			
@@ -208,7 +257,7 @@ Array("id"=&gt;123, "fild1"=value1, ...)</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_has">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#54-60" title="Go to source code">has</a>( <span>integer|string <var>$id</var></span> )</code>
+		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#63-69" title="Go to source code">has</a>( <span>integer|string <var>$id</var></span> )</code>
 
 		<div class="description short">
 			
@@ -239,18 +288,51 @@ Array("id"=&gt;123, "fild1"=value1, ...)</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getKeys" id="_getKeys">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getKeys">#</a>
+		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#71-75" title="Go to source code">getKeys</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>array of keys or empty array<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="find" id="_find">
 
 		<td class="attributes"><code>
 			 public 
-			
+			array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_find">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#62-90" title="Go to source code">find</a>( <span>Array <var>$filds</var> = <span class="php-keyword1">array</span>()</span>, <span>Array <var>$where</var> = <span class="php-keyword1">array</span>()</span>, <span>Array <var>$order</var> = <span class="php-keyword1">array</span>()</span>, <span>integer <var>$limit</var> = <span class="php-num">0</span></span>, <span>integer <var>$offset</var> = <span class="php-num">0</span> </span> )</code>
+		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#77-110" title="Go to source code">find</a>( <span>string|integer|Array|null <var>$where</var> = <span class="php-keyword1">null</span></span>, <span>array|null <var>$filds</var> = <span class="php-keyword1">null</span></span>, <span>array|null <var>$order</var> = <span class="php-keyword1">null</span></span>, <span>integer|null <var>$limit</var> = <span class="php-keyword1">null</span></span>, <span>integer|null <var>$offset</var> = <span class="php-keyword1">null</span> </span> )</code>
 
 		<div class="description short">
 			
@@ -266,13 +348,14 @@ Array("id"=&gt;123, "fild1"=value1, ...)</p>
 
 <pre>
 find(
-   <span class="php-keyword1">array</span>(self::DEF_ID), <span
-class="php-comment">// return only identifiers</span>
-   <span
-class="php-keyword1">array</span>(<span class="php-quote">'fild2'</span> = <span
-class="php-num">2</span>, <span class="php-quote">'fild5'</span> = <span
+   <span class="php-keyword1">array</span>(<span
+class="php-quote">'fild2'</span> =&gt; <span class="php-num">2</span>, <span
+class="php-quote">'fild5'</span> =&gt; <span
 class="php-quote">'something'</span>), <span
 class="php-comment">// 'fild2' === 2 &amp;&amp; 'fild5 === 'something'</span>
+   <span
+class="php-keyword1">array</span>(self::DEF_ID), <span
+class="php-comment">// return only identifiers</span>
    <span
 class="php-keyword1">array</span>(self::DEF_ID =&gt; self::DESC),  <span
 class="php-comment">// Sorting in reverse order by 'id&quot; fild</span>
@@ -281,106 +364,41 @@ class="php-num">10</span>, <span
 class="php-comment">// not more then 10 items</span>
    <span
 class="php-num">5</span> <span
-class="php-comment">// from 6th items in result set (first item is 0th)</span>
+class="php-comment">// from 6th items in result set (offset of the first item is 0)</span>
 )
 </pre>
+
+<p>ORDER <a
+href="http://www.simplecoding.org/sortirovka-v-mysql-neskolko-redko-ispolzuemyx-vozmozhnostej.html">http://www.simplecoding.org/sortirovka-v-mysql-neskolko-redko-ispolzuemyx-vozmozhnostej.html</a>
+<a
+href="http://ru.php.net/manual/ru/function.usort.php">http://ru.php.net/manual/ru/function.usort.php</a></p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$filds</var></dt>
-					<dd><code>Array</code><br>$filds What filds will be included in result set. All by default</dd>
 					<dt><var>$where</var></dt>
-					<dd><code>Array</code><br>$where</dd>
+					<dd><code>string|integer|Array|null</code><br>$where</dd>
+					<dt><var>$filds</var></dt>
+					<dd><code>array|null</code><br>$filds What filds will be included in result set. All by default</dd>
 					<dt><var>$order</var></dt>
-					<dd><code>Array</code><br>$order</dd>
+					<dd><code>array|null</code><br>$order</dd>
 					<dt><var>$limit</var></dt>
-					<dd><code>integer</code><br>$limit</dd>
+					<dd><code>integer|null</code><br>$limit</dd>
 					<dt><var>$offset</var></dt>
-					<dd><code>integer</code><br>$offset</dd>
+					<dd><code>integer|null</code><br>$offset</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Empty array or array of arrays<br />
+				</div>
 
 
 				<h4>See</h4>
 				<div class="list">
 						<code><code><a href="class-Zaboy_DataStores_Read_Interface.html#ASC">Zaboy_DataStores_Read_Interface::<b>ASC</b></a></code></code><br />
 						<code><code><a href="class-Zaboy_DataStores_Read_Interface.html#DESC">Zaboy_DataStores_Read_Interface::<b>DESC</b></a></code></code><br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getIterator" id="_getIterator">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-IteratorAggregate.html">IteratorAggregate</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getIterator">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#95-99" title="Go to source code">getIterator</a>( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-IteratorAggregate.html">IteratorAggregate</a></code></code><br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						<code><code><a href="class-IteratorAggregate.html">IteratorAggregate</a></code></code><br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="count" id="_count">
-
-		<td class="attributes"><code>
-			 public 
-			integer
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_count">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Read_Interface.html#104-108" title="Go to source code">count</a>( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>integer</code><br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						coutable<br />
 				</div>
 
 
@@ -402,7 +420,7 @@ class="php-comment">// from 6th items in result set (first item is 0th)</span>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_DataStores_Read_Interface.html#25-30" title="Go to source code"><b>DEF_ID</b></a>
+				<a href="source-class-Zaboy_DataStores_Read_Interface.html#24-29" title="Go to source code"><b>DEF_ID</b></a>
 		</code></td>
 		<td class="value"><code><span class="php-quote">'id'</span></code></td>
 		<td class="description"><div>
@@ -421,7 +439,7 @@ class="php-comment">// from 6th items in result set (first item is 0th)</span>
 
 					<h4>See</h4>
 					<div class="list">
-							getIdentifier()<br />
+							<code><code><a href="class-Zaboy_DataStores_Read_Interface.html#_getIdentifier">Zaboy_DataStores_Read_Interface::getIdentifier()</a></code></code><br />
 					</div>
 			</div>
 		</div></td>
@@ -430,9 +448,9 @@ class="php-comment">// from 6th items in result set (first item is 0th)</span>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_DataStores_Read_Interface.html#32-35" title="Go to source code"><b>ASC</b></a>
+				<a href="source-class-Zaboy_DataStores_Read_Interface.html#31-34" title="Go to source code"><b>ASC</b></a>
 		</code></td>
-		<td class="value"><code><span class="php-quote">'+'</span></code></td>
+		<td class="value"><code><span class="php-quote">'ASC'</span></code></td>
 		<td class="description"><div>
 			<a href="#ASC" class="anchor">#</a>
 
@@ -454,9 +472,9 @@ class="php-comment">// from 6th items in result set (first item is 0th)</span>
 
 		<td class="attributes"><code>string</code></td>
 		<td class="name"><code>
-				<a href="source-class-Zaboy_DataStores_Read_Interface.html#37-40" title="Go to source code"><b>DESC</b></a>
+				<a href="source-class-Zaboy_DataStores_Read_Interface.html#36-39" title="Go to source code"><b>DESC</b></a>
 		</code></td>
-		<td class="value"><code><span class="php-quote">'-'</span></code></td>
+		<td class="value"><code><span class="php-quote">'DESC'</span></code></td>
 		<td class="description"><div>
 			<a href="#DESC" class="anchor">#</a>
 

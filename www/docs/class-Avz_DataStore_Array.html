@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="ApiGen 2.8.0" />
+
+	<title>Class Avz_DataStore_Array | _zaboy.org</title>
+
+	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
+	<script type="text/javascript" src="elementlist.js?2441432232"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+			<h3>Packages</h3>
+			<ul>
+				<li class="active"><a href="package-DataStore.html">DataStore</a>
+						</li>
+				<li><a href="package-DataStores.html">DataStores</a>
+						</li>
+				<li><a href="package-Dic.html">Dic</a>
+						</li>
+				<li><a href="package-Example.html">Example</a>
+						</li>
+				<li><a href="package-Model.html">Model</a>
+						</li>
+				<li><a href="package-None.html">None</a>
+						</li>
+				<li><a href="package-PHP.html">PHP</a>
+						</li>
+				<li><a href="package-Services.html">Services</a>
+						</li>
+				<li><a href="package-Test.html">Test</a>
+						</li>
+				<li><a href="package-Zaboy.html">Zaboy</a>
+						</li>
+			</ul>
+		</div>
+
+		<hr />
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Avz_DataStore_Array.html">Avz_DataStore_Array</a></li>
+				<li><a href="class-Zaboy_DataStore_ArrayObject.html">Zaboy_DataStore_ArrayObject</a></li>
+				<li><a href="class-Zaboy_DataStore_DbTable.html">Zaboy_DataStore_DbTable</a></li>
+				<li><a href="class-Zaboy_DataStore_Read_Array.html">Zaboy_DataStore_Read_Array</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-Avz_DataStore_Interface.html">Avz_DataStore_Interface</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" class="text" />
+		<input type="submit" value="Search" />
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="package-DataStore.html" title="Summary of DataStore"><span>Package</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+			<li>
+				<a href="todo.html" title="Todo list"><span>Todo</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Avz_DataStore_Array</h1>
+
+
+	<div class="description">
+	
+<p>Avz_DataStore_Array</p>
+
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+Avz_DataStore_Abstract
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by" />
+<b><span>Avz_DataStore_Array</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		
+		<b>Package:</b> <a href="package-DataStore.html">DataStore</a><br />
+
+				<b>Category:</b>
+				DataStore<br />
+				<b>Copyright:</b>
+				Zaboychenko Andrey<br />
+				<b>License:</b>
+				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
+				<b>See:</b>
+				<code><code><a href="class-Avz_DataStore_Interface.html">Avz_DataStore_Interface</a></code></code><br />
+				<b>Uses:</b>
+				Zend Framework from Zend Technologies USA Inc.<br />
+		<b>Located at</b> <a href="source-class-Avz_DataStore_Array.html#13-761" title="Go to source code">library/Zaboy/DataStores_/Source/Array.php</a><br />
+	</div>
+
+
+
+	<table class="summary" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="fetch" id="_fetch">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fetch">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#58-150" title="Go to source code">fetch</a>( <span>string <var>$where</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$options</var> = <span class="php-keyword1">null</span> </span> )</code>
+
+		<div class="description short">
+			
+<p>fetch( $where, $options=null ) for search , order,affset and limit in
+DataStore</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>fetch( $where, $options=null ) for search , order,affset and limit in
+DataStore</p>
+
+<p><br />
+<b> Param $where can string only</b><br />
+<br />
+A column name must be enclosed in quotation ``</p>
+
+<pre>
+`field1` = <span class="php-num">44</span>
+</pre>
+
+<p>String must be enclosed in quotation '' (not " ")</p>
+
+<pre>
+`field1` = <span class="php-quote">'value'</span>
+</pre>
+
+<p>You can combine conditions</p>
+
+<pre>
+`field1` = <span class="php-quote">'value'</span> <span
+class="php-keyword1">AND</span> `field1` = <span
+class="php-num">44</span>
+</pre>
+
+<p>You can use AND , OR , = , != , &gt;= , &lt;= , ( ) , !( ) , + - * / , IS
+NULL , IS NOT NULL</p>
+
+<pre>
+`field1` = <span class="php-quote">'value'</span> <span
+class="php-keyword1">AND</span> ( `field2` IS <span
+class="php-keyword1">NULL</span> <span
+class="php-keyword1">OR</span> `field2` != ( `field1` * <span
+class="php-num">2</span> ) )
+</pre>
+<br />
+<b>Param $options</b> is array which can has 4 keys<br />
+<br />
+
+<ul>
+	<li>ORDER</li>
+
+	<li>LIMIT</li>
+
+	<li>OFFSET</li>
+
+	<li>FIELDS</li>
+</ul>
+<br />
+
+<pre>
+<span class="php-keyword1">array</span>(
+    <span
+class="php-quote">'FIELDS'</span> =&gt; <span
+class="php-keyword1">array</span>(<span class="php-quote">'id'</span>, <span
+class="php-quote">'field1'</span>, <span
+class="php-quote">'field2'</span>),<span
+class="php-comment">//define count and order of columns in result</span>
+    <span
+class="php-quote">'ORDER'</span> =&gt; <span
+class="php-quote">'+id, -field1'</span>,
+    <span
+class="php-quote">'LIMIT'</span> =&gt; <span class="php-num">10</span> ,<span
+class="php-comment">// if nuul - it is nolimit</span>
+    <span
+class="php-quote">'OFFSET'</span> =&gt; <span class="php-num">5</span> <span
+class="php-comment">// if 'OFFSET' =&gt; 10 start will be from 11 ( if count from 1)</span>
+)
+</pre>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$where</var></dt>
+					<dd><code>string</code></dd>
+					<dt><var>$options</var></dt>
+					<dd><code>array</code><br>it may contains ORDER LIMIT ect.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>of arrays<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setIdentifier" id="_setIdentifier">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setIdentifier">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#152-172" title="Go to source code">setIdentifier</a>( <span>string|integer|null <var>$identifier</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set identifier for item lookups</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set identifier for item lookups</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$identifier</var></dt>
+					<dd><code>string|integer|null</code><br>$identifier</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getIdentifier" id="_getIdentifier">
+
+		<td class="attributes"><code>
+			 public 
+			string|integer|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getIdentifier">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#174-182" title="Go to source code">getIdentifier</a>( )</code>
+
+		<div class="description short">
+			
+<p>Retrieve current item identifier</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve current item identifier</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|integer|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="hasItem" id="_hasItem">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_hasItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#184-197" title="Go to source code">hasItem</a>( <span>string|integer <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Does an item with the given identifier exist?</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Does an item with the given identifier exist?</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd><code>string|integer</code><br>$id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getItem" id="_getItem">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#199-214" title="Go to source code">getItem</a>( <span>string <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Retrieve an item by identifier</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve an item by identifier</p>
+
+<p>Item retrieved will be flattened to an array.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd><code>string</code><br>$id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addItem" id="_addItem">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#215-233" title="Go to source code">addItem</a>( <span>array|object <var>$item</var></span>, <span>string|null <var>$id</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Add an individual item, optionally by identifier</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Add an individual item, optionally by identifier</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$item</var></dt>
+					<dd><code>array|object</code><br>$item</dd>
+					<dt><var>$id</var></dt>
+					<dd><code>string|null</code><br>$id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setItem" id="_setItem">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#235-247" title="Go to source code">setItem</a>( <span>array|object <var>$item</var></span>, <span>string|null <var>$id</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			
+<p>Set an individual item, optionally by identifier (overwrites)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set an individual item, optionally by identifier (overwrites)</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$item</var></dt>
+					<dd><code>array|object</code><br>$item</dd>
+					<dt><var>$id</var></dt>
+					<dd><code>string|null</code><br>$identifier</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeItem" id="_removeItem">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#250-262" title="Go to source code">removeItem</a>( <span>string <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Remove item by identifier</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Remove item by identifier</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd><code>string</code><br>$id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getItems" id="_getItems">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getItems">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#264-278" title="Go to source code">getItems</a>( )</code>
+
+		<div class="description short">
+			
+<p>Get all items as an array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Get all items as an array</p>
+
+<p>Serializes items to arrays.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="removeItems" id="_removeItems">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_removeItems">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#280-290" title="Go to source code">removeItems</a>( )</code>
+
+		<div class="description short">
+			
+<p>Remove all items at once</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Remove all items at once</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setLabel" id="_setLabel">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setLabel">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#292-306" title="Go to source code">setLabel</a>( <span>string|null <var>$label</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Set label to use for displaying item associations</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Set label to use for displaying item associations</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$label</var></dt>
+					<dd><code>string|null</code><br>$label</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLabel" id="_getLabel">
+
+		<td class="attributes"><code>
+			 public 
+			string|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLabel">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#308-316" title="Go to source code">getLabel</a>( )</code>
+
+		<div class="description short">
+			
+<p>Retrieve item association label</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Retrieve item association label</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|null</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fromArray" id="_fromArray">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fromArray">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#318-347" title="Go to source code">fromArray</a>( <span>array <var>$data</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Load object from array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Load object from array</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$data</var></dt>
+					<dd><code>array</code><br>$data</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="itemsToArray" id="_itemsToArray">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_itemsToArray">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#349-392" title="Go to source code">itemsToArray</a>( )</code>
+
+		<div class="description short">
+			
+<p>Seralize entire data to array. Primary key - 'id' (for Dojo)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Seralize entire data to array. Primary key - 'id' (for Dojo)</p>
+
+<p>out<br />
+&lt;/code&gt; array( Avz_DataStore_Array::KEY_IDENTIFIER =&gt; 'anotherId',
+Avz_DataStore_Array::KEY_LABEL =&gt; 'it is label',
+Avz_DataStore_Array::KEY_METADATA =&gt; array('keyMetadata1' =&gt;
+'valMetadata1'), Avz_DataStore_Array::KEY_ITEMS =&gt; array( array( 'anotherId'
+=&gt; 1, 'fString' =&gt; 'val1', 'fInt' =&gt; 10), array( 'anotherId' =&gt; 2,
+'fString' =&gt; 'val2', 'fInt' =&gt; 20), array( 'anotherId' =&gt; 3, 'fString'
+=&gt; 'val3', 'fInt' =&gt; 30) ) ) &lt;/code&gt; out<br />
+&lt;/code&gt; array( array( 'id' =&gt; 1, 'fString' =&gt; 'val1', 'fInt' =&gt;
+10), array( 'id' =&gt; 2, 'fString' =&gt; 'val2', 'fInt' =&gt; 20), array( 'id'
+=&gt; 3, 'fString' =&gt; 'val3', 'fInt' =&gt; 30) ) &lt;/code&gt;</p>
+
+<p>&lt;/code&gt;</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="itemsToJson" id="_itemsToJson">
+
+		<td class="attributes"><code>
+			 public 
+			Json
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_itemsToJson">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#394-401" title="Go to source code">itemsToJson</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Json</code><br>for dojo data object<br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toArray" id="_toArray">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toArray">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#403-436" title="Go to source code">toArray</a>( )</code>
+
+		<div class="description short">
+			
+<p>Seralize entire data structure, including identifier and label, to array</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Seralize entire data structure, including identifier and label, to array</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fromJson" id="_fromJson">
+
+		<td class="attributes"><code>
+			 public 
+			Avz_DataStore_Abstract
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fromJson">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#438-453" title="Go to source code">fromJson</a>( <span>string <var>$json</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Load object from JSON</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Load object from JSON</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$json</var></dt>
+					<dd><code>string</code><br>$json</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>Avz_DataStore_Abstract</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toJson" id="_toJson">
+
+		<td class="attributes"><code>
+			 public 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_toJson">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#455-464" title="Go to source code">toJson</a>( )</code>
+
+		<div class="description short">
+			
+<p>Serialize to JSON (dojo.data format)</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Serialize to JSON (dojo.data format)</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offsetExists" id="_offsetExists">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetExists">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#468-477" title="Go to source code">offsetExists</a>( <span>string|integer <var>$offset</var></span> )</code>
+
+		<div class="description short">
+			
+<p>ArrayAccess: does offset exist?</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>ArrayAccess: does offset exist?</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$offset</var></dt>
+					<dd><code>string|integer</code><br>$offset</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offsetGet" id="_offsetGet">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetGet">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#479-488" title="Go to source code">offsetGet</a>( <span>string|integer <var>$offset</var></span> )</code>
+
+		<div class="description short">
+			
+<p>ArrayAccess: retrieve by offset</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>ArrayAccess: retrieve by offset</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$offset</var></dt>
+					<dd><code>string|integer</code><br>$offset</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offsetSet" id="_offsetSet">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetSet">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#490-506" title="Go to source code">offsetSet</a>( <span>string <var>$offset</var></span>, <span>array|object|null <var>$value</var></span> )</code>
+
+		<div class="description short">
+			
+<p>ArrayAccess: set value by offset</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>ArrayAccess: set value by offset</p>
+
+<pre>
+Store[] = <span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span class="php-num">10</span>, <span
+class="php-quote">'key'</span> =&gt; <span
+class="php-quote">'val'</span>) --&gt;&gt; Store[<span
+class="php-num">10</span>] = <span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span class="php-num">10</span>, <span
+class="php-quote">'key'</span> =&gt; <span
+class="php-quote">'val'</span>)
+Store[<span class="php-num">8</span>] = <span
+class="php-keyword1">array</span>(<span
+class="php-quote">'key'</span> =&gt; <span
+class="php-quote">'val'</span>) --&gt;&gt;  Store[<span
+class="php-num">8</span>] = <span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span class="php-num">8</span>, <span
+class="php-quote">'key'</span> =&gt; <span
+class="php-quote">'val'</span>)
+Store[<span class="php-num">6</span>] = <span
+class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span class="php-num">10</span>, <span
+class="php-quote">'key'</span> =&gt; <span
+class="php-quote">'val'</span>) --&gt;&gt;  Store[<span
+class="php-num">6</span>] = <span class="php-keyword1">array</span>(<span
+class="php-quote">'id'</span> =&gt; <span class="php-num">6</span>, <span
+class="php-quote">'key'</span> =&gt; <span
+class="php-quote">'val'</span>)
+</pre>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$offset</var></dt>
+					<dd><code>string</code><br>$offset</dd>
+					<dt><var>$value</var></dt>
+					<dd><code>array|object|null</code><br>$value</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="offsetUnset" id="_offsetUnset">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_offsetUnset">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#508-517" title="Go to source code">offsetUnset</a>( <span>string <var>$offset</var></span> )</code>
+
+		<div class="description short">
+			
+<p>ArrayAccess: unset value by offset</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>ArrayAccess: unset value by offset</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$offset</var></dt>
+					<dd><code>string</code><br>$offset</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="current" id="_current">
+
+		<td class="attributes"><code>
+			 public 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_current">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#521-529" title="Go to source code">current</a>( )</code>
+
+		<div class="description short">
+			
+<p>Iterator: get current value</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Iterator: get current value</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="key" id="_key">
+
+		<td class="attributes"><code>
+			 public 
+			string|integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_key">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#531-539" title="Go to source code">key</a>( )</code>
+
+		<div class="description short">
+			
+<p>Iterator: get current key</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Iterator: get current key</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string|integer</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="next" id="_next">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_next">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#541-549" title="Go to source code">next</a>( )</code>
+
+		<div class="description short">
+			
+<p>Iterator: get next item</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Iterator: get next item</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="rewind" id="_rewind">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_rewind">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#551-559" title="Go to source code">rewind</a>( )</code>
+
+		<div class="description short">
+			
+<p>Iterator: rewind to first value in collection</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Iterator: rewind to first value in collection</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="valid" id="_valid">
+
+		<td class="attributes"><code>
+			 public 
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_valid">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#561-569" title="Go to source code">valid</a>( )</code>
+
+		<div class="description short">
+			
+<p>Iterator: is item valid?</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Iterator: is item valid?</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>boolean</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="count" id="_count">
+
+		<td class="attributes"><code>
+			 public 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_count">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#572-579" title="Go to source code">count</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						coutable<br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_normalizeItem" id="__normalizeItem">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__normalizeItem">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#582-629" title="Go to source code">_normalizeItem</a>( <span>array|object <var>$item</var></span>, <span>string|integer|null <var>$id</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Normalize an item to attach to the collection</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Normalize an item to attach to the collection</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$item</var></dt>
+					<dd><code>array|object</code><br>$item</dd>
+					<dt><var>$id</var></dt>
+					<dd><code>string|integer|null</code><br>$id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_getReplacement" id="__getReplacement">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__getReplacement">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#631-648" title="Go to source code">_getReplacement</a>( )</code>
+
+		<div class="description short">
+			
+<p>For resolve where condition in fetch()</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>For resolve where condition in fetch()</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Avz_DataStore_Array.html#_fetch">Avz_DataStore_Array::fetch()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_prepareEvalWhere" id="__prepareEvalWhere">
+
+		<td class="attributes"><code>
+			 protected 
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__prepareEvalWhere">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#650-690" title="Go to source code">_prepareEvalWhere</a>( <span>array <var>$where</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Make Eval expr</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Make Eval expr</p>
+
+<p>For $where = "<code>f1</code> &gt; 30 AND <code>f2</code> = <code>f1</code>
+OR <code>f3</code> IS NOT NULL " we get "return $item['f1'] &gt; 30 AND
+$item['f2'] === $item['f1'] OR $item['f3'] !== null ;"</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$where</var></dt>
+					<dd><code>array</code><br>$where</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>string</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_prepareEvalExprForSort" id="__prepareEvalExprForSort">
+
+		<td class="attributes"><code>
+			 protected 
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__prepareEvalExprForSort">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#692-725" title="Go to source code">_prepareEvalExprForSort</a>( <span>string|array <var>$orders</var></span> )</code>
+
+		<div class="description short">
+			
+<p>Return same like "return $item1['f2'] &gt; $item2['f2'] &amp;&amp;
+$item1['f1'] === $item2['f1'] || $item1['f1'] &lt; $item2['f1'] ;"</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Return same like "return $item1['f2'] &gt; $item2['f2'] &amp;&amp;
+$item1['f1'] === $item2['f1'] || $item1['f1'] &lt; $item2['f1'] ;"</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$orders</var></dt>
+					<dd><code>string|array</code><br>$order array( '-f1', '+f2' )</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br />
+				</div>
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-Avz_DataStore_Array.html#_fetch">Avz_DataStore_Array::fetch()</a></code></code><br />
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_callbackSort" id="__callbackSort">
+
+		<td class="attributes"><code>
+			 protected 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__callbackSort">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#727-740" title="Go to source code">_callbackSort</a>( <span>array <var>$item1</var></span>, <span>array <var>$item2</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$item1</var></dt>
+					<dd><code>array</code><br>$item1 array( 'id' =&gt; 1 , 'fieldName' =&gt; .. )</dd>
+					<dt><var>$item2</var></dt>
+					<dd><code>array</code><br>$item2 array( 'id' =&gt; 4 , 'fieldName' =&gt; .. )</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="_initItems" id="__initItems">
+
+		<td class="attributes"><code>
+			 protected 
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#__initItems">#</a>
+		<code><a href="source-class-Avz_DataStore_Array.html#742-758" title="Go to source code">_initItems</a>( )</code>
+
+		<div class="description short">
+			
+<p>Init "data source" in dataStore</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>Init "data source" in dataStore</p>
+
+<p>dataStore usually has "data source". It may be $this-&gt;_items array or
+$this-&gt;_dbTable, ect. It needs in init. You can do it - just call setItems()
+with or without param. "Data source" can be inited only ones. Usually - in
+constuct or in first call setItems(). Info for initialization may be contaned in
+{@link _metadata)</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br />
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="KEY_ITEM" id="KEY_ITEM">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Avz_DataStore_Array.html#25" title="Go to source code"><b>KEY_ITEM</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">'item'</span></code></td>
+		<td class="description"><div>
+			<a href="#KEY_ITEM" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="_identifier" id="$_identifier">
+		<td class="attributes"><code>
+			protected  
+			string|integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Avz_DataStore_Array.html#27-31" title="Go to source code"><var>$_identifier</var></a>
+		</td>
+		<td class="value"><code>self::DEFAULT_IDENTIFIER</code></td>
+		<td class="description"><div>
+			<a href="#$_identifier" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Identifier field of item</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Identifier field of item</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="_items" id="$_items">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Avz_DataStore_Array.html#33-37" title="Go to source code"><var>$_items</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$_items" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Collected items</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Collected items</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="_label" id="$_label">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Avz_DataStore_Array.html#39-43" title="Go to source code"><var>$_label</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$_label" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Label field of item</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Label field of item</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="_metadata" id="$_metadata">
+		<td class="attributes"><code>
+			protected  
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Avz_DataStore_Array.html#45-49" title="Go to source code"><var>$_metadata</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">array</span>()</code></td>
+		<td class="description"><div>
+			<a href="#$_metadata" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>Data container metadata</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>Data container metadata</p>
+
+
+			</div>
+		</div></td>
+	</tr>
+	<tr data-order="_evalExprForSort" id="$_evalExprForSort">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Avz_DataStore_Array.html#51-55" title="Go to source code"><var>$_evalExprForSort</var></a>
+		</td>
+		<td class="value"><code></code></td>
+		<td class="description"><div>
+			<a href="#$_evalExprForSort" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+					<h4>See</h4>
+					<div class="list">
+							<code><code><a href="class-Avz_DataStore_Array.html#__prepareEvalExprForSort">Avz_DataStore_Array::_prepareEvalExprForSort()</a></code></code><br />
+					</div>
+			</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		_zaboy.org API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

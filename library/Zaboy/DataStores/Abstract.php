@@ -16,6 +16,7 @@ require_once 'Zaboy/DataStores/Interface.php';
 /**
  * class Zaboy_DataStores_Abstract
  * 
+ * @todo Excepyion if there is double row in init array of items
  * @category   DataStores
  * @package    DataStores
  * @copyright  Zaboychenko Andrey
@@ -113,6 +114,7 @@ abstract class Zaboy_DataStores_Abstract extends Zaboy_Services
      * http://www.simplecoding.org/sortirovka-v-mysql-neskolko-redko-ispolzuemyx-vozmozhnostej.html
      * http://ru.php.net/manual/ru/function.usort.php
      * 
+     * @todo Make support for null value for sorting and where
      * @see ASC
      * @see DESC
      * @param string|int|Array|null $where   

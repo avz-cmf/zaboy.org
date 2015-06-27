@@ -146,7 +146,38 @@ abstract class Zaboy_DataStore_AbstractTest extends PHPUnit_Framework_TestCase {
                 $findArray[4-1]
         );   
     }    
+
+    public function testFind_WhereId()
+    {
+        $this->_initObject();
+        $findArray = $this->object->find(array('id'=> 2));        
+        $this->assertEquals(
+                $this->_itemsArrayDelault[2-1] ,
+                $findArray[1-1]
+        );     
+        $this->assertEquals(
+                1,
+                count($findArray)
+        );
+    } 
     
+    public function testFind_WhereCombo()
+    {
+        $this->_initObject();
+        $findArray = $this->object->find(
+                array('fString'=> 'val2', 'fFloat' => 300.003),
+                null,
+                array('id'=>'ASC')
+         );        
+        $this->assertEquals(
+                $this->_itemsArrayDelault[2-1] ,
+                $findArray[1-1]
+        );     
+        $this->assertEquals(
+                2,
+                count($findArray)
+        );
+    }    
 /**    
 
     

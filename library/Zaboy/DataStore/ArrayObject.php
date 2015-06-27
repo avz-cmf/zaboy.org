@@ -102,8 +102,12 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
         $limit = null, 
         $offset = null 
     ) {
-        $resultArray = $this->_items;
+        $resultArray = array();
         /*********************** $where ***********************
+         * 
+        
+        
+        
         $whereCheckArray = array();
         foreach ($where as $fild => $value) {
             if('null'=== strtolower($value )){
@@ -126,6 +130,45 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
         // *********************** ^^^$where^^^ ***********************
 
         */
+        if ( isset($where) ) {
+        $whereBody = "";
+            foreach ($where as $fild => $value) {
+                if('null'=== strtolower($value )){
+                    $whereCheck = "!isset(\$item['$fild'])";
+                }elseif('not_null'=== strtolower($value )){
+                    $whereCheck = "isset(\$item['$fild'])";
+                }else{
+                    $whereCheck = 
+                        "isset(\$item['$fild']) && "
+                        . "\$item['$fild'] == '$value'"
+                    ;                
+                }
+                $whereBody = 
+                     $whereBody . '&& ' 
+                    . '( ' .  $whereCheck . ' )' . PHP_EOL
+                ;
+            }
+            
+            var_dump($whereBody);   
+            $whereFunctionBody = PHP_EOL  .
+                '$result = ' . PHP_EOL 
+                . substr($whereBody, 2) . ';' . PHP_EOL 
+                . 'return $result;'
+            ;
+            
+            var_dump($whereFunctionBody);            
+            
+            $whereFunction = create_function('$item', $whereFunctionBody);
+
+            foreach ($this->_items as $item) {
+                if($whereFunction($item)) {
+                    $resultArray[] = $item;
+                }
+            }
+        }else{
+            $resultArray = $this->_items;
+        }
+        
         // ***********************   order   ***********************        
         if (!empty($order)) {
             $nextCompareLevel ='';
@@ -144,11 +187,9 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
                 ;
                 $nextCompareLevel =$nextCompareLevel . $prevCompareLevel;                 
             }
-            $nextCompareLevel = $nextCompareLevel . 'return 0;';
-            var_dump($nextCompareLevel);
-            $sortFn = create_function('$a,$b', $nextCompareLevel);
-            var_dump($sortFn);
-            usort($resultArray, $sortFn);
+            $sortFunctionBody = $nextCompareLevel . 'return 0;';
+            $sortFunction = create_function('$a,$b', $sortFunctionBody);
+            usort($resultArray, $sortFunction);
         }
         // *********************  ^^ order ^^   ***********************  
         return $resultArray;

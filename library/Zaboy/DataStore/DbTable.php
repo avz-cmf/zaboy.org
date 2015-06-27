@@ -90,6 +90,15 @@ class Zaboy_DataStore_DbTable extends Zaboy_DataStores_Abstract
         $limit = null, 
         $offset = null 
     ) {
+        $select = $this->_dbTable->select();
+        
+        // ***********************   where   *********************** 
+        if (!empty($where)) {
+            foreach ($where as $fild => $value) {
+                $select->where( $fild . '= ?', $value );
+            }
+        }    
+        
         // ***********************   order   *********************** 
         $orderForSQL = array();
         if (!empty($order)) {
@@ -99,14 +108,10 @@ class Zaboy_DataStore_DbTable extends Zaboy_DataStores_Abstract
         }else{
             $orderForSQL[] = $this->getIdentifier();
         }
-        // *********************  ^^ order ^^   ***********************          
-        $select = $this->_dbTable->select()
-            //->where('id = ?',2)
-            ->order($orderForSQL)
-           // ->limit($count, $offset)
-        ;
+        $select->order($orderForSQL);
+
+        // ***********************   return   *********************** 
         $rows = $this->_dbTable->fetchAll($select);
-        
         return $rows->toArray();
     }    
 }

@@ -7,7 +7,7 @@
 	<title>Class Zaboy_DataStores_Abstract | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?842065495"></script>
+	<script type="text/javascript" src="elementlist.js?2441432232"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -23,13 +23,15 @@
 			<ul>
 				<li><a href="package-DataStore.html">DataStore</a>
 						</li>
-				<li class="active"><a href="package-DataStores.html">DataStores</a>
+				<li><a href="package-DataStores.html">DataStores</a>
 						</li>
 				<li><a href="package-Dic.html">Dic</a>
 						</li>
 				<li><a href="package-Example.html">Example</a>
 						</li>
-				<li><a href="package-None.html">None</a>
+				<li><a href="package-Model.html">Model</a>
+						</li>
+				<li class="active"><a href="package-None.html">None</a>
 						</li>
 				<li><a href="package-PHP.html">PHP</a>
 						</li>
@@ -48,19 +50,17 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-Avz_DataStores_Abstract.html">Avz_DataStores_Abstract</a></li>
-				<li><a href="class-Zaboy_DataStores.html">Zaboy_DataStores</a></li>
-				<li class="active"><a href="class-Zaboy_DataStores_Abstract.html">Zaboy_DataStores_Abstract</a></li>
-				<li><a href="class-Zaboy_DataStores_Exception.html">Zaboy_DataStores_Exception</a></li>
-				<li><a href="class-Zaboy_DataStores_Source_Abstract.html">Zaboy_DataStores_Source_Abstract</a></li>
+				<li><a href="class-Avz_DataStore_AbstractTest.html">Avz_DataStore_AbstractTest</a></li>
+				<li><a href="class-Avz_DataStore_ArrayTest.html">Avz_DataStore_ArrayTest</a></li>
+				<li><a href="class-Avz_DataStore_DbTableTest.html">Avz_DataStore_DbTableTest</a></li>
+				<li><a href="class-My_View_Helper_SimpleTextareaTest.html">My_View_Helper_SimpleTextareaTest</a></li>
+				<li><a href="class-Zaboy_DataStore_AbstractTest.html">Zaboy_DataStore_AbstractTest</a></li>
+				<li><a href="class-Zaboy_DataStore_ArrayObjectTest.html">Zaboy_DataStore_ArrayObjectTest</a></li>
+				<li><a href="class-Zaboy_DataStore_DbTableTest.html">Zaboy_DataStore_DbTableTest</a></li>
+				<li class="active"><a href="class-Zaboy_DataStores_Abstract.html" class="invalid">Zaboy_DataStores_Abstract</a></li>
+				<li><a href="class-Zaboy_DataStores_Exception.html" class="invalid">Zaboy_DataStores_Exception</a></li>
 			</ul>
 
-			<h3>Interfaces</h3>
-			<ul>
-				<li><a href="class-Zaboy_DataStores_Read_Finder_Interface.html">Zaboy_DataStores_Read_Finder_Interface</a></li>
-				<li><a href="class-Zaboy_DataStores_Read_Interface.html">Zaboy_DataStores_Read_Interface</a></li>
-				<li><a href="class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html">Zaboy_Dic_DataStores_Adapter_Write_Interface</a></li>
-			</ul>
 
 
 
@@ -86,7 +86,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="package-DataStores.html" title="Summary of DataStores"><span>Package</span></a>
+				<a href="package-None.html" title="Summary of None"><span>Package</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -106,445 +106,17 @@
 <div id="content" class="class">
 	<h1>Class Zaboy_DataStores_Abstract</h1>
 
-
-	<div class="description">
-	
-<p>Zaboy_DataStores_Abstract</p>
-
-	</div>
-
-	<dl class="tree">
-		<dd style="padding-left:0px">
-			<a href="class-Zaboy_Abstract.html"><span>Zaboy_Abstract</span></a>
-			
-			
-			
-		</dd>
-		<dd style="padding-left:30px">
-			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Zaboy_DataStores_Abstract</span></b>			
-			 implements 
-<span>Zaboy_DataStores_Adapter_Read_Interface</span>, 
-			
-				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>
-			
-			
-		</dd>
-	</dl>
-
-
-
-
-
-
-
-
-	<div class="info">
-		<b>Abstract</b><br />
-		
-		
-		<b>Package:</b> <a href="package-DataStores.html">DataStores</a><br />
-
-				<b>Category:</b>
-				DataStores<br />
-				<b>Copyright:</b>
-				Zaboychenko Andrey<br />
-				<b>License:</b>
-				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
-				<b>See:</b>
-				<code><code><a href="class-Avz_DataStore_Interface.html">Avz_DataStore_Interface</a></code></code><br />
-				<b>Uses:</b>
-				Zend Framework from Zend Technologies USA Inc.<br />
-				<b>Todo:</b>
-				Move identifier and label to $_metadata<br />
-		<b>Located at</b> <a href="source-class-Zaboy_DataStores_Abstract.html#14-103" title="Go to source code">library/Zaboy/DataStores/Abstract.php</a><br />
-	</div>
-
-
-
-	<table class="summary" id="methods">
-	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
-
-		<td class="attributes"><code>
-			 public 
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Abstract.html#34-42" title="Go to source code">__construct</a>( <span>array <var>$options</var></span>, <span>Avz_DataSources_Interface <var>$dsoSourc</var></span> )</code>
-
-		<div class="description short">
-			
+		<div class="invalid">
+			<p>
+				Documentation of this class could not be generated.
+			</p>
+			<p>
+				Class was originally declared in library/Zaboy/DataStores/Abstract.php and is invalid because of:
+			</p>
+			<ul>
+				<li>Class was redeclared in library/Zaboy/DataStores_/Abstract.php.</li>
+			</ul>
 		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$options</var></dt>
-					<dd><code>array</code><br>$options</dd>
-					<dt><var>$dsoSourc</var></dt>
-					<dd><code>Avz_DataSources_Abstract</code><br>$dataSource</dd>
-				</dl></div>
-
-
-
-
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-Zaboy_Abstract.html#___construct">Zaboy_Abstract::__construct()</a></code></div>
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getIdentifier" id="_getIdentifier">
-
-		<td class="attributes"><code>
-			 public 
-			string|integer|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getIdentifier">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Abstract.html#44-49" title="Go to source code">getIdentifier</a>( )</code>
-
-		<div class="description short">
-			
-<p>Retrieve current item identifier</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Retrieve current item identifier</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>string|integer|null</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getKeys" id="_getKeys">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getKeys">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Abstract.html#51-56" title="Go to source code">getKeys</a>( )</code>
-
-		<div class="description short">
-			
-<p>Return list of keys</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Return list of keys</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="hasItem" id="_hasItem">
-
-		<td class="attributes"><code>
-			 public 
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_hasItem">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Abstract.html#58-64" title="Go to source code">hasItem</a>( <span>integer <var>$id</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Does an item with the given identifier exist?</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Does an item with the given identifier exist?</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$id</var></dt>
-					<dd><code>integer</code><br>$id</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>boolean</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getItem" id="_getItem">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getItem">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Abstract.html#66-74" title="Go to source code">getItem</a>( <span>string <var>$id</var></span> )</code>
-
-		<div class="description short">
-			
-<p>Retrieve an item by identifier</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Retrieve an item by identifier</p>
-
-<p>Item retrieved will be flattened to an array.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$id</var></dt>
-					<dd><code>string</code><br>$id</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getItems" id="_getItems">
-
-		<td class="attributes"><code>
-			 public 
-			array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getItems">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Abstract.html#76-83" title="Go to source code">getItems</a>( )</code>
-
-		<div class="description short">
-			
-<p>Get all items as an array</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			
-<p>Get all items as an array</p>
-
-<p>Items retrieved will be flattened to an array of arrays.</p>
-
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>array</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getIterator" id="_getIterator">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-IteratorAggregate.html">IteratorAggregate</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getIterator">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Abstract.html#88-92" title="Go to source code">getIterator</a>( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-IteratorAggregate.html">IteratorAggregate</a></code></code><br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						<code><code><a href="class-IteratorAggregate.html">IteratorAggregate</a></code></code><br />
-				</div>
-
-
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-IteratorAggregate.html#_getIterator">IteratorAggregate::getIterator()</a></code></div>
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="count" id="_count">
-
-		<td class="attributes"><code>
-			 public 
-			integer
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_count">#</a>
-		<code><a href="source-class-Zaboy_DataStores_Abstract.html#97-101" title="Go to source code">count</a>( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>integer</code><br />
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						coutable<br />
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	</table>
-
-	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_removeAttrib">removeAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttrib">setAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttribs">setAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setOptions">setOptions()</a>
-		</code></td>
-	</tr>
-	</table>
-
-
-
-
-
-
-
-	<table class="summary" id="constants">
-	<caption>Constants summary</caption>
-	<tr data-order="KEY_METADATA" id="KEY_METADATA">
-
-		<td class="attributes"><code>string</code></td>
-		<td class="name"><code>
-				<a href="source-class-Zaboy_DataStores_Abstract.html#29-32" title="Go to source code"><b>KEY_METADATA</b></a>
-		</code></td>
-		<td class="value"><code><span class="php-quote">'metadata'</span></code></td>
-		<td class="description"><div>
-			<a href="#KEY_METADATA" class="anchor">#</a>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-					<h4>See</h4>
-					<div class="list">
-							_metadata<br />
-					</div>
-			</div>
-		</div></td>
-	</tr>
-	</table>
-
-
-
-
-
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-Zaboy_Abstract.html#properties">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#$_attribs"><var>$_attribs</var></a>
-		</code></td>
-	</tr>
-	</table>
-
-
-
-
-
 </div>
 
 	<div id="footer">

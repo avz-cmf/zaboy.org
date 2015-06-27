@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Zaboy_DataStores | _zaboy.org</title>
+	<title>Class Zaboy_DataStores_OuterTraversable | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?842065495"></script>
+	<script type="text/javascript" src="elementlist.js?2441432232"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -29,6 +29,8 @@
 						</li>
 				<li><a href="package-Example.html">Example</a>
 						</li>
+				<li><a href="package-Model.html">Model</a>
+						</li>
 				<li><a href="package-None.html">None</a>
 						</li>
 				<li><a href="package-PHP.html">PHP</a>
@@ -49,16 +51,17 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-Avz_DataStores_Abstract.html">Avz_DataStores_Abstract</a></li>
-				<li class="active"><a href="class-Zaboy_DataStores.html">Zaboy_DataStores</a></li>
-				<li><a href="class-Zaboy_DataStores_Abstract.html">Zaboy_DataStores_Abstract</a></li>
-				<li><a href="class-Zaboy_DataStores_Exception.html">Zaboy_DataStores_Exception</a></li>
+				<li><a href="class-Zaboy_DataStores_InnerTraversable.html">Zaboy_DataStores_InnerTraversable</a></li>
+				<li class="active"><a href="class-Zaboy_DataStores_OuterTraversable.html">Zaboy_DataStores_OuterTraversable</a></li>
 				<li><a href="class-Zaboy_DataStores_Source_Abstract.html">Zaboy_DataStores_Source_Abstract</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
+				<li><a href="class-Zaboy_DataStores_Interface.html">Zaboy_DataStores_Interface</a></li>
 				<li><a href="class-Zaboy_DataStores_Read_Finder_Interface.html">Zaboy_DataStores_Read_Finder_Interface</a></li>
 				<li><a href="class-Zaboy_DataStores_Read_Interface.html">Zaboy_DataStores_Read_Interface</a></li>
+				<li><a href="class-Zaboy_DataStores_Write_Interface.html">Zaboy_DataStores_Write_Interface</a></li>
 				<li><a href="class-Zaboy_Dic_DataStores_Adapter_Write_Interface.html">Zaboy_Dic_DataStores_Adapter_Write_Interface</a></li>
 			</ul>
 
@@ -104,29 +107,27 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Zaboy_DataStores</h1>
+	<h1>Class Zaboy_DataStores_OuterTraversable</h1>
 
 
 	<div class="description">
 	
-<p>Zaboy_DataStores</p>
+<p>class Zaboy_DataStores_OuterTraversable</p>
 
 	</div>
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
-			<a href="class-Zaboy_Abstract.html"><span>Zaboy_Abstract</span></a>
+			<a href="class-Zaboy_DataStores_Abstract.html"><span class="invalid">Zaboy_DataStores_Abstract</span></a>
 			
 			
 			
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>Zaboy_DataStores</span></b>			
+<b><span>Zaboy_DataStores_OuterTraversable</span></b>			
 			 implements 
-				<a href="class-Countable.html"><span>Countable</span></a>, 
-			
-				<a href="class-IteratorAggregate.html"><span>IteratorAggregate</span></a>
+				<a href="class-Zaboy_DataStores_Interface.html"><span>Zaboy_DataStores_Interface</span></a>
 			
 			
 		</dd>
@@ -140,7 +141,7 @@
 
 
 	<div class="info">
-		<b>Abstract</b><br />
+		
 		
 		
 		<b>Package:</b> <a href="package-DataStores.html">DataStores</a><br />
@@ -151,11 +152,12 @@
 				Zaboychenko Andrey<br />
 				<b>License:</b>
 				<a href="http://opensource.org/licenses/gpl-license.php">GNU Public License</a><br />
+				<b>See:</b>
+				<a
+href="http://en.wikipedia.org/wiki/Create">http://en.wikipedia.org/wiki/Create</a>, _read, _update_and_delete<br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-				<b>Todo:</b>
-				Move identifier and label to $_metadata<br />
-		<b>Located at</b> <a href="source-class-Zaboy_DataStores.html#14-52" title="Go to source code">library/Zaboy/DataStores.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_DataStores_OuterTraversable.html#14-54" title="Go to source code">library/Zaboy/DataStores/OuterTraversable.php</a><br />
 	</div>
 
 
@@ -173,7 +175,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Zaboy_DataStores.html#33-41" title="Go to source code">__construct</a>( <span>array <var>$options</var></span>, <span>Avz_DataSources_Interface <var>$dsoSourc</var></span> )</code>
+		<code><a href="source-class-Zaboy_DataStores_OuterTraversable.html#34-43" title="Go to source code">__construct</a>( <span><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code> <var>$options</var></span>, <span><code><a href="class-IteratorAggregate.html">IteratorAggregate</a></code> <var>$dataSource</var></span> )</code>
 
 		<div class="description short">
 			
@@ -186,16 +188,14 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$options</var></dt>
-					<dd><code>array</code><br>$options</dd>
-					<dt><var>$dsoSourc</var></dt>
-					<dd><code>Avz_DataSources_Abstract</code><br>$dataSource</dd>
+					<dd><code><code><a href="class-Zaboy_Dic_ServicesConfigs.html">Zaboy_Dic_ServicesConfigs</a></code></code><br>$servicesConfigs</dd>
+					<dt><var>$dataSource</var></dt>
+					<dd></dd>
 				</dl></div>
 
 
 
 
-				<h4>Overrides</h4>
-				<div class="list"><code><a href="class-Zaboy_Abstract.html#___construct">Zaboy_Abstract::__construct()</a></code></div>
 
 		</div>
 		</div></td>
@@ -211,7 +211,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getIterator">#</a>
-		<code><a href="source-class-Zaboy_DataStores.html#44-51" title="Go to source code">getIterator</a>( )</code>
+		<code><a href="source-class-Zaboy_DataStores_OuterTraversable.html#47-53" title="Go to source code">getIterator</a>( )</code>
 
 		<div class="description short">
 			
@@ -234,27 +234,11 @@
 				</div>
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-IteratorAggregate.html#_getIterator">IteratorAggregate::getIterator()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Methods inherited from <a href="class-Zaboy_Abstract.html#methods">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#_addAttribs">addAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttrib">getAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_getAttribs">getAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_removeAttrib">removeAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttrib">setAttrib()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setAttribs">setAttribs()</a>, 
-			<a href="class-Zaboy_Abstract.html#_setOptions">setOptions()</a>
-		</code></td>
-	</tr>
-	</table>
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-Countable.html#methods">Countable</a></caption>
 	<tr>
@@ -263,6 +247,29 @@
 		</code></td>
 	</tr>
 	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Zaboy_DataStores_Write_Interface.html#methods">Zaboy_DataStores_Write_Interface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Zaboy_DataStores_Write_Interface.html#_create">create()</a>, 
+			<a href="class-Zaboy_DataStores_Write_Interface.html#_delete">delete()</a>, 
+			<a href="class-Zaboy_DataStores_Write_Interface.html#_deleteAll">deleteAll()</a>, 
+			<a href="class-Zaboy_DataStores_Write_Interface.html#_update">update()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Zaboy_DataStores_Read_Interface.html#methods">Zaboy_DataStores_Read_Interface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Zaboy_DataStores_Read_Interface.html#_find">find()</a>, 
+			<a href="class-Zaboy_DataStores_Read_Interface.html#_getIdentifier">getIdentifier()</a>, 
+			<a href="class-Zaboy_DataStores_Read_Interface.html#_getKeys">getKeys()</a>, 
+			<a href="class-Zaboy_DataStores_Read_Interface.html#_has">has()</a>, 
+			<a href="class-Zaboy_DataStores_Read_Interface.html#_read">read()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
@@ -271,6 +278,16 @@
 
 
 
+	<table class="summary inherited">
+	<caption>Constants inherited from <a href="class-Zaboy_DataStores_Read_Interface.html#constants">Zaboy_DataStores_Read_Interface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Zaboy_DataStores_Read_Interface.html#ASC"><b>ASC</b></a>, 
+			<a href="class-Zaboy_DataStores_Read_Interface.html#DEF_ID"><b>DEF_ID</b></a>, 
+			<a href="class-Zaboy_DataStores_Read_Interface.html#DESC"><b>DESC</b></a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
@@ -279,11 +296,11 @@
 	<tr data-order="_dataSource" id="$_dataSource">
 		<td class="attributes"><code>
 			protected  
-			Avz_DataSources_Abstract
+			object
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Zaboy_DataStores.html#27-31" title="Go to source code"><var>$_dataSource</var></a>
+				<a href="source-class-Zaboy_DataStores_OuterTraversable.html#26-32" title="Go to source code"><var>$_dataSource</var></a>
 		</td>
 		<td class="value"><code></code></td>
 		<td class="description"><div>
@@ -291,28 +308,24 @@
 
 			<div class="description short">
 				
-<p>Data container</p>
+<p>pointer for current item in iteration</p>
 
 			</div>
 
 			<div class="description detailed hidden">
 				
-<p>Data container</p>
+<p>pointer for current item in iteration</p>
 
 
+					<h4>See</h4>
+					<div class="list">
+							<code><code><a href="class-Iterator.html">Iterator</a></code></code><br />
+					</div>
 			</div>
 		</div></td>
 	</tr>
 	</table>
 
-	<table class="summary inherited">
-	<caption>Properties inherited from <a href="class-Zaboy_Abstract.html#properties">Zaboy_Abstract</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-Zaboy_Abstract.html#$_attribs"><var>$_attribs</var></a>
-		</code></td>
-	</tr>
-	</table>
 
 
 

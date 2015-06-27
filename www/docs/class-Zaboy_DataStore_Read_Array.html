@@ -7,7 +7,7 @@
 	<title>Class Zaboy_DataStore_Read_Array | _zaboy.org</title>
 
 	<script type="text/javascript" src="resources/combined.js?3715972085"></script>
-	<script type="text/javascript" src="elementlist.js?842065495"></script>
+	<script type="text/javascript" src="elementlist.js?2441432232"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -29,6 +29,8 @@
 						</li>
 				<li><a href="package-Example.html">Example</a>
 						</li>
+				<li><a href="package-Model.html">Model</a>
+						</li>
 				<li><a href="package-None.html">None</a>
 						</li>
 				<li><a href="package-PHP.html">PHP</a>
@@ -48,6 +50,9 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-Avz_DataStore_Array.html">Avz_DataStore_Array</a></li>
+				<li><a href="class-Zaboy_DataStore_ArrayObject.html">Zaboy_DataStore_ArrayObject</a></li>
+				<li><a href="class-Zaboy_DataStore_DbTable.html">Zaboy_DataStore_DbTable</a></li>
 				<li class="active"><a href="class-Zaboy_DataStore_Read_Array.html">Zaboy_DataStore_Read_Array</a></li>
 			</ul>
 
@@ -140,7 +145,7 @@
 				<code><code><a href="class-Avz_DataStore_Interface.html">Avz_DataStore_Interface</a></code></code><br />
 				<b>Uses:</b>
 				Zend Framework from Zend Technologies USA Inc.<br />
-		<b>Located at</b> <a href="source-class-Zaboy_DataStore_Read_Array.html#13-894" title="Go to source code">library/Zaboy/DataStore/Read/Array.php</a><br />
+		<b>Located at</b> <a href="source-class-Zaboy_DataStore_Read_Array.html#13-894" title="Go to source code">library/Zaboy/DataStores_/Read/Array.php</a><br />
 	</div>
 
 
@@ -271,7 +276,7 @@ Array("id"=&gt;123, "fild1"=value1, ...)</p>
 
 		<td class="attributes"><code>
 			 public 
-			
+			array
 			
 			</code>
 		</td>
@@ -329,6 +334,10 @@ class="php-comment">// from 6th items in result set (first item is 0th)</span>
 					<dd><code>integer</code><br>$offset</dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code>array</code><br>Empty array or array of arrays<br />
+				</div>
 
 
 				<h4>See</h4>
@@ -377,8 +386,6 @@ class="php-comment">// from 6th items in result set (first item is 0th)</span>
 				</div>
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Zaboy_DataStores_Read_Interface.html#_getIterator">Zaboy_DataStores_Read_Interface::getIterator()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -416,8 +423,6 @@ class="php-comment">// from 6th items in result set (first item is 0th)</span>
 				</div>
 
 
-				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-Zaboy_DataStores_Read_Interface.html#_count">Zaboy_DataStores_Read_Interface::count()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -611,6 +616,8 @@ class="php-comment">// if 'OFFSET' =&gt; 10 start will be from 11 ( if count fro
 
 
 
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-Zaboy_DataStores_Read_Interface.html#_getIdentifier">Zaboy_DataStores_Read_Interface::getIdentifier()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -1858,6 +1865,14 @@ constuct or in first call setItems(). Info for initialization may be contaned in
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-Zaboy_DataStores_Read_Interface.html#methods">Zaboy_DataStores_Read_Interface</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-Zaboy_DataStores_Read_Interface.html#_getKeys">getKeys()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
