@@ -26,10 +26,15 @@ require_once 'Zaboy/DataStores/Interface.php';
 abstract class Zaboy_DataStores_Abstract extends Zaboy_Services  
     implements Zaboy_DataStores_Read_Interface, Zaboy_DataStores_Write_Interface, Countable
 {   
+    /**
+     * @see http://php.net/manual/en/function.gettype.php
+     */
+    const INT_TYPE    = "integer" ;
+    const FLOAT_TYPE = "double"; // (for historical reasons "double" is returned in case of a float, and not simply "float")  ;
+    const STR_TYPE  = "string" ;   
     
 //** Interface "Zaboy_DataStores_Read_Interface" **            **                          **
-    
-    
+
     /**
      * Return primary key
      * 
@@ -38,10 +43,10 @@ abstract class Zaboy_DataStores_Abstract extends Zaboy_Services
      * @see DEF_ID
      * @return string "id" by default
      */
-    public function getIdentifier() {
-        
+    public function getIdentifier() 
+    {
+        return self::DEF_ID;
     }    
-    
     
     /**
      * Return Item by id
@@ -52,10 +57,18 @@ abstract class Zaboy_DataStores_Abstract extends Zaboy_Services
      * @param int|string $id PrimaryKey
      * @return array|null
      */
-    public function read($id) {
-        
+    public function read($id)
+    {
+        $identifier = $this->getIdentifier();
+        $itemsArray = $this->find(
+            array($identifier => $id)
+        );
+        if (empty($itemsArray)) {
+            return null;
+        } else {
+            return $itemsArray[0];
+        }
     }
-    
     
     /**
      * Return true if item with that id is present.
@@ -63,17 +76,23 @@ abstract class Zaboy_DataStores_Abstract extends Zaboy_Services
      * @param int|string $id PrimaryKey
      * @return bool
      */
-    public function has($id) {
-        
+    public function has($id) 
+    {
+        return !(is_null($this->read($id)));
     }
-    
     
     /**
      * 
      * @return array array of keys or empty array
      */
-    public function  getKeys() {
-        
+    public function  getKeys() 
+    {
+        $identifier = $this->getIdentifier();
+        $keysArray = $this->find(
+            null,
+            array($identifier)       
+        );
+        return $keysArray;
     }        
     
     /**
@@ -103,15 +122,13 @@ abstract class Zaboy_DataStores_Abstract extends Zaboy_Services
      * @param int|null $offset
      * @return array    Empty array or array of arrays
      */
-    public function find(
+    abstract public function find(
         $where = null,             
         $filds = null, 
         $order = null,            
         $limit = null, 
         $offset = null 
-    ) {
-        
-    }
+    );
     
 //** Interface "Zaboy_DataStores_Write_Interface" **            **                          **
     
@@ -182,4 +199,25 @@ abstract class Zaboy_DataStores_Abstract extends Zaboy_Services
     public function count() {
         
     }
+    
+    
+    /**
+     * Throw Exception if type of Identifier is wrong
+     * 
+     * @param mix $id
+     */
+    protected function _checkIdentifierType($id)
+    {
+        $idType = gettype($id);
+        if ($idType == self::INT_TYPE || $idType == self::STR_TYPE || $idType == self::FLOAT_TYPE) {
+            return;
+        }else{
+            require_once 'Zaboy/DataStores/Exception.php';
+            throw new Zaboy_DataStores_Exception(
+                    "Type of Identifier is wrong"
+            );
+        }
+    }
+    
+    
 }
