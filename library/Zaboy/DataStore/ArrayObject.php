@@ -103,33 +103,7 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
         $offset = null 
     ) {
         $resultArray = array();
-        /*********************** $where ***********************
-         * 
-        
-        
-        
-        $whereCheckArray = array();
-        foreach ($where as $fild => $value) {
-            if('null'=== strtolower($value )){
-                $whereCheckArray[] = "!isset(\$item['$fild'])";
-            }else{
-                $whereCheckArray[] = 
-                        "isset(\$item['$fild']) && "
-                      . "\$item['$fild'] == '$value'"
-                ;
-            }
-        }
-        $whereCheckCondition = "(" . implode(') && (', $whereCheckArray) . ")";
-        $whereCheckString = 
-                "if ( $whereCheckCondition ) {" 
-                    . '$ArrayObject->append($key, $item);' 
-                . '}';
-        $whereCheckFunction = create_function('$item, $key, $arrayObject', $whereCheckString);
-        $arrayObject = new ArrayObject(array());
-        array_walk($this->_items, $whereCheckFunction, $arrayObject);
-        // *********************** ^^^$where^^^ ***********************
-
-        */
+        //*********************** $where ***********************
         if ( isset($where) ) {
         $whereBody = "";
             foreach ($where as $fild => $value) {
@@ -191,7 +165,28 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
             $sortFunction = create_function('$a,$b', $sortFunctionBody);
             usort($resultArray, $sortFunction);
         }
-        // *********************  ^^ order ^^   ***********************  
+        
+        // *********************  limit, offset   *********************** 
+        if ( isset($limit) || isset($offset) ) {
+            $resultArrayTemp = $resultArray;
+            if ( isset($limit) && isset($offset) ) { 
+                $resultArray = array_slice ($resultArrayTemp, $offset, $limit);
+            }elseif(isset($limit)){
+                $resultArray = array_slice ($resultArrayTemp, 0, $limit);
+            }else{
+                $resultArray = array_slice ($resultArrayTemp, $offset);
+            }   
+        }
+
+        // *********************  $filds   ***********************    
+        if ( !empty($filds) ) {
+            $resultArrayTemp = $resultArray;
+            $resultArray= array();
+            foreach ($resultArrayTemp as $item) {
+                $resultArray[] = array_intersect_key($item, array_flip($filds));
+            }           
+        }
+        // ***********************   return   *********************** 
         return $resultArray;
     } 
 

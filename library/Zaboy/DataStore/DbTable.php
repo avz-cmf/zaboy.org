@@ -109,6 +109,14 @@ class Zaboy_DataStore_DbTable extends Zaboy_DataStores_Abstract
             $orderForSQL[] = $this->getIdentifier();
         }
         $select->order($orderForSQL);
+        
+        // *********************  limit, offset   *********************** 
+        $select->limit($limit, $offset);
+        
+        // *********************  filds  *********************** 
+        if (!empty($filds)) {
+            $select->from($this->_dbTable, $filds);
+        }            
 
         // ***********************   return   *********************** 
         $rows = $this->_dbTable->fetchAll($select);

@@ -177,7 +177,91 @@ abstract class Zaboy_DataStore_AbstractTest extends PHPUnit_Framework_TestCase {
                 2,
                 count($findArray)
         );
-    }    
+    }  
+    
+    
+    public function testFind_fildsCombo()
+    {
+        $this->_initObject();
+        $findArray = $this->object->find(
+                array('fString'=> 'val2', 'fFloat' => 300.003),
+                array('fFloat'),
+                array('id'=>'ASC')
+         );        
+        $this->assertEquals(
+                array('fFloat' => $this->_itemsArrayDelault[2-1]['fFloat']) ,
+                $findArray[1-1]
+        );     
+        $this->assertEquals(
+                2,
+                count($findArray)
+        );
+    }  
+    
+    public function testFind_limitCombo()
+    {
+        $this->_initObject();
+        $findArray = $this->object->find(
+                array('fString'=> 'val2', 'fFloat' => 300.003),
+                array('fFloat'),
+                array('id'=>'ASC'),
+                1
+         );        
+        $this->assertEquals(
+                array('fFloat' => $this->_itemsArrayDelault[2-1]['fFloat']) ,
+                $findArray[1-1]
+        );     
+        $this->assertEquals(
+                1,
+                count($findArray)
+        );
+    }  
+    
+    
+    public function testFind_offsetCombo()
+    {
+        $this->_initObject();
+        $findArray = $this->object->find(
+                array('fString'=> 'val2', 'fFloat' => 300.003),
+                array('fFloat'),
+                array('id'=>'ASC'),
+                null,
+                1
+         );        
+        $this->assertEquals(
+                array('fFloat' => $this->_itemsArrayDelault[3-1]['fFloat']) ,
+                $findArray[1-1]
+        );     
+        $this->assertEquals(
+                1,
+                count($findArray)
+        );
+    } 
+    
+    public function testFind_limitOffsetCombo()
+    {
+        $this->_initObject();
+        $findArray = $this->object->find(
+                array('fString'=> 'val2'),
+                array('fFloat'),
+                array('id'=>'ASC'),
+                2,
+                1
+         );        
+        $this->assertEquals(
+                array('fFloat' => $this->_itemsArrayDelault[3-1]['fFloat']) ,
+                $findArray[1-1]
+        );  
+        $this->assertEquals(
+                array('fFloat' => $this->_itemsArrayDelault[4-1]['fFloat']) ,
+                $findArray[2-1]
+        ); 
+        $this->assertEquals(
+                2,
+                count($findArray)
+        );
+    } 
+    
 /**    
 
     
