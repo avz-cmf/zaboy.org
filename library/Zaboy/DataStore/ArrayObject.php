@@ -189,5 +189,39 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
         // ***********************   return   *********************** 
         return $resultArray;
     } 
+    
+    /**
+     * By default, insert new (by create) Item. 
+     * 
+     * It can't overwrite existing item by default. 
+     * You can get item "id" for creatad item us result this function.
+     * 
+     * If  $item["id"] !== null, item set with that id. 
+     * If item with same id already exist - method will throw exception, 
+     * but if $rewriteIfExist = true item will be rewrited.<br>
+     * 
+     * If $item["id"] is not set or $item["id"]===null, 
+     * item will be insert with autoincrement PrimryKey.<br>
+     * 
+     * @param array $itemData associated array with or without PrimaryKey
+     * @return int|string|null  "id" for creatad item
+     */
+    public function create($itemData, $rewriteIfExist = false) {
+        $identifier = $this->getIdentifier();
+        if (!isset($itemData[$identifier])) {
+            $this->_items[] = $itemData;
+            $itemsKeys = array_keys($this->_items);
+            $id = array_pop($itemsKeys);
+            $this->_items[$id] = array_merge(array($identifier => $id), $itemData);
+        }elseif(!$rewriteIfExist && isset($this->_items[$itemData[$identifier]])) {
+            require_once 'Zaboy/DataStores/Exception.php';
+            throw new Zaboy_DataStores_Exception('Item is already exist with "id" =  ' . $itemData[$identifier]);  
+        }else{
+            $id = $itemData[$identifier];
+            $this->_checkIdentifierType($id);
+            $this->_items[$id] = array_merge(array($identifier => $id), $itemData);            
+        }
+        return $id;
+    }
 
 }

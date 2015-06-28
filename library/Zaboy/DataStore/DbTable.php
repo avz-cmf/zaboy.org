@@ -121,5 +121,44 @@ class Zaboy_DataStore_DbTable extends Zaboy_DataStores_Abstract
         // ***********************   return   *********************** 
         $rows = $this->_dbTable->fetchAll($select);
         return $rows->toArray();
-    }    
+    } 
+    
+  
+    /**
+     * By default, insert new (by create) Item. 
+     * 
+     * It can't overwrite existing item by default. 
+     * You can get item "id" for creatad item us result this function.
+     * 
+     * If  $item["id"] !== null, item set with that id. 
+     * If item with same id already exist - method will throw exception, 
+     * but if $rewriteIfExist = true item will be rewrited.<br>
+     * 
+     * If $item["id"] is not set or $item["id"]===null, 
+     * item will be insert with autoincrement PrimryKey.<br>
+     * 
+     * @param array $itemData associated array with or without PrimaryKey
+     * @return int|string|null  "id" for creatad item
+     */
+    public function create($itemData, $rewriteIfExist = false) {
+        $identifier = $this->getIdentifier();
+        $db = $this->_dbTable->getAdapter();
+        $db->beginTransaction();
+        try {
+            if (isset($itemData[$identifier]) && $rewriteIfExist) {
+                $where = $db->quoteInto( $identifier . ' = ?', $itemData[$identifier]);  
+                $errorMsg = 'Cann\'t delete item with "id" = ' . $itemData[$identifier];
+                $this->_dbTable->delete($where);
+            }
+            $errorMsg = 'Cann\'t insert item';
+            $id = $this->_dbTable->insert($itemData);
+            $db->commit();
+        }
+        catch (Zend_Db_Exception $e) {
+            $db->rollback();
+            require_once 'Zaboy/DataStores/Exception.php';
+            throw new Zaboy_DataStores_Exception( $errorMsg, 0, $e );
+        } 
+        return $id;
+    }
 }

@@ -132,8 +132,7 @@ abstract class Zaboy_DataStores_Abstract extends Zaboy_Services
         $offset = null 
     );
     
-//** Interface "Zaboy_DataStores_Write_Interface" **            **                          **
-    
+// ** Interface "Zaboy_DataStores_Write_Interface" **            **                          **
     /**
      * By default, insert new (by create) Item. 
      * 
@@ -148,11 +147,12 @@ abstract class Zaboy_DataStores_Abstract extends Zaboy_Services
      * item will be insert with autoincrement PrimryKey.<br>
      * 
      * @param array $itemData associated array with or without PrimaryKey
-     * @return int|string|null  "id" for creatad item or null if item wasn't created
+     * @return int|string|null  "id" for creatad item
      */
     public function create($itemData, $rewriteIfExist = false) {
         
     }
+    
     
     /**
      * By default, update existing Item with PrimaryKey = $item["id"].
