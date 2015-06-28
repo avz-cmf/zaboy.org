@@ -431,7 +431,41 @@ abstract class Zaboy_DataStore_AbstractTest extends PHPUnit_Framework_TestCase {
                 1 ,
                 $count
         );
-    }     
+    }  
+    
+
+    public function testDelete_withtId_WhichAbsent()
+    {
+        $this->_initObject();
+        $count = $this->object->delete(1000);
+        $this->assertEquals(
+                0 ,
+                $count
+        );
+    }
+    
+
+    public function testDelete_withtId_WhichPresent()
+    {
+        $this->_initObject();
+        $count = $this->object->delete(4);
+        $this->assertEquals(
+                1 ,
+                $count
+        );
+        $this->assertNull(
+            $this->object->read(4)
+        );
+    }
+    
+     public function testDelete_withtId_Null()
+    {
+        $this->_initObject();
+        $this->setExpectedException('Zaboy_DataStores_Exception');  
+        $count = $this->object->delete(null);
+    }
+    
+    
 /**    
 
     

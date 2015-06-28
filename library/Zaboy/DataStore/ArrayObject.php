@@ -263,4 +263,21 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
         }
         return $updatedItemsCount;
     }
+    
+     /**
+      * Delete Item by id. Method do nothing if item with that id is absent.
+      * 
+      * @param int|string $id PrimaryKey
+      * @return int number of deleted items: 0 or 1
+      */
+    public function delete($id) {
+        $this->_checkIdentifierType($id);       
+        if ( isset($this->_items[$id]) ){
+            unset($this->_items[$id]);
+            $deletedItemsCount = 1;
+        }else{
+            $deletedItemsCount = 0;
+        }
+        return $deletedItemsCount;
+    }  
 }
