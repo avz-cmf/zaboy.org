@@ -209,4 +209,30 @@ class Zaboy_DataStore_DbTable extends Zaboy_DataStores_Abstract
         $deletedItemsCount = $this->_dbTable->delete( $where);
         return $deletedItemsCount;
     }  
+    
+     /**
+      * Delete all Items.
+      * 
+      * @return int number of deleted items or null if object doesn't support it
+      */
+    public function deleteAll() {
+        $where = '1=1';
+        $deletedItemsCount = $this->_dbTable->delete( $where);
+        return $deletedItemsCount;
+    }
+    
+    
+    /**
+     * @see coutable
+     * @return int
+     */
+    public function count() {
+        $db = $this->_dbTable->getAdapter();
+        $tableName = $this->_dbTable->info(Zend_Db_Table_Abstract::NAME);
+        $count = $db->fetchOne( 
+                'SELECT COUNT(*) AS count FROM ' 
+                . $db->quoteIdentifier($tableName) 
+        );
+        return (int) $count;
+    }
 }

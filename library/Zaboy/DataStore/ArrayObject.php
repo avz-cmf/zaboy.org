@@ -280,4 +280,26 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
         }
         return $deletedItemsCount;
     }  
+    
+     /**
+      * Delete all Items.
+      * 
+      * @return int number of deleted items or null if object doesn't support it
+      */
+    public function deleteAll() {
+        $deletedItemsCount = count($this->_items);
+        $this->_items = array();
+        return $deletedItemsCount;
+    }
+    
+//** Interface "Coutable" **                                    **                          **
+    
+    /**
+     * @see coutable
+     * @return int
+     */
+    public function count() {
+        return count($this->_items);
+    }
+    
 }
