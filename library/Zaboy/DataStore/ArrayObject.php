@@ -204,7 +204,7 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
      * item will be insert with autoincrement PrimryKey.<br>
      * 
      * @param array $itemData associated array with or without PrimaryKey
-     * @return int|string|null  "id" for creatad item
+     * @return mix  "id" for creatad item
      */
     public function create($itemData, $rewriteIfExist = false) {
         $identifier = $this->getIdentifier();
@@ -223,5 +223,44 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
         }
         return $id;
     }
-
+    
+    
+    /**
+     * By default, update existing Item with PrimaryKey = $item["id"].
+     * 
+     * If item with PrimaryKey == $item["id"] is existing in store, item will updete.
+     * Filds wich don't present in $item will not change in item in store.
+     * Method will return 1<br>
+     * 
+     * If $item["id"] isn't set - method will throw exception.
+     * If item with PrimaryKey == $item["id"] is absent - method do nothing and return 0,
+     * but if $createIfAbsent = true item will be created and method return 1.<br>
+     * 
+     * 
+     * @param array $itemData associated array with PrimaryKey
+     * @return int number of updeted (created) items: 0 or 1
+     */
+    public function update($itemData, $createIfAbsent = false) {
+        $identifier = $this->getIdentifier();
+        if (!isset($itemData[$identifier])) {
+            require_once 'Zaboy/DataStores/Exception.php';
+            throw new Zaboy_DataStores_Exception('Item must has primary key'); 
+        }
+        $updatedItemsCount = 1;
+        $id = $itemData[$identifier];
+        $this->_checkIdentifierType($id);       
+        if ( isset($this->_items[$id]) ){
+            unset($itemData[$id]);
+            foreach ($itemData as $key => $value) {
+                $this->_items[$id][$key] = $value;
+            }
+        }else{
+            if ( $createIfAbsent ) {
+                $this->_items[$id] = array_merge(array($identifier => $id), $itemData);     
+            }else{
+                $updatedItemsCount = 0;
+            }
+        }
+        return $updatedItemsCount;
+    }
 }

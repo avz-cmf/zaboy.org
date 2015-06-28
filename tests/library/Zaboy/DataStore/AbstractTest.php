@@ -348,7 +348,90 @@ abstract class Zaboy_DataStore_AbstractTest extends PHPUnit_Framework_TestCase {
             false    
         );
     }
-            
+    
+   
+    public function testUpdate_withoutId()
+    {
+        $this->_initObject();
+        $this->setExpectedException('Zaboy_DataStores_Exception');    
+        $id = $this->object->update(
+            array(
+                'fFloat' => 1000.01,
+                'fString'=> 'Create_withoutId'
+            )
+        );
+    }
+
+    public function testUpdate_withtId_WhichPresent()
+    {
+        $this->_initObject();
+        $count = $this->object->update(
+            array(
+                'id' => 3,
+                'fString'=> 'withtId_WhichPresent'
+            )
+        );
+
+        $item = $this->object->read(3);
+        $this->assertEquals(
+            40,    
+            $item['anotherId']
+                
+        );
+        $this->assertEquals(
+            'withtId_WhichPresent',    
+            $item['fString']
+                
+        );
+        $this->assertEquals(
+                1 ,
+                $count
+        );
+    }
+
+
+    public function testUpdate_withtId_WhichAbsent()
+    {
+        $this->_initObject();
+        $count = $this->object->update(
+            array(
+                'id' => 1000,
+                'fFloat' => 1000.01,
+                'fString'=> 'withtIdwhichAbsent'
+            )
+        );
+        $this->assertNull(
+            $this->object->read(1000)
+        );
+        $this->assertEquals(
+                0 ,
+                $count
+        );
+    }
+    
+
+    public function testUpdate_withtIdwhichAbsent_ButCreateIfAbsent_True()
+    {
+        $this->_initObject();
+        $count = $this->object->update(
+            array(
+                'id' => 1000,
+                'fFloat' => 1000.01,
+                'fString'=> 'withtIdwhichAbsent'
+            ),
+            true    
+        );
+        $item = $this->object->read(1000);
+        $this->assertEquals(
+            'withtIdwhichAbsent',    
+            $item['fString']
+                
+        );
+        $this->assertEquals(
+                1 ,
+                $count
+        );
+    }     
 /**    
 
     

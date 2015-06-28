@@ -161,4 +161,38 @@ class Zaboy_DataStore_DbTable extends Zaboy_DataStores_Abstract
         } 
         return $id;
     }
+
+    /**
+     * By default, update existing Item with PrimaryKey = $item["id"].
+     * 
+     * If item with PrimaryKey == $item["id"] is existing in store, item will updete.
+     * Filds wich don't present in $item will not change in item in store.
+     * Method will return 1<br>
+     * 
+     * If $item["id"] isn't set - method will throw exception.
+     * If item with PrimaryKey == $item["id"] is absent - method do nothing and return 0,
+     * but if $createIfAbsent = true item will be created and method return 1.<br>
+     * 
+     * 
+     * @param array $itemData associated array with PrimaryKey
+     * @return int number of updeted (created) items: 0 or 1
+     */
+    public function update($itemData, $createIfAbsent = false) {
+        $identifier = $this->getIdentifier();
+        if (!isset($itemData[$identifier])) {
+            require_once 'Zaboy/DataStores/Exception.php';
+            throw new Zaboy_DataStores_Exception('Item must has primary key'); 
+        }
+        $id = $itemData[$identifier];
+        $this->_checkIdentifierType($id);       
+        if ( $createIfAbsent ){
+            $row = $this->_dbTable->createRow($itemData);
+            $row->save();
+            $updatedItemsCount = 1;
+        }else{
+            $where = $this->_dbTable->getAdapter()->quoteInto($identifier . ' = ?', $id);
+            $updatedItemsCount = $this->_dbTable->update($itemData, $where);
+        }
+        return $updatedItemsCount;
+    }
 }
