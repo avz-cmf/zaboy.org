@@ -40,6 +40,23 @@ abstract class Zaboy_DataStore_AbstractTest extends PHPUnit_Framework_TestCase {
             array( 'id' => 4,'anotherId' => 30, 'fString' => 'val2', 'fFloat' => 100.1)          
         );
     
+
+    protected $_itemsArrayEnhanced  =    
+        array(
+            array( 'id' => 1,'anotherId' => 10, 'fString' => 'val1', 'fFloat' => 400.0004, 'nll' => 1,      'abs' => 'val_abs'),
+            array( 'id' => 2,'anotherId' => 20, 'fString' => 'val2', 'fFloat' => 300.003,  'nll' => null),
+            array( 'id' => 3,'anotherId' => 40, 'fString' => 'val2', 'fFloat' => 300.003,  'nll' => null),
+            array( 'id' => 4,'anotherId' => 30, 'fString' => 'val2', 'fFloat' => 100.1 ,   'nll' => null)
+        );
+    
+
+    protected $_itemsArrayNull  =    
+        array(
+            array( 'id' => 1, 'nll' => 1,      'abs' => 'val1'  ),
+            array( 'id' => 2, 'nll' => null                     ),
+            array( 'id' => 3, 'nll' => null                     ),  
+        );
+    
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
@@ -87,6 +104,27 @@ abstract class Zaboy_DataStore_AbstractTest extends PHPUnit_Framework_TestCase {
         $this->_initObject();         
         $this->assertTrue($this->object->has(2));
         $this->assertFalse($this->object->has(20));        
+    } 
+    
+    public function testGetKeys_4()
+    {
+        $this->_initObject();         
+        $keys = $this->object->GetKeys();
+        $this->assertEquals(
+                array(1,2,3,4),
+                $keys
+        );  
+    } 
+    
+    public function testGetKeys_0()
+    {
+        $this->_initObject();         
+        $this->object->deleteAll();
+        $keys = $this->object->GetKeys();
+        $this->assertEquals(
+                array(),
+                $keys
+        );  
     } 
     
     public function testFind_all()
@@ -273,6 +311,19 @@ abstract class Zaboy_DataStore_AbstractTest extends PHPUnit_Framework_TestCase {
                 count($findArray)
         );
     } 
+    
+
+    public function testFind_Enhanced()
+    {
+        $this->_initObject(array(),$this->_itemsArrayEnhanced);
+        $findArray = $this->object->find(
+                array('abs'=> 'val_abs')
+         );
+        $this->assertEquals(
+                1,
+                count($findArray)
+        );
+    }         
     
     public function testCreate_withoutId()
     {

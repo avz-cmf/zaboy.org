@@ -56,6 +56,29 @@ class Zaboy_DataStore_DbTable extends Zaboy_DataStores_Abstract
         }        
     }
     
+
+    /**
+     * 
+     * @return array array of keys or empty array
+     */
+    public function  getKeys() 
+    {
+        $select = $this->_dbTable->select();
+        $identifier = $this->getIdentifier();
+        $select->from($this->_dbTable, array($identifier));
+        $rows = $this->_dbTable->fetchAll($select);
+        $keysArrays = $rows->toArray();
+        if(PHP_VERSION_ID >= 50500) {
+            $keys = array_column($keysArrays, $identifier);
+        }else{
+            $keys = array();
+            foreach ($keysArrays as $key => $value) {
+                $keys[] = $value[$identifier];
+            }
+        }
+        return $keys;
+    }
+    
     /**
      * Return items by criteria with mapping, sorting and paging
      * 

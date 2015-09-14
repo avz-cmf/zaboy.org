@@ -19,7 +19,10 @@ require_once 'Zend/Db/Table/Abstract.php';
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @uses Zend Framework from Zend Technologies USA Inc.
  */
-class Zaboy_Service_Db_Table() extends Zend_Db_Table_Abstract 
+class Zaboy_Service_Db_Table extends Zend_Db_Table_Abstract 
 {
-    parent::__construct();
+    public function __construct($config = array())
+    {
+        parent::__construct($config);
+    }
 }

@@ -67,6 +67,15 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
         }
         
     }
+
+    /**
+     * 
+     * @return array array of keys or empty array
+     */
+    public function  getKeys() 
+    {
+        return array_keys($this->_items);
+    } 
     
     /**
      * Return items by criteria with mapping, sorting and paging
@@ -122,18 +131,13 @@ class Zaboy_DataStore_ArrayObject extends Zaboy_DataStores_Abstract
                     . '( ' .  $whereCheck . ' )' . PHP_EOL
                 ;
             }
-            
-            var_dump($whereBody);   
             $whereFunctionBody = PHP_EOL  .
                 '$result = ' . PHP_EOL 
                 . substr($whereBody, 2) . ';' . PHP_EOL 
                 . 'return $result;'
             ;
             
-            var_dump($whereFunctionBody);            
-            
             $whereFunction = create_function('$item', $whereFunctionBody);
-
             foreach ($this->_items as $item) {
                 if($whereFunction($item)) {
                     $resultArray[] = $item;
