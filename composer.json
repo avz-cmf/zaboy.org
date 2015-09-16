@@ -1,0 +1,15 @@
+{
+    "name": "avz-cmf/zaboy.org",
+    "description": "description",
+    "authors": [
+        {
+            "name": "avz",
+            "email": "---@---"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Zaboy": "library/"
+        }
+    }
+}
